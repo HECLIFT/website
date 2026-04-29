@@ -1,0 +1,34 @@
+[
+  {
+    "listing": "/ai-trackers.html",
+    "items": [
+      "/ai-trackers/diffusion-emploi/index.html",
+      "/ai-trackers/diffusion-science/index.html",
+      "/ai-trackers/diffusion-science/methodologie.html",
+      "/ai-trackers/superstars/index.html"
+    ]
+  },
+  {
+    "listing": "/posts.html",
+    "items": []
+  },
+  {
+    "listing": "/publications.html",
+    "items": [
+      "/pubs/politique-travail/index.html",
+      "/pubs/flexicurity/index.html",
+      "/pubs/ai-innov/index.html",
+      "/pubs/ai-tracker/index.html",
+      "/pubs/test-validation/index.html",
+      "/pubs/ai-exposure/index.html"
+    ]
+  },
+  {
+    "listing": "/innovation-data.html",
+    "items": [
+      "/innovation-data/innovation-hightech/index.html",
+      "/innovation-data/breakthrough/index.html",
+      "/innovation-data/productivite/index.html"
+    ]
+  }
+]

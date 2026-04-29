@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Tableau de bord interactif analysant la diffusion de l’intelligence artificielle à travers les offres d’emploi françaises, basé sur la base JOCAS (DARES).">
+
+<title>Diffusion de l’IA (emploi) – Laboratoire de l'Innovation et du Futur du Travail</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-e8be56db37bdd2d1bb4117ea9d5a4dfc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Pas de résultats",
+    "search-matching-documents-text": "documents trouvés",
+    "search-copy-link-title": "Copier le lien vers la recherche",
+    "search-hide-matches-text": "Cacher les correspondances additionnelles",
+    "search-more-match-text": "correspondance de plus dans ce document",
+    "search-more-matches-text": "correspondances de plus dans ce document",
+    "search-clear-button-title": "Effacer",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Annuler",
+    "search-submit-button-title": "Envoyer",
+    "search-label": "Recherche"
+  }
+}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@300;400;500&amp;family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,400&amp;display=swap" rel="stylesheet">
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Tag colorization
+  document.querySelectorAll('.quarto-categories .quarto-category, .listing-category, .quarto-category').forEach(el => {
+    el.classList.add('lift-tag');
+  });
+
+  // Share links
+  const url   = encodeURIComponent(window.location.href);
+  const title = encodeURIComponent(document.title);
+  document.querySelectorAll('[data-share]').forEach(a => {
+    const t = a.getAttribute('data-share');
+    if (t === 'x')     a.href = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+    if (t === 'ln')    a.href = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+    if (t === 'email') a.href = `mailto:?subject=${title}&body=${url}`;
+  });
+
+  // Publications listing: inject PDF button + reformat date
+  document.querySelectorAll('#listing-pubslist .quarto-grid-item.card').forEach(card => {
+    const table   = card.querySelector('.card-other-values');
+    const pdfCell = table?.querySelector('td.pdf');
+    const typeCell = table?.querySelector('td.pubtype');
+    const pdfUrl  = pdfCell ? pdfCell.textContent.trim() : '';
+    const pubtype = typeCell ? typeCell.textContent.trim() : '';
+    if (pubtype) card.setAttribute('data-pubtype', pubtype);
+    const body    = card.querySelector('.card-body');
+    const title   = body?.querySelector('.card-title');
+    let metaRow   = body?.querySelector('.card-meta-row');
+    if (!metaRow && body && title) {
+      metaRow = document.createElement('div');
+      metaRow.className = 'card-meta-row d-flex justify-content-between align-items-center mb-2';
+      body.insertBefore(metaRow, title);
+    }
+    if (metaRow && pdfUrl) {
+      const btn = document.createElement('a');
+      btn.className = 'btn-pdf-sm';
+      btn.href = pdfUrl;
+      btn.setAttribute('download', '');
+      btn.textContent = 'PDF';
+      metaRow.prepend(btn);
+    }
+    const dateEl = card.querySelector('.listing-date');
+    if (metaRow && dateEl) {
+      dateEl.classList.add('text-muted', 'small', 'ms-auto');
+      metaRow.appendChild(dateEl);
+    }
+    if (table) table.remove();
+  });
+});
+</script>
+
+
+<link rel="stylesheet" href="../../styles.scss">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/logo.png" alt="" class="navbar-logo light-content">
+    <img src="../../images/logo.png" alt="" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title"><span class="navbar-brand-text"> <span class="line1">Laboratoire de l’Innovation</span> <span class="line2">et du Futur du Travail</span> </span></span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Recherche"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Basculer la navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Accueil</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../publications.html"> 
+<span class="menu-text">Publications</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../working-papers.html"> 
+<span class="menu-text">Working Papers</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-trackers-ia" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Trackers IA</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-trackers-ia">    
+        <li>
+    <a class="dropdown-item" href="../../ai-trackers.html">
+ <span class="dropdown-text">Vue d’ensemble</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../ai-trackers/diffusion-emploi/index.html">
+ <span class="dropdown-text">Diffusion IA (emploi)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../ai-trackers/diffusion-science/index.html">
+ <span class="dropdown-text">Diffusion IA (science)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-données-innovation" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Données Innovation</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-données-innovation">    
+        <li>
+    <a class="dropdown-item" href="../../innovation-data.html">
+ <span class="dropdown-text">Vue d’ensemble</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../../innovation-data/productivite/index.html">
+ <span class="dropdown-text">Productivité</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../innovation-data/innovation-hightech/index.html">
+ <span class="dropdown-text">Innovation high-tech</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../innovation-data/breakthrough/index.html">
+ <span class="dropdown-text">Innovation de rupture</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../membres.html"> 
+<span class="menu-text">Membres</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content column-page" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Diffusion de l’IA (emploi)</h1>
+<p class="subtitle lead">Suivi en temps réel de l’adoption de l’IA dans les offres d’emploi en France</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">IA</div>
+    <div class="quarto-category">Emploi</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Tableau de bord interactif analysant la diffusion de l’intelligence artificielle à travers les offres d’emploi françaises, basé sur la base JOCAS (DARES).
+  </div>
+</div>
+
+
+<div class="quarto-title-meta column-page">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!-- External libraries -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+<!-- Tracker styles -->
+<link rel="stylesheet" href="../../assets/css/ai-tracker-emploi.css">
+
+<div class="ai-tracker">
+
+  <!-- KPI Cards -->
+  <div class="ai-kpis">
+    <div class="ai-kpi-card">
+      <h4 class="anchored">Offres IA totales</h4>
+      <p class="kpi-value" id="aiOffersValue">...</p>
+      <p class="kpi-delta" id="aiOffersLastQuarter">...</p>
+    </div>
+    <div class="ai-kpi-card">
+      <h4 class="anchored">Entreprises IA</h4>
+      <p class="kpi-value" id="aiFirmsValue">...</p>
+      <p class="kpi-delta" id="aiFirmsLastQuarter">...</p>
+    </div>
+    <div class="ai-kpi-card">
+      <h4 class="anchored">Offres IA Générative</h4>
+      <p class="kpi-value" id="genAiOffersValue">...</p>
+      <p class="kpi-delta" id="genAiOffersLastQuarter">...</p>
+    </div>
+    <div class="ai-kpi-card">
+      <h4 class="anchored">Entreprises GenAI</h4>
+      <p class="kpi-value" id="genAiFirmsValue">...</p>
+      <p class="kpi-delta" id="genAiFirmsLastQuarter">...</p>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <div class="ai-nav">
+    <button class="ai-nav-btn active" onclick="scrollToAISection('sec-offers')">Offres</button>
+    <button class="ai-nav-btn" onclick="scrollToAISection('sec-sectors')">Secteurs</button>
+    <button class="ai-nav-btn" onclick="scrollToAISection('sec-size')">Taille</button>
+    <button class="ai-nav-btn" onclick="scrollToAISection('sec-metiers')">Métiers</button>
+    <button class="ai-nav-btn" onclick="scrollToAISection('sec-skills')">Compétences</button>
+    <button class="ai-nav-btn" onclick="scrollToAISection('sec-map')">Carte</button>
+  </div>
+
+  <!-- OFFERS CHART -->
+  <div id="sec-offers" class="ai-chart-section">
+    <h3 class="anchored">Évolution des offres d'emploi liées à l'IA</h3>
+    <div class="ai-chart-controls">
+      <div class="ai-toggle">
+        <button id="btnOfferMode" class="ai-toggle-btn" onclick="toggleOffersTotalShare()">
+          <span class="slider"></span>
+        </button>
+        <span class="ai-toggle-label" id="lblOfferMode">Total</span>
+      </div>
+      <button class="ai-download-btn" onclick="downloadOffersCSV()" title="Télécharger les données">
+        <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7,10 12,15 17,10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        CSV
+      </button>
+    </div>
+    <div class="ai-chart-container">
+      <canvas id="ai-offersChart"></canvas>
+    </div>
+  </div>
+
+  <!-- SECTORS CHART -->
+  <div id="sec-sectors" class="ai-chart-section">
+    <h3 class="anchored">Adoption de l'IA par secteur</h3>
+    <div class="ai-chart-controls">
+      <div class="ai-toggle">
+        <button id="btnSectorMode" class="ai-toggle-btn" onclick="toggleSectorsTotalShare()">
+          <span class="slider"></span>
+        </button>
+        <span class="ai-toggle-label" id="lblSectorMode">Total</span>
+      </div>
+      <div class="ai-toggle">
+        <button id="btnSectorCat" class="ai-toggle-btn" onclick="toggleSectorsGenNonGen()">
+          <span class="slider"></span>
+        </button>
+        <span class="ai-toggle-label" id="lblSectorCat">IA Générative</span>
+      </div>
+      <button class="ai-download-btn" onclick="downloadSectorsCSV()" title="Télécharger les données">
+        <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7,10 12,15 17,10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        CSV
+      </button>
+    </div>
+    <div class="ai-chart-container">
+      <canvas id="ai-sectorsChart"></canvas>
+    </div>
+
+    <h3 style="margin-top: 2rem;" class="anchored">Part sectorielle des offres publiées</h3>
+    <div class="ai-chart-controls">
+      <div class="ai-tri-toggle">
+        <button class="tri-btn active" id="btnAI" onclick="setEvolType('ai')">IA</button>
+        <button class="tri-btn" id="btnGen" onclick="setEvolType('gen')">GenAI</button>
+        <button class="tri-btn" id="btnAll" onclick="setEvolType('all')">Toutes</button>
+      </div>
+      <button class="ai-download-btn" onclick="downloadSectorEvolCSV()" title="Télécharger les données">
+        <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7,10 12,15 17,10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        CSV
+      </button>
+    </div>
+    <div class="ai-chart-container">
+      <canvas id="ai-sectorEvolChart"></canvas>
+    </div>
+  </div>
+
+  <!-- SIZE CHART -->
+  <div id="sec-size" class="ai-chart-section">
+    <h3 class="anchored">Distribution des adoptants par taille d'entreprise</h3>
+    <div class="ai-chart-controls">
+      <div class="ai-toggle">
+        <button id="btnSizeCat" class="ai-toggle-btn" onclick="toggleSizeAiGen()">
+          <span class="slider"></span>
+        </button>
+        <span class="ai-toggle-label" id="lblSizeCat">IA</span>
+      </div>
+      <button class="ai-download-btn" onclick="downloadSizeCSV()" title="Télécharger les données">
+        <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7,10 12,15 17,10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        CSV
+      </button>
+    </div>
+    <div class="ai-chart-container">
+      <canvas id="ai-sizeChart"></canvas>
+    </div>
+  </div>
+
+  <!-- METIERS CHART -->
+  <div id="sec-metiers" class="ai-chart-section">
+    <h3 class="anchored">Offres IA par métiers (ROME)</h3>
+    <div class="ai-chart-controls">
+      <div class="ai-toggle">
+        <button id="btnMetierCat" class="ai-toggle-btn" onclick="toggleMetier()">
+          <span class="slider"></span>
+        </button>
+        <span class="ai-toggle-label" id="lblMetierCat">IA</span>
+      </div>
+      <button class="ai-download-btn" onclick="downloadMetierCSV()" title="Télécharger les données">
+        <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7,10 12,15 17,10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        CSV
+      </button>
+    </div>
+    <div class="ai-chart-container">
+      <canvas id="ai-metierChart"></canvas>
+    </div>
+  </div>
+
+  <!-- SKILLS CHART -->
+  <div id="sec-skills" class="ai-chart-section">
+    <h3 class="anchored">Évolution des compétences dans les offres IA</h3>
+    <div class="ai-chart-controls">
+      <div class="ai-tri-toggle">
+        <button class="tri-btn active" id="btnSkillsLibraries" onclick="setSkillsType('ml_library')">Librairies ML</button>
+        <button class="tri-btn" id="btnSkillsMethods" onclick="setSkillsType('method_skills')">Méthodes</button>
+        <button class="tri-btn" id="btnSkillsBroad" onclick="setSkillsType('broad_skills')">Compétences larges</button>
+      </div>
+      <button class="ai-download-btn" onclick="downloadSkillsCSV()" title="Télécharger les données">
+        <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7,10 12,15 17,10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        CSV
+      </button>
+    </div>
+    <div class="ai-chart-container">
+      <canvas id="ai-skillsChart"></canvas>
+    </div>
+  </div>
+
+  <!-- MAP -->
+  <div id="sec-map" class="ai-chart-section">
+    <h3 class="anchored">Carte des zones d'emploi françaises</h3>
+    <div class="ai-chart-controls">
+      <div class="ai-toggle">
+        <button id="btnMapMode" class="ai-toggle-btn" onclick="toggleMapTotalShare()">
+          <span class="slider"></span>
+        </button>
+        <span class="ai-toggle-label" id="lblMapMode">Total</span>
+      </div>
+      <div class="ai-toggle">
+        <button id="btnMapCat" class="ai-toggle-btn" onclick="toggleMapAiGen()">
+          <span class="slider"></span>
+        </button>
+        <span class="ai-toggle-label" id="lblMapCat">IA</span>
+      </div>
+      <button class="ai-download-btn" onclick="downloadMapCSV()" title="Télécharger les données">
+        <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7,10 12,15 17,10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        CSV
+      </button>
+    </div>
+    <div class="ai-map-row">
+      <div class="ai-map-col-main">
+        <div class="ai-map-container" id="ai-mapOffers"></div>
+        <div id="ai-mapLegend"></div>
+      </div>
+      <div class="ai-map-col-side">
+        <h4 class="ai-top10-title anchored">Top 10 zones d'emploi</h4>
+        <div id="ai-mapTop10" class="ai-top10-chart"></div>
+      </div>
+    </div>
+    <div id="ai-mapInfo" class="ai-map-info">
+      <p class="ai-map-info-placeholder">Cliquez sur une zone pour voir les détails</p>
+    </div>
+  </div>
+
+  <!-- Source -->
+  <div class="ai-source">
+    <strong>Source :</strong> Données extraites de la base <a href="https://dares.travail-emploi.gouv.fr/enquete-source/job-offers-collection-and-analysis-system" target="_blank" rel="noopener">JOCAS</a> (DARES) et analysées par des modèles de machine learning pour détecter et classifier les offres liées à l'IA.
+  </div>
+
+</div>
+
+<!-- Tracker JS -->
+<script src="../../assets/js/ai-tracker-emploi.js"></script>
+<section id="à-propos-de-ce-tracker" class="level2">
+<h2 class="anchored" data-anchor-id="à-propos-de-ce-tracker">À propos de ce tracker</h2>
+<p>Ce tableau de bord permet de suivre en temps réel la diffusion de l’intelligence artificielle dans l’économie française à travers l’analyse des offres d’emploi.</p>
+<section id="indicateurs-suivis" class="level3">
+<h3 class="anchored" data-anchor-id="indicateurs-suivis">Indicateurs suivis</h3>
+<ul>
+<li><strong>Offres totales IA</strong> : nombre cumulé d’offres mentionnant des compétences en IA</li>
+<li><strong>IA Générative vs Classique</strong> : distinction entre les offres ciblant l’IA générative (GPT, LLM, etc.) et l’IA traditionnelle (ML, vision, NLP)</li>
+<li><strong>Distribution sectorielle</strong> : répartition entre industrie et services</li>
+<li><strong>Métiers (ROME)</strong> : classification des offres par famille professionnelle</li>
+<li><strong>Compétences techniques</strong> : évolution des technologies demandées (TensorFlow, PyTorch, etc.)</li>
+<li><strong>Géographie</strong> : répartition par zones d’emploi</li>
+</ul>
+</section>
+<section id="méthodologie" class="level3">
+<h3 class="anchored" data-anchor-id="méthodologie">Méthodologie</h3>
+<p>L’analyse repose sur :</p>
+<ol type="1">
+<li><strong>Collecte</strong> : extraction continue des offres d’emploi depuis la base JOCAS (DARES)</li>
+<li><strong>Classification ML</strong> : modèles de machine learning entraînés pour détecter les mentions d’IA</li>
+<li><strong>Catégorisation</strong> : distinction automatique entre IA générative, vision par ordinateur, NLP, etc.</li>
+<li><strong>Agrégation</strong> : calcul d’indicateurs mensuels et trimestriels</li>
+</ol>
+</section>
+<section id="auteurs" class="level3">
+<h3 class="anchored" data-anchor-id="auteurs">Auteurs</h3>
+<p>Ce tracker est développé par :</p>
+<ul>
+<li><strong><a href="../../membres/pdelbouve.html">Paul Delbouve</a></strong> — Collège de France, PSE, DGE</li>
+<li><strong><a href="../../membres/abergeaud.html">Antonin Bergeaud</a></strong> — HEC Paris, LSE, CEPR</li>
+</ul>
+</section>
+<section id="publication-associée" class="level3">
+<h3 class="anchored" data-anchor-id="publication-associée">Publication associée</h3>
+<blockquote class="blockquote">
+<p><strong><a href="../../pubs/ai-tracker/">Diffusion de l’Intelligence Artificielle en France</a></strong> Aghion, P., Bergeaud, A., Bunel, S., &amp; Delbouve, P. (2025) <em>Économie et Statistique/Economics and Statistics</em> (à paraître)</p>
+</blockquote>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Citation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si vous utilisez les données de ce tracker, merci de citer :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">@techreport</span>{<span class="ot">aghion2025diffusion</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span>     = {Diffusion de l'Intelligence Artificielle en France},</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span>    = {Aghion, Philippe and Bergeaud, Antonin and Bunel, Simon and Delbouve, Paul},</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span>      = {2025},</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">institution</span> = {Laboratoire de l'Innovation et du Futur du Travail},</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">type</span>      = {Working Paper},</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">number</span>    = {2025-1}</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</section>
+<section id="mise-à-jour" class="level3">
+<h3 class="anchored" data-anchor-id="mise-à-jour">Mise à jour</h3>
+<p>Les données sont mises à jour <strong>trimestriellement</strong>.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copié");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copié");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><span class="footer-brand">Laboratoire de l’Innovation et du Futur du Travail</span><br> <span class="footer-affiliation">HEC Paris · Hi! Paris</span></p>
+</div>   
+    <div class="nav-footer-center">
+<p><a href="publications.html">Publications</a> · <a href="ai-trackers.html">Trackers IA</a> · <a href="innovation-data.html">Données</a> · <a href="membres.html">Équipe</a></p>
+</div>
+    <div class="nav-footer-right">
+<p>© 2025 Laboratoire de l’Innovation</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

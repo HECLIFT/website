@@ -1,0 +1,143 @@
+[
+  {
+    "slug": "politique-travail",
+    "title": "La politique au travail : Vécu en entreprise et fractures politiques des salariés en France",
+    "subtitle": "Policy Note HEC — Février 2026",
+    "date": "2026-02-01",
+    "date_sort": "2026-02-01T00:00:00",
+    "date_fr": "1 février 2026",
+    "authors": [],
+    "abstract": "|",
+    "categories": [
+      "Démocratie",
+      "Travail",
+      "France",
+      "Politique"
+    ],
+    "keywords": [
+      "démocratie",
+      "travail",
+      "fractures politiques",
+      "confiance sociale",
+      "RN",
+      "LFI"
+    ],
+    "pubtype": "pb",
+    "pdf": "/files/papers/politique-travail.pdf",
+    "url": "/pubs/politique-travail/",
+    "image": "/images/pubs/politique-travail.png",
+    "number": "LIFT PN 2026-01"
+  },
+  {
+    "slug": "flexicurity",
+    "title": "Cost of Failure, Disruptive Innovation and Targeted Flexicurity",
+    "subtitle": "Working paper — Octobre 2025",
+    "date": "2025-10-01",
+    "date_sort": "2025-10-01T00:00:00",
+    "date_fr": "1 octobre 2025",
+    "authors": [],
+    "abstract": "|",
+    "categories": [
+      "Innovation",
+      "Europe",
+      "Marché du travail"
+    ],
+    "keywords": [
+      "flexicurity",
+      "EPL",
+      "coût de l'échec",
+      "innovation disruptive",
+      "R&D",
+      "biotech"
+    ],
+    "pubtype": "wp",
+    "pdf": "/files/papers/flexicurity.pdf",
+    "url": "/pubs/flexicurity/",
+    "image": "/images/pubs/flexicurity.png",
+    "number": "LIFT WP 2025-04"
+  },
+  {
+    "slug": "ai-innov",
+    "title": "L'intelligence artificielle au service de l'innovation : une analyse sur données de brevets",
+    "subtitle": "Working paper — 2025-2",
+    "date": "2025-07-20",
+    "date_sort": "2025-07-20T00:00:00",
+    "date_fr": "20 juillet 2025",
+    "authors": [
+      {
+        "id": "abergeaud",
+        "name": "Antonin Bergeaud",
+        "url": "https://sites.google.com/site/abergeaudeco/home",
+        "role": "Direction"
+      }
+    ],
+    "abstract": "|",
+    "categories": [
+      "AI",
+      "Innovation"
+    ],
+    "keywords": [
+      "Innovation",
+      "IA",
+      "R&D",
+      "brevets"
+    ],
+    "pubtype": "wp",
+    "pdf": "/files/papers/ai-innov.pdf",
+    "url": "/pubs/ai-innov/",
+    "image": "/images/pubs/ai-innov.png",
+    "number": "LIFT WP 2025-03"
+  },
+  {
+    "slug": "ai-tracker",
+    "title": "Diffusion de l'Intelligence Artificielle en France",
+    "subtitle": "Working paper — 2025-1",
+    "date": "2025-07-10",
+    "date_sort": "2025-07-10T00:00:00",
+    "date_fr": "10 juillet 2025",
+    "authors": [],
+    "abstract": "",
+    "categories": [
+      "AI",
+      "France",
+      "Tracker",
+      "Emploi"
+    ],
+    "keywords": [
+      "Diffusion",
+      "IA et emploi",
+      "France",
+      "NLP"
+    ],
+    "pubtype": "wp",
+    "pdf": "/files/papers/ai-tracker.pdf",
+    "url": "/pubs/ai-tracker/",
+    "image": "/images/pubs/ai-tracker.png",
+    "number": "LIFT WP 2025-02"
+  },
+  {
+    "slug": "ai-exposure",
+    "title": "Exposition à l’intelligence artificielle générative et emploi : une application à la classification socio-professionnelle française",
+    "subtitle": "Working paper — 2024-1",
+    "date": "2024-01-01",
+    "date_sort": "2024-01-01T00:00:00",
+    "date_fr": "1 janvier 2024",
+    "authors": [],
+    "abstract": "",
+    "categories": [
+      "AI",
+      "France",
+      "Emploi"
+    ],
+    "keywords": [
+      "Exposition",
+      "IA et emploi",
+      "France"
+    ],
+    "pubtype": "wp",
+    "pdf": "/files/papers/ai-exposure.pdf",
+    "url": "/pubs/ai-exposure/",
+    "image": "/images/pubs/ai-exposure.png",
+    "number": "LIFT WP 2024-01"
+  }
+]

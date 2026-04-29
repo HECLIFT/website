@@ -1,0 +1,38 @@
+{
+  "A": {
+    "name": "Nécessités courantes de la vie"
+  },
+  "B": {
+    "name": "Techniques industrielles"
+  },
+  "C": {
+    "name": "Chimie et métallurgie"
+  },
+  "D": {
+    "name": "Textiles et papier"
+  },
+  "E": {
+    "name": "Constructions fixes"
+  },
+  "F": {
+    "name": "Mécanique et éclairage"
+  },
+  "G": {
+    "name": "Physique"
+  },
+  "H": {
+    "name": "Électricité"
+  },
+  "G06N": {
+    "name": "IA / Apprentissage automatique"
+  },
+  "C12N": {
+    "name": "Biotechnologie"
+  },
+  "A61K": {
+    "name": "Pharmacie"
+  },
+  "H01L": {
+    "name": "Semi-conducteurs"
+  }
+}
