@@ -1,13 +1,21 @@
 project:
   type: website
   output-dir: _site
+  resources:
+    - data/ai-trackers/**
+    - data/innovation-data/**
+    - data/pubs.json
+    - assets/maps/**
   pre-render:
-    - scripts/gen_pub_meta.py  
-    - scripts/build_members.py    
+    - scripts/gen_pub_meta.py
+    - scripts/build_members.py
     - scripts/build_feature.py
+    - scripts/build_tracker_data.py
+    - scripts/gen_wp_json.py
 
 website:
-  title: "Observatoire de l'Innovation et du Futur du Travail"
+  site-url: https://heclift.github.io/website
+  title: "Laboratoire de l'Innovation et du Futur du Travail"
   search: true
   navbar:
     logo: images/logo.png
@@ -21,18 +29,43 @@ website:
         href: index.qmd
       - text: "Publications"
         href: publications.qmd
-      - text: "Indicateurs"
-        href: trackers.qmd
+      - text: "Trackers IA"
+        menu:
+          - text: "Vue d'ensemble"
+            href: ai-trackers.qmd
+          - text: "---"
+          - text: "Diffusion IA (emploi)"
+            href: ai-trackers/diffusion-emploi/index.qmd
+          - text: "Diffusion IA (science)"
+            href: ai-trackers/diffusion-science/index.qmd
+      - text: "Données Innovation"
+        menu:
+          - text: "Vue d'ensemble"
+            href: innovation-data.qmd
+          - text: "---"
+          - text: "Productivité"
+            href: innovation-data/productivite/index.qmd
+          - text: "Innovation high-tech"
+            href: innovation-data/innovation-hightech/index.qmd
+          - text: "Innovation de rupture"
+            href: innovation-data/breakthrough/index.qmd
       - text: "Membres"
         href: membres.qmd
   page-footer:
-    right: "© 2025 HEC - Observatoire"
+    background: dark
+    left: |
+      <span class="footer-brand">Laboratoire de l'Innovation et du Futur du Travail</span><br>
+      <span class="footer-affiliation">HEC Paris · Hi! Paris</span>
+    center: |
+      <a href="publications.html">Publications</a> ·
+      <a href="ai-trackers.html">Trackers IA</a> ·
+      <a href="innovation-data.html">Données</a> ·
+      <a href="membres.html">Équipe</a>
+    right: "© 2025 Laboratoire de l'Innovation"
 
 format:
   html:
-    theme:
-      light: flatly
-      dark: darkly
+    theme: flatly
     grid:
       body-width: 1000px      # largeur du contenu (1100 -> 1200/1280)
       margin-width: 220px     # colonne marge (réduit si tu veux)

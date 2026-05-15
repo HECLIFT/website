@@ -1,0 +1,71 @@
+{
+  "sectors": {
+    "biotech": {
+      "total_patents": 349613,
+      "label_fr": "Biotechnologie",
+      "label_en": "Biotechnology"
+    },
+    "ict": {
+      "total_patents": 1412475,
+      "label_fr": "Technologies de l'information",
+      "label_en": "ICT"
+    },
+    "ai": {
+      "total_patents": 58395,
+      "label_fr": "Intelligence artificielle",
+      "label_en": "Artificial Intelligence"
+    },
+    "green": {
+      "total_patents": 480022,
+      "label_fr": "Technologies vertes",
+      "label_en": "Green Technologies"
+    },
+    "semiconductors": {
+      "total_patents": 121455,
+      "label_fr": "Semi-conducteurs",
+      "label_en": "Semiconductors"
+    },
+    "pharma": {
+      "total_patents": 415521,
+      "label_fr": "Pharmacie",
+      "label_en": "Pharmaceuticals"
+    },
+    "nanotech": {
+      "total_patents": 10607,
+      "label_fr": "Nanotechnologie",
+      "label_en": "Nanotechnology"
+    },
+    "robotics": {
+      "total_patents": 20187,
+      "label_fr": "Robotique",
+      "label_en": "Robotics"
+    },
+    "batteries": {
+      "total_patents": 61111,
+      "label_fr": "Batteries",
+      "label_en": "Batteries & Energy Storage"
+    },
+    "additive": {
+      "total_patents": 20714,
+      "label_fr": "Fabrication additive",
+      "label_en": "Additive Manufacturing"
+    }
+  },
+  "sector_order": [
+    "biotech",
+    "ict",
+    "ai",
+    "green",
+    "semiconductors",
+    "pharma",
+    "nanotech",
+    "robotics",
+    "batteries",
+    "additive"
+  ],
+  "year_min": 1980,
+  "year_max": 2024,
+  "last_update": "2026-01-24",
+  "data_source": "WIPO PCT via Google Patents Public Data + OECD RegPat",
+  "producer": "Antonin Bergeaud"
+}

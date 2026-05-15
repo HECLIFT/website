@@ -1,0 +1,19 @@
+---
+title: "Cost of Failure, Disruptive Innovation and Targeted Flexicurity"
+subtitle: "Working paper — Octobre 2025"
+date: "2025-10-01"
+author-ids:
+  - ycoatanlem
+  - ocoste
+pubtype: wp
+page-layout: full
+class: pubpage
+body-classes: pubpage
+categories: [Innovation, Europe, Marché du travail]
+keywords: [flexicurity, EPL, coût de l'échec, innovation disruptive, R&D, biotech]
+
+abstract: |
+  Ce papier élargit des travaux antérieurs en assemblant un échantillon plus large de plans de restructuration (250 plans) pour mesurer les coûts de restructuration supportés par les grandes entreprises et évaluer leurs liens avec la R&D dans les secteurs disruptifs (tech/biotech). Les auteurs confirment un large fossé transatlantique — l'Allemagne à 31 mois de salaire moyen contre 7 mois aux États-Unis — et identifient des pays européens à faibles coûts (Danemark, Suisse). Ils montrent une forte corrélation négative entre les coûts de restructuration et l'intensité de la R&D dans la tech et la biotech, et concluent avec des recommandations pour des réformes ciblées du droit du travail préservant la protection sociale tout en restaurant l'agilité nécessaire à l'innovation disruptive.
+---
+
+{{< pub >}}

@@ -14,7 +14,7 @@
         "facebook": "",
         "wh": ""
       }
-    }, 
+    },
     {
       "id": "sbunel",
       "name": "Simon Bunel",
@@ -40,7 +40,7 @@
         "facebook": "",
         "wh": ""
       }
-    }, 
+    },
     {
       "id": "pdelbouve",
       "name": "Paul Delbouve",
@@ -53,8 +53,8 @@
         "facebook": "",
         "wh": ""
       }
-    }  ,
-     {
+    },
+    {
       "id": "yalgan",
       "name": "Yann Algan",
       "url": "https://www.yann-algan.com/",
@@ -66,8 +66,8 @@
         "facebook": "",
         "wh": ""
       }
-    }   ,
-     {
+    },
+    {
       "id": "trenault",
       "name": "Thomas Renault",
       "url": "https://www.thomas-renault.com/",
@@ -79,6 +79,55 @@
         "facebook": "",
         "wh": ""
       }
-    }     
+    },
+    {
+      "id": "golterra",
+      "name": "Gabriela Terra",
+      "url": "",
+      "role": "Fellow",
+      "photo": "/images/membres/golterra.jpg",
+      "bio": "",
+      "social": {
+        "x": "",
+        "linkedin": "",
+        "email": "mailto:oliveira-terra@hec.fr",
+        "threads": "",
+        "facebook": "",
+        "wh": ""
+      }
+    },
+    {
+      "id": "cfrouard",
+      "name": "Camille Frouard",
+      "url": "",
+      "role": "",
+      "photo": "",
+      "bio": "Camille Frouard est chercheuse à HEC Paris et à l'ENSAE.",
+      "social": {
+        "email": ""
+      }
+    },
+    {
+      "id": "ycoatanlem",
+      "name": "Yann Coatanlem",
+      "url": "",
+      "role": "",
+      "photo": "",
+      "bio": "Yann Coatanlem est économiste et chercheur spécialisé dans les politiques d'emploi et l'innovation en Europe.",
+      "social": {
+        "email": ""
+      }
+    },
+    {
+      "id": "ocoste",
+      "name": "Oliver Coste",
+      "url": "",
+      "role": "",
+      "photo": "",
+      "bio": "Oliver Coste est économiste spécialisé dans les politiques de flexicurité et l'innovation disruptive.",
+      "social": {
+        "email": ""
+      }
+    }
   ]
 }

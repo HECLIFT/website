@@ -150,7 +150,7 @@ return {
     end
     local items = {}
     if pdf ~= "" then
-      table.insert(items, { pandoc.Para{ pandoc.Str("📄 "), link(pdf, "PDF") } })
+      table.insert(items, { pandoc.Para{ link(pdf, "PDF") } })
     end
     if #items > 0 then
       table.insert(body_blocks, pandoc.Para{ pandoc.Strong("Liens :") })

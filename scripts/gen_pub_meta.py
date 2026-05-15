@@ -1,8 +1,16 @@
 #!/usr/bin/env python3
-import os, io, sys
+# -*- coding: utf-8 -*-
+"""
+Génère/maintient les fichiers _metadata.yml pour chaque publication.
+Assure que 'pdf' et 'image' ont des valeurs par défaut.
+"""
 
-ROOT = os.getcwd()
-PUBS_DIR = os.path.join(ROOT, "pubs")
+import io
+import os
+import sys
+
+from utils import PUBS_DIR
+
 
 def ensure_line(lines, key, value):
     """Ajoute `key: value` s'il n'existe pas déjà dans le fichier."""
@@ -11,8 +19,10 @@ def ensure_line(lines, key, value):
         lines.append(f'{key}: "{value}"\n')
     return lines
 
+
 def process_pub_dir(dirpath):
-    slug = os.path.basename(dirpath)              # ex: ai-exposure
+    """Traite un répertoire de publication."""
+    slug = os.path.basename(dirpath)
     index_qmd = os.path.join(dirpath, "index.qmd")
     if not os.path.exists(index_qmd):
         return
@@ -23,26 +33,30 @@ def process_pub_dir(dirpath):
         with io.open(meta_path, "r", encoding="utf-8") as f:
             lines = f.readlines()
     else:
-        # fichier neuf : on met un en-tête explicite
         lines = ["# Auto-généré (pre-render) — champs par défaut pour le listing\n"]
 
-    pdf   = f"/files/papers/{slug}.pdf"
+    pdf = f"/files/papers/{slug}.pdf"
     image = f"/images/pubs/{slug}.png"
 
-    lines = ensure_line(lines, "pdf",   pdf)
+    original_lines = list(lines)
+    lines = ensure_line(lines, "pdf", pdf)
     lines = ensure_line(lines, "image", image)
 
-    with io.open(meta_path, "w", encoding="utf-8") as f:
-        f.writelines(lines)
+    # N'écrire que si le contenu a changé (évite de déclencher le file-watcher Quarto)
+    if lines != original_lines or not os.path.exists(meta_path):
+        with io.open(meta_path, "w", encoding="utf-8") as f:
+            f.writelines(lines)
+
 
 def main():
-    if not os.path.isdir(PUBS_DIR):
-        # rien à faire si pas de répertoire
+    if not PUBS_DIR.is_dir():
         sys.exit(0)
+
     for name in os.listdir(PUBS_DIR):
-        dirpath = os.path.join(PUBS_DIR, name)
-        if os.path.isdir(dirpath):
+        dirpath = PUBS_DIR / name
+        if dirpath.is_dir():
             process_pub_dir(dirpath)
+
 
 if __name__ == "__main__":
     main()

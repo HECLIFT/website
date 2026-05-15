@@ -1,0 +1,150 @@
+{
+  "AT": {
+    "name": "Autriche",
+    "flag": "🇦🇹"
+  },
+  "BE": {
+    "name": "Belgique",
+    "flag": "🇧🇪"
+  },
+  "BG": {
+    "name": "Bulgarie",
+    "flag": "🇧🇬"
+  },
+  "BY": {
+    "name": "Biélorussie",
+    "flag": "🇧🇾"
+  },
+  "CH": {
+    "name": "Suisse",
+    "flag": "🇨🇭"
+  },
+  "CY": {
+    "name": "Chypre",
+    "flag": "🇨🇾"
+  },
+  "CZ": {
+    "name": "Tchéquie",
+    "flag": "🇨🇿"
+  },
+  "DE": {
+    "name": "Allemagne",
+    "flag": "🇩🇪"
+  },
+  "DK": {
+    "name": "Danemark",
+    "flag": "🇩🇰"
+  },
+  "EE": {
+    "name": "Estonie",
+    "flag": "🇪🇪"
+  },
+  "ES": {
+    "name": "Espagne",
+    "flag": "🇪🇸"
+  },
+  "FI": {
+    "name": "Finlande",
+    "flag": "🇫🇮"
+  },
+  "FR": {
+    "name": "France",
+    "flag": "🇫🇷"
+  },
+  "GB": {
+    "name": "Royaume-Uni",
+    "flag": "🇬🇧"
+  },
+  "GR": {
+    "name": "Grèce",
+    "flag": "🇬🇷"
+  },
+  "HR": {
+    "name": "Croatie",
+    "flag": "🇭🇷"
+  },
+  "HU": {
+    "name": "Hongrie",
+    "flag": "🇭🇺"
+  },
+  "IE": {
+    "name": "Irlande",
+    "flag": "🇮🇪"
+  },
+  "IS": {
+    "name": "Islande",
+    "flag": "🇮🇸"
+  },
+  "IT": {
+    "name": "Italie",
+    "flag": "🇮🇹"
+  },
+  "LI": {
+    "name": "Liechtenstein",
+    "flag": "🇱🇮"
+  },
+  "LT": {
+    "name": "Lituanie",
+    "flag": "🇱🇹"
+  },
+  "LU": {
+    "name": "Luxembourg",
+    "flag": "🇱🇺"
+  },
+  "LV": {
+    "name": "Lettonie",
+    "flag": "🇱🇻"
+  },
+  "MC": {
+    "name": "Monaco",
+    "flag": "🇲🇨"
+  },
+  "MT": {
+    "name": "Malte",
+    "flag": "🇲🇹"
+  },
+  "NL": {
+    "name": "Pays-Bas",
+    "flag": "🇳🇱"
+  },
+  "NO": {
+    "name": "Norvège",
+    "flag": "🇳🇴"
+  },
+  "PL": {
+    "name": "Pologne",
+    "flag": "🇵🇱"
+  },
+  "PT": {
+    "name": "Portugal",
+    "flag": "🇵🇹"
+  },
+  "RO": {
+    "name": "Roumanie",
+    "flag": "🇷🇴"
+  },
+  "RS": {
+    "name": "Serbie",
+    "flag": "🇷🇸"
+  },
+  "SE": {
+    "name": "Suède",
+    "flag": "🇸🇪"
+  },
+  "SI": {
+    "name": "Slovénie",
+    "flag": "🇸🇮"
+  },
+  "SK": {
+    "name": "Slovaquie",
+    "flag": "🇸🇰"
+  },
+  "SM": {
+    "name": "Saint-Marin",
+    "flag": "🇸🇲"
+  },
+  "UA": {
+    "name": "Ukraine",
+    "flag": "🇺🇦"
+  }
+}

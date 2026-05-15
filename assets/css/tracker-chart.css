@@ -1,0 +1,317 @@
+/* =======================================================
+   Tracker Chart Styles
+   Matching LIFT design system
+   ======================================================= */
+
+/* Container */
+.tracker-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+/* Controls bar */
+.tracker-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: var(--card, #FAFBFD);
+  border: 1px solid var(--border, #D5DDE8);
+  border-radius: var(--radius-lg, 0.8rem);
+}
+
+.tracker-controls-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.tracker-controls-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+/* Indicator dropdown */
+.tracker-controls label {
+  font-family: 'Merriweather', Georgia, serif;
+  font-weight: 600;
+  color: var(--ink, #0E1320);
+  font-size: 0.95rem;
+}
+
+.tracker-controls select {
+  font-family: 'Merriweather', Georgia, serif;
+  padding: 0.5rem 2rem 0.5rem 0.75rem;
+  font-size: 0.95rem;
+  border: 1px solid var(--border, #D5DDE8);
+  border-radius: var(--radius-md, 0.6rem);
+  background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%230E2A47' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e") no-repeat right 0.75rem center/12px 12px;
+  appearance: none;
+  cursor: pointer;
+  color: var(--navy, #0E2A47);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.tracker-controls select:hover {
+  border-color: var(--cornflower, #5F84E8);
+}
+
+.tracker-controls select:focus {
+  outline: none;
+  border-color: var(--cornflower, #5F84E8);
+  box-shadow: 0 0 0 3px rgba(95, 132, 232, 0.2);
+}
+
+/* Action buttons */
+.tracker-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.9rem;
+  font-family: 'Merriweather', Georgia, serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: var(--radius-md, 0.6rem);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-decoration: none;
+}
+
+.tracker-btn-primary {
+  background: var(--navy, #0E2A47);
+  color: #fff;
+  border: 1px solid var(--navy, #0E2A47);
+}
+
+.tracker-btn-primary:hover {
+  background: var(--navy-700, #0A1E33);
+  border-color: var(--navy-700, #0A1E33);
+}
+
+.tracker-btn-secondary {
+  background: #fff;
+  color: var(--navy, #0E2A47);
+  border: 1px solid var(--border, #D5DDE8);
+}
+
+.tracker-btn-secondary:hover {
+  background: var(--bg-alt, #E6EBF2);
+  border-color: var(--cornflower, #5F84E8);
+}
+
+/* Country selector */
+.country-selector-wrap {
+  margin-bottom: 1.5rem;
+}
+
+.country-selector-label {
+  font-family: 'Merriweather', Georgia, serif;
+  font-weight: 600;
+  color: var(--ink, #0E1320);
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+#country-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Country chips */
+.country-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.75rem;
+  font-family: 'Merriweather', Georgia, serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  background: #fff;
+  border: 1px solid var(--border, #D5DDE8);
+  border-radius: var(--radius-pill, 999px);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  color: var(--ink, #0E1320);
+}
+
+.country-chip:hover {
+  background: var(--bg-alt, #E6EBF2);
+  border-color: var(--cornflower, #5F84E8);
+}
+
+.country-chip.active {
+  background: var(--navy, #0E2A47);
+  color: #fff;
+  border-color: var(--navy, #0E2A47);
+}
+
+.country-chip.active:hover {
+  background: var(--navy-700, #0A1E33);
+  border-color: var(--navy-700, #0A1E33);
+}
+
+/* Log toggle */
+.log-toggle-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  margin-left: 1rem;
+  padding-left: 1rem;
+  border-left: 1px solid var(--border, #D5DDE8);
+}
+
+.log-toggle-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--navy, #0E2A47);
+  cursor: pointer;
+}
+
+.log-toggle-label span {
+  font-family: 'Merriweather', Georgia, serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ink, #0E1320);
+}
+
+/* Chart containers */
+#tracker-chart,
+#waves-chart {
+  width: 100%;
+  height: 450px;
+  background: var(--card, #FAFBFD);
+  border: 1px solid var(--border, #D5DDE8);
+  border-radius: var(--radius-lg, 0.8rem);
+  box-shadow: var(--shadow, 0 10px 30px rgba(14, 42, 71, 0.08));
+}
+
+#waves-chart {
+  margin-top: 1.5rem;
+}
+
+/* Loading state */
+.tracker-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-family: 'Merriweather', Georgia, serif;
+  font-size: 1rem;
+  color: var(--muted, #55657D);
+}
+
+.tracker-loading::before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  margin-right: 0.75rem;
+  border: 3px solid var(--border, #D5DDE8);
+  border-top-color: var(--cornflower, #5F84E8);
+  border-radius: 50%;
+  animation: tracker-spin 0.8s linear infinite;
+}
+
+@keyframes tracker-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Error state */
+.tracker-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-family: 'Merriweather', Georgia, serif;
+  font-size: 1rem;
+  color: var(--accent, #E46A4E);
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Data source note */
+.tracker-source {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-alt, #E6EBF2);
+  border-radius: var(--radius-md, 0.6rem);
+  font-family: 'Merriweather', Georgia, serif;
+  font-size: 0.85rem;
+  color: var(--muted, #55657D);
+}
+
+.tracker-source strong {
+  color: var(--ink, #0E1320);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .tracker-container {
+    padding: 1rem;
+  }
+
+  .tracker-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .tracker-controls-left,
+  .tracker-controls-right {
+    justify-content: center;
+    margin-left: 0;
+  }
+
+  .tracker-controls select {
+    width: 100%;
+  }
+
+  #tracker-chart,
+  #waves-chart {
+    height: 380px;
+  }
+
+  .log-toggle-label {
+    margin-left: 0;
+    margin-top: 0.5rem;
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .country-chip {
+    font-size: 0.8rem;
+    padding: 0.35rem 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #tracker-chart {
+    height: 350px;
+  }
+
+  .tracker-btn {
+    padding: 0.45rem 0.7rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .tracker-controls,
+  .country-selector-wrap {
+    display: none;
+  }
+
+  #tracker-chart,
+  #waves-chart {
+    height: 500px;
+    border: none;
+    box-shadow: none;
+  }
+}

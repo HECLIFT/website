@@ -1,0 +1,20 @@
+---
+title: "La politique au travail : Vécu en entreprise et fractures politiques des salariés en France"
+subtitle: "Policy Note HEC — Février 2026"
+date: "2026-02-01"
+author-ids:
+  - yalgan
+  - abergeaud
+  - cfrouard
+pubtype: pb
+page-layout: full
+class: pubpage
+body-classes: pubpage
+categories: [Démocratie, Travail, France, Politique]
+keywords: [démocratie, travail, fractures politiques, confiance sociale, RN, LFI]
+
+abstract: |
+  À partir d'une enquête menée auprès de 3 900 salariés du privé en 2024-2025, cette note analyse comment le vécu quotidien en entreprise structure les fractures politiques en France. L'axe qui sépare les électorats au travail n'est ni le salaire, ni la catégorie socioprofessionnelle, mais la qualité du lien social vécu au quotidien dans l'entreprise. Le salarié proche du RN présente une forte confiance dans l'entreprise mais se défie de ses collègues et se trouve isolé socialement, tandis que le salarié LFI se méfie de la direction mais fait confiance à ses collègues. Un tiers des salariés, les plus isolés au travail, sont non-affiliés et ne votent pas : l'atonie professionnelle précède l'atonie civique.
+---
+
+{{< pub >}}

@@ -16,3 +16,11 @@ _quarto/
 # Python
 __pycache__/
 *.pyc
+
+# Environment files (contain passwords)
+scripts/.env
+.env
+
+/.quarto/
+
+**/*.quarto_ipynb

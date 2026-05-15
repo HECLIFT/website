@@ -3,4 +3,5 @@ version: 1.0.0
 contributes:
   shortcodes:
     - shortcodes/kpi-grid.lua
+    - shortcodes/kpi-terminal.lua
     - shortcodes/partners.lua

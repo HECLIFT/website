@@ -1,0 +1,54 @@
+---
+title: "Données Innovation"
+listing:
+  id: innovdatalist
+  contents: innovation-data
+  type: grid
+  grid-columns: 3
+  sort: "title"
+  page-size: 12
+  fields: [image, title, description, categories, update]
+  filter-ui: false
+  categories: false
+---
+
+Tableaux de bord interactifs sur l'innovation et la productivité.
+
+### Nos indicateurs
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const root = document.getElementById('listing-innovdatalist');
+  if (!root) return;
+
+  root.querySelectorAll('.quarto-grid-item.card').forEach(card => {
+    const table = card.querySelector('.card-other-values');
+    const updateCell = table?.querySelector('td.update');
+    const update = updateCell ? updateCell.textContent.trim() : '';
+    const body = card.querySelector('.card-body');
+    if (!body) return;
+
+    const title = body.querySelector('.card-title');
+    const categories = body.querySelector('.listing-categories');
+
+    if (update) {
+      const badge = document.createElement('span');
+      const isComingSoon = update.toLowerCase() === 'à venir';
+      badge.className = isComingSoon ? 'badge badge-coming-soon' : 'badge tracker-update-badge';
+      badge.textContent = isComingSoon ? 'À venir' : `MAJ ${update}`;
+      if (isComingSoon) {
+        card.setAttribute('data-coming-soon', 'true');
+      }
+      if (categories) {
+        categories.insertAdjacentElement('afterend', badge);
+      } else if (title) {
+        title.insertAdjacentElement('beforebegin', badge);
+      } else {
+        body.insertBefore(badge, body.firstChild);
+      }
+    }
+
+    if (table) table.remove();
+  });
+});
+</script>

@@ -1,0 +1,253 @@
+{
+  "trackers": {
+    "diffusion-emploi": {
+      "name": "Diffusion IA (emploi)",
+      "section": "ai-trackers",
+      "page": "ai-trackers/diffusion-emploi/index.qmd",
+      "data_dir": "data/ai-trackers/diffusion-emploi",
+      "frequency": "Trimestriel",
+      "frequency_days": 90,
+      "source_project": "../AI_tracker-main",
+      "source_output_dir": "../AI_tracker-main/data",
+      "expected_files": [
+        "offers_total.csv",
+        "offers_share.csv",
+        "general_results.csv",
+        "sector_evol_all.csv",
+        "sector_evol_ia.csv",
+        "sector_evol_iagen.csv",
+        "distrib_size.csv",
+        "metier_area_data.csv",
+        "metier_area_ia.csv",
+        "evolution_ml_library_skills.csv",
+        "evolution_method_skills.csv",
+        "evolution_broad_skills.csv",
+        "evolution_data_library_skills.csv",
+        "evolution_spe_ai_skills.csv",
+        "map_offers.csv",
+        "map_offers_values.csv",
+        "two_sectors_share_gen.csv",
+        "two_sectors_share_nongen.csv",
+        "two_sectors_total_gen.csv",
+        "two_sectors_total_nongen.csv",
+        "france_zones.geojson",
+        "france_zones.topo.json"
+      ],
+      "static_files": [
+        "france_zones.geojson",
+        "france_zones.topo.json"
+      ],
+      "pipeline": [
+        {
+          "step": 1,
+          "title": "Obtenir les nouvelles données JOCAS",
+          "type": "manual",
+          "description": "Les données proviennent de la DARES (base JOCAS). Les extractions sont fournies trimestriellement sous forme de fichiers CSV. Récupérer les derniers fichiers auprès de la DARES.",
+          "notes": "Contact DARES pour les accès. Les fichiers bruts doivent être placés dans le dossier d'entrée du projet AI_tracker-main."
+        },
+        {
+          "step": 2,
+          "title": "Exécuter le pipeline de traitement",
+          "type": "manual",
+          "description": "Traiter les données brutes JOCAS dans le projet AI_tracker-main pour produire les CSV agrégés.",
+          "notes": "Le traitement est effectué dans un notebook ou script séparé dans AI_tracker-main/. Les fichiers de sortie sont dans AI_tracker-main/data/."
+        },
+        {
+          "step": 3,
+          "title": "Copier les données vers le site",
+          "type": "command",
+          "command": "cp ../AI_tracker-main/data/*.csv data/ai-trackers/diffusion-emploi/",
+          "description": "Copier tous les CSV de sortie vers le dossier data du site."
+        },
+        {
+          "step": 4,
+          "title": "Valider et mettre à jour la date",
+          "type": "auto",
+          "description": "La validation et la mise à jour de last_updated sont gérées par le bouton 'Finaliser' du dashboard admin."
+        },
+        {
+          "step": 5,
+          "title": "Reconstruire le site",
+          "type": "command",
+          "command": "quarto render ai-trackers/diffusion-emploi/index.qmd",
+          "description": "Reconstruire la page du tracker avec Quarto."
+        }
+      ]
+    },
+    "breakthrough": {
+      "name": "Innovation de rupture",
+      "section": "innovation-data",
+      "page": "innovation-data/breakthrough/index.qmd",
+      "data_dir": "data/innovation-data/breakthrough",
+      "frequency": "Semestriel",
+      "frequency_days": 180,
+      "source_project": "../novelty/Dario-Antonin_Novelty",
+      "source_output_dir": "../novelty/Dario-Antonin_Novelty/data/processed/dashboard",
+      "expected_files": [
+        "timeseries.csv",
+        "tech_timeseries.csv",
+        "sectors_data.csv",
+        "regions_data.csv",
+        "europe_map.csv",
+        "summary.json",
+        "countries.json",
+        "sectors.json",
+        "europe.geojson",
+        "nuts2.geojson"
+      ],
+      "static_files": [
+        "europe.geojson",
+        "nuts2.geojson"
+      ],
+      "pipeline": [
+        {
+          "step": 1,
+          "title": "Vérifier les prérequis (annuel)",
+          "type": "manual",
+          "description": "Deux sources doivent être mises à jour manuellement de temps en temps :\n• REGPAT : télécharger la dernière version depuis l'OCDE et placer dans novelty/.../data/raw/REGPAT/. Supprimer les parquets dans data/intermediate/ pour forcer le recalcul.\n• Population : exécuter la commande ci-dessous (une fois par an suffit).",
+          "command": "cd ../novelty/Dario-Antonin_Novelty && python scripts/fetch_population.py",
+          "notes": "REGPAT : https://www.oecd.org/sti/inno/intellectual-property-statistics-and-analysis.htm\nPopulation : World Bank API (automatique via le script)."
+        },
+        {
+          "step": 2,
+          "title": "Lancer le pipeline complet",
+          "type": "command",
+          "command": "cd ../novelty/Dario-Antonin_Novelty && python scripts/build_dashboard_data.py",
+          "description": "Le script fait tout automatiquement :\n• Vérifie BigQuery pour les nouveaux abstracts\n• Génère les embeddings SBERT (incrémental)\n• Recalcule TOUS les scores de nouveauté (obligatoire : forward_sum change)\n• Fusionne CPC + REGPAT + population\n• Produit les CSV/JSON du dashboard",
+          "notes": "⚠ Long (plusieurs heures si beaucoup de nouveaux brevets). Nécessite un accès BigQuery configuré (config/bigquery.yml). Utiliser --skip-upstream pour ne refaire que l'agrégation si les scores sont déjà à jour."
+        },
+        {
+          "step": 3,
+          "title": "Copier les données vers le site",
+          "type": "command",
+          "command": "cp ../novelty/Dario-Antonin_Novelty/data/processed/dashboard/*.csv ../novelty/Dario-Antonin_Novelty/data/processed/dashboard/*.json data/innovation-data/breakthrough/",
+          "description": "Copier tous les fichiers de sortie (CSV + JSON) vers le dossier data du site. Les GeoJSON (europe.geojson, nuts2.geojson) sont statiques et n'ont pas besoin d'être recopiés."
+        },
+        {
+          "step": 4,
+          "title": "Valider et mettre à jour la date",
+          "type": "auto",
+          "description": "La validation et la mise à jour de last_updated sont gérées par le bouton 'Finaliser' du dashboard admin."
+        },
+        {
+          "step": 5,
+          "title": "Reconstruire le site",
+          "type": "command",
+          "command": "quarto render innovation-data/breakthrough/index.qmd",
+          "description": "Reconstruire la page du tracker avec Quarto."
+        }
+      ]
+    },
+    "innovation-hightech": {
+      "name": "Innovation High-Tech",
+      "section": "innovation-data",
+      "page": "innovation-data/innovation-hightech/index.qmd",
+      "data_dir": "data/innovation-data/innovation-hightech",
+      "frequency": "Semestriel",
+      "frequency_days": 180,
+      "source_project": "../patent-country-count/patentbycountrycount",
+      "source_output_dir": "../patent-country-count/patentbycountrycount/data/website",
+      "expected_files": [
+        "timeseries.csv",
+        "summary.json",
+        "entities.json"
+      ],
+      "static_files": [],
+      "pipeline": [
+        {
+          "step": 1,
+          "title": "Lancer le pipeline BigQuery",
+          "type": "command",
+          "command": "cd ../patent-country-count/patentbycountrycount && python scripts/build_tracker_data.py",
+          "description": "Exécute les requêtes BigQuery pour les 10 secteurs high-tech, calcule le comptage fractionnel par pays inventeur, et produit les fichiers de sortie.",
+          "notes": "Nécessite un accès BigQuery configuré (lift-482614-*.json). Voir TRACKER.md pour le détail des secteurs et requêtes SQL."
+        },
+        {
+          "step": 2,
+          "title": "Copier les données vers le site",
+          "type": "command",
+          "command": "cp ../patent-country-count/patentbycountrycount/data/website/* data/innovation-data/innovation-hightech/",
+          "description": "Copier les 3 fichiers de sortie (timeseries.csv, summary.json, entities.json) vers le site."
+        },
+        {
+          "step": 3,
+          "title": "Valider et mettre à jour la date",
+          "type": "auto",
+          "description": "La validation et la mise à jour de last_updated sont gérées par le bouton 'Finaliser' du dashboard admin."
+        },
+        {
+          "step": 4,
+          "title": "Reconstruire le site",
+          "type": "command",
+          "command": "quarto render innovation-data/innovation-hightech/index.qmd",
+          "description": "Reconstruire la page du tracker avec Quarto."
+        }
+      ]
+    },
+    "productivite": {
+      "name": "Productivité internationale",
+      "section": "innovation-data",
+      "page": "innovation-data/productivite/index.qmd",
+      "data_dir": "data/innovation-data/productivite",
+      "frequency": "Annuel",
+      "frequency_days": 365,
+      "source_project": null,
+      "source_output_dir": null,
+      "expected_files": [
+        "productivity.csv",
+        "waves.csv",
+        "countries.json"
+      ],
+      "static_files": [],
+      "pipeline": [
+        {
+          "step": 1,
+          "title": "Télécharger les nouvelles données",
+          "type": "manual",
+          "description": "Télécharger la dernière version de la Long Term Productivity Database depuis le site officiel. Le fichier est un Excel avec plusieurs onglets.",
+          "notes": "URL : http://www.longtermproductivity.com/\nVérifier la version (actuellement v2.6). Le fichier contient les séries pour ~24 économies depuis 1890."
+        },
+        {
+          "step": 2,
+          "title": "Reformater en CSV",
+          "type": "manual",
+          "description": "Convertir les données Excel au format productivity.csv attendu par le tracker.\nColonnes requises : country, year, gdp_per_capita, labor_productivity, pgf.\nRecalculer waves.csv avec le filtre Hodrick-Prescott (λ=500) si nécessaire.",
+          "notes": "Le fichier countries.json doit aussi être mis à jour si de nouveaux pays apparaissent dans la base."
+        },
+        {
+          "step": 3,
+          "title": "Placer les fichiers dans le dossier data",
+          "type": "command",
+          "command": "# Copier les fichiers reformatés\ncp productivity.csv waves.csv data/innovation-data/productivite/",
+          "description": "Copier les CSV reformatés dans le dossier data du site."
+        },
+        {
+          "step": 4,
+          "title": "Valider et mettre à jour la date",
+          "type": "auto",
+          "description": "La validation et la mise à jour de last_updated sont gérées par le bouton 'Finaliser' du dashboard admin."
+        },
+        {
+          "step": 5,
+          "title": "Reconstruire le site",
+          "type": "command",
+          "command": "quarto render innovation-data/productivite/index.qmd",
+          "description": "Reconstruire la page du tracker avec Quarto."
+        }
+      ]
+    },
+    "diffusion-science": {
+      "name": "Diffusion IA (science)",
+      "section": "ai-trackers",
+      "page": "ai-trackers/diffusion-science/index.qmd",
+      "data_dir": "data/ai-trackers/diffusion-science",
+      "frequency": "À venir",
+      "frequency_days": null,
+      "source_project": null,
+      "source_output_dir": null,
+      "expected_files": [],
+      "static_files": [],
+      "pipeline": []
+    }
+  }
+}

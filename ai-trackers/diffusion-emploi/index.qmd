@@ -1,0 +1,281 @@
+---
+title: "Diffusion de l'IA (emploi)"
+subtitle: "Suivi en temps réel de l'adoption de l'IA dans les offres d'emploi en France"
+description: "Tableau de bord interactif analysant la diffusion de l'intelligence artificielle à travers les offres d'emploi françaises, basé sur la base JOCAS (DARES)."
+image: "/images/trackers/ai-diffusion-emploi.png"
+categories: [IA, Emploi]
+update: "Trimestriel"
+last_updated: "2025-01-10"
+page-layout: full
+---
+
+```{=html}
+<!-- External libraries -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+<!-- Tracker styles -->
+<link rel="stylesheet" href="/assets/css/ai-tracker-emploi.css">
+
+<div class="ai-tracker">
+
+  <!-- KPI Cards -->
+  <div class="ai-kpis">
+    <div class="ai-kpi-card">
+      <h4>Offres IA totales</h4>
+      <p class="kpi-value" id="aiOffersValue">...</p>
+      <p class="kpi-delta" id="aiOffersLastQuarter">...</p>
+    </div>
+    <div class="ai-kpi-card">
+      <h4>Entreprises IA</h4>
+      <p class="kpi-value" id="aiFirmsValue">...</p>
+      <p class="kpi-delta" id="aiFirmsLastQuarter">...</p>
+    </div>
+    <div class="ai-kpi-card">
+      <h4>Offres IA Générative</h4>
+      <p class="kpi-value" id="genAiOffersValue">...</p>
+      <p class="kpi-delta" id="genAiOffersLastQuarter">...</p>
+    </div>
+    <div class="ai-kpi-card">
+      <h4>Entreprises GenAI</h4>
+      <p class="kpi-value" id="genAiFirmsValue">...</p>
+      <p class="kpi-delta" id="genAiFirmsLastQuarter">...</p>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <div class="ai-nav">
+    <button class="ai-nav-btn active" onclick="scrollToAISection('sec-offers')">Offres</button>
+    <button class="ai-nav-btn" onclick="scrollToAISection('sec-sectors')">Secteurs</button>
+    <button class="ai-nav-btn" onclick="scrollToAISection('sec-size')">Taille</button>
+    <button class="ai-nav-btn" onclick="scrollToAISection('sec-metiers')">Métiers</button>
+    <button class="ai-nav-btn" onclick="scrollToAISection('sec-skills')">Compétences</button>
+    <button class="ai-nav-btn" onclick="scrollToAISection('sec-map')">Carte</button>
+  </div>
+
+  <!-- OFFERS CHART -->
+  <div id="sec-offers" class="ai-chart-section">
+    <h3>Évolution des offres d'emploi liées à l'IA</h3>
+    <div class="ai-chart-controls">
+      <div class="ai-toggle">
+        <button id="btnOfferMode" class="ai-toggle-btn" onclick="toggleOffersTotalShare()">
+          <span class="slider"></span>
+        </button>
+        <span class="ai-toggle-label" id="lblOfferMode">Total</span>
+      </div>
+      <button class="ai-download-btn" onclick="downloadOffersCSV()" title="Télécharger les données">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        CSV
+      </button>
+    </div>
+    <div class="ai-chart-container">
+      <canvas id="ai-offersChart"></canvas>
+    </div>
+  </div>
+
+  <!-- SECTORS CHART -->
+  <div id="sec-sectors" class="ai-chart-section">
+    <h3>Adoption de l'IA par secteur</h3>
+    <div class="ai-chart-controls">
+      <div class="ai-toggle">
+        <button id="btnSectorMode" class="ai-toggle-btn" onclick="toggleSectorsTotalShare()">
+          <span class="slider"></span>
+        </button>
+        <span class="ai-toggle-label" id="lblSectorMode">Total</span>
+      </div>
+      <div class="ai-toggle">
+        <button id="btnSectorCat" class="ai-toggle-btn" onclick="toggleSectorsGenNonGen()">
+          <span class="slider"></span>
+        </button>
+        <span class="ai-toggle-label" id="lblSectorCat">IA Générative</span>
+      </div>
+      <button class="ai-download-btn" onclick="downloadSectorsCSV()" title="Télécharger les données">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        CSV
+      </button>
+    </div>
+    <div class="ai-chart-container">
+      <canvas id="ai-sectorsChart"></canvas>
+    </div>
+
+    <h3 style="margin-top: 2rem;">Part sectorielle des offres publiées</h3>
+    <div class="ai-chart-controls">
+      <div class="ai-tri-toggle">
+        <button class="tri-btn active" id="btnAI" onclick="setEvolType('ai')">IA</button>
+        <button class="tri-btn" id="btnGen" onclick="setEvolType('gen')">GenAI</button>
+        <button class="tri-btn" id="btnAll" onclick="setEvolType('all')">Toutes</button>
+      </div>
+      <button class="ai-download-btn" onclick="downloadSectorEvolCSV()" title="Télécharger les données">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        CSV
+      </button>
+    </div>
+    <div class="ai-chart-container">
+      <canvas id="ai-sectorEvolChart"></canvas>
+    </div>
+  </div>
+
+  <!-- SIZE CHART -->
+  <div id="sec-size" class="ai-chart-section">
+    <h3>Distribution des adoptants par taille d'entreprise</h3>
+    <div class="ai-chart-controls">
+      <div class="ai-toggle">
+        <button id="btnSizeCat" class="ai-toggle-btn" onclick="toggleSizeAiGen()">
+          <span class="slider"></span>
+        </button>
+        <span class="ai-toggle-label" id="lblSizeCat">IA</span>
+      </div>
+      <button class="ai-download-btn" onclick="downloadSizeCSV()" title="Télécharger les données">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        CSV
+      </button>
+    </div>
+    <div class="ai-chart-container">
+      <canvas id="ai-sizeChart"></canvas>
+    </div>
+  </div>
+
+  <!-- METIERS CHART -->
+  <div id="sec-metiers" class="ai-chart-section">
+    <h3>Offres IA par métiers (ROME)</h3>
+    <div class="ai-chart-controls">
+      <div class="ai-toggle">
+        <button id="btnMetierCat" class="ai-toggle-btn" onclick="toggleMetier()">
+          <span class="slider"></span>
+        </button>
+        <span class="ai-toggle-label" id="lblMetierCat">IA</span>
+      </div>
+      <button class="ai-download-btn" onclick="downloadMetierCSV()" title="Télécharger les données">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        CSV
+      </button>
+    </div>
+    <div class="ai-chart-container">
+      <canvas id="ai-metierChart"></canvas>
+    </div>
+  </div>
+
+  <!-- SKILLS CHART -->
+  <div id="sec-skills" class="ai-chart-section">
+    <h3>Évolution des compétences dans les offres IA</h3>
+    <div class="ai-chart-controls">
+      <div class="ai-tri-toggle">
+        <button class="tri-btn active" id="btnSkillsLibraries" onclick="setSkillsType('ml_library')">Librairies ML</button>
+        <button class="tri-btn" id="btnSkillsMethods" onclick="setSkillsType('method_skills')">Méthodes</button>
+        <button class="tri-btn" id="btnSkillsBroad" onclick="setSkillsType('broad_skills')">Compétences larges</button>
+      </div>
+      <button class="ai-download-btn" onclick="downloadSkillsCSV()" title="Télécharger les données">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        CSV
+      </button>
+    </div>
+    <div class="ai-chart-container">
+      <canvas id="ai-skillsChart"></canvas>
+    </div>
+  </div>
+
+  <!-- MAP -->
+  <div id="sec-map" class="ai-chart-section">
+    <h3>Carte des zones d'emploi françaises</h3>
+    <div class="ai-chart-controls">
+      <div class="ai-toggle">
+        <button id="btnMapMode" class="ai-toggle-btn" onclick="toggleMapTotalShare()">
+          <span class="slider"></span>
+        </button>
+        <span class="ai-toggle-label" id="lblMapMode">Total</span>
+      </div>
+      <div class="ai-toggle">
+        <button id="btnMapCat" class="ai-toggle-btn" onclick="toggleMapAiGen()">
+          <span class="slider"></span>
+        </button>
+        <span class="ai-toggle-label" id="lblMapCat">IA</span>
+      </div>
+      <button class="ai-download-btn" onclick="downloadMapCSV()" title="Télécharger les données">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        CSV
+      </button>
+    </div>
+    <div class="ai-map-row">
+      <div class="ai-map-col-main">
+        <div class="ai-map-container" id="ai-mapOffers"></div>
+        <div id="ai-mapLegend"></div>
+      </div>
+      <div class="ai-map-col-side">
+        <h4 class="ai-top10-title">Top 10 zones d'emploi</h4>
+        <div id="ai-mapTop10" class="ai-top10-chart"></div>
+      </div>
+    </div>
+    <div id="ai-mapInfo" class="ai-map-info">
+      <p class="ai-map-info-placeholder">Cliquez sur une zone pour voir les détails</p>
+    </div>
+  </div>
+
+  <!-- Source -->
+  <div class="ai-source">
+    <strong>Source :</strong> Données extraites de la base <a href="https://dares.travail-emploi.gouv.fr/enquete-source/job-offers-collection-and-analysis-system" target="_blank" rel="noopener">JOCAS</a> (DARES) et analysées par des modèles de machine learning pour détecter et classifier les offres liées à l'IA.
+  </div>
+
+</div>
+
+<!-- Tracker JS -->
+<script src="/assets/js/ai-tracker-emploi.js"></script>
+```
+
+## À propos de ce tracker
+
+Ce tableau de bord permet de suivre en temps réel la diffusion de l'intelligence artificielle dans l'économie française à travers l'analyse des offres d'emploi.
+
+### Indicateurs suivis
+
+- **Offres totales IA** : nombre cumulé d'offres mentionnant des compétences en IA
+- **IA Générative vs Classique** : distinction entre les offres ciblant l'IA générative (GPT, LLM, etc.) et l'IA traditionnelle (ML, vision, NLP)
+- **Distribution sectorielle** : répartition entre industrie et services
+- **Métiers (ROME)** : classification des offres par famille professionnelle
+- **Compétences techniques** : évolution des technologies demandées (TensorFlow, PyTorch, etc.)
+- **Géographie** : répartition par zones d'emploi
+
+### Méthodologie
+
+L'analyse repose sur :
+
+1. **Collecte** : extraction continue des offres d'emploi depuis la base JOCAS (DARES)
+2. **Classification ML** : modèles de machine learning entraînés pour détecter les mentions d'IA
+3. **Catégorisation** : distinction automatique entre IA générative, vision par ordinateur, NLP, etc.
+4. **Agrégation** : calcul d'indicateurs mensuels et trimestriels
+
+### Auteurs
+
+Ce tracker est développé par :
+
+- **[Paul Delbouve](/membres/pdelbouve.html)** — Collège de France, PSE, DGE
+- **[Antonin Bergeaud](/membres/abergeaud.html)** — HEC Paris, LSE, CEPR
+
+### Publication associée
+
+> **[Diffusion de l'Intelligence Artificielle en France](/pubs/ai-tracker/)**
+> Aghion, P., Bergeaud, A., Bunel, S., & Delbouve, P. (2025)
+> *Économie et Statistique/Economics and Statistics* (à paraître)
+
+::: {.callout-note}
+## Citation
+
+Si vous utilisez les données de ce tracker, merci de citer :
+
+```bibtex
+@techreport{aghion2025diffusion,
+  title     = {Diffusion de l'Intelligence Artificielle en France},
+  author    = {Aghion, Philippe and Bergeaud, Antonin and Bunel, Simon and Delbouve, Paul},
+  year      = {2025},
+  institution = {Laboratoire de l'Innovation et du Futur du Travail},
+  type      = {Working Paper},
+  number    = {2025-1}
+}
+```
+:::
+
+### Mise à jour
+
+Les données sont mises à jour **trimestriellement**.

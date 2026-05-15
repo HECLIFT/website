@@ -1,0 +1,32 @@
+{
+  "EU": {
+    "name": "Union européenne (UE-27)",
+    "name_en": "European Union (EU-27)",
+    "color": "#003399"
+  },
+  "EUR": {
+    "name": "Europe (UE+NO/CH/UK)",
+    "name_en": "Europe (EU+NO/CH/UK)",
+    "color": "#003399"
+  },
+  "US": {
+    "name": "États-Unis",
+    "name_en": "United States",
+    "color": "#1F4E79"
+  },
+  "CN": {
+    "name": "Chine",
+    "name_en": "China",
+    "color": "#DE2910"
+  },
+  "JP": {
+    "name": "Japon",
+    "name_en": "Japan",
+    "color": "#BC002D"
+  },
+  "RoW": {
+    "name": "Reste du monde",
+    "name_en": "Rest of World",
+    "color": "#888888"
+  }
+}

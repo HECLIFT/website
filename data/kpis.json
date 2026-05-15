@@ -1,7 +1,19 @@
 {
   "kpis": [
-    { "icon": "bi-journal-text", "num": 5, "label": "Publications & notes" },
-    { "icon": "bi-cpu",         "num": 1,  "label": "Base de données" },
-    { "icon": "bi-people",      "num": 4,  "label": "Membres & fellows" }
+    {
+      "icon": "bi-journal-text",
+      "num": 5,
+      "label": "Publications"
+    },
+    {
+      "icon": "bi-graph-up",
+      "num": 5,
+      "label": "Trackers interactifs"
+    },
+    {
+      "icon": "bi-people",
+      "num": 6,
+      "label": "Membres & fellows"
+    }
   ]
 }

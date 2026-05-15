@@ -55,5 +55,71 @@
   },
   "membres/trenault.qmd": {
     "trenault.html": "abe2dd81"
+  },
+  "trackers/emploi-france/index.qmd": {
+    "index.html": "f0f2dbcc"
+  },
+  "trackers/productivite-europe/index.qmd": {
+    "index.html": "9097acda"
+  },
+  "trackers/ai-usage-index/index.qmd": {
+    "index.html": "0ddd7030"
+  },
+  "trackers/productivity/index.qmd": {
+    "index.html": "32d6f694"
+  },
+  "ai-trackers/diffusion-emploi/index.qmd": {
+    "index.html": "3f3275d8"
+  },
+  "ai-trackers/diffusion-science/index.qmd": {
+    "index.html": "8fae13a3"
+  },
+  "innovation-data/breakthrough/index.qmd": {
+    "index.html": "290c565f"
+  },
+  "innovation-data/innovation-hightech/index.qmd": {
+    "index.html": "550d3f0f"
+  },
+  "innovation-data/productivite/index.qmd": {
+    "index.html": "f2cbcab4"
+  },
+  "innovation-data.qmd": {
+    "innovation-data.html": "ff70cbc1"
+  },
+  "ai-trackers.qmd": {
+    "ai-trackers.html": "5b3ff9a6"
+  },
+  "logic.md": {
+    "logic.html": "e078ea57"
+  },
+  "pubs/test-validation/index.qmd": {
+    "index.html": "8e380f68"
+  },
+  "membres/golterra.qmd": {
+    "golterra.html": "0dab2016"
+  },
+  "pubs/politique-travail/index.qmd": {
+    "index.html": "2ef1af0e"
+  },
+  "pubs/flexicurity/index.qmd": {
+    "index.html": "520b61aa"
+  },
+  "working-papers.qmd": {
+    "working-papers.html": "09f1b190"
+  },
+  "membres/ycoatanlem.qmd": {
+    "ycoatanlem.html": "23e7c818"
+  },
+  "membres/ocoste.qmd": {
+    "ocoste.html": "2655c789"
+  },
+  "membres/cfrouard.qmd": {
+    "cfrouard.html": "0afd49f8"
+  },
+  "ai-trackers/superstars/index.qmd": {
+    "index.html": "9359e46f"
+  },
+  "ai-trackers/diffusion-science/methodologie.qmd": {
+    "methodologie.html": "7cee6f1f"
   }
 }

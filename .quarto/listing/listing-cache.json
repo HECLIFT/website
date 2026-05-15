@@ -3,8 +3,14 @@
     "publications.qmd": [
       "pubs"
     ],
+    "innovation-data.qmd": [
+      "innovation-data"
+    ],
     "posts.qmd": [
       "posts"
+    ],
+    "ai-trackers.qmd": [
+      "ai-trackers"
     ]
   }
 }
