@@ -15,18 +15,7 @@
   var EUR_MODE_ENTITIES = ['EUR', 'US', 'CN', 'JP', 'RoW_EUR'];
 
   // --- Sector emojis ---
-  var SECTOR_EMOJIS = {
-    biotech: '\uD83E\uDDEC',
-    ict: '\uD83D\uDCBB',
-    ai: '\uD83E\uDD16',
-    green: '\uD83C\uDF31',
-    semiconductors: '\uD83D\uDD2C',
-    pharma: '\uD83D\uDC8A',
-    nanotech: '\u269B\uFE0F',
-    robotics: '\uD83E\uDDBE',
-    batteries: '\uD83D\uDD0B',
-    additive: '\uD83D\uDDA8\uFE0F'
-  };
+  var SECTOR_EMOJIS = {};
 
   // --- State ---
   var rawData = [];
