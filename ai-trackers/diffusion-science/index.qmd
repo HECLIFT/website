@@ -202,8 +202,6 @@ page-layout: full
 
 Ce tableau de bord analyse les brevets européens (EPO) entre **1990 et 2024** qui citent des publications scientifiques identifiées comme relevant de l'intelligence artificielle, ainsi que les **acteurs superstar** — entreprises, inventeurs et publications — au cœur de cette dynamique.
 
-→ [Voir la méthodologie complète et le pipeline de données](/ai-trackers/diffusion-science/methodologie.html)
-
 ### Auteure
 
 **Gabriela Terra** (HEC Paris)
