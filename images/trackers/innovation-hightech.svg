@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" font-family="&#39;IBM Plex Mono&#39;, monospace">
+  <defs>
+    <pattern id="grid-iht" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#d0d7de" stroke-width="0.5" opacity="0.5"></path>
+    </pattern>
+  </defs>
+  <rect width="800" height="500" fill="#eef0f3"></rect>
+  <rect width="800" height="500" fill="url(#grid-iht)"></rect>
+
+  <line x1="40" y1="60" x2="760" y2="60" stroke="#c4cdd6" stroke-width="1"></line>
+  <text x="40" y="48" font-size="11" fill="#8c959f" letter-spacing="2">// INNOV-DATA · 02</text>
+  <text x="760" y="48" font-size="11" fill="#8c959f" text-anchor="end" letter-spacing="2">PCT · UE/US/CN/JP</text>
+
+  <text x="40" y="130" font-family="&#39;Space Grotesk&#39;, sans-serif" font-size="56" font-weight="700" fill="#0d1117" letter-spacing="-1.5">Innovation</text>
+  <text x="40" y="180" font-family="&#39;Space Grotesk&#39;, sans-serif" font-size="56" font-weight="700" fill="#0d1117" letter-spacing="-1.5">High-Tech</text>
+
+  <text x="40" y="218" font-size="13" fill="#57606a" letter-spacing="1">10 SECTEURS · BREVETS PCT · COMPTAGE FRACTIONNAIRE</text>
+
+  
+  <g transform="translate(40, 260)" font-size="9.5" fill="#57606a">
+    <g>
+      <rect x="0" y="0" width="140" height="90" fill="none" stroke="#c4cdd6"></rect>
+      <text x="12" y="22">BIOTECH</text>
+      <text x="12" y="72" font-family="&#39;Space Grotesk&#39;, sans-serif" font-size="22" font-weight="700" fill="#0050a0">US</text>
+      <text x="125" y="80" text-anchor="end" font-size="8">38 %</text>
+    </g>
+    <g transform="translate(144, 0)">
+      <rect x="0" y="0" width="140" height="90" fill="none" stroke="#c4cdd6"></rect>
+      <text x="12" y="22">IT</text>
+      <text x="12" y="72" font-family="&#39;Space Grotesk&#39;, sans-serif" font-size="22" font-weight="700" fill="#0050a0">US</text>
+      <text x="125" y="80" text-anchor="end" font-size="8">31 %</text>
+    </g>
+    <g transform="translate(288, 0)">
+      <rect x="0" y="0" width="140" height="90" fill="#0078d4" fill-opacity="0.08" stroke="#0078d4" stroke-width="1.5"></rect>
+      <text x="12" y="22" fill="#0050a0">IA</text>
+      <text x="12" y="72" font-family="&#39;Space Grotesk&#39;, sans-serif" font-size="22" font-weight="700" fill="#0078d4">CN</text>
+      <text x="125" y="80" text-anchor="end" font-size="8" fill="#0050a0">52 %</text>
+    </g>
+    <g transform="translate(432, 0)">
+      <rect x="0" y="0" width="140" height="90" fill="none" stroke="#c4cdd6"></rect>
+      <text x="12" y="22">VERT</text>
+      <text x="12" y="72" font-family="&#39;Space Grotesk&#39;, sans-serif" font-size="22" font-weight="700" fill="#0050a0">UE</text>
+      <text x="125" y="80" text-anchor="end" font-size="8">29 %</text>
+    </g>
+    <g transform="translate(576, 0)">
+      <rect x="0" y="0" width="140" height="90" fill="none" stroke="#c4cdd6"></rect>
+      <text x="12" y="22">SEMI</text>
+      <text x="12" y="72" font-family="&#39;Space Grotesk&#39;, sans-serif" font-size="22" font-weight="700" fill="#0050a0">JP</text>
+      <text x="125" y="80" text-anchor="end" font-size="8">28 %</text>
+    </g>
+    
+    <g transform="translate(0, 100)">
+      <rect x="0" y="0" width="140" height="90" fill="none" stroke="#c4cdd6"></rect>
+      <text x="12" y="22">PHARMA</text>
+      <text x="12" y="72" font-family="&#39;Space Grotesk&#39;, sans-serif" font-size="22" font-weight="700" fill="#0050a0">US</text>
+      <text x="125" y="80" text-anchor="end" font-size="8">42 %</text>
+    </g>
+    <g transform="translate(144, 100)">
+      <rect x="0" y="0" width="140" height="90" fill="none" stroke="#c4cdd6"></rect>
+      <text x="12" y="22">NANO</text>
+      <text x="12" y="72" font-family="&#39;Space Grotesk&#39;, sans-serif" font-size="22" font-weight="700" fill="#0050a0">CN</text>
+      <text x="125" y="80" text-anchor="end" font-size="8">34 %</text>
+    </g>
+    <g transform="translate(288, 100)">
+      <rect x="0" y="0" width="140" height="90" fill="none" stroke="#c4cdd6"></rect>
+      <text x="12" y="22">ROBOT</text>
+      <text x="12" y="72" font-family="&#39;Space Grotesk&#39;, sans-serif" font-size="22" font-weight="700" fill="#0050a0">JP</text>
+      <text x="125" y="80" text-anchor="end" font-size="8">39 %</text>
+    </g>
+    <g transform="translate(432, 100)">
+      <rect x="0" y="0" width="140" height="90" fill="#0078d4" fill-opacity="0.08" stroke="#0078d4" stroke-width="1.5"></rect>
+      <text x="12" y="22" fill="#0050a0">BATT</text>
+      <text x="12" y="72" font-family="&#39;Space Grotesk&#39;, sans-serif" font-size="22" font-weight="700" fill="#0078d4">CN</text>
+      <text x="125" y="80" text-anchor="end" font-size="8" fill="#0050a0">61 %</text>
+    </g>
+    <g transform="translate(576, 100)">
+      <rect x="0" y="0" width="140" height="90" fill="none" stroke="#c4cdd6"></rect>
+      <text x="12" y="22">3D PRINT</text>
+      <text x="12" y="72" font-family="&#39;Space Grotesk&#39;, sans-serif" font-size="22" font-weight="700" fill="#0050a0">UE</text>
+      <text x="125" y="80" text-anchor="end" font-size="8">26 %</text>
+    </g>
+  </g>
+
+  <line x1="40" y1="470" x2="760" y2="470" stroke="#d0d7de" stroke-width="1"></line>
+  <text x="40" y="490" font-size="10" fill="#8c959f" letter-spacing="1">SOURCE · GOOGLE PATENTS · OECD REGPAT</text>
+  <text x="760" y="490" font-size="10" fill="#8c959f" text-anchor="end" letter-spacing="1">MAJ SEMESTRIELLE</text>
+</svg>

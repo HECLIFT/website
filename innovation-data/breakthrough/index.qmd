@@ -214,7 +214,7 @@ Les graphiques par pays présentent le **nombre de brevets de rupture par millio
 
 Ce tracker est développé par :
 
-- **[Antonin Bergeaud](/membres/abergeaud/)**
+- **[Antonin Bergeaud](/membres/abergeaud.html)**
 - **Dario Marino**
 
 ### Méthodologie

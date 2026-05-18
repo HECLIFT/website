@@ -14,15 +14,10 @@ listing:
 ---
 
 
-<div class="pubtype-toggle btn-group mb-3" role="group" aria-label="Filtrer par type">
-  <button class="btn btn-outline-secondary active" data-show="wp">Working Papers</button>
-  <button class="btn btn-outline-secondary" data-show="pb">Notes de politique</button>
-</div>
-
 <div class="pubs-toolbar d-flex flex-wrap gap-2 align-items-center mb-3">
   <!-- search -->
   <input id="pubs-search" type="search" class="form-control form-control-sm"
-         placeholder="Search publications…" style="max-width: 320px;">
+         placeholder="Rechercher des publications…" style="max-width: 320px;">
   <!-- tags get injected here -->
   <div id="pubs-tags" class="d-flex flex-wrap gap-1 ms-auto"></div>
 </div>
@@ -74,8 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (table) table.remove();
   });
 
-  // --- Filter state ---
-  let selectedType = 'wp';
+  // --- Filter state (sem toggle WP/PB — todas publicações visíveis) ---
   let selectedTag = null;
   let searchText = '';
 
@@ -89,7 +83,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // --- FLIP Animation helper ---
   function animateCards(callback) {
-    // FIRST: record current positions of visible wrappers
     const positions = new Map();
     cards.forEach(card => {
       const wrapper = getWrapper(card);
@@ -99,10 +92,8 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
-    // Apply the filter change
     callback();
 
-    // LAST: get new positions and animate
     cards.forEach(card => {
       const wrapper = getWrapper(card);
       if (wrapper.style.display !== 'none') {
@@ -113,11 +104,9 @@ document.addEventListener('DOMContentLoaded', function () {
           const deltaY = oldPos.y - newRect.top;
 
           if (deltaX !== 0 || deltaY !== 0) {
-            // INVERT: apply inverse transform
             wrapper.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
             wrapper.style.transition = 'none';
 
-            // PLAY: animate to final position
             requestAnimationFrame(() => {
               requestAnimationFrame(() => {
                 wrapper.style.transition = 'transform 0.35s ease-out, opacity 0.3s ease';
@@ -126,7 +115,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
           }
         } else {
-          // Wrapper is newly visible - fade in
           wrapper.style.opacity = '0';
           wrapper.style.transition = 'none';
           requestAnimationFrame(() => {
@@ -140,12 +128,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // --- Core filter logic ---
+  // --- Core filter logic (sem filtro de tipo) ---
   function applyFilters(animate = true) {
     const doFilter = () => {
       cards.forEach(card => {
         const wrapper = getWrapper(card);
-        const typeOk = (card.getAttribute('data-pubtype') || '').toLowerCase() === (selectedType || '');
         let tagOk = true;
         if (selectedTag) {
           tagOk = Array.from(card.querySelectorAll('.listing-category'))
@@ -159,8 +146,7 @@ document.addEventListener('DOMContentLoaded', function () {
           ].join(' ').toLowerCase();
           searchOk = hay.includes(searchText);
         }
-        // Hide the wrapper (.g-col-1), not just the card
-        wrapper.style.display = (typeOk && tagOk && searchOk) ? '' : 'none';
+        wrapper.style.display = (tagOk && searchOk) ? '' : 'none';
       });
     };
 
@@ -183,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function () {
   tagBar.innerHTML = '';
   const allBtn = document.createElement('button');
   allBtn.className = 'btn btn-sm btn-outline-secondary active';
-  allBtn.textContent = 'All tags';
+  allBtn.textContent = 'Toutes les étiquettes';
   allBtn.dataset.tag = '';
   tagBar.appendChild(allBtn);
 
@@ -204,17 +190,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // --- Type toggle (WP / Policy) ---
-  const typeBtns = document.querySelectorAll('.pubtype-toggle [data-show]');
-  typeBtns.forEach(b => {
-    b.addEventListener('click', () => {
-      typeBtns.forEach(x => x.classList.remove('active'));
-      b.classList.add('active');
-      selectedType = b.dataset.show;
-      applyFilters();
-    });
-  });
-
   // --- Search handler ---
   if (search) {
     search.addEventListener('input', () => {
@@ -223,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // --- Initial filter (no animation) ---
+  // --- Initial render (todas visíveis) ---
   applyFilters(false);
 });
 </script>

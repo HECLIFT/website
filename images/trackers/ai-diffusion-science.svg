@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" font-family="&#39;IBM Plex Mono&#39;, monospace">
+  <defs>
+    <pattern id="grid-sci" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#d0d7de" stroke-width="0.5" opacity="0.5"></path>
+    </pattern>
+  </defs>
+  <rect width="800" height="500" fill="#eef0f3"></rect>
+  <rect width="800" height="500" fill="url(#grid-sci)"></rect>
+
+  <line x1="40" y1="60" x2="760" y2="60" stroke="#c4cdd6" stroke-width="1"></line>
+  <text x="40" y="48" font-size="11" fill="#8c959f" letter-spacing="2">// AI-TRACKER · 02</text>
+  <text x="760" y="48" font-size="11" fill="#8c959f" text-anchor="end" letter-spacing="2">EU · 1990—2024</text>
+
+  <text x="40" y="130" font-family="&#39;Space Grotesk&#39;, sans-serif" font-size="56" font-weight="700" fill="#0d1117" letter-spacing="-1.5">Diffusion IA</text>
+  <text x="40" y="180" font-family="&#39;Space Grotesk&#39;, sans-serif" font-size="56" font-weight="700" fill="#0d1117" letter-spacing="-1.5">— Science</text>
+
+  <text x="40" y="218" font-size="13" fill="#57606a" letter-spacing="1">BREVETS EPO · PUBLICATIONS · ACTEURS CLÉS</text>
+
+  
+  <g transform="translate(40, 260)" stroke="#8c959f" stroke-width="0.8" fill="none">
+    
+    <line x1="50" y1="40" x2="200" y2="80"></line>
+    <line x1="50" y1="40" x2="320" y2="50"></line>
+    <line x1="120" y1="100" x2="320" y2="50"></line>
+    <line x1="120" y1="100" x2="430" y2="120"></line>
+    <line x1="200" y1="80" x2="430" y2="120"></line>
+    <line x1="200" y1="80" x2="550" y2="60"></line>
+    <line x1="320" y1="50" x2="550" y2="60"></line>
+    <line x1="320" y1="50" x2="660" y2="100"></line>
+    <line x1="430" y1="120" x2="660" y2="100"></line>
+    <line x1="430" y1="120" x2="680" y2="170"></line>
+    <line x1="50" y1="160" x2="200" y2="80"></line>
+    <line x1="50" y1="160" x2="120" y2="100"></line>
+    <line x1="220" y1="180" x2="320" y2="50"></line>
+    <line x1="220" y1="180" x2="430" y2="120"></line>
+    <line x1="350" y1="200" x2="430" y2="120"></line>
+    <line x1="350" y1="200" x2="550" y2="60"></line>
+    <line x1="500" y1="180" x2="660" y2="100"></line>
+    <line x1="500" y1="180" x2="680" y2="170"></line>
+  </g>
+
+  <g transform="translate(40, 260)" font-size="9">
+    
+    <rect x="42" y="32" width="16" height="16" fill="#0050a0"></rect>
+    <rect x="112" y="92" width="16" height="16" fill="#0050a0"></rect>
+    <rect x="42" y="152" width="16" height="16" fill="#0050a0"></rect>
+    <rect x="212" y="172" width="16" height="16" fill="#0050a0"></rect>
+    <rect x="342" y="192" width="16" height="16" fill="#0050a0"></rect>
+    <rect x="492" y="172" width="16" height="16" fill="#0050a0"></rect>
+    <text x="20" y="220" fill="#0050a0" letter-spacing="1">■ BREVETS</text>
+
+    
+    <circle cx="200" cy="80" r="9" fill="#0078d4" fill-opacity="0.7"></circle>
+    <circle cx="320" cy="50" r="11" fill="#0078d4" fill-opacity="0.8"></circle>
+    <circle cx="430" cy="120" r="10" fill="#0078d4" fill-opacity="0.75"></circle>
+    <circle cx="550" cy="60" r="8" fill="#0078d4" fill-opacity="0.7"></circle>
+    <circle cx="660" cy="100" r="12" fill="#0078d4"></circle>
+    <circle cx="680" cy="170" r="7" fill="#0078d4" fill-opacity="0.65"></circle>
+    <text x="540" y="220" fill="#0078d4" letter-spacing="1">● PUBLICATIONS</text>
+  </g>
+
+  <line x1="40" y1="470" x2="760" y2="470" stroke="#d0d7de" stroke-width="1"></line>
+  <text x="40" y="490" font-size="10" fill="#8c959f" letter-spacing="1">SOURCE · REGPAT · PATCIT · OPENALEX</text>
+  <text x="760" y="490" font-size="10" fill="#8c959f" text-anchor="end" letter-spacing="1">MAJ ANNUELLE</text>
+</svg>

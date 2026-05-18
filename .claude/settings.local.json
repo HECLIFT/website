@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(grep:*)",
+      "Bash(python scripts/admin_members.py:*)",
+      "Bash(python3:*)",
+      "Bash(xargs -I {} sh -c 'echo \"\"=== {} ===\"\"; head -20 \"\"{}\"\"')",
+      "Bash(quarto render:*)",
+      "Bash(find:*)",
+      "Bash(tree:*)",
+      "WebSearch",
+      "WebFetch(domain:www.campop.geog.cam.ac.uk)",
+      "WebFetch(domain:www.rug.nl)",
+      "WebFetch(domain:www.insee.fr)",
+      "WebFetch(domain:tradingeconomics.com)",
+      "WebFetch(domain:clio-infra.eu)",
+      "WebFetch(domain:www.macrotrends.net)",
+      "WebFetch(domain:fred.stlouisfed.org)",
+      "WebFetch(domain:data.worldbank.org)",
+      "WebFetch(domain:www.ceicdata.com)",
+      "WebFetch(domain:tankona.free.fr)",
+      "WebFetch(domain:pinguet.free.fr)",
+      "WebFetch(domain:www.bnsp.insee.fr)",
+      "WebFetch(domain:gallica.bnf.fr)",
+      "WebFetch(domain:www.data.gouv.fr)",
+      "Bash(curl -o \"working_hours_1851.csv\" \"https://www.data.gouv.fr/fr/datasets/r/39faddc9-485c-471a-919c-532237359642\")",
+      "WebFetch(domain:ourworldindata.org)",
+      "WebFetch(domain:www.persee.fr)",
+      "WebFetch(domain:lyc-vinci-st-witz.ac-versailles.fr)",
+      "Bash(curl -s \"https://fred.stlouisfed.org/data/AVHWPEFRA065NRUG.txt\")"
+    ]
+  }
+}

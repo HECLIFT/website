@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" font-family="&#39;IBM Plex Mono&#39;, monospace">
+  <defs>
+    <pattern id="grid-bt" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#d0d7de" stroke-width="0.5" opacity="0.5"></path>
+    </pattern>
+  </defs>
+  <rect width="800" height="500" fill="#eef0f3"></rect>
+  <rect width="800" height="500" fill="url(#grid-bt)"></rect>
+
+  <line x1="40" y1="60" x2="760" y2="60" stroke="#c4cdd6" stroke-width="1"></line>
+  <text x="40" y="48" font-size="11" fill="#8c959f" letter-spacing="2">// INNOV-DATA · 03</text>
+  <text x="760" y="48" font-size="11" fill="#8c959f" text-anchor="end" letter-spacing="2">EPO · 1983—2024</text>
+
+  <text x="40" y="130" font-family="&#39;Space Grotesk&#39;, sans-serif" font-size="56" font-weight="700" fill="#0d1117" letter-spacing="-1.5">Innovation</text>
+  <text x="40" y="180" font-family="&#39;Space Grotesk&#39;, sans-serif" font-size="56" font-weight="700" fill="#0d1117" letter-spacing="-1.5">de rupture</text>
+
+  <text x="40" y="218" font-size="13" fill="#57606a" letter-spacing="1">4,5 M BREVETS · TOP 1 % · KPST</text>
+
+  
+  <g transform="translate(40, 245)">
+    <rect x="0" y="0" width="720" height="200" fill="none" stroke="#c4cdd6"></rect>
+
+    
+    <text x="6" y="14" font-size="9" fill="#8c959f">FORWARD_SUM →</text>
+    <text x="714" y="194" font-size="9" fill="#8c959f" text-anchor="end">← BACKWARD_SUM</text>
+
+    
+    <g fill="#c4cdd6" opacity="0.7">
+      <circle cx="160" cy="140" r="2"></circle>
+      <circle cx="180" cy="135" r="2"></circle>
+      <circle cx="200" cy="142" r="2"></circle>
+      <circle cx="220" cy="138" r="2"></circle>
+      <circle cx="240" cy="145" r="2"></circle>
+      <circle cx="260" cy="130" r="2"></circle>
+      <circle cx="280" cy="148" r="2"></circle>
+      <circle cx="300" cy="132" r="2"></circle>
+      <circle cx="320" cy="146" r="2"></circle>
+      <circle cx="340" cy="140" r="2"></circle>
+      <circle cx="360" cy="135" r="2"></circle>
+      <circle cx="380" cy="142" r="2"></circle>
+      <circle cx="400" cy="138" r="2"></circle>
+      <circle cx="420" cy="148" r="2"></circle>
+      <circle cx="170" cy="155" r="2"></circle>
+      <circle cx="195" cy="160" r="2"></circle>
+      <circle cx="225" cy="158" r="2"></circle>
+      <circle cx="255" cy="165" r="2"></circle>
+      <circle cx="290" cy="155" r="2"></circle>
+      <circle cx="325" cy="160" r="2"></circle>
+      <circle cx="355" cy="165" r="2"></circle>
+      <circle cx="385" cy="158" r="2"></circle>
+      <circle cx="415" cy="165" r="2"></circle>
+      <circle cx="445" cy="160" r="2"></circle>
+      <circle cx="150" cy="125" r="2"></circle>
+      <circle cx="180" cy="120" r="2"></circle>
+      <circle cx="210" cy="125" r="2"></circle>
+      <circle cx="240" cy="118" r="2"></circle>
+      <circle cx="275" cy="122" r="2"></circle>
+      <circle cx="305" cy="128" r="2"></circle>
+      <circle cx="340" cy="122" r="2"></circle>
+      <circle cx="375" cy="125" r="2"></circle>
+      <circle cx="405" cy="120" r="2"></circle>
+      <circle cx="435" cy="128" r="2"></circle>
+      <circle cx="200" cy="110" r="2"></circle>
+      <circle cx="230" cy="105" r="2"></circle>
+      <circle cx="265" cy="115" r="2"></circle>
+      <circle cx="295" cy="108" r="2"></circle>
+      <circle cx="330" cy="112" r="2"></circle>
+      <circle cx="370" cy="105" r="2"></circle>
+      <circle cx="400" cy="115" r="2"></circle>
+      <circle cx="430" cy="108" r="2"></circle>
+    </g>
+
+    
+    <g fill="#0050a0">
+      <circle cx="565" cy="50" r="5"></circle>
+      <circle cx="595" cy="35" r="6"></circle>
+      <circle cx="620" cy="55" r="5"></circle>
+      <circle cx="640" cy="40" r="7"></circle>
+      <circle cx="585" cy="65" r="4"></circle>
+      <circle cx="650" cy="65" r="5"></circle>
+      <circle cx="610" cy="78" r="4"></circle>
+      <circle cx="555" cy="75" r="4"></circle>
+      <circle cx="675" cy="50" r="6"></circle>
+    </g>
+    
+    <rect x="540" y="25" width="160" height="75" fill="none" stroke="#0050a0" stroke-width="1.2" stroke-dasharray="3 3"></rect>
+    <text x="545" y="20" font-size="9" fill="#0050a0" letter-spacing="1">TOP 1 % · RUPTURE</text>
+
+    
+    <text x="540" y="120" font-size="9" fill="#0050a0">~45 000 brevets / an</text>
+  </g>
+
+  <line x1="40" y1="470" x2="760" y2="470" stroke="#d0d7de" stroke-width="1"></line>
+  <text x="40" y="490" font-size="10" fill="#8c959f" letter-spacing="1">SOURCE · PATSTAT · PATENTSBERTA_V2</text>
+  <text x="760" y="490" font-size="10" fill="#8c959f" text-anchor="end" letter-spacing="1">MAJ SEMESTRIELLE</text>
+</svg>

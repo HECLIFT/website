@@ -52,15 +52,21 @@ website:
       - text: "Membres"
         href: membres.qmd
   page-footer:
-    background: dark
+    background: light
     left: |
-      <span class="footer-brand">Laboratoire de l'Innovation et du Futur du Travail</span><br>
+      <span class="footer-brand">Laboratoire de l'Innovation et du Futur du Travail</span>
       <span class="footer-affiliation">HEC Paris · Hi! Paris</span>
-    center: |
-      <a href="publications.html">Publications</a> ·
-      <a href="ai-trackers.html">Trackers IA</a> ·
-      <a href="innovation-data.html">Données</a> ·
-      <a href="membres.html">Équipe</a>
+    center:
+      - text: "Publications"
+        href: publications.qmd
+      - text: "Trackers IA"
+        href: ai-trackers.qmd
+      - text: "Données"
+        href: innovation-data.qmd
+      - text: "Équipe"
+        href: membres.qmd
+      - text: "À propos"
+        href: a-propos.qmd
     right: "© 2025 Laboratoire de l'Innovation"
 
 format:

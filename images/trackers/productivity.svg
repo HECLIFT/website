@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" font-family="&#39;IBM Plex Mono&#39;, monospace">
+  <defs>
+    <pattern id="grid-prod" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#d0d7de" stroke-width="0.5" opacity="0.5"></path>
+    </pattern>
+  </defs>
+  <rect width="800" height="500" fill="#eef0f3"></rect>
+  <rect width="800" height="500" fill="url(#grid-prod)"></rect>
+
+  <line x1="40" y1="60" x2="760" y2="60" stroke="#c4cdd6" stroke-width="1"></line>
+  <text x="40" y="48" font-size="11" fill="#8c959f" letter-spacing="2">// INNOV-DATA · 01</text>
+  <text x="760" y="48" font-size="11" fill="#8c959f" text-anchor="end" letter-spacing="2">24 PAYS · 1890—2022</text>
+
+  <text x="40" y="130" font-family="&#39;Space Grotesk&#39;, sans-serif" font-size="56" font-weight="700" fill="#0d1117" letter-spacing="-1.5">Productivité</text>
+  <text x="40" y="180" font-family="&#39;Space Grotesk&#39;, sans-serif" font-size="56" font-weight="700" fill="#0d1117" letter-spacing="-1.5">internationale</text>
+
+  <text x="40" y="218" font-size="13" fill="#57606a" letter-spacing="1">PIB · PRODUCTIVITÉ HORAIRE · PGF</text>
+
+  
+  <g transform="translate(40, 250)" fill="none" stroke-width="2">
+    <line x1="0" y1="210" x2="720" y2="210" stroke="#c4cdd6"></line>
+    
+    <text x="0" y="230" font-size="10" fill="#8c959f">1890</text>
+    <text x="180" y="230" font-size="10" fill="#8c959f">1930</text>
+    <text x="360" y="230" font-size="10" fill="#8c959f">1970</text>
+    <text x="540" y="230" font-size="10" fill="#8c959f">2000</text>
+    <text x="720" y="230" font-size="10" fill="#8c959f" text-anchor="end">2022</text>
+
+    
+    <path d="M 0 180 C 100 165, 180 130, 260 90 S 400 30, 540 25 L 720 22" stroke="#0050a0"></path>
+    
+    <path d="M 0 200 C 100 195, 160 188, 220 165 S 360 60, 500 50 L 720 42" stroke="#0078d4" stroke-opacity="0.85"></path>
+    
+    <path d="M 0 195 C 80 190, 160 180, 240 152 S 380 75, 520 65 L 720 55" stroke="#5b8def" stroke-opacity="0.75"></path>
+    
+    <path d="M 0 205 C 100 200, 180 195, 260 178 S 400 95, 560 80 L 720 72" stroke="#8c959f" stroke-dasharray="4 4"></path>
+
+    
+    <g font-size="10" font-family="&#39;IBM Plex Mono&#39;, monospace">
+      <text x="730" y="22" fill="#0050a0">USA</text>
+      <text x="730" y="42" fill="#0078d4">DEU</text>
+      <text x="730" y="55" fill="#5b8def">FRA</text>
+      <text x="730" y="72" fill="#8c959f">EA</text>
+    </g>
+  </g>
+
+  <line x1="40" y1="470" x2="760" y2="470" stroke="#d0d7de" stroke-width="1"></line>
+  <text x="40" y="490" font-size="10" fill="#8c959f" letter-spacing="1">SOURCE · BERGEAUD · CETTE · LECAT</text>
+  <text x="760" y="490" font-size="10" fill="#8c959f" text-anchor="end" letter-spacing="1">MAJ ANNUELLE</text>
+</svg>

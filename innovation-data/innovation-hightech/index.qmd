@@ -147,7 +147,7 @@ page-layout: full
 
 ### Auteur
 
-[Antonin Bergeaud](/membres/abergeaud/)
+[Antonin Bergeaud](/membres/abergeaud.html)
 
 ### Méthodologie
 

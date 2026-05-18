@@ -83,7 +83,7 @@ Le second graphique présente les **vagues de croissance** : le taux de croissan
 
 Ce tracker est basé sur la [Long Term Productivity Database](http://www.longtermproductivity.com/) développée par :
 
-- **[Antonin Bergeaud](/membres/abergeaud/)**
+- **[Antonin Bergeaud](/membres/abergeaud.html)**
 - **Gilbert Cette**
 - **Rémy Lecat**
 

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" font-family="&#39;IBM Plex Mono&#39;, monospace">
+  <defs>
+    <pattern id="grid-emp" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#d0d7de" stroke-width="0.5" opacity="0.5"></path>
+    </pattern>
+  </defs>
+  
+  <rect width="800" height="500" fill="#eef0f3"></rect>
+  <rect width="800" height="500" fill="url(#grid-emp)"></rect>
+
+  
+  <line x1="40" y1="60" x2="760" y2="60" stroke="#c4cdd6" stroke-width="1"></line>
+  <text x="40" y="48" font-size="11" fill="#8c959f" letter-spacing="2">// AI-TRACKER · 01</text>
+  <text x="760" y="48" font-size="11" fill="#8c959f" text-anchor="end" letter-spacing="2">FR · 2019—2026</text>
+
+  
+  <text x="40" y="130" font-family="&#39;Space Grotesk&#39;, sans-serif" font-size="56" font-weight="700" fill="#0d1117" letter-spacing="-1.5">Diffusion IA</text>
+  <text x="40" y="180" font-family="&#39;Space Grotesk&#39;, sans-serif" font-size="56" font-weight="700" fill="#0d1117" letter-spacing="-1.5">— Emploi</text>
+
+  <text x="40" y="218" font-size="13" fill="#57606a" letter-spacing="1">OFFRES · SECTEURS · MÉTIERS · GÉOGRAPHIE</text>
+
+  
+  <g transform="translate(40, 280)">
+    <line x1="0" y1="180" x2="720" y2="180" stroke="#c4cdd6" stroke-width="1"></line>
+    <text x="0" y="200" font-size="10" fill="#8c959f">2019</text>
+    <text x="720" y="200" font-size="10" fill="#8c959f" text-anchor="end">2026</text>
+
+    <rect x="0" y="160" width="40" height="20" fill="#c4cdd6"></rect>
+    <rect x="60" y="148" width="40" height="32" fill="#c4cdd6"></rect>
+    <rect x="120" y="130" width="40" height="50" fill="#8c959f"></rect>
+    <rect x="180" y="106" width="40" height="74" fill="#8c959f"></rect>
+    <rect x="240" y="86" width="40" height="94" fill="#0078d4" fill-opacity="0.55"></rect>
+    <rect x="300" y="60" width="40" height="120" fill="#0078d4" fill-opacity="0.65"></rect>
+    <rect x="360" y="38" width="40" height="142" fill="#0078d4" fill-opacity="0.78"></rect>
+    <rect x="420" y="22" width="40" height="158" fill="#0078d4" fill-opacity="0.88"></rect>
+    <rect x="480" y="10" width="40" height="170" fill="#0050a0"></rect>
+    <rect x="540" y="0" width="40" height="180" fill="#0050a0"></rect>
+    <rect x="600" y="4" width="40" height="176" fill="#0050a0"></rect>
+    <rect x="660" y="12" width="40" height="168" fill="#0050a0"></rect>
+
+    <text x="720" y="-10" font-size="11" fill="#0050a0" text-anchor="end" font-weight="500">+340 % depuis 2019</text>
+  </g>
+
+  
+  <line x1="40" y1="470" x2="760" y2="470" stroke="#d0d7de" stroke-width="1"></line>
+  <text x="40" y="490" font-size="10" fill="#8c959f" letter-spacing="1">SOURCE · JOCAS / DARES</text>
+  <text x="760" y="490" font-size="10" fill="#8c959f" text-anchor="end" letter-spacing="1">MAJ TRIMESTRIELLE</text>
+</svg>
