@@ -1205,6 +1205,12 @@ hr {
   padding: 56px 56px 80px !important;
 }
 
+/* Listing overview pages — body class doesn't propagate, use :has() instead */
+main:has(#listing-aitrackerslist),
+main:has(#listing-innovdatalist) {
+  padding: 56px 56px 80px !important;
+}
+
 /* Membres page section headings — match mockup style */
 .memberpage section.level2 { margin-bottom: 56px; }
 .memberpage section.level2:last-child { margin-bottom: 0; }
