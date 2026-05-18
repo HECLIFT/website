@@ -71,6 +71,15 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Recherche"
   }
 }</script>
+<style>
+/* Critical overrides — inline fallback in case external CSS has MIME issues */
+header#title-block-header,
+.quarto-title-block { display: none !important; height: 0 !important; overflow: hidden !important; }
+#quarto-content, #quarto-content.page-columns { display: block !important; padding: 0 !important; margin: 0 !important; }
+main#quarto-document-content, main.content { display: block !important; padding: 0 !important; margin: 0 !important; max-width: 100% !important; width: 100% !important; }
+.hero { display: grid !important; grid-template-columns: 55% 1fr !important; min-height: calc(100vh - 54px) !important; }
+.hero-logo-area img { height: 52px !important; width: auto !important; }
+</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@300;400;500&amp;family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,400&amp;display=swap" rel="stylesheet">
@@ -127,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 
 
-<link rel="stylesheet" href="../../styles.scss">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
