@@ -44,7 +44,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e8be56db37bdd2d1bb4117ea9d5a4dfc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-48ac53c71cc17be1182cc1bde471be60.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -300,11 +300,8 @@ window.Quarto = {
 </header>
 
 
-<div class="pubtype-toggle btn-group mb-3" role="group" aria-label="Filtrer par type">
-<p><button class="btn btn-outline-secondary active" data-show="wp">Working Papers</button> <button class="btn btn-outline-secondary" data-show="pb">Notes de politique</button></p>
-</div>
 <div class="pubs-toolbar d-flex flex-wrap gap-2 align-items-center mb-3">
-<!-- search --> <input id="pubs-search" type="search" class="form-control form-control-sm" placeholder="Search publications…" style="max-width: 320px;"> <!-- tags get injected here -->
+<!-- search --> <input id="pubs-search" type="search" class="form-control form-control-sm" placeholder="Rechercher des publications…" style="max-width: 320px;"> <!-- tags get injected here -->
 <div id="pubs-tags" class="d-flex flex-wrap gap-1 ms-auto">
 
 </div>
@@ -355,8 +352,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (table) table.remove();
   });
 
-  // --- Filter state ---
-  let selectedType = 'wp';
+  // --- Filter state (sem toggle WP/PB — todas publicações visíveis) ---
   let selectedTag = null;
   let searchText = '';
 
@@ -370,7 +366,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // --- FLIP Animation helper ---
   function animateCards(callback) {
-    // FIRST: record current positions of visible wrappers
     const positions = new Map();
     cards.forEach(card => {
       const wrapper = getWrapper(card);
@@ -380,10 +375,8 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
-    // Apply the filter change
     callback();
 
-    // LAST: get new positions and animate
     cards.forEach(card => {
       const wrapper = getWrapper(card);
       if (wrapper.style.display !== 'none') {
@@ -394,11 +387,9 @@ document.addEventListener('DOMContentLoaded', function () {
           const deltaY = oldPos.y - newRect.top;
 
           if (deltaX !== 0 || deltaY !== 0) {
-            // INVERT: apply inverse transform
             wrapper.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
             wrapper.style.transition = 'none';
 
-            // PLAY: animate to final position
             requestAnimationFrame(() => {
               requestAnimationFrame(() => {
                 wrapper.style.transition = 'transform 0.35s ease-out, opacity 0.3s ease';
@@ -407,7 +398,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
           }
         } else {
-          // Wrapper is newly visible - fade in
           wrapper.style.opacity = '0';
           wrapper.style.transition = 'none';
           requestAnimationFrame(() => {
@@ -421,12 +411,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // --- Core filter logic ---
+  // --- Core filter logic (sem filtro de tipo) ---
   function applyFilters(animate = true) {
     const doFilter = () => {
       cards.forEach(card => {
         const wrapper = getWrapper(card);
-        const typeOk = (card.getAttribute('data-pubtype') || '').toLowerCase() === (selectedType || '');
         let tagOk = true;
         if (selectedTag) {
           tagOk = Array.from(card.querySelectorAll('.listing-category'))
@@ -440,8 +429,7 @@ document.addEventListener('DOMContentLoaded', function () {
           ].join(' ').toLowerCase();
           searchOk = hay.includes(searchText);
         }
-        // Hide the wrapper (.g-col-1), not just the card
-        wrapper.style.display = (typeOk && tagOk && searchOk) ? '' : 'none';
+        wrapper.style.display = (tagOk && searchOk) ? '' : 'none';
       });
     };
 
@@ -464,7 +452,7 @@ document.addEventListener('DOMContentLoaded', function () {
   tagBar.innerHTML = '';
   const allBtn = document.createElement('button');
   allBtn.className = 'btn btn-sm btn-outline-secondary active';
-  allBtn.textContent = 'All tags';
+  allBtn.textContent = 'Toutes les étiquettes';
   allBtn.dataset.tag = '';
   tagBar.appendChild(allBtn);
 
@@ -485,17 +473,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // --- Type toggle (WP / Policy) ---
-  const typeBtns = document.querySelectorAll('.pubtype-toggle [data-show]');
-  typeBtns.forEach(b => {
-    b.addEventListener('click', () => {
-      typeBtns.forEach(x => x.classList.remove('active'));
-      b.classList.add('active');
-      selectedType = b.dataset.show;
-      applyFilters();
-    });
-  });
-
   // --- Search handler ---
   if (search) {
     search.addEventListener('input', () => {
@@ -504,7 +481,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // --- Initial filter (no animation) ---
+  // --- Initial render (todas visíveis) ---
   applyFilters(false);
 });
 </script>
@@ -1163,11 +1140,37 @@ wp
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p><span class="footer-brand">Laboratoire de l’Innovation et du Futur du Travail</span><br> <span class="footer-affiliation">HEC Paris · Hi! Paris</span></p>
+<p><span class="footer-brand">Laboratoire de l’Innovation et du Futur du Travail</span> <span class="footer-affiliation">HEC Paris · Hi! Paris</span></p>
 </div>   
     <div class="nav-footer-center">
-<p><a href="publications.html">Publications</a> · <a href="ai-trackers.html">Trackers IA</a> · <a href="innovation-data.html">Données</a> · <a href="membres.html">Équipe</a></p>
-</div>
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="./publications.html">
+<p>Publications</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="./ai-trackers.html">
+<p>Trackers IA</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="./innovation-data.html">
+<p>Données</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="./membres.html">
+<p>Équipe</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="./a-propos.html">
+<p>À propos</p>
+</a>
+  </li>  
+</ul>
+    </div>
     <div class="nav-footer-right">
 <p>© 2025 Laboratoire de l’Innovation</p>
 </div>

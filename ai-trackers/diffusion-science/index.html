@@ -43,7 +43,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-e8be56db37bdd2d1bb4117ea9d5a4dfc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-48ac53c71cc17be1182cc1bde471be60.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -256,11 +256,9 @@ document.addEventListener('DOMContentLoaded', () => {
 <link rel="stylesheet" href="../../assets/css/diffusion-science.css">
 <link rel="stylesheet" href="../../assets/css/superstars.css">
 <style>
-/* Scoped override: outer ds-nav buttons keep underline style */
 .ds-nav .nav-btn { border:none; border-radius:0; background:none; border-bottom:2px solid transparent; }
 .ds-nav .nav-btn.active { background:none; border-color:#2563eb; color:#2563eb; }
 .ds-nav .nav-btn:hover:not(.active) { background:none; color:#1a1a2e; }
-/* Inner ss-nav buttons keep pill style */
 .ss-nav .nav-btn { border:1.5px solid #d1d5db !important; border-radius:8px !important; background:#fff !important; color:#374151 !important; border-bottom:1.5px solid #d1d5db !important; }
 .ss-nav .nav-btn.active { background:#2563eb !important; border-color:#2563eb !important; color:#fff !important; }
 </style>
@@ -417,7 +415,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 <div id="tab-papers" class="section">
   <div class="chart-card">
-    <h3 class="anchored">Publications scientifiques superstar</h3>
+    <h3 class="anchored">Publications scientifiques les plus citées</h3>
     <div class="desc">Publications les plus citées par les brevets IA européens — classées par nombre de brevets citants distincts.</div>
     <div id="papers-table"></div>
     <div class="note">Source : patCit (EPO), OpenAlex · Seules les citations observées (mappées) sont comptabilisées.</div>
@@ -426,7 +424,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <div id="tab-time" class="section">
   <div class="chart-card">
     <h3 class="anchored">Évolution des brevets IA — top 15 déposants (1990–2023)</h3>
-    <div class="desc">Nombre de brevets IA par année pour chaque déposant superstar (équivalent fractionné). Permet d'observer la montée en puissance des nouveaux acteurs et le déclin des anciens.</div>
+    <div class="desc">Nombre de brevets IA par année pour chaque déposant principal (équivalent fractionné). Permet d'observer la montée en puissance des nouveaux acteurs et le déclin des anciens.</div>
     <div id="ch-timeseries" style="height:500px"></div>
     <div class="note">Source : REGPAT 202602, patCit, OpenAlex · Top 15 déposants par volume cumulé 1990–2023.</div>
   </div>
@@ -440,7 +438,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <script src="../../assets/js/superstars.js"></script>
 <section id="à-propos-de-ce-tracker" class="level2">
 <h2 class="anchored" data-anchor-id="à-propos-de-ce-tracker">À propos de ce tracker</h2>
-<p>Ce tableau de bord analyse les brevets européens (EPO) entre <strong>1990 et 2024</strong> qui citent des publications scientifiques identifiées comme relevant de l’intelligence artificielle, ainsi que les <strong>acteurs superstar</strong> — entreprises, inventeurs et publications — au cœur de cette dynamique.</p>
+<p>Ce tableau de bord analyse les brevets européens (EPO) entre <strong>1990 et 2024</strong> qui citent des publications scientifiques identifiées comme relevant de l’intelligence artificielle, ainsi que les principaux acteurs — entreprises, inventeurs et publications — au cœur de cette dynamique.</p>
 <section id="auteure" class="level3">
 <h3 class="anchored" data-anchor-id="auteure">Auteure</h3>
 <p><strong>Gabriela Terra</strong> (HEC Paris)</p>
@@ -481,7 +479,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </tr>
 <tr class="even">
 <td>Acteurs clés</td>
-<td>Top déposants, inventeurs et publications superstar</td>
+<td>Top déposants, inventeurs et publications les plus citées</td>
 </tr>
 </tbody>
 </table>
@@ -936,11 +934,37 @@ document.addEventListener('DOMContentLoaded', () => {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p><span class="footer-brand">Laboratoire de l’Innovation et du Futur du Travail</span><br> <span class="footer-affiliation">HEC Paris · Hi! Paris</span></p>
+<p><span class="footer-brand">Laboratoire de l’Innovation et du Futur du Travail</span> <span class="footer-affiliation">HEC Paris · Hi! Paris</span></p>
 </div>   
     <div class="nav-footer-center">
-<p><a href="publications.html">Publications</a> · <a href="ai-trackers.html">Trackers IA</a> · <a href="innovation-data.html">Données</a> · <a href="membres.html">Équipe</a></p>
-</div>
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../../publications.html">
+<p>Publications</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../ai-trackers.html">
+<p>Trackers IA</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../innovation-data.html">
+<p>Données</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../membres.html">
+<p>Équipe</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../a-propos.html">
+<p>À propos</p>
+</a>
+  </li>  
+</ul>
+    </div>
     <div class="nav-footer-right">
 <p>© 2025 Laboratoire de l’Innovation</p>
 </div>

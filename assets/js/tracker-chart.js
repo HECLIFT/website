@@ -146,7 +146,7 @@
       const data = getCountryData(code, currentIndicator);
 
       return {
-        name: country ? `${country.flag} ${country.name}` : code,
+        name: country ? country.name : code,
         type: 'line',
         smooth: true,
         symbol: 'none',
@@ -174,7 +174,7 @@
       const data = getWavesData(code, waveKey);
 
       return {
-        name: country ? `${country.flag} ${country.name}` : code,
+        name: country ? country.name : code,
         type: 'line',
         smooth: true,
         symbol: 'none',
@@ -436,7 +436,7 @@
       const chip = document.createElement('button');
       chip.className = 'country-chip' + (selectedCountries.includes(code) ? ' active' : '');
       chip.dataset.code = code;
-      chip.innerHTML = `${data.flag} ${data.name}`;
+      chip.innerHTML = data.name;
 
       chip.addEventListener('click', () => {
         if (selectedCountries.includes(code)) {
