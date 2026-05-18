@@ -1395,13 +1395,18 @@ footer.footer {
 .quarto-title-block,
 header#title-block-header { display: none !important; }
 
-/* Full-width layout — remove all column constraints */
+/* Full-width layout — span ALL grid columns */
 body { background: var(--bg) !important; }
 #quarto-content { padding: 0 !important; }
-#quarto-content.page-layout-full { display: block !important; }
 main.content,
-main#quarto-document-content { padding: 0 !important; max-width: 100% !important; width: 100% !important; }
-.column-page { max-width: 100% !important; width: 100% !important; margin: 0 !important; }
+main#quarto-document-content {
+  padding: 0 !important;
+  grid-column: 1 / -1 !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  min-width: 0;
+}
+.column-page { grid-column: 1 / -1 !important; }
 
 /* Navbar — force white regardless of data-bs-theme */
 .navbar,
