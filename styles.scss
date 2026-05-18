@@ -635,8 +635,23 @@ hr {
 }
 .partner-cell:hover img { opacity: 1; filter: grayscale(0); }
 
-/* Classe antiga (shortcode {{< partners >}}) */
-.brands { display: none; } /* desactivada — usar .partners-grid no index.qmd */
+/* Partners shortcode */
+.brands {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0;
+}
+.brands img {
+  height: 40px;
+  width: auto;
+  opacity: 0.7;
+  filter: grayscale(40%);
+  transition: opacity .2s, filter .2s;
+}
+.brands img:hover { opacity: 1; filter: grayscale(0); }
 
 
 /* =======================================================
@@ -1258,11 +1273,25 @@ body { background: var(--bg) !important; }
 .page-layout-full > .content { padding: 0 !important; max-width: 100% !important; }
 main.content { padding: 0 !important; }
 
-/* Homepage — restore Bootstrap card padding */
+/* Homepage */
 .home-block { margin-left: 1.5rem; margin-right: 1.5rem; }
 @media (min-width: 992px) {
   .home-block { margin-left: 3rem; margin-right: 3rem; }
 }
+.kpis.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.kpi {
+  text-align: center;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+.kpi .icon { font-size: 1.8rem; color: var(--accent); margin-bottom: .5rem; display: block; }
+.kpi .num  { font-size: 2rem; font-weight: 700; font-family: var(--display); color: var(--fg); }
+.kpi .label { font-size: .8rem; color: var(--fg3); text-transform: uppercase; letter-spacing: .06em; margin-top: .2rem; }
 #quarto-content { padding: 0 !important; }
 #quarto-document-content { padding: 0 !important; margin: 0 !important; }
 .card { border-radius: 0 !important; }
