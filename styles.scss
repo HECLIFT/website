@@ -1390,10 +1390,31 @@ footer.footer {
 /* =======================================================
    Quarto overrides
    ======================================================= */
-.quarto-title-block { display: none; }
+
+/* Hide title block */
+.quarto-title-block,
+header#title-block-header { display: none !important; }
+
+/* Full-width layout — remove all column constraints */
 body { background: var(--bg) !important; }
-.page-layout-full > .content { padding: 0 !important; max-width: 100% !important; }
-main.content { padding: 0 !important; }
+#quarto-content { padding: 0 !important; }
+#quarto-content.page-layout-full { display: block !important; }
+main.content,
+main#quarto-document-content { padding: 0 !important; max-width: 100% !important; width: 100% !important; }
+.column-page { max-width: 100% !important; width: 100% !important; margin: 0 !important; }
+
+/* Navbar — force white regardless of data-bs-theme */
+.navbar,
+.navbar[data-bs-theme],
+.navbar[data-bs-theme="dark"] {
+  background: rgba(255,255,255,0.96) !important;
+  --bs-navbar-color: var(--fg2) !important;
+  --bs-navbar-hover-color: var(--fg) !important;
+  --bs-navbar-brand-color: var(--fg) !important;
+  --bs-navbar-brand-hover-color: var(--fg) !important;
+  --bs-navbar-active-color: var(--fg) !important;
+  --bs-navbar-toggler-border-color: var(--border) !important;
+}
 
 /* Homepage */
 .home-block { margin-left: 1.5rem; margin-right: 1.5rem; }
