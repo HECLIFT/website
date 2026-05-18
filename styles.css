@@ -1028,9 +1028,13 @@ hr {
 .pubpage header#title-block-header .title { display: block; text-align: center; }
 .pubpage header#title-block-header { margin-bottom: 1.8rem; padding-bottom: .8rem; border-bottom: 1px solid var(--border); }
 
-/* Publications page — padding and toolbar spacing */
-.pubpage main#quarto-document-content { padding: 56px 56px 80px !important; }
-.pubs-toolbar { padding-top: 48px; margin-bottom: 40px !important; }
+/* Publications page — toolbar spacing */
+.pubs-toolbar {
+  margin-top: 56px !important;
+  margin-bottom: 40px !important;
+  padding: 0 56px !important;
+}
+#listing-pubslist { padding: 0 56px 80px !important; }
 .pubpage .quarto-title-meta {
   display: flex; flex-wrap: wrap; gap: .5rem; align-items: baseline;
   font-family: var(--mono); font-size: .88rem;
