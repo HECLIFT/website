@@ -1176,6 +1176,27 @@ hr {
 }
 
 /* Member page hero (pages individuais) */
+/* Inner pages — padding so content isn't edge-to-edge */
+.memberpage main#quarto-document-content,
+.pubpage:not(.homepage) main#quarto-document-content {
+  padding: 56px 56px 80px !important;
+}
+
+/* Membres page section headings — match mockup style */
+.memberpage section.level2 { margin-bottom: 56px; }
+.memberpage section.level2:last-child { margin-bottom: 0; }
+.memberpage section.level2 > h2 {
+  font-family: var(--mono) !important;
+  font-size: 10px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: var(--fg3) !important;
+  padding-bottom: 16px !important;
+  border-bottom: 1px solid var(--border) !important;
+  margin-bottom: 28px !important;
+}
+
 .memberpage header#title-block-header { display: none; }
 .member-hero {
   display: grid;
@@ -1346,44 +1367,53 @@ footer.footer {
   letter-spacing: 0.06em !important;
 }
 
-/* Member grid — uniform photo size */
+/* Member grid — flex row matching mockup */
 .members-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 2rem;
-  margin: 1.5rem 0 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid var(--border);
+  margin: 0 0 2rem;
 }
 .member-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+  width: 200px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--border);
   text-decoration: none !important;
   color: inherit;
+  transition: background .2s;
+  display: flex;
+  flex-direction: column;
 }
-.member-card:hover .member-name { color: var(--accent); }
+.member-card:last-child { border-right: none; }
+.member-card:hover { background: var(--bg2); }
 .member-photo {
-  width: 140px;
-  height: 140px;
+  width: 100%;
+  height: 200px;
   object-fit: cover;
-  object-position: top;
-  border: 1px solid var(--border);
-  filter: grayscale(15%);
+  object-position: top center;
+  border-bottom: 1px solid var(--border);
+  filter: grayscale(20%);
   display: block;
+  transition: filter .3s;
 }
+.member-card:hover .member-photo { filter: grayscale(0); }
 .member-name {
-  font-size: .95rem;
-  font-weight: 600;
-  margin: .6rem 0 .15rem;
   font-family: var(--display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--fg);
+  letter-spacing: -0.01em;
+  margin: 0 0 3px;
+  padding: 14px 16px 0;
 }
 .member-role {
-  font-size: .75rem;
-  color: var(--fg3);
   font-family: var(--mono);
+  font-size: 9.5px;
   text-transform: uppercase;
-  letter-spacing: .06em;
+  letter-spacing: .08em;
+  color: var(--fg3);
   margin: 0;
+  padding: 0 16px 14px;
 }
 
 
@@ -1500,50 +1530,7 @@ main header#title-block-header {
 
 /* -------- 1. Fotos dos membros uniformizadas (160×160) -------- */
 
-/* Listing de membros (membres.html) — força aspect-ratio 1/1 e tamanho fixo */
-.members-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 2rem;
-  margin: 1.5rem 0 2rem;
-}
-.member-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  text-decoration: none !important;
-  color: inherit;
-}
-.member-card:hover .member-name { color: var(--accent); }
-
-/* Foto principal nos listings — tamanho UNIFORME 160×160 */
-.member-photo,
-.members-grid .member-card img {
-  width: 160px !important;
-  height: 160px !important;
-  object-fit: cover !important;
-  object-position: top center !important;
-  border: 1px solid var(--border);
-  filter: grayscale(15%);
-  display: block;
-  border-radius: 0;
-  flex-shrink: 0;
-}
-.member-name {
-  font-size: .95rem;
-  font-weight: 600;
-  margin: .6rem 0 .15rem;
-  font-family: var(--display);
-}
-.member-role {
-  font-size: .75rem;
-  color: var(--fg3);
-  font-family: var(--mono);
-  text-transform: uppercase;
-  letter-spacing: .06em;
-  margin: 0;
-}
+/* (member CSS consolidated above) */
 
 /* Linha de cards (.membres-row dentro de shortcode {{< members-grid >}}) */
 .membre-card {
