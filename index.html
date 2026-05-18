@@ -240,32 +240,82 @@ document.addEventListener('DOMContentLoaded', () => {
 </header>
 
 
-<!-- HERO -->
-<section class="home-block card card-body text-center py-5 mb-5 rounded-3 shadow-sm">
-<h1 class="mb-3">
-Laboratoire de l’Innovation et du Futur du Travail
-</h1>
-<p class="lead mx-auto" style="max-width: 900px;">
-Plateforme dédiée aux <strong>travaux</strong>, <strong>études</strong> et <strong>notes</strong> sur l’innovation et le futur du travail.
-</p>
-<p class="mt-3">
-<a class="btn btn-primary me-2" href="publications.html">Voir nos publications</a> <a class="btn btn-outline-secondary" href="ai-trackers.html">Voir nos indicateurs</a>
-</p>
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Laboratoire de recherche · HEC Paris · Hi! Paris</div>
+    <div>
+      <div class="hero-logo-area">
+        <img src="./images/logo.png" alt="LIFT">
+        <div class="hero-logo-text">Laboratoire de l'Innovation<br>et du Futur du Travail</div>
+      </div>
+      <h1 class="hero-h1">Innovation<br>&amp; Futur<br>du Travail</h1>
+      <p class="hero-subtitle">Analyses empiriques sur l'impact de l'intelligence artificielle, les dynamiques d'innovation et les transformations structurelles du marché du travail.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="publications.html">Publications →</a>
+        <a class="btn-outline" href="ai-trackers.html">Trackers IA</a>
+      </div>
+    </div>
+    <div></div>
+  </div>
+  <div class="hero-right">
+    <div class="panel-eyebrow">En chiffres</div>
+    <div class="panel-stats">
+      <div class="stat">
+        <div class="stat-num">05</div>
+        <div class="stat-meta">
+          <div class="stat-key">Publications</div>
+          <div class="stat-sub">Working papers · Notes</div>
+        </div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">05</div>
+        <div class="stat-meta">
+          <div class="stat-key">Trackers interactifs</div>
+          <div class="stat-sub">IA · Innovation · Productivité</div>
+        </div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">06</div>
+        <div class="stat-meta">
+          <div class="stat-key">Membres &amp; fellows</div>
+          <div class="stat-sub">Direction · Fellows · Conseil</div>
+        </div>
+      </div>
+    </div>
+    <div class="panel-feed">
+      <div class="panel-feed-head">Activité récente</div>
+      <div class="feed-row">
+        <span class="d">fév. 2026</span>
+        <span class="k">Note</span>
+        <span class="t"><a href="pubs/politique-travail/">La politique au travail</a></span>
+      </div>
+      <div class="feed-row">
+        <span class="d">oct. 2025</span>
+        <span class="k">Paper</span>
+        <span class="t"><a href="pubs/flexicurity/">Cost of Failure &amp; Flexicurity</a></span>
+      </div>
+      <div class="feed-row">
+        <span class="d">juil. 2025</span>
+        <span class="k">Paper</span>
+        <span class="t"><a href="pubs/ai-innov/">IA &amp; données de brevets</a></span>
+      </div>
+      <div class="feed-row">
+        <span class="d">jan. 2025</span>
+        <span class="k">Data</span>
+        <span class="t"><a href="innovation-data/innovation-hightech/">Tracker Innovation High-Tech</a></span>
+      </div>
+    </div>
+  </div>
 </section>
-<hr>
-<!-- KPIs -->
-<section class="home-block card card-body py-4 mb-5 shadow-sm">
-<h2 class="h3 mb-4 anchored">
-Nos activités
-</h2>
-<div class="kpis grid-3"><div class="kpi"><span class="bi bi-journal-text icon"></span><div class="num">5</div><div class="label">Publications</div></div><div class="kpi"><span class="bi bi-graph-up icon"></span><div class="num">5</div><div class="label">Trackers interactifs</div></div><div class="kpi"><span class="bi bi-people icon"></span><div class="num">6</div><div class="label">Membres &amp; fellows</div></div></div>
-</section>
-<hr>
-<!-- À LA UNE -->
-<section class="home-block card card-body py-4 mb-5 shadow-sm feature-card">
-<h2 class="h3 mb-3 anchored">
-À la une
-</h2>
+
+<!-- PUBLICATION FEATURED -->
+<div class="spread">
+  <div class="section-head">
+    <span class="section-idx">01 / Publications</span>
+    <h2 class="section-h anchored">Dernière publication</h2>
+    <a class="btn-outline btn-sm" href="publications.html">Toutes →</a>
+  </div>
+  <div class="section-body">
 <div class="pub-feature">
 <div class="pub-feature-img">
 <img src="./images/pubs/politique-travail.png" alt="Illustration – La politique au travail : Vécu en entreprise et fractures politiques des salariés en France" loading="lazy">
@@ -284,15 +334,70 @@ La politique au travail : Vécu en entreprise et fractures politiques des salari
 </div>
 </div>
 </div>
-</section>
-<hr>
+  </div>
+</div>
+
+<!-- TRACKERS & DONNÉES -->
+<div class="data-section">
+  <div class="data-inner">
+    <div class="data-head">
+      <span class="data-head-title">Trackers &amp; Données</span>
+      <span class="data-head-sub">02 / Suivi empirique</span>
+    </div>
+    <div class="data-grid">
+      <div class="data-cell">
+        <div class="data-cell-cat">Tracker · IA · Emploi</div>
+        <div class="data-cell-title">Diffusion IA (emploi)</div>
+        <div class="data-cell-desc">Suivi de l'adoption de l'IA dans les secteurs d'activité et son impact sur l'emploi en France.</div>
+        <div class="data-cell-footer"><span>Mensuel</span><a href="ai-trackers/diffusion-emploi/">→ Voir</a></div>
+      </div>
+      <div class="data-cell">
+        <div class="data-cell-cat">Tracker · IA · Science</div>
+        <div class="data-cell-title">Diffusion IA (science)</div>
+        <div class="data-cell-desc">Mesure de l'intégration de l'IA dans la production scientifique et les brevets européens.</div>
+        <div class="data-cell-footer"><span>Annuel</span><a href="ai-trackers/diffusion-science/">→ Voir</a></div>
+      </div>
+      <div class="data-cell">
+        <div class="data-cell-cat">Données · Brevets</div>
+        <div class="data-cell-title">Innovation high-tech</div>
+        <div class="data-cell-desc">Brevets PCT dans 10 secteurs high-tech : UE, États-Unis, Chine, Japon.</div>
+        <div class="data-cell-footer"><span>Semestriel</span><a href="innovation-data/innovation-hightech/">→ Voir</a></div>
+      </div>
+      <div class="data-cell">
+        <div class="data-cell-cat">Données · Macro</div>
+        <div class="data-cell-title">Productivité</div>
+        <div class="data-cell-desc">Indicateurs de productivité totale des facteurs pour les principales économies mondiales.</div>
+        <div class="data-cell-footer"><span>Semestriel</span><a href="innovation-data/productivite/">→ Voir</a></div>
+      </div>
+      <div class="data-cell">
+        <div class="data-cell-cat">Données · Rupture</div>
+        <div class="data-cell-title">Innovation de rupture</div>
+        <div class="data-cell-desc">Mesure des innovations technologiques de rupture à travers les données de brevets internationaux.</div>
+        <div class="data-cell-footer"><span>Semestriel</span><a href="innovation-data/breakthrough/">→ Voir</a></div>
+      </div>
+      <div class="data-cell" style="background:var(--bg3);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;">
+        <div style="font-family:var(--mono);font-size:9px;color:var(--fg3);letter-spacing:.12em;text-transform:uppercase;">Vue d'ensemble</div>
+        <a href="innovation-data.html" style="font-family:var(--display);font-size:1.1rem;font-weight:700;color:var(--fg3);letter-spacing:-.02em;text-decoration:none;">Toutes les données →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- PARTENAIRES -->
-<section class="home-block card card-body py-4 mb-5 shadow-sm">
-<h2 class="h3 mb-4 anchored">
-Partenaires &amp; soutiens
-</h2>
-<div class="brands"><a href="https://www.hec.edu/"><img src="./images/brands/HEC_Paris.png" alt="HEC Paris"></a><a href="https://www.hi-paris.fr/"><img src="./images/brands/hi_paris.png" alt="Hi! Paris"></a><a href="https://www.iledefrance.fr/"><img src="./images/brands/region_idf.svg" alt="Région Île-de-France"></a><a href="https://www.ip-paris.fr/recherche/interdisciplinary-centers/innovation-entrepreneurship-institute"><img src="./images/brands/iei.png" alt="IEI"></a></div>
-</section>
+<div class="spread">
+  <div class="section-head">
+    <span class="section-idx">03 / Réseau</span>
+    <h2 class="section-h anchored">Partenaires &amp; soutiens</h2>
+  </div>
+  <div class="section-body">
+    <div class="partners-grid">
+      <a class="partner-cell" href="https://www.hec.edu/" target="_blank"><img src="./images/brands/HEC_Paris.png" alt="HEC Paris"></a>
+      <a class="partner-cell" href="https://www.hi-paris.fr/" target="_blank"><img src="./images/brands/hi_paris.png" alt="Hi! Paris"></a>
+      <a class="partner-cell" href="https://www.iledefrance.fr/" target="_blank"><img src="./images/brands/region_idf.svg" alt="Région Île-de-France"></a>
+      <a class="partner-cell" href="https://www.ip-paris.fr/recherche/interdisciplinary-centers/innovation-entrepreneurship-institute" target="_blank"><img src="./images/brands/iei.png" alt="IEI"></a>
+    </div>
+  </div>
+</div>
 
 
 

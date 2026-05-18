@@ -469,6 +469,90 @@ hr {
 .feed-text a { color: var(--accent); text-decoration: none; }
 .feed-text a:hover { text-decoration: underline; }
 
+/* Panel stats + feed (hero-right) */
+.panel-eyebrow {
+  padding: 56px 56px 0;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--fg3);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.panel-eyebrow::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.panel-stats { padding: 32px 56px 0; display: flex; flex-direction: column; }
+.stat {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 32px;
+}
+.stat:last-of-type { border-bottom: none; }
+.stat-num {
+  font-family: var(--display);
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--fg);
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+}
+.stat-meta { text-align: right; }
+.stat-key {
+  font-family: var(--display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--fg);
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+.stat-sub {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  color: var(--fg3);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.panel-feed {
+  margin-top: auto;
+  padding: 32px 56px 56px;
+  border-top: 1px solid var(--border);
+}
+.panel-feed-head {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fg3);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.panel-feed-head::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.feed-row {
+  display: grid;
+  grid-template-columns: 76px 60px 1fr;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: baseline;
+}
+.feed-row:last-child { border-bottom: none; }
+.feed-row .d { font-family: var(--mono); font-size: 10px; color: var(--fg3); letter-spacing: 0.06em; text-transform: uppercase; }
+.feed-row .k {
+  font-family: var(--mono); font-size: 9px; color: var(--fg2);
+  letter-spacing: 0.10em; text-transform: uppercase;
+  padding: 2px 6px; border: 1px solid var(--border2);
+  display: inline-block; justify-self: start;
+}
+.feed-row .t { font-family: var(--sans); font-size: 13px; color: var(--fg); line-height: 1.5; }
+.feed-row .t a { color: var(--fg); text-decoration: none; border-bottom: 1px solid var(--fg3); transition: border-color .15s; }
+.feed-row .t a:hover { border-color: var(--fg); text-decoration: none; }
+
 
 /* =======================================================
    Home page — bloco "última publicação"

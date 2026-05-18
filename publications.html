@@ -301,8 +301,7 @@ window.Quarto = {
 
 
 <div class="pubs-toolbar d-flex flex-wrap gap-2 align-items-center mb-3">
-<!-- search --> <input id="pubs-search" type="search" class="form-control form-control-sm" placeholder="Rechercher des publications…" style="max-width: 320px;"> <!-- tags get injected here -->
-<div id="pubs-tags" class="d-flex flex-wrap gap-1 ms-auto">
+<div id="pubs-tags" class="d-flex flex-wrap gap-1">
 
 </div>
 </div>
@@ -334,13 +333,30 @@ document.addEventListener('DOMContentLoaded', function () {
       body.insertBefore(metaRow, title);
     }
 
-    if (metaRow && pdfUrl) {
-      const btn = document.createElement('a');
-      btn.className = 'btn btn-sm btn-pdf stretched-link-fix';
-      btn.href = pdfUrl;
-      btn.setAttribute('download', '');
-      btn.textContent = 'PDF';
-      metaRow.prepend(btn);
+    // Image clicável → PDF
+    if (pdfUrl) {
+      const img = card.querySelector('.card-img-top, img');
+      if (img) {
+        const wrap = document.createElement('a');
+        wrap.href = pdfUrl;
+        wrap.target = '_blank';
+        wrap.style.display = 'block';
+        wrap.style.cursor = 'pointer';
+        img.parentNode.insertBefore(wrap, img);
+        wrap.appendChild(img);
+      }
+      // Título clicável → PDF
+      const titleEl = card.querySelector('.listing-title, .card-title');
+      if (titleEl) {
+        const a = document.createElement('a');
+        a.href = pdfUrl;
+        a.target = '_blank';
+        a.style.color = 'inherit';
+        a.style.textDecoration = 'none';
+        a.innerHTML = titleEl.innerHTML;
+        titleEl.innerHTML = '';
+        titleEl.appendChild(a);
+      }
     }
 
     const dateEl = card.querySelector('.listing-date');
@@ -352,9 +368,8 @@ document.addEventListener('DOMContentLoaded', function () {
     if (table) table.remove();
   });
 
-  // --- Filter state (sem toggle WP/PB — todas publicações visíveis) ---
+  // --- Filter state ---
   let selectedTag = null;
-  let searchText = '';
 
   const search = document.getElementById('pubs-search');
   const tagBar = document.getElementById('pubs-tags');
@@ -490,12 +505,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-pubslist">
-<div class="list grid quarto-listing-cols-4">
+<div class="list grid quarto-listing-cols-3">
 <div class="g-col-1" data-index="0" data-categories="RCVDMyVBOW1vY3JhdGllJTJDVHJhdmFpbCUyQ0ZyYW5jZSUyQ1BvbGl0aXF1ZQ==" data-listing-date-sort="1769900400000" data-listing-file-modified-sort="1775655065000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="3">
 <a href="./pubs/politique-travail/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="./images/pubs/politique-travail.png" class="thumbnail-image card-img" style="height: 100px;">
+<img loading="lazy" src="./images/pubs/politique-travail.svg" class="thumbnail-image card-img" style="height: 120px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -545,7 +560,7 @@ pb
 <a href="./pubs/flexicurity/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="./images/pubs/flexicurity.png" class="thumbnail-image card-img" style="height: 100px;">
+<img loading="lazy" src="./images/pubs/flexicurity.svg" class="thumbnail-image card-img" style="height: 120px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -593,7 +608,7 @@ wp
 <a href="./pubs/ai-innov/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="./images/pubs/ai-innov.png" class="thumbnail-image card-img" style="height: 100px;">
+<img loading="lazy" src="./images/pubs/ai-innov.svg" class="thumbnail-image card-img" style="height: 120px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -639,7 +654,7 @@ wp
 <a href="./pubs/ai-tracker/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="./images/pubs/ai-tracker.png" class="thumbnail-image card-img" style="height: 100px;">
+<img loading="lazy" src="./images/pubs/ai-tracker.svg" class="thumbnail-image card-img" style="height: 120px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -689,7 +704,7 @@ wp
 <a href="./pubs/ai-exposure/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="./images/pubs/ai-exposure.png" class="thumbnail-image card-img" style="height: 100px;">
+<img loading="lazy" src="./images/pubs/ai-exposure.svg" class="thumbnail-image card-img" style="height: 120px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">

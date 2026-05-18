@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" font-family="'IBM Plex Mono', monospace">
+  <defs>
+    <pattern id="grid-pt" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#d0d7de" stroke-width="0.5" opacity="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="500" fill="#eef0f3"/>
+  <rect width="800" height="500" fill="url(#grid-pt)"/>
+
+  <line x1="40" y1="60" x2="760" y2="60" stroke="#c4cdd6" stroke-width="1"/>
+  <text x="40" y="48" font-size="11" fill="#8c959f" letter-spacing="2">// NOTE DE POLITIQUE · HEC PARIS</text>
+  <text x="760" y="48" font-size="11" fill="#8c959f" text-anchor="end" letter-spacing="2">FRANCE · 2026</text>
+
+  <text x="40" y="130" font-family="'Space Grotesk', sans-serif" font-size="52" font-weight="700" fill="#0d1117" letter-spacing="-1.5">La politique</text>
+  <text x="40" y="182" font-family="'Space Grotesk', sans-serif" font-size="52" font-weight="700" fill="#0d1117" letter-spacing="-1.5">au travail</text>
+  <text x="40" y="218" font-size="12" fill="#57606a" letter-spacing="1">FRACTURES POLITIQUES · SALARIÉS · ENQUÊTE 3 900 OBS.</text>
+
+  <!-- Diverging bar chart: political preferences -->
+  <g transform="translate(40, 260)">
+    <!-- Axis -->
+    <line x1="180" y1="0" x2="180" y2="180" stroke="#c4cdd6" stroke-width="1"/>
+    <text x="178" y="-8" font-size="9" fill="#8c959f" text-anchor="middle" letter-spacing="1">CENTRE</text>
+
+    <!-- Left bars (RN) -->
+    <rect x="60" y="10" width="118" height="22" fill="#57606a" opacity="0.7"/>
+    <rect x="80" y="42" width="98" height="22" fill="#57606a" opacity="0.5"/>
+    <rect x="100" y="74" width="78" height="22" fill="#57606a" opacity="0.35"/>
+    <rect x="120" y="106" width="58" height="22" fill="#57606a" opacity="0.25"/>
+
+    <!-- Right bars (LFI) -->
+    <rect x="182" y="10" width="110" height="22" fill="#0050a0" opacity="0.7"/>
+    <rect x="182" y="42" width="85" height="22" fill="#0050a0" opacity="0.5"/>
+    <rect x="182" y="74" width="60" height="22" fill="#0050a0" opacity="0.35"/>
+    <rect x="182" y="106" width="40" height="22" fill="#0050a0" opacity="0.25"/>
+
+    <!-- Labels -->
+    <text x="55" y="26" font-size="9" fill="#0d1117" text-anchor="end" letter-spacing="0.5">Conditions de travail</text>
+    <text x="55" y="58" font-size="9" fill="#0d1117" text-anchor="end" letter-spacing="0.5">Justice organ.</text>
+    <text x="55" y="90" font-size="9" fill="#0d1117" text-anchor="end" letter-spacing="0.5">Confiance direction</text>
+    <text x="55" y="122" font-size="9" fill="#0d1117" text-anchor="end" letter-spacing="0.5">Dialogue social</text>
+
+    <!-- Legend -->
+    <rect x="0" y="155" width="12" height="12" fill="#57606a" opacity="0.7"/>
+    <text x="16" y="165" font-size="9" fill="#57606a" letter-spacing="0.5">DROITE</text>
+    <rect x="320" y="155" width="12" height="12" fill="#0050a0" opacity="0.7"/>
+    <text x="336" y="165" font-size="9" fill="#0050a0" letter-spacing="0.5">GAUCHE</text>
+  </g>
+
+  <line x1="40" y1="470" x2="760" y2="470" stroke="#d0d7de" stroke-width="1"/>
+  <text x="40" y="490" font-size="10" fill="#8c959f" letter-spacing="1">AUTEURS · ALGAN · BERGEAUD · FROUARD</text>
+  <text x="760" y="490" font-size="10" fill="#8c959f" text-anchor="end" letter-spacing="1">HEC PARIS · LIFT</text>
+</svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" font-family="'IBM Plex Mono', monospace">
+  <defs>
+    <pattern id="grid-at" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#d0d7de" stroke-width="0.5" opacity="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="500" fill="#eef0f3"/>
+  <rect width="800" height="500" fill="url(#grid-at)"/>
+
+  <line x1="40" y1="60" x2="760" y2="60" stroke="#c4cdd6" stroke-width="1"/>
+  <text x="40" y="48" font-size="11" fill="#8c959f" letter-spacing="2">// WORKING PAPER · DIFFUSION IA</text>
+  <text x="760" y="48" font-size="11" fill="#8c959f" text-anchor="end" letter-spacing="2">FRANCE · SECTEURS · 2025</text>
+
+  <text x="40" y="125" font-family="'Space Grotesk', sans-serif" font-size="52" font-weight="700" fill="#0d1117" letter-spacing="-1.5">Diffusion IA</text>
+  <text x="40" y="177" font-family="'Space Grotesk', sans-serif" font-size="52" font-weight="700" fill="#0d1117" letter-spacing="-1.5">en France</text>
+  <text x="40" y="215" font-size="12" fill="#57606a" letter-spacing="1">ADOPTION · SECTEURS · TAILLE · TERRITOIRE</text>
+
+  <!-- Stacked bar chart: AI adoption by sector -->
+  <g transform="translate(40, 250)">
+    <text x="0" y="-10" font-size="9" fill="#8c959f" letter-spacing="1">TAUX D'ADOPTION IA PAR SECTEUR (%)</text>
+
+    <!-- Bars -->
+    <rect x="0"   y="0"  width="580" height="20" fill="#0050a0" opacity="0.85"/>
+    <rect x="0"   y="28" width="460" height="20" fill="#0050a0" opacity="0.72"/>
+    <rect x="0"   y="56" width="380" height="20" fill="#0050a0" opacity="0.60"/>
+    <rect x="0"   y="84" width="280" height="20" fill="#0078d4" opacity="0.55"/>
+    <rect x="0"   y="112" width="200" height="20" fill="#0078d4" opacity="0.45"/>
+    <rect x="0"   y="140" width="130" height="20" fill="#8c959f" opacity="0.45"/>
+
+    <!-- Labels right -->
+    <text x="586" y="14"  font-size="9" fill="#0050a0" letter-spacing="0.5">Finance · Assurance  58%</text>
+    <text x="466" y="42"  font-size="9" fill="#0050a0" letter-spacing="0.5">Conseil · Audit  46%</text>
+    <text x="386" y="70"  font-size="9" fill="#0050a0" letter-spacing="0.5">Informatique  38%</text>
+    <text x="286" y="98"  font-size="9" fill="#0078d4" letter-spacing="0.5">Industrie  28%</text>
+    <text x="206" y="126" font-size="9" fill="#0078d4" letter-spacing="0.5">Commerce  20%</text>
+    <text x="136" y="154" font-size="9" fill="#8c959f" letter-spacing="0.5">BTP  13%</text>
+
+    <!-- Growth annotation -->
+    <text x="520" y="185" font-size="9" fill="#8c959f" letter-spacing="0.5">↑ +67% depuis 2022</text>
+  </g>
+
+  <line x1="40" y1="470" x2="760" y2="470" stroke="#d0d7de" stroke-width="1"/>
+  <text x="40" y="490" font-size="10" fill="#8c959f" letter-spacing="1">AUTEURS · BERGEAUD ET AL.</text>
+  <text x="760" y="490" font-size="10" fill="#8c959f" text-anchor="end" letter-spacing="1">HEC PARIS · LIFT · 2025</text>
+</svg>
