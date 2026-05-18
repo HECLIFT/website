@@ -106,13 +106,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
-/* Critical overrides — inline fallback in case external CSS has MIME issues */
+/* Critical overrides — inline to guarantee loading regardless of external CSS */
 header#title-block-header,
 .quarto-title-block { display: none !important; height: 0 !important; overflow: hidden !important; }
-#quarto-content, #quarto-content.page-columns { display: block !important; padding: 0 !important; margin: 0 !important; }
-main#quarto-document-content, main.content { display: block !important; padding: 0 !important; margin: 0 !important; max-width: 100% !important; width: 100% !important; }
-.hero { display: grid !important; grid-template-columns: 55% 1fr !important; min-height: calc(100vh - 54px) !important; }
+
+#quarto-content, #quarto-content.page-columns {
+  display: block !important; padding: 0 !important; margin: 0 !important;
+}
+main#quarto-document-content, main.content {
+  display: block !important; padding: 0 !important; margin: 0 !important;
+  max-width: 100% !important; width: 100% !important;
+}
+.hero {
+  display: grid !important; grid-template-columns: 55% 1fr !important;
+  min-height: calc(100vh - 54px) !important;
+}
 .hero-logo-area img { height: 52px !important; width: auto !important; }
+
+/* Navbar — force white */
+.navbar, nav.navbar, header .navbar,
+.navbar[data-bs-theme], .navbar[data-bs-theme="dark"],
+nav[data-bs-theme="dark"] {
+  background: rgba(255,255,255,0.96) !important;
+  background-color: rgba(255,255,255,0.96) !important;
+  border-bottom: 1px solid #d0d7de !important;
+  --bs-navbar-color: #57606a !important;
+  --bs-navbar-hover-color: #0d1117 !important;
+  --bs-navbar-brand-color: #0d1117 !important;
+  --bs-navbar-active-color: #0d1117 !important;
+}
+.navbar .navbar-brand, .navbar .nav-link, .navbar .navbar-nav .nav-link {
+  color: #57606a !important;
+}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
