@@ -179,10 +179,11 @@ hr {
    ======================================================= */
 .btn {
   font-family: var(--display);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   border-radius: 0;
-  padding: 10px 22px;
+  padding: 14px 28px;
+  line-height: 1.4;
   transition: background .2s, box-shadow .2s, border-color .2s, color .2s;
   text-decoration: none !important;
   letter-spacing: -0.01em;
@@ -218,23 +219,24 @@ hr {
 }
 .btn-outline {
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   background: transparent;
   color: var(--fg2);
   border: 1px solid var(--border2);
-  padding: 11px 20px;
+  padding: 14px 28px;
   cursor: pointer;
   text-decoration: none !important;
   transition: border-color 0.2s, color 0.2s;
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  line-height: 1.4;
 }
 .btn-outline:hover { border-color: var(--fg2); color: var(--fg); }
-.btn-sm { padding: 7px 16px !important; font-size: 12px !important; }
-.btn-xs { padding: 5px 12px !important; font-size: 11px !important; }
+.btn-sm { padding: 9px 18px !important; font-size: 12px !important; }
+.btn-xs { padding: 6px 14px !important; font-size: 11px !important; }
 .btn-ghost {
   background: var(--bg2);
   color: var(--fg2);
@@ -358,7 +360,8 @@ hr {
   padding: 100px 80px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 56px;
   position: relative;
   overflow: hidden;
   background: var(--bg);
@@ -373,7 +376,7 @@ hr {
 }
 .hero-tag {
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--fg3);
@@ -411,12 +414,12 @@ hr {
 }
 .hero-subtitle {
   font-family: var(--sans);
-  font-size: 18px;
+  font-size: 20px;
   color: var(--fg2);
-  max-width: 520px;
+  max-width: 560px;
   line-height: 1.7;
   font-weight: 300;
-  margin-bottom: 56px;
+  margin-bottom: 48px;
 }
 .hero-ctas { display: flex; gap: 12px; align-items: center; }
 
@@ -741,7 +744,7 @@ hr {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 36px 24px;
+  padding: 48px 32px;
   border-right: 1px solid var(--border);
   text-decoration: none !important;
   transition: background .2s;
@@ -749,7 +752,7 @@ hr {
 .partner-cell:last-child { border-right: none; }
 .partner-cell:hover { background: var(--bg2); }
 .partner-cell img {
-  height: 30px;
+  height: 52px;
   object-fit: contain;
   filter: grayscale(40%);
   opacity: 0.7;
@@ -1024,6 +1027,10 @@ hr {
 /* Quarto pub pages (shortcode {{< pub >}}) */
 .pubpage header#title-block-header .title { display: block; text-align: center; }
 .pubpage header#title-block-header { margin-bottom: 1.8rem; padding-bottom: .8rem; border-bottom: 1px solid var(--border); }
+
+/* Publications page — padding and toolbar spacing */
+.pubpage main#quarto-document-content { padding: 56px 56px 80px !important; }
+.pubs-toolbar { padding-top: 48px; margin-bottom: 40px !important; }
 .pubpage .quarto-title-meta {
   display: flex; flex-wrap: wrap; gap: .5rem; align-items: baseline;
   font-family: var(--mono); font-size: .88rem;
