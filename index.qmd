@@ -11,7 +11,7 @@ page-layout: full
   </p>
   <p class="mt-3">
     <a class="btn btn-primary me-2" href="publications.html">Voir nos publications</a>
-    <a class="btn btn-outline-secondary" href="trackers.html">Voir nos indicateurs</a>
+    <a class="btn btn-outline-secondary" href="ai-trackers.html">Voir nos indicateurs</a>
   </p>
 </section>
 <hr>
