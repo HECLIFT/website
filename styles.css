@@ -189,15 +189,27 @@ hr {
   letter-spacing: -0.01em;
 }
 .btn-primary {
-  background: var(--accent) !important;
-  border-color: var(--accent) !important;
-  color: #fff !important;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  line-height: 1.4;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none !important;
+  cursor: pointer;
+  border: 1px solid transparent;
+  background: var(--accent);
+  color: #fff;
+  transition: background .2s;
 }
 .btn-primary:hover, .btn-primary:focus {
-  background: var(--accent2) !important;
-  border-color: var(--accent2) !important;
-  box-shadow: 0 0 24px var(--accent-glow) !important;
-  color: #fff !important;
+  background: var(--accent2);
+  color: #fff;
+  text-decoration: none !important;
 }
 .btn-outline-primary,
 .btn-outline-secondary {
