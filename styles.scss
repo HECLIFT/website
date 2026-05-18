@@ -1388,25 +1388,44 @@ footer.footer {
 
 
 /* =======================================================
-   Quarto overrides
+   Quarto overrides — nuclear approach: kill the grid
    ======================================================= */
 
-/* Hide title block */
-.quarto-title-block,
-header#title-block-header { display: none !important; }
+/* Remove Quarto's page-columns grid entirely so main takes 100% width */
+#quarto-content,
+#quarto-content.page-columns,
+.quarto-container.page-columns {
+  display: block !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: 100% !important;
+  width: 100% !important;
+}
 
-/* Full-width layout — span ALL grid columns */
-body { background: var(--bg) !important; }
-#quarto-content { padding: 0 !important; }
+/* Make main full-width block */
 main.content,
 main#quarto-document-content {
+  display: block !important;
   padding: 0 !important;
-  grid-column: 1 / -1 !important;
+  margin: 0 !important;
   max-width: 100% !important;
   width: 100% !important;
   min-width: 0;
 }
-.column-page { grid-column: 1 / -1 !important; }
+
+/* Hide title block — all specificity variants */
+.quarto-title-block,
+header#title-block-header,
+body header#title-block-header,
+.pubpage header#title-block-header,
+main header#title-block-header {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
 
 /* Navbar — force white regardless of data-bs-theme */
 .navbar,
@@ -1440,8 +1459,6 @@ main#quarto-document-content {
 .kpi .icon { font-size: 1.8rem; color: var(--accent); margin-bottom: .5rem; display: block; }
 .kpi .num  { font-size: 2rem; font-weight: 700; font-family: var(--display); color: var(--fg); }
 .kpi .label { font-size: .8rem; color: var(--fg3); text-transform: uppercase; letter-spacing: .06em; margin-top: .2rem; }
-#quarto-content { padding: 0 !important; }
-#quarto-document-content { padding: 0 !important; margin: 0 !important; }
 .card { border-radius: 0 !important; }
 
 
