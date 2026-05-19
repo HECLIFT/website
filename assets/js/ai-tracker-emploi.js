@@ -1250,10 +1250,115 @@
       // Map
       await loadFranceMap();
 
+      // Amenities
+      await loadAmenities();
+      buildAmenities();
+
     } catch (err) {
       console.error('Error during dashboard load:', err);
     }
   }
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // AMENITIES (Conditions de travail)
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  let amenitiesChart = null;
+  let amenitiesMode = 'share';
+
+  const AMENITY_LABELS = {
+    'REMUNERATION_BENEFITS':      'Rémunération & avantages',
+    'DIVERSITY':                  'Diversité',
+    'WORK_LIFE_BALANCE':          'Équilibre vie pro/perso',
+    'LEADERSHIP':                 'Leadership',
+    'CULTURE_VALUES':             'Culture & valeurs',
+    'PROFESSIONAL_OPPORTUNITIES': 'Opportunités professionnelles'
+  };
+
+  async function loadAmenities() {
+    const txt = await fetchCsv(CONFIG.dataPath + 'amenities.csv');
+    const rows = Papa.parse(txt, { header: true, skipEmptyLines: true }).data;
+
+    const dateSet = new Set();
+    rows.forEach(r => dateSet.add(`${r.year}-${String(r.month).padStart(2, '0')}`));
+    DATA.amenitiesDates = Array.from(dateSet).sort();
+
+    DATA.amenitiesData = {};
+    rows.forEach(r => {
+      const cat = r.class_label;
+      if (!DATA.amenitiesData[cat]) DATA.amenitiesData[cat] = {};
+      const key = `${r.year}-${String(r.month).padStart(2, '0')}`;
+      DATA.amenitiesData[cat][key] = {
+        share: parseFloat(r.share_class_1) * 100,
+        total: parseInt(r.n_class_1)
+      };
+    });
+  }
+
+  function buildAmenities() {
+    const ctx = document.getElementById('ai-amenitiesChart');
+    if (!ctx) return;
+
+    const categories = Object.keys(AMENITY_LABELS);
+    const datasets = categories.map((cat, i) => ({
+      label: AMENITY_LABELS[cat],
+      data: DATA.amenitiesDates.map(d => DATA.amenitiesData[cat]?.[d]?.[amenitiesMode] ?? null),
+      borderColor: CONFIG.chartColors[i],
+      backgroundColor: CONFIG.chartColors[i] + '22',
+      fill: false,
+      tension: 0.3,
+      spanGaps: true
+    }));
+
+    amenitiesChart = new Chart(ctx, {
+      type: 'line',
+      data: { labels: DATA.amenitiesDates, datasets },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'nearest', intersect: false },
+        scales: {
+          y: {
+            ticks: {
+              callback: v => amenitiesMode === 'share'
+                ? v.toFixed(1) + ' %'
+                : v.toLocaleString('fr-FR')
+            }
+          }
+        },
+        plugins: { legend: { position: 'bottom' } }
+      }
+    });
+  }
+
+  window.toggleAmenMode = function() {
+    amenitiesMode = amenitiesMode === 'share' ? 'total' : 'share';
+    const lbl = document.getElementById('lblAmenMode');
+    if (lbl) lbl.textContent = amenitiesMode === 'share' ? 'Part (%)' : 'Total';
+    const btn = document.getElementById('btnAmenMode');
+    if (btn) btn.classList.toggle('active', amenitiesMode === 'total');
+
+    const categories = Object.keys(AMENITY_LABELS);
+    amenitiesChart.data.datasets.forEach((ds, i) => {
+      const cat = categories[i];
+      ds.data = DATA.amenitiesDates.map(d => DATA.amenitiesData[cat]?.[d]?.[amenitiesMode] ?? null);
+    });
+    amenitiesChart.options.scales.y.ticks.callback = v => amenitiesMode === 'share'
+      ? v.toFixed(1) + ' %'
+      : v.toLocaleString('fr-FR');
+    amenitiesChart.update();
+  };
+
+  window.downloadAmenitiesCSV = function() {
+    const lines = ['Date,Catégorie,Part (%),Total'];
+    DATA.amenitiesDates.forEach(d => {
+      Object.entries(AMENITY_LABELS).forEach(([cat, label]) => {
+        const v = DATA.amenitiesData[cat]?.[d];
+        if (v) lines.push(`${d},"${label}",${v.share.toFixed(4)},${v.total}`);
+      });
+    });
+    downloadCSV(`conditions_travail_ia_${today()}.csv`, lines.join('\n'));
+  };
 
   // Initialize when DOM is ready
   if (document.readyState === 'loading') {
