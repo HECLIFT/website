@@ -1308,8 +1308,6 @@
     const ctx = document.getElementById('ai-amenitiesChart');
     if (!ctx) return;
 
-    ctx.parentElement.style.height = '420px';
-
     const categories = Object.keys(AMENITY_LABELS);
     const datasets = categories.map((cat, i) => ({
       label: AMENITY_LABELS[cat],
