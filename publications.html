@@ -315,310 +315,168 @@ window.Quarto = {
 <!-- main -->
 <main class="content column-page" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Nos Publications</h1>
+<style>
+.pub-page { max-width: 820px; margin: 0 auto; padding: 0 1rem 4rem; }
+.pub-page-title { font-family: 'Space Grotesk',sans-serif; font-size: 2rem; font-weight: 700; color: #0E2A47; margin: 0 0 2rem 0; }
+.pub-filter-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem; }
+.pub-filter-btn { font-family: var(--mono,'IBM Plex Mono',monospace); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.3rem 0.75rem; border: 1.5px solid #D5DDE8; background: transparent; color: #55657D; border-radius: 3px; cursor: pointer; transition: all 0.15s; }
+.pub-filter-btn:hover, .pub-filter-btn.active { background: #0E2A47; border-color: #0E2A47; color: #fff; }
+.pub-filter-btn.active-type-wp { background: #3B4FA8; border-color: #3B4FA8; color: #fff; }
+.pub-filter-btn.active-type-pb { background: #9A3412; border-color: #9A3412; color: #fff; }
+.pub-list { border-top: 1px solid #E5E7EB; }
+.pub-entry { padding: 2.2rem 0; border-bottom: 1px solid #E5E7EB; }
+.pub-type-line { font-family: var(--mono,monospace); font-size: 0.65rem; letter-spacing: 0.09em; text-transform: uppercase; margin-bottom: 0.6rem; }
+.pub-type-wp { color: #3B4FA8; }
+.pub-type-pb { color: #9A3412; }
+.pub-entry h3 { font-family: 'Space Grotesk',sans-serif; font-size: 1.2rem; font-weight: 700; color: #0E2A47; margin: 0 0 0.4rem 0; line-height: 1.35; }
+.pub-authors { font-size: 0.88rem; color: #374151; margin-bottom: 0.25rem; }
+.pub-venue { font-size: 0.85rem; color: #6B7280; font-style: italic; margin-bottom: 0.8rem; }
+.pub-cats { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1rem; }
+.pub-cats .pub-cat { font-family: var(--mono,monospace); font-size: 0.6rem; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.12rem 0.45rem; border: 1px solid #D5DDE8; color: #7888A0; border-radius: 2px; }
+.pub-abstract-body { display: none; background: #F8FAFC; border-left: 3px solid #D5DDE8; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.9rem; color: #374151; line-height: 1.7; border-radius: 0 4px 4px 0; }
+.pub-abstract-body.open { display: block; }
+.pub-actions { display: flex; gap: 0.6rem; align-items: center; }
+.pub-abstract-btn { font-family: var(--mono,monospace); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.35rem 0.9rem; border: 1.5px solid #0E2A47; background: transparent; color: #0E2A47; border-radius: 3px; cursor: pointer; transition: all 0.15s; }
+.pub-abstract-btn:hover, .pub-abstract-btn.open { background: #0E2A47; color: #fff; }
+.pub-pdf-btn { font-family: var(--mono,monospace); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.35rem 0.9rem; border: 1.5px solid #D5DDE8; background: transparent; color: #55657D; border-radius: 3px; text-decoration: none; transition: all 0.15s; }
+.pub-pdf-btn:hover { border-color: #6B7280; color: #374151; text-decoration: none; }
+</style>
+
+<div class="pub-page">
+<h1 class="pub-page-title">Nos Publications</h1>
+
+<div class="pub-filter-bar" id="pub-filter-bar">
+  <button class="pub-filter-btn active" data-filter="all">Toutes</button>
+  <button class="pub-filter-btn" data-filter="type-wp">Working Papers</button>
+  <button class="pub-filter-btn" data-filter="type-pb">Notes de politique</button>
+  <button class="pub-filter-btn" data-filter="tag-AI">AI</button>
+  <button class="pub-filter-btn" data-filter="tag-Innovation">Innovation</button>
+  <button class="pub-filter-btn" data-filter="tag-Emploi">Emploi</button>
+  <button class="pub-filter-btn" data-filter="tag-France">France</button>
+  <button class="pub-filter-btn" data-filter="tag-Europe">Europe</button>
+  <button class="pub-filter-btn" data-filter="tag-Démocratie">Démocratie</button>
 </div>
 
+<div class="pub-list" id="pub-list">
 
-
-<div class="quarto-title-meta column-page">
-
-    
-  
-    
+  <div class="pub-entry" data-type="pb" data-tags="Démocratie Travail France Politique">
+    <div class="pub-type-line pub-type-pb">Note de politique · Février 2026</div>
+    <h3>La politique au travail : Vécu en entreprise et fractures politiques des salariés en France</h3>
+    <div class="pub-authors">Yann Algan, Antonin Bergeaud, C. Frouard</div>
+    <div class="pub-venue">Policy Note HEC — Février 2026</div>
+    <div class="pub-cats">
+      <span class="pub-cat">Démocratie</span><span class="pub-cat">Travail</span><span class="pub-cat">France</span><span class="pub-cat">Politique</span>
+    </div>
+    <div class="pub-abstract-body">
+      À partir d'une enquête menée auprès de 3 900 salariés du privé en 2024-2025, cette note analyse comment le vécu quotidien en entreprise structure les fractures politiques en France. L'axe qui sépare les électorats au travail n'est ni le salaire, ni la catégorie socioprofessionnelle, mais la qualité du lien social vécu au quotidien dans l'entreprise. Le salarié proche du RN présente une forte confiance dans l'entreprise mais se défie de ses collègues et se trouve isolé socialement, tandis que le salarié LFI se méfie de la direction mais fait confiance à ses collègues. Un tiers des salariés, les plus isolés au travail, sont non-affiliés et ne votent pas : l'atonie professionnelle précède l'atonie civique.
+    </div>
+    <div class="pub-actions">
+      <button class="pub-abstract-btn" onclick="toggleAbstract(this)">Abstract ↓</button>
+      <a href="./files/papers/politique-travail.pdf" class="pub-pdf-btn" target="_blank">PDF ↓</a>
+    </div>
   </div>
-  
 
+  <div class="pub-entry" data-type="wp" data-tags="Innovation Europe Marché du travail">
+    <div class="pub-type-line pub-type-wp">Working Paper · Octobre 2025</div>
+    <h3>Cost of Failure, Disruptive Innovation and Targeted Flexicurity</h3>
+    <div class="pub-authors">Y. Coatanlem, O. Coste</div>
+    <div class="pub-venue">Working paper — Octobre 2025</div>
+    <div class="pub-cats">
+      <span class="pub-cat">Innovation</span><span class="pub-cat">Europe</span><span class="pub-cat">Marché du travail</span>
+    </div>
+    <div class="pub-abstract-body">
+      Ce papier élargit des travaux antérieurs en assemblant un échantillon plus large de plans de restructuration (250 plans) pour mesurer les coûts de restructuration supportés par les grandes entreprises et évaluer leurs liens avec la R&D dans les secteurs disruptifs (tech/biotech). Les auteurs confirment un large fossé transatlantique — l'Allemagne à 31 mois de salaire moyen contre 7 mois aux États-Unis — et identifient des pays européens à faibles coûts (Danemark, Suisse). Ils montrent une forte corrélation négative entre les coûts de restructuration et l'intensité de la R&D dans la tech et la biotech, et concluent avec des recommandations pour des réformes ciblées du droit du travail préservant la protection sociale tout en restaurant l'agilité nécessaire à l'innovation disruptive.
+    </div>
+    <div class="pub-actions">
+      <button class="pub-abstract-btn" onclick="toggleAbstract(this)">Abstract ↓</button>
+      <a href="./files/papers/flexicurity.pdf" class="pub-pdf-btn" target="_blank">PDF ↓</a>
+    </div>
+  </div>
 
-</header>
+  <div class="pub-entry" data-type="wp" data-tags="AI Innovation">
+    <div class="pub-type-line pub-type-wp">Working Paper · Juillet 2025</div>
+    <h3>L'intelligence artificielle au service de l'innovation : une analyse sur données de brevets</h3>
+    <div class="pub-authors">Antonin Bergeaud</div>
+    <div class="pub-venue">Working paper — Juillet 2025</div>
+    <div class="pub-cats">
+      <span class="pub-cat">AI</span><span class="pub-cat">Innovation</span>
+    </div>
+    <div class="pub-abstract-body">
+      L'impact des technologies d'intelligence artificielle (IA) sur la croissance économique dépend en grande partie de leur capacité à accroître la productivité de la recherche. Dans cet article, nous proposons une mesure originale de la diffusion de l'IA à travers les technologies, fondée sur les brevets déposés aux États-Unis depuis 1990. Notre méthodologie identifie les brevets intégrant de l'IA via leurs références à des publications académiques classées comme relevant de l'IA. En décembre 2024, environ 5% des brevets déposés peuvent ainsi être caractérisés comme utilisant l'IA. Cette approche permet de capturer l'intégration de l'IA dans d'autres domaines technologiques, en cohérence avec sa nature de technologie générique. Nous montrons que ces brevets « IA » présentent systématiquement des indicateurs de qualité supérieurs à ceux des autres brevets, selon plusieurs métriques standards.
+    </div>
+    <div class="pub-actions">
+      <button class="pub-abstract-btn" onclick="toggleAbstract(this)">Abstract ↓</button>
+      <a href="./files/papers/ai-innov.pdf" class="pub-pdf-btn" target="_blank">PDF ↓</a>
+    </div>
+  </div>
 
+  <div class="pub-entry" data-type="wp" data-tags="AI France Tracker Emploi">
+    <div class="pub-type-line pub-type-wp">Working Paper · Juillet 2025</div>
+    <h3>Diffusion de l'Intelligence Artificielle en France</h3>
+    <div class="pub-authors">Philippe Aghion, Antonin Bergeaud, Simon Bunel, Paul Delbouve</div>
+    <div class="pub-venue">Working paper — Juillet 2025</div>
+    <div class="pub-cats">
+      <span class="pub-cat">AI</span><span class="pub-cat">France</span><span class="pub-cat">Tracker</span><span class="pub-cat">Emploi</span>
+    </div>
+    <div class="pub-abstract-body">
+      À partir de plus de 120 millions d'offres d'emploi publiées en ligne en France depuis 2019, cette étude examine les caractéristiques de la diffusion de l'intelligence artificielle (IA) dans les entreprises et ses effets sur l'emploi. La diffusion de l'IA se révèle très hétérogène : elle est particulièrement avancée dans certains secteurs (informatique, finance, conseil) et au sein de grandes entreprises pionnières. Nous montrons que les entreprises les plus exposées à l'IA ont été significativement plus enclines à recruter des spécialistes de l'IA dès l'apparition de ChatGPT. En parallèle, on observe une baisse relative de la création d'emplois dans les professions les plus exposées à l'IA, mais une hausse de la productivité du travail dans les entreprises concernées.
+    </div>
+    <div class="pub-actions">
+      <button class="pub-abstract-btn" onclick="toggleAbstract(this)">Abstract ↓</button>
+      <a href="./files/papers/ai-tracker.pdf" class="pub-pdf-btn" target="_blank">PDF ↓</a>
+    </div>
+  </div>
 
-<div class="pubs-toolbar d-flex flex-wrap gap-2 align-items-center mb-3">
-<div id="pubs-tags" class="d-flex flex-wrap gap-1">
+  <div class="pub-entry" data-type="wp" data-tags="AI France Emploi">
+    <div class="pub-type-line pub-type-wp">Working Paper · 2024</div>
+    <h3>Exposition à l'intelligence artificielle générative et emploi : une application à la classification socio-professionnelle française</h3>
+    <div class="pub-authors">Antonin Bergeaud</div>
+    <div class="pub-venue">Working paper — 2024</div>
+    <div class="pub-cats">
+      <span class="pub-cat">AI</span><span class="pub-cat">France</span><span class="pub-cat">Emploi</span>
+    </div>
+    <div class="pub-abstract-body">
+      Ce document analyse l'exposition des professions françaises à l'intelligence artificielle générative à travers la nomenclature socio-professionnelle. En mobilisant les données O*NET et un protocole d'évaluation par GPT-4, il propose deux indices : substituabilité et complémentarité. Les résultats mettent en évidence une forte hétérogénéité entre métiers, avec une exposition accrue pour les professions les plus qualifiées. Cette approche permet de mieux cerner risques d'automatisation et opportunités de complémentarité, et souligne la nécessité d'intégrer coûts d'adoption et transformations endogènes pour anticiper les impacts sur l'emploi.
+    </div>
+    <div class="pub-actions">
+      <button class="pub-abstract-btn" onclick="toggleAbstract(this)">Abstract ↓</button>
+      <a href="./files/papers/ai-exposure.pdf" class="pub-pdf-btn" target="_blank">PDF ↓</a>
+    </div>
+  </div>
 
 </div>
 </div>
+
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  const root = document.getElementById('listing-pubslist');
-  if (!root) return;
+function toggleAbstract(btn) {
+  const abstract = btn.closest('.pub-entry').querySelector('.pub-abstract-body');
+  const isOpen = abstract.classList.toggle('open');
+  btn.classList.toggle('open', isOpen);
+  btn.textContent = isOpen ? 'Abstract ↑' : 'Abstract ↓';
+}
 
-  const cards = root.querySelectorAll('.pub-entry');
-
-  // --- Filter state ---
-  let selectedTag = null;
-
-  const search = document.getElementById('pubs-search');
-  const tagBar = document.getElementById('pubs-tags');
-
-  function getWrapper(card) { return card; }
-
-  // --- FLIP Animation helper ---
-  function animateCards(callback) {
-    const positions = new Map();
-    cards.forEach(card => {
-      const wrapper = getWrapper(card);
-      if (wrapper.style.display !== 'none') {
-        const rect = wrapper.getBoundingClientRect();
-        positions.set(wrapper, { x: rect.left, y: rect.top });
-      }
-    });
-
-    callback();
-
-    cards.forEach(card => {
-      const wrapper = getWrapper(card);
-      if (wrapper.style.display !== 'none') {
-        const oldPos = positions.get(wrapper);
-        if (oldPos) {
-          const newRect = wrapper.getBoundingClientRect();
-          const deltaX = oldPos.x - newRect.left;
-          const deltaY = oldPos.y - newRect.top;
-
-          if (deltaX !== 0 || deltaY !== 0) {
-            wrapper.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-            wrapper.style.transition = 'none';
-
-            requestAnimationFrame(() => {
-              requestAnimationFrame(() => {
-                wrapper.style.transition = 'transform 0.35s ease-out, opacity 0.3s ease';
-                wrapper.style.transform = '';
-              });
-            });
-          }
-        } else {
-          wrapper.style.opacity = '0';
-          wrapper.style.transition = 'none';
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              wrapper.style.transition = 'transform 0.35s ease-out, opacity 0.3s ease';
-              wrapper.style.opacity = '';
-            });
-          });
-        }
-      }
-    });
-  }
-
-  // --- Core filter logic (sem filtro de tipo) ---
-  function applyFilters(animate = true) {
-    const doFilter = () => {
-      cards.forEach(card => {
-        const wrapper = getWrapper(card);
-        let tagOk = true;
-        if (selectedTag) {
-          tagOk = Array.from(card.querySelectorAll('.listing-category'))
-            .some(cat => (cat.textContent || '').trim() === selectedTag);
-        }
-        let searchOk = true;
-        if (searchText) {
-          const hay = [
-            card.querySelector('.pub-title, .listing-title')?.textContent || '',
-            ...Array.from(card.querySelectorAll('.listing-category')).map(x => x.textContent || '')
-          ].join(' ').toLowerCase();
-          searchOk = hay.includes(searchText);
-        }
-        wrapper.style.display = (tagOk && searchOk) ? '' : 'none';
-      });
-    };
-
-    if (animate) {
-      animateCards(doFilter);
-    } else {
-      doFilter();
+document.getElementById('pub-filter-bar').addEventListener('click', function(e) {
+  const btn = e.target.closest('.pub-filter-btn');
+  if (!btn) return;
+  document.querySelectorAll('.pub-filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const filter = btn.dataset.filter;
+  document.querySelectorAll('#pub-list .pub-entry').forEach(entry => {
+    if (filter === 'all') { entry.style.display = ''; return; }
+    if (filter.startsWith('type-')) {
+      entry.style.display = entry.dataset.type === filter.replace('type-','') ? '' : 'none';
+    } else if (filter.startsWith('tag-')) {
+      const tag = filter.replace('tag-','');
+      entry.style.display = (entry.dataset.tags || '').includes(tag) ? '' : 'none';
     }
-  }
-
-  // --- Build tag pills ---
-  const tagSet = new Set();
-  cards.forEach(card => {
-    card.querySelectorAll('.listing-category').forEach(cat => {
-      const label = (cat.textContent || '').trim();
-      if (label) tagSet.add(label);
-    });
   });
-
-  tagBar.innerHTML = '';
-  const allBtn = document.createElement('button');
-  allBtn.className = 'btn btn-sm btn-outline-secondary active';
-  allBtn.textContent = 'Toutes les étiquettes';
-  allBtn.dataset.tag = '';
-  tagBar.appendChild(allBtn);
-
-  [...tagSet].sort((a, b) => a.localeCompare(b)).forEach(t => {
-    const b = document.createElement('button');
-    b.className = 'btn btn-sm btn-outline-secondary';
-    b.textContent = t;
-    b.dataset.tag = t;
-    tagBar.appendChild(b);
-  });
-
-  tagBar.querySelectorAll('button').forEach(b => {
-    b.addEventListener('click', () => {
-      tagBar.querySelectorAll('button').forEach(x => x.classList.remove('active'));
-      b.classList.add('active');
-      selectedTag = b.dataset.tag || null;
-      applyFilters();
-    });
-  });
-
-  // --- Search handler ---
-  if (search) {
-    search.addEventListener('input', () => {
-      searchText = (search.value || '').trim().toLowerCase();
-      applyFilters();
-    });
-  }
-
-  // --- Initial render (todas visíveis) ---
-  applyFilters(false);
 });
 </script>
 
 
 
 
-<style>
-.pub-list-clean { max-width: 860px; margin: 0 auto; }
-.pub-entry { padding: 2.5rem 0; }
-.pub-entry-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.85rem; }
-.pub-badge { padding: 0.2rem 0.55rem; font-family: var(--mono,'IBM Plex Mono',monospace); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; border-radius: 2px; }
-.pub-badge-wp { background: #EEF2FF; color: #3B4FA8; }
-.pub-badge-pb { background: #FFF7ED; color: #9A3412; }
-.pub-ref { font-family: var(--mono,monospace); font-size: 0.68rem; color: #8896A8; letter-spacing: 0.04em; }
-.pub-year { font-family: var(--mono,monospace); font-size: 0.68rem; color: #B0BAC6; margin-left: auto; }
-.pub-entry h3.pub-title { font-family: 'Space Grotesk',sans-serif; font-size: 1.25rem; font-weight: 700; color: #0E2A47; margin: 0 0 0.45rem 0; line-height: 1.35; }
-.pub-entry h3.pub-title a { color: inherit; text-decoration: none; }
-.pub-entry h3.pub-title a:hover { color: #5F84E8; }
-.pub-venue { font-size: 0.88rem; color: #55657D; margin-bottom: 0.9rem; }
-.pub-cats { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
-.pub-cats .listing-category { font-family: var(--mono,monospace); font-size: 0.62rem; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.15rem 0.5rem; border: 1px solid #D5DDE8; color: #7888A0; border-radius: 2px; cursor: default; }
-.pub-actions { display: flex; gap: 0.65rem; align-items: center; }
-.pub-read-btn { display: inline-flex; align-items: center; padding: 0.38rem 1.1rem; border: 1.5px solid #0E2A47; color: #0E2A47; font-size: 0.72rem; font-weight: 600; font-family: var(--mono,monospace); letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border-radius: 3px; transition: background 0.15s,color 0.15s; }
-.pub-read-btn:hover { background: #0E2A47; color: #fff; text-decoration: none; }
-.pub-pdf-btn { display: inline-flex; align-items: center; padding: 0.38rem 1.1rem; border: 1.5px solid #D5DDE8; color: #55657D; font-size: 0.72rem; font-weight: 600; font-family: var(--mono,monospace); letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border-radius: 3px; transition: border-color 0.15s,color 0.15s; }
-.pub-pdf-btn:hover { border-color: #8896A8; color: #374151; text-decoration: none; }
-.pub-sep { border: none; border-top: 1px solid #E5E7EB; margin: 0; }
-.pub-list-clean .listing-no-matching { padding: 3rem; text-align: center; color: #9CA3AF; font-family: var(--mono,monospace); font-size: 0.8rem; letter-spacing: 0.05em; }
-.quarto-listing-container-grid, .list.pub-list-clean { display: block !important; }
-</style>
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-pubslist">
-<div class="list pub-list-clean">
-
-<div class="pub-entry" data-pubtype="pb">
-  <div class="pub-entry-header">
-    <span class="pub-badge pub-badge-pb">Note de politique</span>
-    <span class="pub-ref">LIFT PN 2026-01</span>
-    <span class="pub-year">2026</span>
-  </div>
-  <h3 class="pub-title">
-    <a href="./pubs/politique-travail/">La politique au travail : Vécu en entreprise et fractures politiques des salariés en France</a>
-  </h3>
-  <div class="pub-venue">Policy Note HEC — Février 2026</div>
-  <div class="pub-cats">
-    <span class="listing-category">Démocratie</span>
-    <span class="listing-category">Travail</span>
-    <span class="listing-category">France</span>
-    <span class="listing-category">Politique</span>
-  </div>
-  <div class="pub-actions">
-    <a href="./pubs/politique-travail/" class="pub-read-btn">Lire →</a>
-    <a href="/files/papers/politique-travail.pdf" class="pub-pdf-btn" target="_blank">PDF</a>
-  </div>
-</div>
-<hr class="pub-sep">
-<div class="pub-entry" data-pubtype="wp">
-  <div class="pub-entry-header">
-    <span class="pub-badge pub-badge-wp">Working Paper</span>
-    <span class="pub-ref">LIFT WP 2025-04</span>
-    <span class="pub-year">2025</span>
-  </div>
-  <h3 class="pub-title">
-    <a href="./pubs/flexicurity/">Cost of Failure, Disruptive Innovation and Targeted Flexicurity</a>
-  </h3>
-  <div class="pub-venue">Working paper — Octobre 2025</div>
-  <div class="pub-cats">
-    <span class="listing-category">Innovation</span>
-    <span class="listing-category">Europe</span>
-    <span class="listing-category">Marché du travail</span>
-  </div>
-  <div class="pub-actions">
-    <a href="./pubs/flexicurity/" class="pub-read-btn">Lire →</a>
-    <a href="/files/papers/flexicurity.pdf" class="pub-pdf-btn" target="_blank">PDF</a>
-  </div>
-</div>
-<hr class="pub-sep">
-
-<div class="pub-entry" data-pubtype="wp">
-  <div class="pub-entry-header">
-    <span class="pub-badge pub-badge-wp">Working Paper</span>
-    <span class="pub-ref">LIFT WP 2025-03</span>
-    <span class="pub-year">2025</span>
-  </div>
-  <h3 class="pub-title">
-    <a href="./pubs/ai-innov/">L’intelligence artificielle au service de l’innovation : une analyse sur données de brevets</a>
-  </h3>
-  <div class="pub-venue">Working paper — Juillet 2025</div>
-  <div class="pub-cats">
-    <span class="listing-category">AI</span>
-    <span class="listing-category">Innovation</span>
-  </div>
-  <div class="pub-actions">
-    <a href="./pubs/ai-innov/" class="pub-read-btn">Lire →</a>
-    <a href="/files/papers/ai-innov.pdf" class="pub-pdf-btn" target="_blank">PDF</a>
-  </div>
-</div>
-<hr class="pub-sep">
-
-<div class="pub-entry" data-pubtype="wp">
-  <div class="pub-entry-header">
-    <span class="pub-badge pub-badge-wp">Working Paper</span>
-    <span class="pub-ref">LIFT WP 2025-02</span>
-    <span class="pub-year">2025</span>
-  </div>
-  <h3 class="pub-title">
-    <a href="./pubs/ai-tracker/">Diffusion de l’Intelligence Artificielle en France</a>
-  </h3>
-  <div class="pub-venue">Working paper — Juillet 2025</div>
-  <div class="pub-cats">
-    <span class="listing-category">AI</span>
-    <span class="listing-category">France</span>
-    <span class="listing-category">Tracker</span>
-    <span class="listing-category">Emploi</span>
-  </div>
-  <div class="pub-actions">
-    <a href="./pubs/ai-tracker/" class="pub-read-btn">Lire →</a>
-    <a href="/files/papers/ai-tracker.pdf" class="pub-pdf-btn" target="_blank">PDF</a>
-  </div>
-</div>
-<hr class="pub-sep">
-
-<div class="pub-entry" data-pubtype="wp">
-  <div class="pub-entry-header">
-    <span class="pub-badge pub-badge-wp">Working Paper</span>
-    <span class="pub-ref">LIFT WP 2024-01</span>
-    <span class="pub-year">2024</span>
-  </div>
-  <h3 class="pub-title">
-    <a href="./pubs/ai-exposure/">Exposition à l’intelligence artificielle générative et emploi : une application à la classification socio-professionnelle française</a>
-  </h3>
-  <div class="pub-venue">Working paper — 2024</div>
-  <div class="pub-cats">
-    <span class="listing-category">AI</span>
-    <span class="listing-category">France</span>
-    <span class="listing-category">Emploi</span>
-  </div>
-  <div class="pub-actions">
-    <a href="./pubs/ai-exposure/" class="pub-read-btn">Lire →</a>
-    <a href="/files/papers/ai-exposure.pdf" class="pub-pdf-btn" target="_blank">PDF</a>
-  </div>
-</div>
-
-<div class="listing-no-matching d-none">Aucun article correspondant</div>
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
