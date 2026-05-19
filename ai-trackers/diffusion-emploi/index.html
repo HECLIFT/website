@@ -364,6 +364,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <button class="ai-nav-btn" onclick="scrollToAISection('sec-metiers')">Métiers</button>
     <button class="ai-nav-btn" onclick="scrollToAISection('sec-skills')">Compétences</button>
     <button class="ai-nav-btn" onclick="scrollToAISection('sec-map')">Carte</button>
+    <button class="ai-nav-btn" onclick="scrollToAISection('sec-amenities')">Aménités</button>
   </div>
 
   <!-- OFFERS CHART -->
@@ -524,6 +525,26 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
 
   <!-- Source -->
+  <!-- AMENITIES CHART -->
+  <div id="sec-amenities" class="ai-chart-section">
+    <h3>Conditions de travail dans les offres IA</h3>
+    <div class="ai-chart-controls">
+      <div class="ai-toggle">
+        <button id="btnAmenMode" class="ai-toggle-btn" onclick="toggleAmenMode()">
+          <span class="slider"></span>
+        </button>
+        <span class="ai-toggle-label" id="lblAmenMode">Part (%)</span>
+      </div>
+      <button class="ai-download-btn" onclick="downloadAmenitiesCSV()" title="Télécharger les données">
+        <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7,10 12,15 17,10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        CSV
+      </button>
+    </div>
+    <div class="ai-chart-container">
+      <canvas id="ai-amenitiesChart"></canvas>
+    </div>
+  </div>
+
   <div class="ai-source">
     <strong>Source :</strong> Données extraites de la base <a href="https://dares.travail-emploi.gouv.fr/enquete-source/job-offers-collection-and-analysis-system" target="_blank" rel="noopener">JOCAS</a> (DARES) et analysées par des modèles de machine learning pour détecter et classifier les offres liées à l'IA.
   </div>
