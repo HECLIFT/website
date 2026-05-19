@@ -286,6 +286,7 @@
 }
 #ai-metierChart { height: 500px; }
 #ai-skillsChart { height: 400px; }
+#ai-amenitiesChart { height: 400px; }
 
 /* Map row layout */
 .ai-map-row {
@@ -484,7 +485,8 @@
   #ai-offersChart,
   #ai-sectorsChart,
   #ai-sectorEvolChart,
-  #ai-skillsChart {
+  #ai-skillsChart,
+  #ai-amenitiesChart {
     height: 350px;
   }
 
@@ -518,7 +520,8 @@
   #ai-offersChart,
   #ai-sectorsChart,
   #ai-sectorEvolChart,
-  #ai-skillsChart {
+  #ai-skillsChart,
+  #ai-amenitiesChart {
     height: 300px;
   }
 
