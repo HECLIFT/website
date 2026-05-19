@@ -1275,6 +1275,15 @@
     'PROFESSIONAL_OPPORTUNITIES': 'Opportunités professionnelles'
   };
 
+  const AMENITY_COLORS = [
+    '#E46A4E',  // coral       – Rémunération
+    '#3B82F6',  // blue        – Diversité
+    '#16A34A',  // green       – Équilibre
+    '#9333EA',  // purple      – Leadership
+    '#F59E0B',  // amber       – Culture
+    '#06B6D4',  // cyan        – Opportunités
+  ];
+
   async function loadAmenities() {
     const txt = await fetchCsv(CONFIG.dataPath + 'amenities.csv');
     const rows = Papa.parse(txt, { header: true, skipEmptyLines: true }).data;
@@ -1299,12 +1308,15 @@
     const ctx = document.getElementById('ai-amenitiesChart');
     if (!ctx) return;
 
+    ctx.parentElement.style.height = '420px';
+
     const categories = Object.keys(AMENITY_LABELS);
     const datasets = categories.map((cat, i) => ({
       label: AMENITY_LABELS[cat],
       data: DATA.amenitiesDates.map(d => DATA.amenitiesData[cat]?.[d]?.[amenitiesMode] ?? null),
-      borderColor: CONFIG.chartColors[i],
-      backgroundColor: CONFIG.chartColors[i] + '22',
+      borderColor: AMENITY_COLORS[i],
+      backgroundColor: AMENITY_COLORS[i] + '18',
+      borderWidth: 2.5,
       fill: false,
       tension: 0.3,
       spanGaps: true
@@ -1318,6 +1330,13 @@
         maintainAspectRatio: false,
         interaction: { mode: 'nearest', intersect: false },
         scales: {
+          x: {
+            ticks: {
+              maxTicksLimit: 16,
+              maxRotation: 45,
+              autoSkip: true
+            }
+          },
           y: {
             ticks: {
               callback: v => amenitiesMode === 'share'
