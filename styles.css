@@ -1729,3 +1729,9 @@ footer.footer {
     border-left: none !important;
   }
 }
+
+/* Top spacing after navbar — all inner pages */
+.pub-page        { padding-top: 80px !important; }
+.membres-page,
+main#quarto-document-content > *:first-child { margin-top: 0; }
+main#quarto-document-content { padding-top: 80px !important; }
