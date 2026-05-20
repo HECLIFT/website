@@ -369,7 +369,7 @@ hr {
 }
 .hero-left {
   border-right: 1px solid var(--border);
-  padding: 100px 80px;
+  padding: 140px 80px 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -796,7 +796,7 @@ hr {
    ======================================================= */
 .page-top {
   background: var(--bg);
-  padding: 96px 40px 64px;
+  padding: 128px 40px 64px;
   border-bottom: 1px solid var(--border);
 }
 .page-top-inner { max-width: var(--maxw); margin: 0 auto; }
@@ -1202,13 +1202,13 @@ hr {
 /* Inner pages — padding so content isn't edge-to-edge */
 .memberpage main#quarto-document-content,
 .pubpage:not(.homepage) main#quarto-document-content {
-  padding: 80px 64px 80px !important;
+  padding: 96px 64px 80px !important;
 }
 
 /* Listing overview pages — body class doesn't propagate, use :has() instead */
 main:has(#listing-aitrackerslist),
 main:has(#listing-innovdatalist) {
-  padding: 80px 64px 80px !important;
+  padding: 96px 64px 80px !important;
 }
 
 /* Membres page section headings — match mockup style */
