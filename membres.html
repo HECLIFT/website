@@ -277,24 +277,86 @@ document.addEventListener('DOMContentLoaded', () => {
 <style>
 .membres-page-title { font-family: 'Space Grotesk',sans-serif; font-size: 2rem; font-weight: 700; color: #0E2A47; margin: 0 0 0.5rem 0; line-height: 1.2; }
 .membres-page-desc { font-family: 'IBM Plex Sans',sans-serif; font-size: 0.95rem; color: #55657D; margin: 0 0 2.5rem 0; }
+.mbr-section-label { font-family: 'IBM Plex Mono',monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: #8C95A0; padding-bottom: 0.75rem; border-bottom: 1px solid #E5E7EB; margin: 2.5rem 0 0; }
+.mbr-list { margin: 0 0 0.5rem; }
+.mbr-entry { display: flex; gap: 1.5rem; padding: 1.75rem 0; border-bottom: 1px solid #E5E7EB; align-items: flex-start; text-decoration: none !important; color: inherit; transition: opacity 0.15s; }
+.mbr-entry:hover { opacity: 0.85; }
+.mbr-photo { width: 72px; height: 72px; object-fit: cover; object-position: top center; border-radius: 50%; border: 2px solid #E5E7EB; flex-shrink: 0; display: block; }
+.mbr-info { flex: 1; }
+.mbr-role { font-family: 'IBM Plex Mono',monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: #3B4FA8; margin-bottom: 0.3rem; }
+.mbr-name { font-family: 'Space Grotesk',sans-serif; font-size: 1.05rem; font-weight: 700; color: #0E2A47; margin: 0 0 0.45rem; line-height: 1.3; }
+.mbr-bio { font-family: 'IBM Plex Sans',sans-serif; font-size: 0.85rem; color: #55657D; line-height: 1.65; margin: 0; }
 </style>
+
 <h1 class="membres-page-title">Membres</h1>
 <p class="membres-page-desc">Chercheurs, économistes et experts du Laboratoire de l'Innovation et du Futur du Travail.</p>
 
-<section id="direction" class="level2">
-<h2 class="anchored" data-anchor-id="direction">Direction</h2>
-<div class="members-grid"><a class="member-card" href="./membres/abergeaud.html"><img src="./images/membres/antonin.jpg" alt="Antonin Bergeaud" class="member-photo"><h3 class="member-name anchored">Antonin Bergeaud</h3><p class="member-role">Direction</p></a><a class="member-card" href="./membres/yalgan.html"><img src="./images/membres/yalgan.jpg" alt="Yann Algan" class="member-photo"><h3 class="member-name anchored">Yann Algan</h3><p class="member-role">Direction</p></a></div>
-</section>
-<section id="fellows" class="level2">
-<h2 class="anchored" data-anchor-id="fellows">Fellows</h2>
-<div class="members-grid"><a class="member-card" href="./membres/golterra.html"><img src="./images/membres/golterra.jpg" alt="Gabriela Terra" class="member-photo"><h3 class="member-name anchored">Gabriela Terra</h3><p class="member-role">Fellow</p></a><a class="member-card" href="./membres/pdelbouve.html"><img src="./images/membres/pdelbouve.jpg" alt="Paul Delbouve" class="member-photo"><h3 class="member-name anchored">Paul Delbouve</h3><p class="member-role">Fellow</p></a><a class="member-card" href="./membres/sbunel.html"><img src="./images/membres/sbunel.jpg" alt="Simon Bunel" class="member-photo"><h3 class="member-name anchored">Simon Bunel</h3><p class="member-role">Fellow</p></a><a class="member-card" href="./membres/fcalvino.html"><img src="./images/membres/fcalvino.jpg" alt="Flavio Calvino" class="member-photo"><h3 class="member-name anchored">Flavio Calvino</h3><p class="member-role">Fellow</p></a></div>
-</section>
-<section id="conseil-scientifique" class="level2">
-<h2 class="anchored" data-anchor-id="conseil-scientifique">Conseil scientifique</h2>
-<div class="members-grid"><a class="member-card" href="./membres/trenault.html"><img src="./images/membres/trenault.jpg" alt="Thomas Renault" class="member-photo"><h3 class="member-name anchored">Thomas Renault</h3><p class="member-role">Conseil scientifique</p></a></div>
+<div class="mbr-section-label">Direction</div>
+<div class="mbr-list">
+  <a class="mbr-entry" href="./membres/abergeaud.html">
+    <img class="mbr-photo" src="./images/membres/antonin.jpg" alt="Antonin Bergeaud">
+    <div class="mbr-info">
+      <div class="mbr-role">Direction</div>
+      <h3 class="mbr-name">Antonin Bergeaud</h3>
+      <p class="mbr-bio">Économiste, spécialiste de la productivité et de l'innovation.</p>
+    </div>
+  </a>
+  <a class="mbr-entry" href="./membres/yalgan.html">
+    <img class="mbr-photo" src="./images/membres/yalgan.jpg" alt="Yann Algan">
+    <div class="mbr-info">
+      <div class="mbr-role">Direction</div>
+      <h3 class="mbr-name">Yann Algan</h3>
+      <p class="mbr-bio">Doyen associé des Programmes Pré-Expérience et professeur d'économie à HEC Paris. Ses recherches portent sur la confiance, le bien-être dans les organisations et l'évaluation des politiques publiques.</p>
+    </div>
+  </a>
+</div>
 
+<div class="mbr-section-label">Fellows</div>
+<div class="mbr-list">
+  <a class="mbr-entry" href="./membres/sbunel.html">
+    <img class="mbr-photo" src="./images/membres/sbunel.jpg" alt="Simon Bunel">
+    <div class="mbr-info">
+      <div class="mbr-role">Fellow</div>
+      <h3 class="mbr-name">Simon Bunel</h3>
+      <p class="mbr-bio">Chercheur en économie spécialiste des effets de l'intelligence artificielle sur l'économie. Chercheur à la Banque de France et affilié à l'Innovation Lab du Collège de France.</p>
+    </div>
+  </a>
+  <a class="mbr-entry" href="./membres/fcalvino.html">
+    <img class="mbr-photo" src="./images/membres/fcalvino.jpg" alt="Flavio Calvino">
+    <div class="mbr-info">
+      <div class="mbr-role">Fellow</div>
+      <h3 class="mbr-name">Flavio Calvino</h3>
+      <p class="mbr-bio">Économiste, spécialiste de l'innovation et des dynamiques d'entreprise. Économiste senior à l'OCDE.</p>
+    </div>
+  </a>
+  <a class="mbr-entry" href="./membres/pdelbouve.html">
+    <img class="mbr-photo" src="./images/membres/pdelbouve.jpg" alt="Paul Delbouve">
+    <div class="mbr-info">
+      <div class="mbr-role">Fellow</div>
+      <h3 class="mbr-name">Paul Delbouve</h3>
+      <p class="mbr-bio">Doctorant en économie à la Paris School of Economics et travaille au ministère des finances publiques sur les questions d'intelligence artificielle.</p>
+    </div>
+  </a>
+  <a class="mbr-entry" href="./membres/golterra.html">
+    <img class="mbr-photo" src="./images/membres/golterra.jpg" alt="Gabriela Terra">
+    <div class="mbr-info">
+      <div class="mbr-role">Fellow</div>
+      <h3 class="mbr-name">Gabriela Terra</h3>
+    </div>
+  </a>
+</div>
 
-</section>
+<div class="mbr-section-label">Conseil scientifique</div>
+<div class="mbr-list">
+  <a class="mbr-entry" href="./membres/trenault.html">
+    <img class="mbr-photo" src="./images/membres/trenault.jpg" alt="Thomas Renault">
+    <div class="mbr-info">
+      <div class="mbr-role">Conseil scientifique</div>
+      <h3 class="mbr-name">Thomas Renault</h3>
+      <p class="mbr-bio">Professeur d'économie à l'Université Paris-Saclay. Sa recherche se situe à l'intersection de l'économie, de la finance et de la technologie, avec une utilisation des outils de machine learning et de l'analyse sémantique.</p>
+    </div>
+  </a>
+</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
