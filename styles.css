@@ -1261,7 +1261,15 @@ main:has(#listing-innovdatalist) {
   text-transform: uppercase !important;
   margin-top: 4px;
 }
-.member-hero-bio { margin-top: .75rem; font-size: .97rem; }
+.member-hero-bio {
+  font-size: 15px;
+  color: var(--fg2);
+  line-height: 1.85;
+  font-weight: 300;
+  margin: 2rem 0 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border);
+}
 .member-hero-actions { display: flex; flex-direction: column; align-items: flex-start; gap: .6rem; }
 .member-hero-actions .socials { display: flex; gap: 8px; flex-wrap: wrap; }
 .btn-icon {
