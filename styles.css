@@ -1465,11 +1465,16 @@ footer.footer {
 main.content,
 main#quarto-document-content {
   display: block !important;
-  padding: 0 !important;
+  padding: 80px 0 0 !important;
   margin: 0 !important;
   max-width: 100% !important;
   width: 100% !important;
   min-width: 0;
+}
+
+/* Home page: hero handles its own top spacing */
+main#quarto-document-content:has(.hero) {
+  padding: 0 !important;
 }
 
 /* Hide title block — all specificity variants */
