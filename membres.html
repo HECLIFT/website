@@ -79,8 +79,8 @@ header#title-block-header,
   display: block !important; padding: 0 !important; margin: 0 !important;
 }
 main#quarto-document-content, main.content {
-  display: block !important; padding: 80px 0 0 !important; margin: 0 !important;
-  max-width: 100% !important; width: 100% !important;
+  display: block !important; padding: 2rem 2rem 4rem !important; margin: 0 auto !important;
+  max-width: 860px !important; width: 100% !important;
 }
 .hero {
   display: grid !important; grid-template-columns: 55% 1fr !important;
@@ -274,7 +274,12 @@ document.addEventListener('DOMContentLoaded', () => {
 </header>
 
 
-<div class="page-top"><div class="page-top-inner"><h1 class="page-h1">Membres</h1></div></div>
+<style>
+.membres-page-title { font-family: 'Space Grotesk',sans-serif; font-size: 2rem; font-weight: 700; color: #0E2A47; margin: 0 0 0.5rem 0; line-height: 1.2; }
+.membres-page-desc { font-family: 'IBM Plex Sans',sans-serif; font-size: 0.95rem; color: #55657D; margin: 0 0 2.5rem 0; }
+</style>
+<h1 class="membres-page-title">Membres</h1>
+<p class="membres-page-desc">Chercheurs, économistes et experts du Laboratoire de l'Innovation et du Futur du Travail.</p>
 
 <section id="direction" class="level2">
 <h2 class="anchored" data-anchor-id="direction">Direction</h2>
