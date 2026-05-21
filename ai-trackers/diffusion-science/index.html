@@ -89,6 +89,14 @@ main#quarto-document-content, main.content {
 }
 .hero-logo-area img { height: 52px !important; width: auto !important; }
 
+/* Editorial page header */
+.tracker-page-header { max-width: 960px; margin: 2.5rem auto 2rem; padding: 0 2rem; }
+.tracker-breadcrumb { display: inline-flex; align-items: center; gap: 0.35rem; font-family: 'IBM Plex Mono',monospace; font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: #55657D; text-decoration: none; margin-bottom: 1.25rem; }
+.tracker-breadcrumb:hover { color: #0E2A47; }
+.tracker-category-label { font-family: 'IBM Plex Mono',monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: #3B4FA8; margin-bottom: 0.4rem; }
+.tracker-page-title { font-family: 'Space Grotesk',sans-serif; font-size: 2rem; font-weight: 700; color: #0E2A47; margin: 0 0 0.4rem 0; line-height: 1.2; }
+.tracker-page-subtitle { font-family: 'IBM Plex Sans',sans-serif; font-size: 0.95rem; color: #55657D; margin: 0; }
+
 /* Navbar — force white */
 .navbar, nav.navbar, header .navbar,
 .navbar[data-bs-theme], .navbar[data-bs-theme="dark"],
@@ -285,6 +293,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </header>
 
+
+<!-- Editorial page header -->
+<div class="tracker-page-header">
+  <a class="tracker-breadcrumb" href="../../ai-trackers.html">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15,18 9,12 15,6"/></svg>
+    Trackers IA
+  </a>
+  <div class="tracker-category-label">IA · Science · Brevets</div>
+  <h1 class="tracker-page-title">Diffusion de l'IA (science)</h1>
+  <p class="tracker-page-subtitle">Adoption de l'IA dans les brevets européens et les publications scientifiques</p>
+</div>
 
 <script src="https://cdn.plot.ly/plotly-2.35.0.min.js"></script>
 <link rel="stylesheet" href="../../assets/css/diffusion-science.css">
@@ -1000,8 +1019,14 @@ document.addEventListener('DOMContentLoaded', () => {
 </ul>
     </div>
     <div class="nav-footer-right">
-<p>© 2025 Laboratoire de l’Innovation</p>
+<p>© 2026 Laboratoire de l’Innovation</p>
 </div>
+  </div>
+  <div class="footer-logos">
+    <a href="https://www.hec.edu/" target="_blank"><img src="../../images/brands/HEC_Paris.png" alt="HEC Paris"></a>
+    <a href="https://www.hi-paris.fr/" target="_blank"><img src="../../images/brands/hi_paris.png" alt="Hi! Paris"></a>
+    <a href="https://www.iledefrance.fr/" target="_blank"><img src="../../images/brands/region_idf.svg" alt="Île-de-France"></a>
+    <a href="https://www.ip-paris.fr/recherche/interdisciplinary-centers/innovation-entrepreneurship-institute" target="_blank"><img src="../../images/brands/iei.png" alt="IEI"></a>
   </div>
 </footer>
 
