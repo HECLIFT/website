@@ -1774,8 +1774,8 @@ footer.footer {
 .footer-logos img {
   height: 28px;
   width: auto;
-  opacity: 0.65;
-  filter: brightness(0) invert(1);
-  transition: opacity 0.2s ease;
+  opacity: 0.5;
+  filter: grayscale(100%);
+  transition: opacity 0.2s ease, filter 0.2s ease;
 }
-.footer-logos a:hover img { opacity: 1; }
+.footer-logos a:hover img { opacity: 1; filter: none; }
