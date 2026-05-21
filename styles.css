@@ -214,14 +214,14 @@ hr {
 .btn-outline-primary,
 .btn-outline-secondary {
   font-family: var(--mono) !important;
-  font-size: 10.5px !important;
+  font-size: 13px !important;
   letter-spacing: 0.08em !important;
   text-transform: uppercase !important;
   background: transparent !important;
   color: var(--fg2) !important;
   border: 1px solid var(--border2) !important;
   border-radius: 0 !important;
-  padding: 10px 20px !important;
+  padding: 14px 28px !important;
 }
 .btn-outline-primary:hover,
 .btn-outline-secondary:hover {
@@ -395,6 +395,9 @@ hr {
   display: flex;
   align-items: center;
   gap: 10px;
+  position: absolute;
+  top: 80px;
+  left: 80px;
 }
 .hero-tag::before {
   content: '';
@@ -407,7 +410,7 @@ hr {
   gap: 16px;
   margin-bottom: 32px;
 }
-.hero-logo-area img { height: 64px; opacity: 0.85; }
+.hero-logo-area img { height: 80px; opacity: 0.85; }
 .hero-logo-area .hero-logo-text {
   font-family: var(--mono);
   font-size: 12px;
@@ -524,7 +527,7 @@ hr {
 
 /* Panel stats + feed (hero-right) */
 .panel-eyebrow {
-  padding: 64px 64px 0;
+  padding: 80px 64px 0;
   font-family: var(--mono);
   font-size: 10px;
   color: var(--fg3);
@@ -1753,3 +1756,26 @@ footer.footer {
   }
 }
 
+
+/* =======================================================
+   Footer — Logos partenaires & soutiens
+   ======================================================= */
+.footer-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding: 20px 40px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  margin-top: 16px;
+}
+.footer-logos a { display: inline-flex; align-items: center; }
+.footer-logos img {
+  height: 28px;
+  width: auto;
+  opacity: 0.65;
+  filter: brightness(0) invert(1);
+  transition: opacity 0.2s ease;
+}
+.footer-logos a:hover img { opacity: 1; }
