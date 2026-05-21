@@ -1205,10 +1205,9 @@ hr {
 /* Inner pages — padding so content isn't edge-to-edge */
 .memberpage main#quarto-document-content,
 .pubpage:not(.homepage) main#quarto-document-content {
-  padding: 96px 64px 80px !important;
-  max-width: var(--maxw) !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
+  padding: 2rem 2rem 4rem !important;
+  max-width: 860px !important;
+  margin: 0 auto !important;
 }
 
 /* Listing overview pages — body class doesn't propagate, use :has() instead */
