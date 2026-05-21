@@ -334,51 +334,87 @@ window.Quarto = {
 </header>
 
 
-<p>Tableaux de bord interactifs sur l’innovation et la productivité.</p>
-<section id="nos-indicateurs" class="level3">
-<h3 class="anchored" data-anchor-id="nos-indicateurs">Nos indicateurs</h3>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  const root = document.getElementById('listing-innovdatalist');
-  if (!root) return;
+<style>
+.innov-list-page { max-width: 820px; margin: 0 auto; padding: 0 1rem 4rem; }
+.innov-list-page h1 { font-family: ‘Space Grotesk’,sans-serif; font-size: 2rem; font-weight: 700; color: #0E2A47; margin: 0 0 0.5rem 0; }
+.innov-list-page .page-desc { font-family: ‘IBM Plex Sans’,sans-serif; font-size: 0.95rem; color: #55657D; margin-bottom: 2rem; }
+.innov-list { border-top: 1px solid #E5E7EB; }
+.innov-entry { padding: 2.2rem 0; border-bottom: 1px solid #E5E7EB; display: flex; gap: 2rem; align-items: flex-start; }
+.innov-entry-text { flex: 1; }
+.innov-freq-line { font-family: var(--mono,’IBM Plex Mono’,monospace); font-size: 0.65rem; letter-spacing: 0.09em; text-transform: uppercase; color: #3B4FA8; margin-bottom: 0.6rem; }
+.innov-entry h3 { font-family: ‘Space Grotesk’,sans-serif; font-size: 1.2rem; font-weight: 700; color: #0E2A47; margin: 0 0 0.5rem 0; line-height: 1.35; }
+.innov-desc { font-family: ‘IBM Plex Sans’,sans-serif; font-size: 0.88rem; color: #55657D; line-height: 1.65; margin-bottom: 0.85rem; }
+.innov-cats { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.1rem; }
+.innov-cats .innov-cat { font-family: var(--mono,’IBM Plex Mono’,monospace); font-size: 0.6rem; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.12rem 0.45rem; border: 1px solid #D5DDE8; color: #7888A0; border-radius: 2px; }
+.innov-voir-btn { display: inline-flex; align-items: center; padding: 0.38rem 1.1rem; border: 1.5px solid #0E2A47; color: #0E2A47; font-size: 0.72rem; font-weight: 600; font-family: var(--mono,’IBM Plex Mono’,monospace); letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border-radius: 3px; transition: background 0.15s, color 0.15s; }
+.innov-voir-btn:hover { background: #0E2A47; color: #fff; text-decoration: none; }
+.innov-thumb { width: 160px; flex-shrink: 0; border-radius: 6px; overflow: hidden; border: 1px solid #E5E7EB; }
+.innov-thumb img { width: 100%; height: 100px; object-fit: cover; display: block; }
+@media (max-width: 640px) { .innov-entry { flex-direction: column; } .innov-thumb { width: 100%; } .innov-thumb img { height: 140px; } }
+</style>
 
-  root.querySelectorAll('.quarto-grid-item.card').forEach(card => {
-    const table = card.querySelector('.card-other-values');
-    const updateCell = table?.querySelector('td.update');
-    const update = updateCell ? updateCell.textContent.trim() : '';
-    const body = card.querySelector('.card-body');
-    if (!body) return;
+<div class="innov-list-page">
+  <h1>Données Innovation</h1>
+  <p class="page-desc">Tableaux de bord interactifs sur l’innovation et la productivité.</p>
 
-    const title = body.querySelector('.card-title');
-    const categories = body.querySelector('.listing-categories');
+  <div class="innov-list">
 
-    if (update) {
-      const badge = document.createElement('span');
-      const isComingSoon = update.toLowerCase() === 'à venir';
-      badge.className = isComingSoon ? 'badge badge-coming-soon' : 'badge tracker-update-badge';
-      badge.textContent = isComingSoon ? 'À venir' : `MAJ ${update}`;
-      if (isComingSoon) {
-        card.setAttribute('data-coming-soon', 'true');
-      }
-      if (categories) {
-        categories.insertAdjacentElement('afterend', badge);
-      } else if (title) {
-        title.insertAdjacentElement('beforebegin', badge);
-      } else {
-        body.insertBefore(badge, body.firstChild);
-      }
-    }
+    <div class="innov-entry">
+      <div class="innov-entry-text">
+        <div class="innov-freq-line">Mise à jour semestrielle · Innovation · Brevets</div>
+        <h3>Innovation High-Tech</h3>
+        <div class="innov-desc">Brevets PCT dans 10 secteurs high-tech (biotechnologie, TIC, médical, énergie propre…) pour l’UE, les États-Unis, la Chine et le Japon. Suit la dynamique d’innovation technologique internationale sur le long terme.</div>
+        <div class="innov-cats">
+          <span class="innov-cat">Innovation</span>
+          <span class="innov-cat">Brevets</span>
+          <span class="innov-cat">Technologies</span>
+        </div>
+        <a href="./innovation-data/innovation-hightech/" class="innov-voir-btn">Voir le tracker →</a>
+      </div>
+      <div class="innov-thumb">
+        <img src="./images/trackers/innovation-hightech.png" alt="Innovation High-Tech" loading="lazy">
+      </div>
+    </div>
 
-    if (table) table.remove();
-  });
-});
-</script>
+    <div class="innov-entry">
+      <div class="innov-entry-text">
+        <div class="innov-freq-line">Mise à jour semestrielle · Innovation · Brevets</div>
+        <h3>Innovation de rupture</h3>
+        <div class="innov-desc">Brevets de rupture par pays européen et domaine technologique. Identifie les inventions à fort impact citées par de nombreux brevets ultérieurs, révélant les dynamiques d’innovation radicale en Europe.</div>
+        <div class="innov-cats">
+          <span class="innov-cat">Innovation</span>
+          <span class="innov-cat">Brevets</span>
+          <span class="innov-cat">Europe</span>
+        </div>
+        <a href="./innovation-data/breakthrough/" class="innov-voir-btn">Voir le tracker →</a>
+      </div>
+      <div class="innov-thumb">
+        <img src="./images/trackers/breakthrough.png" alt="Innovation de rupture" loading="lazy">
+      </div>
+    </div>
 
+    <div class="innov-entry">
+      <div class="innov-entry-text">
+        <div class="innov-freq-line">Mise à jour annuelle · Productivité</div>
+        <h3>Productivité internationale</h3>
+        <div class="innov-desc">PIB par habitant, productivité horaire et productivité globale des facteurs (PGF) depuis 1890 pour 24 économies. Basé sur la Long Term Productivity Database (Bergeaud, Cette &amp; Lecat).</div>
+        <div class="innov-cats">
+          <span class="innov-cat">Productivité</span>
+          <span class="innov-cat">Macroéconomie</span>
+          <span class="innov-cat">International</span>
+        </div>
+        <a href="./innovation-data/productivite/" class="innov-voir-btn">Voir le tracker →</a>
+      </div>
+      <div class="innov-thumb">
+        <img src="./images/trackers/productivity.png" alt="Productivité internationale" loading="lazy">
+      </div>
+    </div>
 
+  </div>
+</div>
 
-</section>
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-innovdatalist">
+<!-- kept for quarto listing JS compatibility -->
+<div id="listing-innovdatalist" style="display:none">
 <div class="list grid quarto-listing-cols-3">
 <div class="g-col-1" data-index="0" data-categories="SW5ub3ZhdGlvbiUyQ0JyZXZldHMlMkNUZWNobm9sb2dpZXM=" data-listing-file-modified-sort="1779110763637" data-listing-reading-time-sort="8" data-listing-word-count-sort="1504">
 <a href="./innovation-data/innovation-hightech/index.html" class="quarto-grid-link">
@@ -390,104 +426,13 @@ document.addEventListener('DOMContentLoaded', function () {
 <h5 class="no-anchor card-title listing-title">
 Innovation High-Tech
 </h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('SW5ub3ZhdGlvbg=='); return false;">Innovation</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QnJldmV0cw=='); return false;">Brevets</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('VGVjaG5vbG9naWVz'); return false;">Technologies</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Brevets PCT dans 10 secteurs high-tech : UE, États-Unis, Chine, Japon.</p>
-</div>
-<table class="card-other-values">
-
-<tbody><tr>
-<td>
-update
-</td>
-<td class="update">
-Semestriel
-</td>
-</tr>
-
-</tbody></table>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="SW5ub3ZhdGlvbiUyQ0JyZXZldHM=" data-listing-file-modified-sort="1779110763483" data-listing-reading-time-sort="11" data-listing-word-count-sort="2190">
-<a href="./innovation-data/breakthrough/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./images/trackers/breakthrough.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Innovation de rupture
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('SW5ub3ZhdGlvbg=='); return false;">Innovation</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QnJldmV0cw=='); return false;">Brevets</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Brevets de rupture par pays européen et domaine technologique.</p>
-</div>
-<table class="card-other-values">
-
-<tbody><tr>
-<td>
-update
-</td>
-<td class="update">
-Semestriel
-</td>
-</tr>
-
-</tbody></table>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="UHJvZHVjdGl2aXQlQzMlQTk=" data-listing-file-modified-sort="1779110645536" data-listing-reading-time-sort="3" data-listing-word-count-sort="589">
-<a href="./innovation-data/productivite/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./images/trackers/productivity.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Productivité internationale
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHJvZHVjdGl2aXQlQzMlQTk='); return false;">Productivité</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>PIB par habitant, productivité horaire et PGF depuis 1890 pour 24 économies.</p>
-</div>
-<table class="card-other-values">
-
-<tbody><tr>
-<td>
-update
-</td>
-<td class="update">
-Annuel
-</td>
-</tr>
-
-</tbody></table>
 </div>
 </div></a>
 </div>
 </div>
-<div class="listing-no-matching d-none">Aucun article correspondant</div>
-</div></main> <!-- /main -->
+</div>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
