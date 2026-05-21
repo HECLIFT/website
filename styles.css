@@ -1235,9 +1235,7 @@ main:has(#listing-innovdatalist) {
   grid-template-columns: 160px 1fr;
   gap: 2rem;
   align-items: start;
-  margin: 1.5rem 0 2.5rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid var(--border);
+  margin: 1.5rem 0 2rem;
 }
 .member-hero-photo {
   width: 160px; height: 160px;
