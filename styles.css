@@ -1236,6 +1236,8 @@ main:has(#listing-innovdatalist) {
   gap: 2rem;
   align-items: start;
   margin: 1.5rem 0 2rem;
+  border: none !important;
+  padding-bottom: 0 !important;
 }
 .member-hero-photo {
   width: 160px; height: 160px;
@@ -1264,9 +1266,18 @@ main:has(#listing-innovdatalist) {
   color: var(--fg2);
   line-height: 1.85;
   font-weight: 300;
-  margin: .75rem 0 1rem;
+  margin: .5rem 0 .25rem;
+  border: none !important;
+  padding-bottom: 0 !important;
 }
 .member-hero-actions { display: flex; flex-direction: column; align-items: flex-start; gap: .6rem; }
+.member-hero-actions a:not(.btn-icon) {
+  text-decoration: none !important;
+  -webkit-text-decoration: none !important;
+  border: none !important;
+  color: var(--accent);
+  font-size: 13px;
+}
 .member-hero-actions .socials { display: flex; gap: 8px; flex-wrap: wrap; }
 .btn-icon {
   display: inline-flex;
