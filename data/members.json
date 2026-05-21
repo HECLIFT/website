@@ -81,6 +81,21 @@
       }
     },
     {
+      "id": "fcalvino",
+      "name": "Flavio Calvino",
+      "url": "",
+      "role": "Fellow",
+      "photo": "/images/membres/fcalvino.jpg",
+      "bio": "Économiste, spécialiste de l'innovation et des dynamiques d'entreprise. Il est actuellement économiste senior à l'OCDE.",
+      "social": {
+        "x": "",
+        "linkedin": "",
+        "email": "",
+        "facebook": "",
+        "wh": ""
+      }
+    },
+    {
       "id": "golterra",
       "name": "Gabriela Terra",
       "url": "",
