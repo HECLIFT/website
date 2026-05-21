@@ -318,6 +318,11 @@ window.Quarto = {
 <style>
 .pub-page { max-width: 820px; margin: 0 auto; padding: 0 1rem 4rem; }
 .pub-page-title { font-family: 'Space Grotesk',sans-serif; font-size: 2rem; font-weight: 700; color: #0E2A47; margin: 0 0 2rem 0; }
+.pub-search-wrap { margin-bottom: 1.25rem; position: relative; }
+.pub-search-input { font-family: var(--mono,'IBM Plex Mono',monospace); font-size: 0.75rem; letter-spacing: 0.04em; width: 100%; padding: 0.6rem 1rem 0.6rem 2.2rem; border: 1.5px solid #D5DDE8; background: transparent; color: #0E2A47; border-radius: 3px; outline: none; transition: border-color 0.15s; box-sizing: border-box; }
+.pub-search-input:focus { border-color: #0E2A47; }
+.pub-search-input::placeholder { color: #8C95A0; }
+.pub-search-icon { position: absolute; left: 0.7rem; top: 50%; transform: translateY(-50%); color: #8C95A0; pointer-events: none; }
 .pub-filter-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem; }
 .pub-filter-btn { font-family: var(--mono,'IBM Plex Mono',monospace); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.3rem 0.75rem; border: 1.5px solid #D5DDE8; background: transparent; color: #55657D; border-radius: 3px; cursor: pointer; transition: all 0.15s; }
 .pub-filter-btn:hover, .pub-filter-btn.active { background: #0E2A47; border-color: #0E2A47; color: #fff; }
@@ -345,6 +350,10 @@ window.Quarto = {
 <div class="pub-page">
 <h1 class="pub-page-title">Nos Publications</h1>
 
+<div class="pub-search-wrap">
+  <svg class="pub-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+  <input type="text" id="pub-search" class="pub-search-input" placeholder="Rechercher par titre, auteur, thème…" autocomplete="off">
+</div>
 <div class="pub-filter-bar" id="pub-filter-bar">
   <button class="pub-filter-btn active" data-filter="all">Toutes</button>
   <button class="pub-filter-btn" data-filter="type-wp">Working Papers</button>
@@ -455,22 +464,35 @@ function toggleAbstract(btn) {
   btn.textContent = isOpen ? 'Abstract ↑' : 'Abstract ↓';
 }
 
+function applyFilters() {
+  const activeBtn = document.querySelector('.pub-filter-btn.active');
+  const filter = activeBtn ? activeBtn.dataset.filter : 'all';
+  const search = (document.getElementById('pub-search').value || '').toLowerCase().trim();
+  document.querySelectorAll('#pub-list .pub-entry').forEach(entry => {
+    let show = true;
+    if (filter !== 'all') {
+      if (filter.startsWith('type-')) {
+        show = entry.dataset.type === filter.replace('type-', '');
+      } else if (filter.startsWith('tag-')) {
+        show = (entry.dataset.tags || '').includes(filter.replace('tag-', ''));
+      }
+    }
+    if (show && search) {
+      show = entry.textContent.toLowerCase().includes(search);
+    }
+    entry.style.display = show ? '' : 'none';
+  });
+}
+
 document.getElementById('pub-filter-bar').addEventListener('click', function(e) {
   const btn = e.target.closest('.pub-filter-btn');
   if (!btn) return;
   document.querySelectorAll('.pub-filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  const filter = btn.dataset.filter;
-  document.querySelectorAll('#pub-list .pub-entry').forEach(entry => {
-    if (filter === 'all') { entry.style.display = ''; return; }
-    if (filter.startsWith('type-')) {
-      entry.style.display = entry.dataset.type === filter.replace('type-','') ? '' : 'none';
-    } else if (filter.startsWith('tag-')) {
-      const tag = filter.replace('tag-','');
-      entry.style.display = (entry.dataset.tags || '').includes(tag) ? '' : 'none';
-    }
-  });
+  applyFilters();
 });
+
+document.getElementById('pub-search').addEventListener('input', applyFilters);
 </script>
 
 
