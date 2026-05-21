@@ -10,7 +10,10 @@
   background: none;
   border: none;
   border-radius: 0;
-  padding: 0;
+  padding: 1.5rem 1.5rem 0;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
   overflow-x: visible;
 }
 
@@ -32,7 +35,7 @@
 .nav-btn.active { background: #0E2A47; color: #fff; border-color: #0E2A47; }
 
 /* Main content area */
-.ds-main { max-width: 1400px; }
+.ds-main { max-width: 1100px; margin-left: auto; margin-right: auto; }
 
 .ds-main .section { display: none; }
 .ds-main .section.active { display: block; }
