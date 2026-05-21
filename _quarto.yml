@@ -67,7 +67,14 @@ website:
         href: membres.qmd
       - text: "À propos"
         href: a-propos.qmd
-    right: "© 2025 Laboratoire de l'Innovation"
+    right: |
+      <p style="margin:0">© 2026 Laboratoire de l'Innovation</p>
+      <div class="footer-logos">
+        <a href="https://www.hec.edu/" target="_blank"><img src="images/brands/HEC_Paris.png" alt="HEC Paris"></a>
+        <a href="https://www.hi-paris.fr/" target="_blank"><img src="images/brands/hi_paris.png" alt="Hi! Paris"></a>
+        <a href="https://www.iledefrance.fr/" target="_blank"><img src="images/brands/region_idf.svg" alt="Région Île-de-France"></a>
+        <a href="https://www.ip-paris.fr/recherche/interdisciplinary-centers/innovation-entrepreneurship-institute" target="_blank"><img src="images/brands/iei.png" alt="IEI"></a>
+      </div>
 
 format:
   html:
