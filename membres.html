@@ -278,14 +278,15 @@ document.addEventListener('DOMContentLoaded', () => {
 .membres-page-title { font-family: 'Space Grotesk',sans-serif; font-size: 2rem; font-weight: 700; color: #0E2A47; margin: 0 0 0.5rem 0; line-height: 1.2; }
 .membres-page-desc { font-family: 'IBM Plex Sans',sans-serif; font-size: 0.95rem; color: #55657D; margin: 0 0 2.5rem 0; }
 .mbr-section-label { font-family: 'IBM Plex Mono',monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: #8C95A0; padding-bottom: 0.75rem; border-bottom: 1px solid #E5E7EB; margin: 2.5rem 0 0; }
-.mbr-list { margin: 0 0 0.5rem; }
-.mbr-entry { display: flex; gap: 1.5rem; padding: 1.75rem 0; border-bottom: 1px solid #E5E7EB; align-items: flex-start; text-decoration: none !important; color: inherit; transition: opacity 0.15s; }
+.mbr-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2.5rem; margin: 0 0 0.5rem; }
+.mbr-entry { display: flex; gap: 1.25rem; padding: 1.75rem 0; border-bottom: 1px solid #E5E7EB; align-items: flex-start; text-decoration: none !important; color: inherit; transition: opacity 0.15s; }
 .mbr-entry:hover { opacity: 0.85; }
-.mbr-photo { width: 72px; height: 72px; object-fit: cover; object-position: top center; border-radius: 50%; border: 2px solid #E5E7EB; flex-shrink: 0; display: block; }
-.mbr-info { flex: 1; }
+.mbr-photo { width: 64px; height: 64px; object-fit: cover; object-position: top center; border-radius: 50%; border: 2px solid #E5E7EB; flex-shrink: 0; display: block; }
+.mbr-info { flex: 1; min-width: 0; }
 .mbr-role { font-family: 'IBM Plex Mono',monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: #3B4FA8; margin-bottom: 0.3rem; }
 .mbr-name { font-family: 'Space Grotesk',sans-serif; font-size: 1.05rem; font-weight: 700; color: #0E2A47; margin: 0 0 0.45rem; line-height: 1.3; }
 .mbr-bio { font-family: 'IBM Plex Sans',sans-serif; font-size: 0.85rem; color: #55657D; line-height: 1.65; margin: 0; }
+@media (max-width: 600px) { .mbr-list { grid-template-columns: 1fr; } }
 </style>
 
 <h1 class="membres-page-title">Membres</h1>
