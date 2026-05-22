@@ -114,12 +114,17 @@ const L = (extra) => Object.assign({
 }, extra||{});
 
 // KPIs
-document.getElementById('ss-kpis').innerHTML = `
-  <div class="ss-kpi"><div class="val">${SD.applicants.length}+</div><div class="lbl">Déposants<br>actifs en IA</div></div>
-  <div class="ss-kpi"><div class="val">${SD.applicants[0].name.split(' ').slice(0,1).join(' ')}</div><div class="lbl">N°1 déposant<br>${SD.applicants[0].patents} brevets IA</div></div>
-  <div class="ss-kpi"><div class="val">${SD.inventors[0].name.split(',')[0]}</div><div class="lbl">N°1 inventeur<br>${SD.inventors[0].patents} brevets IA</div></div>
-  <div class="ss-kpi"><div class="val">${SD.papers.length}+</div><div class="lbl">Publications<br>superstar identifiées</div></div>
-`;
+const _ssico = (p) => `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
+const _sskpi = (icon, val, lbl) => `<div class="ss-kpi"><div class="kpi-icon">${_ssico(icon)}</div><div class="kpi-content"><div class="val">${val}</div><div class="lbl">${lbl}</div></div></div>`;
+document.getElementById('ss-kpis').innerHTML =
+  _sskpi('<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/>',
+    `${SD.applicants.length}+`, 'Déposants<br>actifs en IA') +
+  _sskpi('<circle cx="12" cy="8" r="7"/><polyline points="8.21,13.89 7,23 12,20 17,23 15.79,13.88"/>',
+    SD.applicants[0].name.split(' ').slice(0,1).join(' '), `N°1 déposant<br>${SD.applicants[0].patents} brevets IA`) +
+  _sskpi('<path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+    SD.inventors[0].name.split(',')[0], `N°1 inventeur<br>${SD.inventors[0].patents} brevets IA`) +
+  _sskpi('<polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/>',
+    `${SD.papers.length}+`, 'Publications<br>superstar identifiées');
 
 // Chart: Applicants
 const appNames = SD.applicants.slice(0,25).map(d=>d.name).reverse();
