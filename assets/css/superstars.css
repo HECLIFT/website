@@ -1,28 +1,163 @@
-.ss-nav { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px; }
-.ss-nav .nav-btn { padding:8px 20px; border:1.5px solid #d1d5db; border-radius:8px; background:#fff; color:#374151; font-size:14px; font-weight:500; cursor:pointer; transition:all .15s; }
-.ss-nav .nav-btn.active { background:#2563eb; border-color:#2563eb; color:#fff; }
-.ss-nav .nav-btn:hover:not(.active) { background:#f3f4f6; }
+/* Superstars section — LIFT design system */
 
-.ss-main .section { display:none; }
-.ss-main .section.active { display:block; }
+.ss-nav {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem;
+  background: var(--card, #FAFBFD);
+  border: 1px solid var(--border, #D5DDE8);
+  border-radius: var(--radius-lg, 0.8rem);
+}
+.ss-nav .nav-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  font-family: 'Merriweather', Georgia, serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md, 0.6rem);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  color: var(--muted, #55657D);
+  white-space: nowrap;
+}
+.ss-nav .nav-btn:hover:not(.active) {
+  background: var(--bg-alt, #E6EBF2);
+  color: var(--ink, #0E1320);
+}
+.ss-nav .nav-btn.active {
+  background: var(--navy, #0E2A47);
+  color: #fff;
+  border-color: var(--navy, #0E2A47);
+  font-weight: 600;
+}
 
-.ss-kpi-row { display:flex; gap:16px; flex-wrap:wrap; margin-bottom:24px; }
-.ss-kpi { flex:1; min-width:160px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:16px 20px; }
-.ss-kpi .val { font-size:28px; font-weight:700; color:#1e40af; line-height:1; margin-bottom:4px; }
-.ss-kpi .lbl { font-size:12px; color:#6b7280; line-height:1.4; }
+.ss-main .section { display: none; }
+.ss-main .section.active { display: block; }
 
-.chart-card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:20px 24px; margin-bottom:20px; }
-.chart-card h3 { font-size:16px; font-weight:600; color:#111827; margin:0 0 6px; }
-.chart-card .desc { font-size:13px; color:#6b7280; margin-bottom:16px; }
-.chart-card .note { font-size:11px; color:#9ca3af; margin-top:8px; }
+.ss-kpi-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.ss-kpi {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: var(--card, #FAFBFD);
+  border: 1px solid var(--border, #D5DDE8);
+  border-radius: var(--radius-lg, 0.8rem);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.ss-kpi:hover {
+  box-shadow: var(--shadow, 0 10px 30px rgba(14, 42, 71, 0.08));
+  transform: translateY(-2px);
+}
+.ss-kpi .kpi-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  background: var(--navy, #0E2A47);
+  border-radius: var(--radius-md, 0.6rem);
+  color: #fff;
+}
+.ss-kpi .kpi-content { display: flex; flex-direction: column; min-width: 0; }
+.ss-kpi .val {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--navy, #0E2A47);
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ss-kpi .lbl {
+  font-family: 'Merriweather', Georgia, serif;
+  font-size: 0.75rem;
+  color: var(--muted, #55657D);
+  margin-top: 0.2rem;
+  line-height: 1.4;
+}
 
-.ss-table { width:100%; border-collapse:collapse; font-size:13px; }
-.ss-table th { text-align:left; padding:10px 12px; background:#f9fafb; border-bottom:2px solid #e5e7eb; color:#374151; font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:.4px; }
-.ss-table td { padding:10px 12px; border-bottom:1px solid #f3f4f6; color:#374151; vertical-align:top; }
-.ss-table tr:hover td { background:#f8fafc; }
-.ss-table .rank { font-weight:700; color:#9ca3af; width:36px; }
-.ss-table .name { font-weight:500; color:#111827; }
-.ss-table .num { font-variant-numeric:tabular-nums; color:#374151; }
-.ss-table .badge { display:inline-block; padding:2px 8px; border-radius:99px; font-size:11px; font-weight:500; background:#dbeafe; color:#1d4ed8; }
-.ss-bar-wrap { display:flex; align-items:center; gap:8px; }
-.ss-bar { height:10px; background:#2563eb; border-radius:4px; min-width:2px; opacity:.8; }
+.chart-card {
+  background: var(--card, #FAFBFD);
+  border: 1px solid var(--border, #D5DDE8);
+  border-radius: var(--radius-lg, 0.8rem);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.chart-card h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--navy, #0E2A47);
+  margin: 0 0 0.25rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--cornflower, #5F84E8);
+  display: inline-block;
+}
+.chart-card .desc {
+  font-family: 'Merriweather', Georgia, serif;
+  font-size: 0.75rem;
+  color: var(--muted, #55657D);
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+.chart-card .note {
+  font-family: 'Merriweather', Georgia, serif;
+  font-size: 0.72rem;
+  color: var(--muted, #55657D);
+  margin-top: 0.5rem;
+  border-top: 1px solid var(--border, #D5DDE8);
+  padding-top: 0.5rem;
+  line-height: 1.6;
+}
+
+.ss-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Merriweather', Georgia, serif;
+  font-size: 0.8rem;
+}
+.ss-table th {
+  text-align: left;
+  padding: 0.625rem 0.75rem;
+  background: var(--bg-alt, #E6EBF2);
+  border-bottom: 2px solid var(--border, #D5DDE8);
+  color: var(--muted, #55657D);
+  font-weight: 700;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.ss-table td {
+  padding: 0.625rem 0.75rem;
+  border-bottom: 1px solid var(--border, #D5DDE8);
+  color: var(--ink, #0E1320);
+  vertical-align: top;
+}
+.ss-table tr:hover td { background: var(--card, #FAFBFD); }
+.ss-table .rank { font-weight: 700; color: var(--muted, #55657D); width: 36px; }
+.ss-table .name { font-weight: 600; color: var(--navy, #0E2A47); }
+.ss-table .num { font-variant-numeric: tabular-nums; }
+.ss-table .badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 99px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: var(--bg-alt, #E6EBF2);
+  color: var(--navy, #0E2A47);
+}
+.ss-bar-wrap { display: flex; align-items: center; gap: 8px; }
+.ss-bar { height: 8px; background: var(--cornflower, #5F84E8); border-radius: 4px; min-width: 2px; opacity: 0.8; }
