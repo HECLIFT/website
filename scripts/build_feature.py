@@ -102,7 +102,8 @@ def pick_latest_pub(cands):
 def generate_feature_md(pub):
     """Génère le contenu de feature.md (layout pub-feature)."""
     if not pub:
-        return "_Aucune publication trouvée._\n"
+        return "_Aucune publication trouvée._
+"
 
     title = escape_html(pub["title"])
     date_str = escape_html(pub["date_str"])
@@ -133,7 +134,9 @@ def generate_feature_md(pub):
         '</div>',
     ]
 
-    return "\n".join(lines) + "\n"
+    return "
+".join(lines) + "
+"
 
 
 # =============================================================================
@@ -210,7 +213,8 @@ def pick_latest_tracker(trackers):
 def generate_tracker_md(tracker):
     """Génère le contenu de latest-tracker.md."""
     if not tracker:
-        return "_Aucun tracker disponible._\n"
+        return "_Aucun tracker disponible._
+"
 
     title = escape_html(tracker["title"])
     description = escape_html(tracker["description"])
@@ -241,7 +245,9 @@ def generate_tracker_md(tracker):
         ])
 
     lines.append("</div>")
-    return "\n".join(lines) + "\n"
+    return "
+".join(lines) + "
+"
 
 
 # =============================================================================
@@ -295,7 +301,8 @@ def generate_kpis_json(num_pubs, num_trackers, num_members):
             {"icon": "bi-people", "num": num_members, "label": "Membres & fellows"},
         ]
     }
-    return json.dumps(kpis, indent=2, ensure_ascii=False) + "\n"
+    return json.dumps(kpis, indent=2, ensure_ascii=False) + "
+"
 
 
 # =============================================================================
@@ -373,7 +380,8 @@ def generate_hero_md(num_pubs, num_trackers, num_members):
         '</div>'
         '</div>'
         '</div>'
-        '</div>\n'
+        '</div>
+'
     )
 
 
@@ -390,7 +398,8 @@ def generate_home_pubs_md(pub):
         '<div class="section-body">'
         + feature +
         '</div>'
-        '</div>\n'
+        '</div>
+'
     )
 
 
@@ -429,7 +438,8 @@ def generate_home_data_md():
         + cells_html + overview +
         '</div>'
         '</div>'
-        '</div>\n'
+        '</div>
+'
     )
 
 
@@ -439,7 +449,7 @@ def generate_home_partners_md():
         ("https://www.hec.edu/",        "images/brands/HEC_Paris.png", "HEC Paris"),
         ("https://www.hi-paris.fr/",    "images/brands/hi_paris.png",  "Hi! Paris"),
         ("https://www.iledefrance.fr/", "images/brands/region_idf.svg","Région Île-de-France"),
-        ("https://www.ip-paris.fr/",    "images/brands/iei.png",       "IEI"),
+        ("https://www.hec.edu/en/innovation-entrepreneurship-center/",    "images/brands/iei.png",       "IEI"),
     ]
     cells_html = "".join(
         f'<a class="partner-cell" href="{url}" target="_blank"><img src="{img}" alt="{alt}"></a>'
@@ -456,7 +466,8 @@ def generate_home_partners_md():
         + cells_html +
         '</div>'
         '</div>'
-        '</div>\n'
+        '</div>
+'
     )
 
 
