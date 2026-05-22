@@ -3,6 +3,6 @@
     { "name": "HEC Paris", "url": "https://www.hec.edu/", "logo": "/images/brands/HEC_Paris.png" },
     { "name": "Hi! Paris", "url": "https://www.hi-paris.fr/", "logo": "/images/brands/hi_paris.png" },
     { "name": "Région Île-de-France", "url": "https://www.iledefrance.fr/", "logo": "/images/brands/region_idf.svg" },
-    { "name": "IEI", "url": "https://www.ip-paris.fr/recherche/interdisciplinary-centers/innovation-entrepreneurship-institute", "logo": "/images/brands/iei.png" }
+    { "name": "IEI", "url": "https://www.hec.edu/en/innovation-entrepreneurship-center", "logo": "/images/brands/iei.png" }
   ]
 }
