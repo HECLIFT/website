@@ -50,13 +50,19 @@ const total = PY.map(r => r.total);
 // KPIs
 const lastYear = PY[PY.length-2];
 const totalAI = PY.reduce((a,r) => a+r.ai_total, 0);
-document.getElementById('kpi-row').innerHTML = `
-  <div class="kpi"><div class="val">${totalAI.toLocaleString('fr-FR')}</div><div class="lbl">Brevets IA<br>1990–2024</div></div>
-  <div class="kpi"><div class="val">${lastYear.ai_total.toLocaleString('fr-FR')}</div><div class="lbl">Brevets IA<br>${lastYear.year}</div><div class="sub">${lastYear.ai_share.toFixed(2)}% du corpus</div></div>
-  <div class="kpi"><div class="val">${D.ctry_data[0].name}</div><div class="lbl">1er pays (inventeurs)<br>pondéré REGPAT</div><div class="sub">${Math.round(D.ctry_data[0].ai).toLocaleString('fr-FR')} brevets IA</div></div>
-  <div class="kpi"><div class="val">Informatique cognitive / IA</div><div class="lbl">IPC4 le plus IA<br>par intensité</div><div class="sub">24,8% du groupe</div></div>
-  <div class="kpi"><div class="val">${D.pubs_by_year.reduce((a,r)=>a+r.mapped,0).toLocaleString('fr-FR')}</div><div class="lbl">Publications IA<br>mappées (cumulé)</div></div>
-`;
+const _ico = (p) => `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
+const _kpi = (icon, val, lbl, sub) => `<div class="kpi"><div class="kpi-icon">${_ico(icon)}</div><div class="kpi-content"><div class="val">${val}</div><div class="lbl">${lbl}</div>${sub ? `<div class="sub">${sub}</div>` : ''}</div></div>`;
+document.getElementById('kpi-row').innerHTML =
+  _kpi('<path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>',
+    totalAI.toLocaleString('fr-FR'), 'Brevets IA<br>1990–2024') +
+  _kpi('<path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/>',
+    lastYear.ai_total.toLocaleString('fr-FR'), `Brevets IA<br>${lastYear.year}`, `${lastYear.ai_share.toFixed(2)}% du corpus`) +
+  _kpi('<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>',
+    D.ctry_data[0].name, '1er pays (inventeurs)<br>pondéré REGPAT', `${Math.round(D.ctry_data[0].ai).toLocaleString('fr-FR')} brevets IA`) +
+  _kpi('<rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="1" y1="9" x2="4" y2="9"/>',
+    'Informatique cognitive', 'IPC4 le plus IA<br>par intensité', '24,8% du groupe') +
+  _kpi('<path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>',
+    D.pubs_by_year.reduce((a,r)=>a+r.mapped,0).toLocaleString('fr-FR'), 'Publications IA<br>mappées (cumulé)');
 
 // Vue d'ensemble
 Plotly.newPlot('ch-overview-patents', [
