@@ -1374,7 +1374,7 @@
         if (v) lines.push(`${d},"${label}",${v.share.toFixed(4)},${v.total}`);
       });
     });
-    downloadCSV(`conditions_travail_ia_${today()}.csv`, lines.join('\n'));
+    downloadCSV(`conditions_travail_toutes_offres_${today()}.csv`, lines.join('\n'));
   };
 
   // Initialize when DOM is ready
