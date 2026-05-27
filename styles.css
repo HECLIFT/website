@@ -1799,3 +1799,111 @@ main:has(.ai-tracker) section.level3 {
 main:has(.ai-tracker) section.level3 > h3 {
   margin-bottom: 0.75rem;
 }
+
+
+/* =======================================================
+   Publication hero — split card layout (mockup LIFT)
+   ======================================================= */
+.pub-hero {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  border: 1px solid var(--border);
+  min-height: 480px;
+}
+.pub-hero-left {
+  padding: 56px 48px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.pub-hero-tag {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pub-hero-tag::before {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid var(--fg3);
+  flex-shrink: 0;
+}
+.pub-hero-title {
+  font-family: var(--display);
+  font-size: clamp(1.3rem, 2.2vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: var(--fg);
+  margin: 0;
+}
+.pub-hero-type {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.pub-hero-abstract {
+  font-size: 13.5px;
+  color: var(--fg2);
+  line-height: 1.8;
+  font-weight: 300;
+  flex: 1;
+}
+.pub-hero-links {
+  display: flex;
+  gap: 12px;
+}
+.pub-hero-right {
+  padding: 40px 28px;
+  background: var(--bg2);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.pub-hero-meta {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.pub-hero-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+.pub-hero-meta-item:first-child { padding-top: 0; }
+.pub-hero-meta-label {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg3);
+}
+.pub-hero-meta-value {
+  font-size: 12.5px;
+  color: var(--fg);
+  line-height: 1.5;
+}
+.pub-hero-meta-value a { color: var(--fg); text-decoration: none; }
+.pub-hero-meta-value a:hover { color: var(--accent); }
+.pub-hero-image {
+  width: 100%;
+  border: 1px solid var(--border);
+  display: block;
+  margin-top: 24px;
+}
+@media (max-width: 768px) {
+  .pub-hero { grid-template-columns: 1fr; }
+  .pub-hero-left { border-right: none; border-bottom: 1px solid var(--border); padding: 36px 24px; }
+  .pub-hero-right { padding: 28px 24px; }
+}
