@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const t = a.getAttribute('data-share');
     if (t === 'x')     a.href = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
     if (t === 'ln')    a.href = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
-    if (t === 'email') a.href = `mailto:?subject=${title}&body=${url}`;
+    if (t === 'email') a.href = `mailto:info@thomas-renault.com
   });
 
   // Publications listing: inject PDF button + reformat date
@@ -285,8 +285,9 @@ Conseil scientifique
 </div>
 <p class="member-hero-bio">Thomas Renault est professeur d'économie à l'Université Paris-Saclay. Sa recherche se situe à l'intersection de l'économie, de la finance et de l'analyse des données.</p>
 <div class="member-hero-actions">
+<a href="https://www.thomas-renault.com/">Page personnelle</a>
 <div class="socials">
-<a href="mailto:oliveira-terra@hec.fr" class="btn-icon btn-email" aria-label="email"><svg width="20" height="20" viewbox="0 0 24 24" fill="currentColor"><path d="M22 6H2l10 6 10-6z"></path><path d="M12 13L2 6.76V18a2 2 0 002 2h16a2 2 0 002-2V6.76L12 13z"></path></svg></a>
+<a href="mailto:info@thomas-renault.com" class="btn-icon btn-email" aria-label="email"><svg width="20" height="20" viewbox="0 0 24 24" fill="currentColor"><path d="M22 6H2l10 6 10-6z"></path><path d="M12 13L2 6.76V18a2 2 0 002 2h16a2 2 0 002-2V6.76L12 13z"></path></svg></a>
 </div>
 </div>
 </div>
@@ -365,7 +366,7 @@ Conseil scientifique
       clipboardModal.on('success', onCopySuccess);
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var mailtoRegex = new RegExp(/^mailto:/);
+      var mailtoRegex = new RegExp(/^mailto:info@thomas-renault.com
         var filterRegex = new RegExp("https:\/\/heclift\.github\.io\/website");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
