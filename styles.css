@@ -1865,9 +1865,9 @@ main:has(.ai-tracker) section.level3 > h3 {
 }
 .pub-hero-sidebar {
   max-width: 780px;
-  margin-top: 32px;
-  padding-top: 24px;
-  border-top: 1px solid var(--border);
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
   display: flex;
   gap: 32px;
   flex-wrap: wrap;
@@ -1880,6 +1880,8 @@ main:has(.ai-tracker) section.level3 > h3 {
   line-height: 1.85;
   font-weight: 400;
   margin: 0 0 36px;
+  text-align: justify;
+  hyphens: auto;
 }
 
 /* — CTA (below abstract) — */
