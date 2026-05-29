@@ -319,9 +319,6 @@ window.Quarto = {
 .tracker-list-page { max-width: 820px; margin: 0 auto; padding: 0 1rem 4rem; }
 .tracker-list-page h1 { font-family: ‘Space Grotesk’,sans-serif; font-size: 2rem; font-weight: 700; color: #0E2A47; margin: 0 0 0.5rem 0; }
 .tracker-list-page .page-desc { font-family: ‘IBM Plex Sans’,sans-serif; font-size: 0.95rem; color: #55657D; margin-bottom: 2rem; }
-.tracker-filter-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem; }
-.tracker-filter-btn { font-family: var(--mono,’IBM Plex Mono’,monospace); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.3rem 0.75rem; border: 1.5px solid #D5DDE8; background: transparent; color: #55657D; border-radius: 3px; cursor: pointer; transition: all 0.15s; }
-.tracker-filter-btn:hover, .tracker-filter-btn.active { background: #0E2A47; border-color: #0E2A47; color: #fff; }
 .tracker-list { border-top: 1px solid #E5E7EB; }
 .tracker-entry { padding: 2.2rem 0; border-bottom: 1px solid #E5E7EB; display: flex; gap: 2rem; align-items: flex-start; }
 .tracker-entry-text { flex: 1; }
@@ -341,15 +338,7 @@ window.Quarto = {
   <h1>Trackers IA</h1>
   <p class="page-desc">Suivez nos indicateurs dédiés à l’intelligence artificielle : diffusion, adoption et impact sur l’économie et l’emploi.</p>
 
-  <div class="tracker-filter-bar" id="tracker-filter-bar">
-    <button class="tracker-filter-btn active" data-filter="all">Tous</button>
-    <button class="tracker-filter-btn" data-filter="tag-IA">IA</button>
-    <button class="tracker-filter-btn" data-filter="tag-Emploi">Emploi</button>
-    <button class="tracker-filter-btn" data-filter="tag-Science">Science</button>
-    <button class="tracker-filter-btn" data-filter="tag-Brevets">Brevets</button>
-  </div>
-
-  <div class="tracker-list" id="tracker-list">
+<div class="tracker-list" id="tracker-list">
 
     <div class="tracker-entry" data-tags="IA Emploi">
       <div class="tracker-entry-text">
@@ -390,20 +379,6 @@ window.Quarto = {
   </div>
 </div>
 
-<script>
-document.getElementById(‘tracker-filter-bar’).addEventListener(‘click’, function(e) {
-  const btn = e.target.closest(‘.tracker-filter-btn’);
-  if (!btn) return;
-  document.querySelectorAll(‘.tracker-filter-btn’).forEach(b => b.classList.remove(‘active’));
-  btn.classList.add(‘active’);
-  const filter = btn.dataset.filter;
-  document.querySelectorAll(‘#tracker-list .tracker-entry’).forEach(entry => {
-    if (filter === ‘all’) { entry.style.display = ‘’; return; }
-    const tag = filter.replace(‘tag-’,’’);
-    entry.style.display = (entry.dataset.tags || ‘’).includes(tag) ? ‘’ : ‘none’;
-  });
-});
-</script>
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
