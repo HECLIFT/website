@@ -209,3 +209,40 @@ Plotly.newPlot('ch-topics', [
     hovertemplate:'<b>%{y}</b><br>%{x} publications<extra></extra>'}
 ], L0({margin:{l:260,r:20,t:10,b:50}, xaxis:{showgrid:true,gridcolor:'#f3f4f6',zeroline:false,title:'Publications IA (cumulé)'}, yaxis:{showgrid:false}}), cfg);
 
+
+// ── CSV Downloads ───────────────────────────────────────────────
+function _dlCSV(filename, rows) {
+  const csv = rows.map(r => r.join(',')).join('\n');
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename; a.click();
+  URL.revokeObjectURL(url);
+}
+function _today() { return new Date().toISOString().slice(0,10); }
+
+window.downloadPatentsCSV = function() {
+  const rows = [['annee','brevets_total','brevets_ia','ia_observes','ia_predits','part_ia_pct']];
+  D.patents_by_year.forEach(r => rows.push([r.year, r.total, r.ai_total, r.ai_observed, r.ai_predicted, r.ai_share]));
+  _dlCSV(`lift_diffusion_science_brevets_${_today()}.csv`, rows);
+};
+window.downloadCtryCSV = function() {
+  const rows = [['code_pays','pays','brevets_ia_pondere','brevets_total_pondere','part_ia_pct']];
+  D.ctry_data.forEach(r => rows.push([r.code, r.name, r.ai, r.total, r.share]));
+  _dlCSV(`lift_diffusion_science_pays_${_today()}.csv`, rows);
+};
+window.downloadIPC4CSV = function() {
+  const rows = [['ipc4','domaine','brevets_ia','brevets_total','part_ia_pct']];
+  D.ipc4_data.forEach(r => rows.push([r.ipc4, `"${r.label}"`, r.ai, r.total, r.share]));
+  _dlCSV(`lift_diffusion_science_ipc4_${_today()}.csv`, rows);
+};
+window.downloadPubsCSV = function() {
+  const rows = [['annee','publications_mappees','publications_citees']];
+  D.pubs_by_year.forEach(r => rows.push([r.year, r.mapped, r.cited]));
+  _dlCSV(`lift_diffusion_science_publications_${_today()}.csv`, rows);
+};
+window.downloadTopicsCSV = function() {
+  const rows = [['topic','count']];
+  D.topics_data.forEach(r => rows.push([`"${r.topic}"`, r.count]));
+  _dlCSV(`lift_diffusion_science_topics_${_today()}.csv`, rows);
+};
