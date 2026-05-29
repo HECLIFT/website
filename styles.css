@@ -1859,17 +1859,19 @@ main:has(.ai-tracker) section.level3 > h3 {
   max-width: 1100px;
   margin: 0 auto;
   padding: 56px 64px 72px;
-  display: flex;
-  gap: 56px;
-  align-items: flex-start;
 }
 .pub-hero-main {
-  flex: 1 1 0;
-  min-width: 0;
+  max-width: 780px;
 }
 .pub-hero-sidebar {
-  flex: 0 0 210px;
-  width: 210px;
+  max-width: 780px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  align-items: baseline;
 }
 .pub-hero-type { display: none; }
 .pub-hero-abstract {
@@ -1928,34 +1930,32 @@ main:has(.ai-tracker) section.level3 > h3 {
 }
 .pub-hero-share-link:hover { opacity: 0.75; transform: translateY(-1px); }
 
-/* — Meta — */
-.pub-hero-meta { display: flex; flex-direction: column; border-top: 1px solid var(--border); padding-top: 16px; }
+/* — Meta (horizontal row below abstract) — */
+.pub-hero-meta { display: contents; }
 .pub-hero-meta-item {
   display: flex;
-  flex-direction: column;
-  gap: 3px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border);
+  align-items: baseline;
+  gap: 8px;
 }
-.pub-hero-meta-item:first-child { padding-top: 0; }
 .pub-hero-meta-label {
   font-family: var(--mono);
   font-size: 8.5px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--fg3);
+  white-space: nowrap;
 }
 .pub-hero-meta-value {
-  font-size: 12px;
-  color: var(--fg);
+  font-size: 13px;
+  color: var(--fg2);
   line-height: 1.5;
 }
-.pub-hero-meta-value a { color: var(--fg); text-decoration: none; }
+.pub-hero-meta-value a { color: var(--fg2); text-decoration: none; }
 .pub-hero-meta-value a:hover { color: var(--accent); }
 
 @media (max-width: 768px) {
   .pub-hero-banner-inner { padding: 36px 24px 28px; }
-  .pub-hero-body { flex-direction: column; padding: 32px 24px 40px; gap: 32px; }
-  .pub-hero-sidebar { width: 100%; flex: none; }
+  .pub-hero-body { padding: 32px 24px 40px; }
+  .pub-hero-main, .pub-hero-sidebar { max-width: 100%; }
   .pub-hero-title { font-size: clamp(1.5rem, 6vw, 2rem); }
 }
