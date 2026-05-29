@@ -128,11 +128,13 @@
 
 .ds-main .note {
   font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   color: #55657D;
-  margin-top: 0.75rem;
-  border-top: 1px solid #D5DDE8;
-  padding-top: 0.5rem;
+  margin-top: 0.9rem;
+  padding: 0.5rem 0.75rem;
+  background: #EEF0F3;
+  border-radius: 4px;
+  border-left: 2px solid #c4cdd6;
   line-height: 1.6;
 }
 
