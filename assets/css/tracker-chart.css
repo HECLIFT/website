@@ -315,3 +315,12 @@
     box-shadow: none;
   }
 }
+
+/* À propos section — padding e max-width (main.content tem padding:0 override) */
+main#quarto-document-content > section.level2 {
+  max-width: 1100px;
+  margin: 3rem auto 0;
+  padding: 0 1.5rem 2rem;
+}
+main#quarto-document-content > section.level2 h2 { margin-bottom: 1.25rem; }
+main#quarto-document-content > section.level2 h3 { margin-top: 1.75rem; }
