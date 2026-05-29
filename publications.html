@@ -334,6 +334,8 @@ window.Quarto = {
 .pub-type-wp { color: #3B4FA8; }
 .pub-type-pb { color: #9A3412; }
 .pub-entry h3 { font-family: 'Space Grotesk',sans-serif; font-size: 1.2rem; font-weight: 700; color: #0E2A47; margin: 0 0 0.4rem 0; line-height: 1.35; }
+.pub-entry h3 a { color: inherit; text-decoration: none; }
+.pub-entry h3 a:hover { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 2px; }
 .pub-authors { font-family: 'IBM Plex Sans',sans-serif; font-size: 0.88rem; color: #374151; margin-bottom: 0.25rem; }
 .pub-venue { font-family: 'IBM Plex Sans',sans-serif; font-size: 0.85rem; color: #6B7280; font-style: italic; margin-bottom: 0.8rem; }
 .pub-cats { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1rem; }
@@ -345,6 +347,8 @@ window.Quarto = {
 .pub-abstract-btn:hover, .pub-abstract-btn.open { background: #0E2A47; color: #fff; }
 .pub-pdf-btn { font-family: var(--mono,'IBM Plex Mono',monospace); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.35rem 0.9rem; border: 1.5px solid #D5DDE8; background: transparent; color: #55657D; border-radius: 3px; text-decoration: none; transition: all 0.15s; }
 .pub-pdf-btn:hover { border-color: #6B7280; color: #374151; text-decoration: none; }
+.pub-lire-btn { font-family: var(--mono,'IBM Plex Mono',monospace); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.35rem 0.9rem; border: 1.5px solid #0E2A47; background: #0E2A47; color: #fff; border-radius: 3px; text-decoration: none; transition: all 0.15s; }
+.pub-lire-btn:hover { background: transparent; color: #0E2A47; text-decoration: none; }
 </style>
 
 <div class="pub-page">
@@ -370,7 +374,7 @@ window.Quarto = {
 
   <div class="pub-entry" data-type="pb" data-tags="Démocratie Travail France Politique">
     <div class="pub-type-line pub-type-pb">Note de politique · Février 2026</div>
-    <h3>La politique au travail : Vécu en entreprise et fractures politiques des salariés en France</h3>
+    <h3><a href="./pubs/politique-travail/">La politique au travail : Vécu en entreprise et fractures politiques des salariés en France</a></h3>
     <div class="pub-authors">Yann Algan, Antonin Bergeaud, C. Frouard</div>
     <div class="pub-venue">Policy Note HEC — Février 2026</div>
     <div class="pub-cats">
@@ -381,13 +385,14 @@ window.Quarto = {
     </div>
     <div class="pub-actions">
       <button class="pub-abstract-btn" onclick="toggleAbstract(this)">Abstract ↓</button>
+      <a href="./pubs/politique-travail/" class="pub-lire-btn">Lire →</a>
       <a href="./files/papers/politique-travail.pdf" class="pub-pdf-btn" target="_blank">PDF ↓</a>
     </div>
   </div>
 
   <div class="pub-entry" data-type="wp" data-tags="Innovation Europe Marché du travail">
     <div class="pub-type-line pub-type-wp">Working Paper · Octobre 2025</div>
-    <h3>Cost of Failure, Disruptive Innovation and Targeted Flexicurity</h3>
+    <h3><a href="./pubs/flexicurity/">Cost of Failure, Disruptive Innovation and Targeted Flexicurity</a></h3>
     <div class="pub-authors">Y. Coatanlem, O. Coste</div>
     <div class="pub-venue">Working paper — Octobre 2025</div>
     <div class="pub-cats">
@@ -398,13 +403,14 @@ window.Quarto = {
     </div>
     <div class="pub-actions">
       <button class="pub-abstract-btn" onclick="toggleAbstract(this)">Abstract ↓</button>
+      <a href="./pubs/flexicurity/" class="pub-lire-btn">Lire →</a>
       <a href="./files/papers/flexicurity.pdf" class="pub-pdf-btn" target="_blank">PDF ↓</a>
     </div>
   </div>
 
   <div class="pub-entry" data-type="wp" data-tags="AI Innovation">
     <div class="pub-type-line pub-type-wp">Working Paper · Juillet 2025</div>
-    <h3>L'intelligence artificielle au service de l'innovation : une analyse sur données de brevets</h3>
+    <h3><a href="./pubs/ai-innov/">L'intelligence artificielle au service de l'innovation : une analyse sur données de brevets</a></h3>
     <div class="pub-authors">Antonin Bergeaud</div>
     <div class="pub-venue">Working paper — Juillet 2025</div>
     <div class="pub-cats">
@@ -415,13 +421,14 @@ window.Quarto = {
     </div>
     <div class="pub-actions">
       <button class="pub-abstract-btn" onclick="toggleAbstract(this)">Abstract ↓</button>
+      <a href="./pubs/ai-innov/" class="pub-lire-btn">Lire →</a>
       <a href="./files/papers/ai-innov.pdf" class="pub-pdf-btn" target="_blank">PDF ↓</a>
     </div>
   </div>
 
   <div class="pub-entry" data-type="wp" data-tags="AI France Tracker Emploi">
     <div class="pub-type-line pub-type-wp">Working Paper · Juillet 2025</div>
-    <h3>Diffusion de l'Intelligence Artificielle en France</h3>
+    <h3><a href="./pubs/ai-tracker/">Diffusion de l'Intelligence Artificielle en France</a></h3>
     <div class="pub-authors">Philippe Aghion, Antonin Bergeaud, Simon Bunel, Paul Delbouve</div>
     <div class="pub-venue">Working paper — Juillet 2025</div>
     <div class="pub-cats">
@@ -432,13 +439,14 @@ window.Quarto = {
     </div>
     <div class="pub-actions">
       <button class="pub-abstract-btn" onclick="toggleAbstract(this)">Abstract ↓</button>
+      <a href="./pubs/ai-tracker/" class="pub-lire-btn">Lire →</a>
       <a href="./files/papers/ai-tracker.pdf" class="pub-pdf-btn" target="_blank">PDF ↓</a>
     </div>
   </div>
 
   <div class="pub-entry" data-type="wp" data-tags="AI France Emploi">
     <div class="pub-type-line pub-type-wp">Working Paper · 2024</div>
-    <h3>Exposition à l'intelligence artificielle générative et emploi : une application à la classification socio-professionnelle française</h3>
+    <h3><a href="./pubs/ai-exposure/">Exposition à l'intelligence artificielle générative et emploi : une application à la classification socio-professionnelle française</a></h3>
     <div class="pub-authors">Antonin Bergeaud</div>
     <div class="pub-venue">Working paper — 2024</div>
     <div class="pub-cats">
@@ -449,6 +457,7 @@ window.Quarto = {
     </div>
     <div class="pub-actions">
       <button class="pub-abstract-btn" onclick="toggleAbstract(this)">Abstract ↓</button>
+      <a href="./pubs/ai-exposure/" class="pub-lire-btn">Lire →</a>
       <a href="./files/papers/ai-exposure.pdf" class="pub-pdf-btn" target="_blank">PDF ↓</a>
     </div>
   </div>
