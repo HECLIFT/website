@@ -215,3 +215,12 @@
 .ds-dl-btn:hover { border-color: var(--fg2, #57606a); color: var(--fg, #0d1117); }
 .ds-dl-btn svg { flex-shrink: 0; }
 .ds-dl-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem; }
+
+/* À propos section — padding e max-width (main.content tem padding:0 override) */
+main#quarto-document-content > section.level2 {
+  max-width: 1100px;
+  margin: 3rem auto 0;
+  padding: 0 1.5rem 2rem;
+}
+main#quarto-document-content > section.level2 h2 { margin-bottom: 1.25rem; }
+main#quarto-document-content > section.level2 h3 { margin-top: 1.75rem; }
