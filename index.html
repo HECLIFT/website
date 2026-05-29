@@ -87,6 +87,13 @@ main#quarto-document-content, main.content {
   min-height: calc(100vh - 54px) !important;
 }
 .hero-logo-area img { height: 80px !important; width: auto !important; }
+@media (max-width: 960px) {
+  .hero { grid-template-columns: 1fr !important; min-height: auto !important; }
+  .hero-left { border-right: none !important; padding: 40px 24px !important; }
+  .hero-right { display: none !important; }
+  .hero-tag { position: static !important; padding: 0 0 16px 0 !important; }
+  .hero-h1 { font-size: 2.4rem !important; }
+}
 
 /* Navbar — force white */
 .navbar, nav.navbar, header .navbar,
