@@ -338,6 +338,12 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 
 <div id="brevets" class="section">
+  <div class="ds-dl-row">
+    <button class="ds-dl-btn" onclick="downloadPatentsCSV()" title="Télécharger les données brevets par année">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Brevets par année
+    </button>
+  </div>
   <div class="chart-card">
     <h3 class="anchored">Évolution des brevets IA — observés vs. prédits</h3>
     <div class="desc">Observés : NPL directement mappés à OpenAlex avec subfield IA. Prédits : identifiés par le modèle ML titre/résumé (threshold 0.990).</div>
@@ -359,6 +365,12 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 
 <div id="geographie" class="section">
+  <div class="ds-dl-row">
+    <button class="ds-dl-btn" onclick="downloadCtryCSV()" title="Télécharger les données par pays">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Pays
+    </button>
+  </div>
   <div class="chart-card">
     <h3 class="anchored">Brevets IA par pays — top 25 (géographie inventeurs)</h3>
     <div class="desc">Poids fractionné REGPAT. Chaque brevet contribue à plusieurs pays proportionnellement aux inventeurs. Barres colorées par share IA.</div>
@@ -383,6 +395,12 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 
 <div id="technologie" class="section">
+  <div class="ds-dl-row">
+    <button class="ds-dl-btn" onclick="downloadIPC4CSV()" title="Télécharger les données IPC4">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Domaines IPC4
+    </button>
+  </div>
   <div class="ds-filter-bar">
     <span class="ds-filter-label">Filtre :</span>
     <button class="ds-btn" onclick="toggleG06(this)">− Exclure G06*</button>
@@ -407,6 +425,16 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 
 <div id="publications" class="section">
+  <div class="ds-dl-row">
+    <button class="ds-dl-btn" onclick="downloadPubsCSV()" title="Télécharger publications par année">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Publications par année
+    </button>
+    <button class="ds-dl-btn" onclick="downloadTopicsCSV()" title="Télécharger les thématiques">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Thématiques
+    </button>
+  </div>
   <div class="chart-card">
     <h3 class="anchored">Publications scientifiques IA — évolution annuelle</h3>
     <div class="desc">
