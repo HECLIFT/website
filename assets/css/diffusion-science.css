@@ -193,3 +193,25 @@
   transition: background 0.15s;
 }
 .map-link:hover { background: #d0d9e6; }
+
+/* Download buttons */
+.ds-dl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.8rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--fg2, #57606a);
+  border: 1px solid var(--border2, #c4cdd6);
+  border-radius: 0;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.ds-dl-btn:hover { border-color: var(--fg2, #57606a); color: var(--fg, #0d1117); }
+.ds-dl-btn svg { flex-shrink: 0; }
+.ds-dl-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem; }
