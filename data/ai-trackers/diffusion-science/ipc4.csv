@@ -1,0 +1,21 @@
+ipc4,domaine,brevets_ia,brevets_total,part_ia_pct
+G06F,Traitement électronique données,3273,74975,4.37
+G06N,Informatique cognitive / IA,3132,12633,24.79
+G10L,Traitement parole / audio,2059,8901,23.13
+G06T,Traitement image,1188,31693,3.75
+G06V,Reconnaissance visuelle,1030,9498,10.84
+G06K,Reconnaissance de motifs,780,11606,6.72
+H04L,Transmission données,518,71921,0.72
+G06Q,Gestion / commerce,462,15656,2.95
+A61B,Instruments médicaux,405,25518,1.59
+G05B,Systèmes de contrôle,375,7938,4.72
+H04N,Transmission image,351,39925,0.88
+G01N,Analyse chimique,334,77490,0.43
+G16H,Informatique médicale,329,4703,7.0
+H04M,Téléphonie,301,9057,3.32
+A61K,Préparations médicales,284,183551,0.15
+A61P,Médicaments et thérapies,213,115104,0.19
+C07K,Biochimie protéique,184,75501,0.24
+C12Q,Biotechnologie / diagnostic,177,43669,0.41
+H04W,Réseaux sans fil,159,43073,0.37
+G16B,Bioinformatique,148,4431,3.34
