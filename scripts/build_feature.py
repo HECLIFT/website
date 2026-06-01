@@ -106,7 +106,10 @@ def generate_feature_md(pub):
 "
 
     title = escape_html(pub["title"])
-    date_str = escape_html(pub["date_str"])
+    _MOIS_FR = ["", "janvier", "février", "mars", "avril", "mai", "juin",
+                "juillet", "août", "septembre", "octobre", "novembre", "décembre"]
+    _d = pub["date"]
+    date_str = escape_html(f"{_MOIS_FR[_d.month].capitalize()} {_d.year}")
     read_url = escape_html(pub["url"])
     pdf_url = escape_html(pub["pdf"])
 
