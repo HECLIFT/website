@@ -9,4 +9,4 @@ listing:
   feed: true
 ---
 
-Consultez les dernières nouvelles de l’Observatoire.
+Consultez les dernières nouvelles du Laboratoire.
