@@ -1833,7 +1833,7 @@ main:has(.ai-tracker) section.level3 > h3 {
 }
 .pub-hero-title {
   font-family: var(--display);
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.03em;
