@@ -1407,6 +1407,7 @@ footer.footer {
   text-transform: uppercase !important;
   color: var(--fg3) !important;
   padding: 8px 16px !important;
+  white-space: nowrap !important;
   border-left: 1px solid var(--border) !important;
   text-decoration: none !important;
   transition: color .15s !important;
