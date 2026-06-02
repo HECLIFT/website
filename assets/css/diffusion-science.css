@@ -218,7 +218,7 @@
 }
 .ds-dl-btn:hover { border-color: var(--fg2, #57606a); color: var(--fg, #0d1117); }
 .ds-dl-btn svg { flex-shrink: 0; }
-.ds-dl-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem; }
+.ds-dl-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem; margin-bottom: 1.25rem; }
 
 /* À propos section — padding e max-width (main.content tem padding:0 override) */
 main#quarto-document-content > section.level2 {
