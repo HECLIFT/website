@@ -329,7 +329,10 @@ window.Quarto = {
 .pub-filter-btn.active-type-wp { background: #3B4FA8; border-color: #3B4FA8; color: #fff; }
 .pub-filter-btn.active-type-pb { background: #9A3412; border-color: #9A3412; color: #fff; }
 .pub-list { border-top: 1px solid #E5E7EB; }
-.pub-entry { padding: 2.2rem 0; border-bottom: 1px solid #E5E7EB; }
+.pub-entry { padding: 2.2rem 0; border-bottom: 1px solid #E5E7EB; display: grid; grid-template-columns: 1fr 160px; column-gap: 2rem; align-items: start; }
+.pub-thumb { grid-column: 2; grid-row: 1 / span 50; width: 160px; height: 160px; border-radius: 6px; overflow: hidden; border: 1px solid #E5E7EB; }
+.pub-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 640px) { .pub-entry { grid-template-columns: 1fr; } .pub-thumb { grid-column: 1; grid-row: auto; width: 100%; height: 180px; margin-bottom: 1.1rem; } }
 .pub-type-line { font-family: var(--mono,'IBM Plex Mono',monospace); font-size: 0.65rem; letter-spacing: 0.09em; text-transform: uppercase; margin-bottom: 0.6rem; }
 .pub-type-wp { color: #3B4FA8; }
 .pub-type-pb { color: #9A3412; }
@@ -373,6 +376,7 @@ window.Quarto = {
 <div class="pub-list" id="pub-list">
 
   <div class="pub-entry" data-type="pb" data-tags="Démocratie Travail France Politique">
+    <div class="pub-thumb"><img src="./images/pubs/politique-travail.png" alt="" loading="lazy"></div>
     <div class="pub-type-line pub-type-pb">Note de politique · Février 2026</div>
     <h3><a href="./pubs/politique-travail/">La politique au travail : Vécu en entreprise et fractures politiques des salariés en France</a></h3>
     <div class="pub-authors">Yann Algan, Antonin Bergeaud, C. Frouard</div>
@@ -391,6 +395,7 @@ window.Quarto = {
   </div>
 
   <div class="pub-entry" data-type="wp" data-tags="Innovation Europe Marché du travail">
+    <div class="pub-thumb"><img src="./images/pubs/flexicurity.png" alt="" loading="lazy"></div>
     <div class="pub-type-line pub-type-wp">Working Paper · Octobre 2025</div>
     <h3><a href="./pubs/flexicurity/">Cost of Failure, Disruptive Innovation and Targeted Flexicurity</a></h3>
     <div class="pub-authors">Y. Coatanlem, O. Coste</div>
@@ -409,6 +414,7 @@ window.Quarto = {
   </div>
 
   <div class="pub-entry" data-type="wp" data-tags="AI Innovation">
+    <div class="pub-thumb"><img src="./images/pubs/ai-innov.png" alt="" loading="lazy"></div>
     <div class="pub-type-line pub-type-wp">Working Paper · Juillet 2025</div>
     <h3><a href="./pubs/ai-innov/">L'intelligence artificielle au service de l'innovation : une analyse sur données de brevets</a></h3>
     <div class="pub-authors">Antonin Bergeaud</div>
@@ -427,6 +433,7 @@ window.Quarto = {
   </div>
 
   <div class="pub-entry" data-type="wp" data-tags="AI France Tracker Emploi">
+    <div class="pub-thumb"><img src="./images/pubs/ai-tracker.png" alt="" loading="lazy"></div>
     <div class="pub-type-line pub-type-wp">Working Paper · Juillet 2025</div>
     <h3><a href="./pubs/ai-tracker/">Diffusion de l'Intelligence Artificielle en France</a></h3>
     <div class="pub-authors">Philippe Aghion, Antonin Bergeaud, Simon Bunel, Paul Delbouve</div>
@@ -445,6 +452,7 @@ window.Quarto = {
   </div>
 
   <div class="pub-entry" data-type="wp" data-tags="AI France Emploi">
+    <div class="pub-thumb"><img src="./images/pubs/ai-exposure.png" alt="" loading="lazy"></div>
     <div class="pub-type-line pub-type-wp">Working Paper · 2024</div>
     <h3><a href="./pubs/ai-exposure/">Exposition à l'intelligence artificielle générative et emploi : une application à la classification socio-professionnelle française</a></h3>
     <div class="pub-authors">Antonin Bergeaud</div>
