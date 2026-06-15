@@ -5,6 +5,6 @@
     { "name": "Région Île-de-France", "url": "https://www.iledefrance.fr/", "logo": "/images/brands/region_idf.svg" },
     { "name": "IEI", "url": "https://www.hec.edu/en/innovation-entrepreneurship-center", "logo": "/images/brands/iei.png" },
     { "name": "Google", "url": "https://www.google.com", "logo": "/images/brands/google.png" },
-    { "name": "Accenture", "url": "https://www.accenture.com", "logo": "/images/brands/accenture.png" }
+    { "name": "Accenture", "url": "https://www.accenture.com", "logo": "/images/brands/accenture.svg" }
   ]
 }
