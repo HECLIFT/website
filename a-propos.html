@@ -88,6 +88,9 @@ main#quarto-document-content, main.content {
 }
 .hero-logo-area img { height: 52px !important; width: auto !important; }
 
+/* Content container — align gutters/width with the other pages */
+.about-page { max-width: 820px; margin: 0 auto; padding: 0 1rem 4rem; }
+
 /* Navbar — force white */
 .navbar, nav.navbar, header .navbar,
 .navbar[data-bs-theme], .navbar[data-bs-theme="dark"],
@@ -274,10 +277,12 @@ document.addEventListener('DOMContentLoaded', () => {
 </header>
 
 
+<div class="about-page">
 <section id="mission" class="level3">
 <h3 class="anchored" data-anchor-id="mission">Mission</h3>
 <p>Diffuser les travaux, études et ressources autour de l’innovation et du futur du travail à HEC.</p>
 </section>
+</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
