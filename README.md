@@ -27,17 +27,18 @@ les pages et publie. Vous n'avez rien à lancer sur votre ordinateur.
      "section": "Chargés d'étude",
      "role": "Chargée d'étude",
      "photo": "images/membres/cdupont.jpg",
-     "email": "camille.dupont@hec.edu",
-     "publications": []
+     "email": "camille.dupont@hec.edu"
    }
    ```
 2. Déposer la photo dans `images/membres/` sous le nom indiqué (JPG carré, 800×800).
 3. « Commit ». Une minute plus tard : sa page existe, elle apparaît dans la bonne
    section, le compteur de la page d'accueil est à jour.
 
-Champs facultatifs : `bio`, `bio_courte`, `page_perso`, `x`, `linkedin`.
-`publications` contient les `id` des publications de la personne — sa page les liste
-automatiquement.
+Champs facultatifs : `bio` (texte sur sa page), `bio_courte` (texte dans la liste),
+`page_perso`, `email`, `x`, `linkedin`. Les autres sont obligatoires.
+
+**Ses publications, on ne les écrit pas ici** : sa page liste automatiquement toute
+publication dont il est auteur dans `publications.json`. Rien à tenir à jour en double.
 
 ### Ajouter une publication
 1. Ajouter un bloc dans [`content/publications.json`](content/publications.json) :
@@ -88,6 +89,15 @@ D'où viennent ces CSV : voir [`tracker_manifest.json`](tracker_manifest.json).
 Ouvrez une **issue** avec un des modèles (« Ajouter un membre », « Ajouter une
 publication », « Mettre à jour un tracker ») : remplissez le formulaire, joignez la
 photo ou les CSV, quelqu'un s'en charge.
+
+## Ce qui est généré et ce qui ne l'est pas
+
+| Page | Comment on la modifie |
+|---|---|
+| Liste des membres, page de chaque membre, compteur de l'accueil | **générées** depuis `content/members.json` — ne pas les éditer à la main |
+| Liste des publications, page de chaque publication | **générées** depuis `content/publications.json` |
+| Graphiques des trackers | **données** : remplacer les CSV dans `data/` |
+| Page d'accueil (hors compteur), « À propos », textes des pages de trackers | encore en HTML, à modifier directement — avec précaution |
 
 ## Pour les curieux
 
