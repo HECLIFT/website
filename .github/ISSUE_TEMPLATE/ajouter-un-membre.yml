@@ -1,0 +1,36 @@
+name: Ajouter un membre
+description: Ajouter quelqu'un à la page Membres (sans toucher au code)
+title: "Membre : "
+labels: [contenu]
+body:
+  - type: input
+    id: nom
+    attributes: { label: Prénom et nom, placeholder: "Camille Dupont" }
+    validations: { required: true }
+  - type: dropdown
+    id: section
+    attributes:
+      label: Section
+      options: [Direction, Fellows, Chargés d'étude, Conseil scientifique]
+    validations: { required: true }
+  - type: input
+    id: role
+    attributes: { label: Intitulé affiché, placeholder: "Chargée d'étude" }
+    validations: { required: true }
+  - type: input
+    id: email
+    attributes: { label: E-mail (optionnel) }
+  - type: input
+    id: site
+    attributes: { label: Page personnelle (optionnel) }
+  - type: textarea
+    id: bio
+    attributes:
+      label: Bio (optionnel)
+      description: Deux ou trois lignes. Les chargés d'étude n'en ont pas.
+  - type: textarea
+    id: photo
+    attributes:
+      label: Photo
+      description: Glissez la photo ici (n'importe quelle taille, elle sera recadrée en 800×800).
+    validations: { required: true }

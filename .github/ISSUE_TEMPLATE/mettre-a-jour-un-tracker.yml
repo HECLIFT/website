@@ -1,0 +1,25 @@
+name: Mettre à jour un tracker
+description: Nouvelles données pour un des cinq trackers
+title: "Tracker : "
+labels: [données]
+body:
+  - type: dropdown
+    id: tracker
+    attributes:
+      label: Quel tracker
+      options:
+        - Diffusion IA — emploi (JOCAS, trimestriel)
+        - Diffusion IA — science (annuel)
+        - Productivité internationale (annuel)
+        - Innovation high-tech (semestriel)
+        - Innovation de rupture (semestriel)
+    validations: { required: true }
+  - type: textarea
+    id: fichiers
+    attributes:
+      label: Fichiers
+      description: Glissez les CSV ici. Mêmes noms et mêmes colonnes que ceux déjà en ligne.
+    validations: { required: true }
+  - type: input
+    id: source
+    attributes: { label: D'où viennent les données, placeholder: "REGPAT février 2026" }

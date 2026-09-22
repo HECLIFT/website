@@ -1,0 +1,51 @@
+name: Construire le site
+
+# À chaque modification du contenu, régénère les pages et vérifie les données.
+on:
+  push:
+    branches: [gh-pages]
+    paths:
+      - 'content/**'
+      - 'data/**'
+      - 'images/**'
+      - 'files/**'
+      - 'build/**'
+      - '.github/workflows/build.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-site
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Vérifier le contenu et les données
+        run: python3 build/validate.py
+
+      - name: Régénérer les pages
+        run: python3 build/generate.py
+
+      - name: Publier si quelque chose a changé
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Rien à publier — le site est déjà à jour."
+            exit 0
+          fi
+          git config user.name  "LIFT site bot"
+          git config user.email "actions@github.com"
+          git add -A
+          git commit -m "Site: régénéré depuis content/ (${GITHUB_SHA::7})"
+          git push

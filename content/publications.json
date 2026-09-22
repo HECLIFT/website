@@ -1,0 +1,187 @@
+{
+  "publications": [
+    {
+      "id": "politique-travail",
+      "titre": "La politique au travail : Vécu en entreprise et fractures politiques des salariés en France",
+      "type": "pb",
+      "type_label": "Note de politique",
+      "date": "Février 2026",
+      "auteurs": [
+        "Yann Algan",
+        "Antonin Bergeaud",
+        "C. Frouard"
+      ],
+      "venue": "Policy Note HEC — Février 2026",
+      "tags": [
+        "Démocratie",
+        "Travail",
+        "France",
+        "Politique"
+      ],
+      "resume": "À partir d'une enquête menée auprès de 3 900 salariés du privé en 2024-2025, cette note analyse comment le vécu quotidien en entreprise structure les fractures politiques en France. L'axe qui sépare les électorats au travail n'est ni le salaire, ni la catégorie socioprofessionnelle, mais la qualité du lien social vécu au quotidien dans l'entreprise. Le salarié proche du RN présente une forte confiance dans l'entreprise mais se défie de ses collègues et se trouve isolé socialement, tandis que le salarié LFI se méfie de la direction mais fait confiance à ses collègues. Un tiers des salariés, les plus isolés au travail, sont non-affiliés et ne votent pas : l'atonie professionnelle précède l'atonie civique.",
+      "thumb": "images/pubs/politique-travail.png",
+      "pdf": "files/papers/politique-travail.pdf",
+      "mots_cles": "démocratie, travail, fractures politiques, confiance sociale, RN, LFI",
+      "date_longue": "1 février 2026",
+      "resume_long": "À partir d’une enquête menée auprès de 3 900 salariés du privé en 2024-2025, cette note analyse comment le vécu quotidien en entreprise structure les fractures politiques en France. L’axe qui sépare les électorats au travail n’est ni le salaire, ni la catégorie socioprofessionnelle, mais la qualité du lien social vécu au quotidien dans l’entreprise. Le salarié proche du RN présente une forte confiance dans l’entreprise mais se défie de ses collègues et se trouve isolé socialement, tandis que le salarié LFI se méfie de la direction mais fait confiance à ses collègues. Un tiers des salariés, les plus isolés au travail, sont non-affiliés et ne votent pas : l’atonie professionnelle précède l’atonie civique.",
+      "auteurs_liens": [
+        {
+          "membre": "yalgan",
+          "nom": "Yann Algan"
+        },
+        {
+          "membre": "abergeaud",
+          "nom": "Antonin Bergeaud"
+        },
+        {
+          "nom": "Camille Frouard"
+        }
+      ],
+      "mots_cles_affiches": "Démocratie, travail, fractures politiques, confiance sociale"
+    },
+    {
+      "id": "flexicurity",
+      "titre": "Cost of Failure, Disruptive Innovation and Targeted Flexicurity",
+      "type": "wp",
+      "type_label": "Working Paper",
+      "date": "Octobre 2025",
+      "auteurs": [
+        "Y. Coatanlem",
+        "O. Coste"
+      ],
+      "venue": "Working paper — Octobre 2025",
+      "tags": [
+        "Innovation",
+        "Europe",
+        "Marché du travail"
+      ],
+      "resume": "Ce papier élargit des travaux antérieurs en assemblant un échantillon plus large de plans de restructuration (250 plans) pour mesurer les coûts de restructuration supportés par les grandes entreprises et évaluer leurs liens avec la R&D dans les secteurs disruptifs (tech/biotech). Les auteurs confirment un large fossé transatlantique — l'Allemagne à 31 mois de salaire moyen contre 7 mois aux États-Unis — et identifient des pays européens à faibles coûts (Danemark, Suisse). Ils montrent une forte corrélation négative entre les coûts de restructuration et l'intensité de la R&D dans la tech et la biotech, et concluent avec des recommandations pour des réformes ciblées du droit du travail préservant la protection sociale tout en restaurant l'agilité nécessaire à l'innovation disruptive.",
+      "thumb": "images/pubs/flexicurity.png",
+      "pdf": "files/papers/flexicurity.pdf",
+      "mots_cles": "flexicurity, EPL, coût de l’échec, innovation disruptive, R&amp;D, biotech",
+      "date_longue": "1 octobre 2025",
+      "resume_long": "Ce papier élargit des travaux antérieurs en assemblant un échantillon plus large de plans de restructuration (250 plans) pour mesurer les coûts de restructuration supportés par les grandes entreprises et évaluer leurs liens avec la R&amp;D dans les secteurs disruptifs (tech/biotech). Les auteurs confirment un large fossé transatlantique — l’Allemagne à 31 mois de salaire moyen contre 7 mois aux États-Unis — et identifient des pays européens à faibles coûts (Danemark, Suisse). Ils montrent une forte corrélation négative entre les coûts de restructuration et l’intensité de la R&amp;D dans la tech et la biotech, et concluent avec des recommandations pour des réformes ciblées du droit du travail préservant la protection sociale tout en restaurant l’agilité nécessaire à l’innovation disruptive.",
+      "auteurs_liens": [
+        {
+          "nom": "Yann Coatanlem"
+        },
+        {
+          "nom": "Oliver Coste"
+        }
+      ],
+      "tag_hero": "Working paper · Octobre 2025",
+      "mots_cles_affiches": "Flexicurity, EPL, innovation disruptive, R&amp;D, biotech",
+      "resume_hero": "Ce papier élargit des travaux antérieurs en assemblant un échantillon plus large de plans de restructuration (250 plans) pour mesurer les coûts de restructuration supportés par les grandes entreprises et évaluer leurs liens avec la R&amp;D dans les secteurs disruptifs (tech/biotech). Les auteurs confirment un large fossé transatlantique — l'Allemagne à 31 mois de salaire moyen contre 7 mois aux États-Unis — et identifient des pays européens à faibles coûts (Danemark, Suisse). Ils montrent une forte corrélation négative entre les coûts de restructuration et l'intensité de la R&amp;D dans la tech et la biotech, et concluent avec des recommandations pour des réformes ciblées du droit du travail préservant la protection sociale tout en restaurant l'agilité nécessaire à l'innovation disruptive."
+    },
+    {
+      "id": "ai-innov",
+      "titre": "L’intelligence artificielle au service de l’innovation : une analyse sur données de brevets",
+      "type": "wp",
+      "type_label": "Working Paper",
+      "date": "Juillet 2025",
+      "auteurs": [
+        "Antonin Bergeaud"
+      ],
+      "venue": "Working paper — Juillet 2025",
+      "tags": [
+        "AI",
+        "Innovation"
+      ],
+      "resume": "L'impact des technologies d'intelligence artificielle (IA) sur la croissance économique dépend en grande partie de leur capacité à accroître la productivité de la recherche. Dans cet article, nous proposons une mesure originale de la diffusion de l'IA à travers les technologies, fondée sur les brevets déposés aux États-Unis depuis 1990. Notre méthodologie identifie les brevets intégrant de l'IA via leurs références à des publications académiques classées comme relevant de l'IA. En décembre 2024, environ 5% des brevets déposés peuvent ainsi être caractérisés comme utilisant l'IA. Cette approche permet de capturer l'intégration de l'IA dans d'autres domaines technologiques, en cohérence avec sa nature de technologie générique. Nous montrons que ces brevets « IA » présentent systématiquement des indicateurs de qualité supérieurs à ceux des autres brevets, selon plusieurs métriques standards.",
+      "thumb": "images/pubs/ai-innov.png",
+      "pdf": "files/papers/ai-innov.pdf",
+      "mots_cles": "Innovation, IA, R&amp;D, brevets",
+      "sous_titre": "Working paper — 2025-2",
+      "date_longue": "20 juillet 2025",
+      "resume_long": "L’impact des technologies d’intelligence artificielle (IA) sur la croissance économique dépend en grande partie de leur capacité à accroître la productivité de la recherche. Dans cet article, nous proposons une mesure originale de la diffusion de l’IA à travers les technologies, fondée sur les brevets déposés aux États-Unis depuis 1990. Notre méthodologie identifie les brevets intégrant de l’IA via leurs références à des publications académiques classées comme relevant de l’IA. En décembre 2024, environ 5% des brevets déposés peuvent ainsi être caractérisés comme utilisant l’IA. Cette approche permet de capturer l’intégration de l’IA dans dautres domaines technologiques, en cohérence avec sa nature de technologie générique (general purpose technology). Nous montrons que ces brevets « IA » présentent systématiquement des indicateurs de qualité supérieurs à ceux des autres brevets, selon plusieurs métriques standards de la littérature.",
+      "auteurs_liens": [
+        {
+          "membre": "abergeaud",
+          "nom": "Antonin Bergeaud"
+        }
+      ],
+      "tag_hero": "Working paper · Juillet 2025",
+      "mots_cles_affiches": "Innovation, IA, R&amp;D, brevets",
+      "resume_hero": "L'impact des technologies d'intelligence artificielle (IA) sur la croissance économique dépend en grande partie de leur capacité à accroître la productivité de la recherche. Dans cet article, nous proposons une mesure originale de la diffusion de l'IA à travers les technologies, fondée sur les brevets déposés aux États-Unis depuis 1990. Notre méthodologie identifie les brevets intégrant de l'IA via leurs références à des publications académiques classées comme relevant de l'IA. En décembre 2024, environ 5% des brevets déposés peuvent ainsi être caractérisés comme utilisant l'IA. Cette approche permet de capturer l'intégration de l'IA dans d'autres domaines technologiques, en cohérence avec sa nature de technologie générique. Nous montrons que ces brevets « IA » présentent systématiquement des indicateurs de qualité supérieurs à ceux des autres brevets, selon plusieurs métriques standards de la littérature."
+    },
+    {
+      "id": "ai-tracker",
+      "titre": "Diffusion de l’Intelligence Artificielle en France",
+      "type": "wp",
+      "type_label": "Working Paper",
+      "date": "Juillet 2025",
+      "auteurs": [
+        "Philippe Aghion",
+        "Antonin Bergeaud",
+        "Simon Bunel",
+        "Paul Delbouve"
+      ],
+      "venue": "Working paper — Juillet 2025",
+      "tags": [
+        "AI",
+        "France",
+        "Tracker",
+        "Emploi"
+      ],
+      "resume": "À partir de plus de 120 millions d'offres d'emploi publiées en ligne en France depuis 2019, cette étude examine les caractéristiques de la diffusion de l'intelligence artificielle (IA) dans les entreprises et ses effets sur l'emploi. La diffusion de l'IA se révèle très hétérogène : elle est particulièrement avancée dans certains secteurs (informatique, finance, conseil) et au sein de grandes entreprises pionnières. Nous montrons que les entreprises les plus exposées à l'IA ont été significativement plus enclines à recruter des spécialistes de l'IA dès l'apparition de ChatGPT. En parallèle, on observe une baisse relative de la création d'emplois dans les professions les plus exposées à l'IA, mais une hausse de la productivité du travail dans les entreprises concernées.",
+      "thumb": "images/pubs/ai-tracker.png",
+      "pdf": "files/papers/ai-tracker.pdf",
+      "mots_cles": "Diffusion, IA et emploi, France, NLP",
+      "sous_titre": "Working paper — 2025-1",
+      "date_longue": "10 juillet 2025",
+      "resume_long": "À partir de plus de 120 millions d’offres d’emploi publiées en ligne en France depuis 2019, cette étude examine les caractéristiques de la diffusion de l’intelligence artificielle (IA) dans les entreprises et ses effets sur l’emploi. La diffusion de l’IA se révèle très hétérogène : elle est particulièrement avancée dans certains secteurs (informatique, finance, conseil) et au sein de grandes entreprises pionnières. Cette hétérogénéité s’observe aussi à l’échelle territoriale, les offres d’emploi en IA étant fortement concentrées dans les zones d’emploi accueillant des clusters de recherche ou des pôles industriels spécialisés (semi-conducteurs, assurances, aéronautique, etc.). Nous montrons que les entreprises les plus exposées à l’IA ont été significativement plus enclines à recruter des spécialistes de l’IA dès l’apparition de ChatGPT. En parallèle, on observe une baisse relative de la création d’emplois dans les professions les plus exposées à l’IA. Toutefois, les recrutements dans les métiers de l’IA s’accompagnent d’une hausse de la productivité du travail et du chiffre d’affaires, concomitante avec une hausse de l’emploi total dans les entreprises concernées, tirée par les professions fortement exposées, au détriment de celles qui le sont moins.",
+      "auteurs_liens": [
+        {
+          "membre": "paghion",
+          "nom": "Philippe Aghion"
+        },
+        {
+          "membre": "abergeaud",
+          "nom": "Antonin Bergeaud"
+        },
+        {
+          "membre": "sbunel",
+          "nom": "Simon Bunel"
+        },
+        {
+          "membre": "pdelbouve",
+          "nom": "Paul Delbouve"
+        }
+      ],
+      "tag_hero": "Working paper · Juillet 2025",
+      "mots_cles_affiches": "Diffusion, IA et emploi, France, NLP",
+      "resume_hero": "À partir de plus de 120 millions d'offres d'emploi publiées en ligne en France depuis 2019, cette étude examine les caractéristiques de la diffusion de l'intelligence artificielle (IA) dans les entreprises et ses effets sur l'emploi. La diffusion de l'IA se révèle très hétérogène : elle est particulièrement avancée dans certains secteurs (informatique, finance, conseil) et au sein de grandes entreprises pionnières. Cette hétérogénéité s'observe aussi à l'échelle territoriale, les offres d'emploi en IA étant fortement concentrées dans les zones d'emploi accueillant des clusters de recherche ou des pôles industriels spécialisés. Nous montrons que les entreprises les plus exposées à l'IA ont été significativement plus enclines à recruter des spécialistes de l'IA dès l'apparition de ChatGPT. En parallèle, on observe une baisse relative de la création d'emplois dans les professions les plus exposées à l'IA."
+    },
+    {
+      "id": "ai-exposure",
+      "titre": "Exposition à l’intelligence artificielle générative et emploi : une application à la classification socio-professionnelle française",
+      "type": "wp",
+      "type_label": "Working Paper",
+      "date": "2024",
+      "auteurs": [
+        "Antonin Bergeaud"
+      ],
+      "venue": "Working paper — 2024",
+      "tags": [
+        "AI",
+        "France",
+        "Emploi"
+      ],
+      "resume": "Ce document analyse l'exposition des professions françaises à l'intelligence artificielle générative à travers la nomenclature socio-professionnelle. En mobilisant les données O*NET et un protocole d'évaluation par GPT-4, il propose deux indices : substituabilité et complémentarité. Les résultats mettent en évidence une forte hétérogénéité entre métiers, avec une exposition accrue pour les professions les plus qualifiées. Cette approche permet de mieux cerner risques d'automatisation et opportunités de complémentarité, et souligne la nécessité d'intégrer coûts d'adoption et transformations endogènes pour anticiper les impacts sur l'emploi.",
+      "thumb": "images/pubs/ai-exposure.png",
+      "pdf": "files/papers/ai-exposure.pdf",
+      "mots_cles": "Exposition, IA et emploi, France",
+      "sous_titre": "Working paper — 2024-1",
+      "date_longue": "1 janvier 2024",
+      "resume_long": "Ce document analyse l’exposition des professions françaises à l’intelligence artificielle générative à travers la nomenclature socio-professionnelle. En mobilisant les données O*NET et un protocole d’évaluation par GPT-4, il propose deux indices : substituabilité et complémentarité. Les résultats mettent en évidence une forte hétérogénéité entre métiers, avec une exposition accrue pour les professions les plus qualifiées. Cette approche permet de mieux cerner risques d’automatisation et opportunités de complémentarité, et souligne la nécessité d’intégrer coûts d’adoption et transformations endogènes pour anticiper les impacts sur l’emploi.",
+      "auteurs_liens": [
+        {
+          "membre": "abergeaud",
+          "nom": "Antonin Bergeaud"
+        }
+      ],
+      "tag_hero": "Working paper · Janvier 2024",
+      "mots_cles_affiches": "Exposition, IA et emploi, France"
+    }
+  ]
+}
