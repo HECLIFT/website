@@ -43,7 +43,7 @@ function buildData(F) {
   D.ipc4_data = records(F['ipc4.csv']).map(r => ({
     ipc4:r.ipc4, ai:N(r.brevets_ia), total:N(r.brevets_total), share:N(r.part_ia_pct), label:r.domaine }));
   D.pubs_by_year = records(F['publications.csv']).map(r => ({
-    year:N(r.annee), mapped:N(r.publications_mappees), cited:N(r.publications_citees) }));
+    year:N(r.annee), mapped:N(r.publications_mappees) }));
   D.topics_data = records(F['topics.csv']).map(r => ({ topic:r.topic, count:N(r.count) }));
 
   const ser = records(F['ipc4_series.csv']);
@@ -66,8 +66,9 @@ let D = null;
 let ipcShareData = null;
 
 function show(id, btn) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  // Seulement les onglets principaux : les sous-onglets d'Acteurs clés gardent leur état.
+  document.querySelectorAll('.section').forEach(s => { if (!s.closest('.ss-main')) s.classList.remove('active'); });
+  document.querySelectorAll('.nav-btn').forEach(b => { if (!b.closest('.ss-nav')) b.classList.remove('active'); });
   document.getElementById(id).classList.add('active');
   if (btn) btn.classList.add('active');
   setTimeout(() => {
@@ -195,12 +196,13 @@ function renderAll() {
   // KPIs
   const lastYear = PY[PY.length-2];
   const totalAI = PY.reduce((a,r) => a+r.ai_total, 0);
+  const topShare = D.ipc4_data.reduce((m,r) => r.share > m.share ? r : m);
   document.getElementById('kpi-row').innerHTML = `
     <div class="kpi"><div class="val">${totalAI.toLocaleString('fr-FR')}</div><div class="lbl">Brevets IA<br>1990–2024</div></div>
     <div class="kpi"><div class="val">${lastYear.ai_total.toLocaleString('fr-FR')}</div><div class="lbl">Brevets IA<br>${lastYear.year}</div><div class="sub">${lastYear.ai_share.toFixed(2)}% du corpus</div></div>
     <div class="kpi"><div class="val">${D.ctry_data[0].name}</div><div class="lbl">1er pays (inventeurs)<br>pondéré REGPAT</div><div class="sub">${Math.round(D.ctry_data[0].ai).toLocaleString('fr-FR')} brevets IA</div></div>
-    <div class="kpi"><div class="val">Informatique cognitive / IA</div><div class="lbl">IPC4 le plus IA<br>par intensité</div><div class="sub">24,8% du groupe</div></div>
-    <div class="kpi"><div class="val">${D.pubs_by_year.reduce((a,r)=>a+r.mapped,0).toLocaleString('fr-FR')}</div><div class="lbl">Publications IA<br>mappées (cumulé)</div></div>
+    <div class="kpi"><div class="val">${topShare.label}</div><div class="lbl">IPC4 le plus IA<br>par intensité</div><div class="sub">${topShare.share.toFixed(1).replace('.',',')}% du groupe</div></div>
+    <div class="kpi"><div class="val">${D.pubs_by_year.reduce((a,r)=>a+r.mapped,0).toLocaleString('fr-FR')}</div><div class="lbl">Publications IA<br>citées (observées)</div></div>
   `;
 
   // Vue d'ensemble
@@ -225,7 +227,7 @@ function renderAll() {
   // Brevets
   Plotly.newPlot('ch-patents-stacked', [
     {x:years, y:aiObs, type:'bar', name:'Observés (NPL→OpenAlex)', marker:{color:P.blue}, hovertemplate:'%{x}: <b>%{y}</b> observés<extra></extra>'},
-    {x:years, y:aiPred.map((v,i)=>Math.max(0,v-aiObs[i])), type:'bar', name:'Prédits ML uniquement', marker:{color:P.blue2}, hovertemplate:'%{x}: <b>%{y}</b> prédits<extra></extra>'}
+    {x:years, y:aiTot.map((v,i)=>Math.max(0,v-aiObs[i])), type:'bar', name:'Prédits ML uniquement', marker:{color:P.blue2}, hovertemplate:'%{x}: <b>%{y}</b> prédits<extra></extra>'}
   ], L0({barmode:'stack', yaxis:{showgrid:true,gridcolor:'#f3f4f6',zeroline:false,title:'Brevets IA'}}), cfg);
 
   Plotly.newPlot('ch-patents-share', [
@@ -265,11 +267,10 @@ function renderAll() {
   // Publications
   const PB = D.pubs_by_year;
   Plotly.newPlot('ch-pubs-year', [
-    {x:PB.map(r=>r.year), y:PB.map(r=>r.mapped), type:'bar', name:'Mappées (primary topic IA)', marker:{color:P.teal,opacity:0.85}, hovertemplate:'%{x}: <b>%{y}</b> mappées<extra></extra>'},
-    {x:PB.map(r=>r.year), y:PB.map(r=>r.cited), type:'scatter', mode:'lines', name:'Citées (corpus OpenAlex)', line:{color:P.gray,width:1.5,dash:'dash'}, yaxis:'y2', hovertemplate:'%{x}: <b>%{y}</b> citées<extra></extra>'}
-  ], L0({margin:{l:55,r:70,t:20,b:50},
-    yaxis:{showgrid:true,gridcolor:'#f3f4f6',zeroline:false,title:'Publications mappées'},
-    yaxis2:{title:'Publications citées',overlaying:'y',side:'right',showgrid:false}}), cfg);
+    {x:PB.map(r=>r.year), y:PB.map(r=>r.mapped), type:'bar', name:'Publications IA citées', marker:{color:P.teal,opacity:0.85}, hovertemplate:'%{x} : <b>%{y}</b> publications<extra></extra>'}
+  ], L0({margin:{l:55,r:20,t:20,b:50},
+    xaxis:{showgrid:false,zeroline:false,title:'Année de publication de l’article'},
+    yaxis:{showgrid:true,gridcolor:'#f3f4f6',zeroline:false,title:'Publications IA'}}), cfg);
 
   const TD = D.topics_data.slice().reverse();
   Plotly.newPlot('ch-topics', [
@@ -308,8 +309,8 @@ window.downloadIPC4CSV = function() {
   _dlCSV(`lift_diffusion_science_ipc4_${_today()}.csv`, rows);
 };
 window.downloadPubsCSV = function() {
-  const rows = [['annee','publications_mappees','publications_citees']];
-  D.pubs_by_year.forEach(r => rows.push([r.year, r.mapped, r.cited]));
+  const rows = [['annee','publications_mappees']];
+  D.pubs_by_year.forEach(r => rows.push([r.year, r.mapped]));
   _dlCSV(`lift_diffusion_science_publications_${_today()}.csv`, rows);
 };
 window.downloadTopicsCSV = function() {

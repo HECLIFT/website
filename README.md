@@ -84,6 +84,12 @@ ligne n'est pas touché.
 
 D'où viennent ces CSV : voir [`tracker_manifest.json`](tracker_manifest.json).
 
+Diffusion IA — science : tous les fichiers de `data/ai-trackers/diffusion-science/`
+sont produits par le script `src/20_build_site_science_tracker.py` du projet
+`openalex_project` (code et données dans le Dropbox HEC, dossier
+`Antonin Bergeaud/science_ai_patents/openalex_project/`). La procédure est décrite
+dans `README_TRACKER_SCIENCE.md` du même dossier. Ne pas modifier ces fichiers à la main.
+
 ## Si vous préférez ne pas toucher aux fichiers
 
 Ouvrez une **issue** avec un des modèles (« Ajouter un membre », « Ajouter une

@@ -347,9 +347,9 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
   <div class="chart-card">
     <h3 class="anchored">Évolution des brevets IA — observés vs. prédits</h3>
-    <div class="desc">Observés : NPL directement mappés à OpenAlex avec subfield IA. Prédits : identifiés par le modèle ML titre/résumé (threshold 0.990).</div>
+    <div class="desc">Observés : citations NPL résolues exactement dans OpenAlex (patCit, DOI) dont le <em>primary topic</em> figure dans la liste IA. Prédits : citations NPL non résolues dans OpenAlex, classées IA par un modèle ML appliqué à leur titre (seuil 0,990).</div>
     <div id="ch-patents-stacked" style="height:380px"></div>
-    <div class="note">Corpus : brevets EP avec au moins une citation NPL. Source : REGPAT 202602, patCit, OpenAlex.</div>
+    <div class="note">Corpus : brevets EP avec au moins une citation NPL. Source : REGPAT 202602, patCit, OpenAlex.<br><strong>Attention :</strong> à partir de 2019, presque aucune citation récente n’est encore résolue dans OpenAlex via patCit ; la hausse observée depuis 2019 repose donc quasi entièrement sur les brevets prédits par le modèle.</div>
   </div>
   <div class="grid2">
     <div class="chart-card">
@@ -415,12 +415,12 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
   <div class="chart-card">
     <h3 class="anchored">Évolution temporelle — top 8 IPC4 (brevets IA par année)</h3>
-    <div class="desc">Diffusion de l'IA dans les différents domaines technologiques depuis 1995.</div>
+    <div class="desc">Diffusion de l'IA dans les différents domaines technologiques, 1990–2024.</div>
     <div id="ch-ipc-time" style="height:420px"></div>
   </div>
   <div class="chart-card">
     <h3 class="anchored">Composition des brevets IA par domaine IPC4 (% annuel)</h3>
-    <div class="desc">Part de chaque domaine technologique dans le total des brevets IA — top 8 IPC4, 1995–2024.</div>
+    <div class="desc">Part de chaque domaine parmi les brevets IA des 8 premiers domaines IPC4 (total = 100 %), 1990–2024. Un brevet peut relever de plusieurs domaines.</div>
     <div id="ch-ipc-share-time" style="height:420px"></div>
   </div>
 </div>
@@ -439,15 +439,14 @@ document.addEventListener('DOMContentLoaded', () => {
   <div class="chart-card">
     <h3 class="anchored">Publications scientifiques IA — évolution annuelle</h3>
     <div class="desc">
-      <b>Mappées (barres) :</b> publications dont le primary topic OpenAlex est IA, liées aux brevets du corpus.<br>
-      <b>Citées — corpus OpenAlex (ligne) :</b> toutes publications citées par des brevets EP dans OpenAlex AI works.
+      Publications IA (primary topic OpenAlex) citées par les brevets IA du corpus et identifiées exactement via patCit, par année de publication de l’article. Chaque publication est comptée une fois.
     </div>
     <div id="ch-pubs-year" style="height:380px"></div>
-    <div class="note">La série « citée » reflète les habitudes de citation des brevets, pas la production brute. Les années récentes sont sous-représentées par manque de recul.</div>
+    <div class="note">Seules les citations résolues exactement dans OpenAlex (patCit) sont reliées à une publication ; les citations prédites par le modèle ne le sont pas. Presque aucune publication postérieure à 2016 n’est donc identifiée : la série ne mesure pas la production scientifique récente. OpenAlex date une partie des archives IEEE à fin 2002 ; pour ces publications, l’année indiquée dans la citation du brevet est utilisée.</div>
   </div>
   <div class="chart-card">
     <h3 class="anchored">Top 20 thématiques de recherche IA</h3>
-    <div class="desc">Primary topics OpenAlex des publications IA mappées au corpus de brevets. Cumulé sur toutes les années.</div>
+    <div class="desc">Primary topics OpenAlex des publications IA citées par les brevets du corpus (citations observées). Nombre de publications distinctes.</div>
     <div id="ch-topics" style="height:520px"></div>
   </div>
 </div>
@@ -464,9 +463,9 @@ document.addEventListener('DOMContentLoaded', () => {
 <div id="tab-applicants" class="section active">
   <div class="chart-card">
     <h3 class="anchored">Top 25 déposants — brevets IA européens</h3>
-    <div class="desc">Entreprises avec le plus grand nombre de brevets EPO citant des publications scientifiques classifiées IA. L'équivalent fractionné tient compte des co-dépôts.</div>
+    <div class="desc">Déposants du plus grand nombre de brevets IA européens (1990–2024). Les filiales d’un même groupe sont regroupées (ex. Microsoft Corporation et Microsoft Technology Licensing). L'équivalent fractionné tient compte des co-dépôts.</div>
     <div id="ch-applicants" style="height:580px"></div>
-    <div class="note">Source : REGPAT 202602, patCit, OpenAlex · Corpus : brevets EP avec citations NPL identifiées IA.</div>
+    <div class="note">Source : REGPAT 202602, patCit, OpenAlex · Brevets IA observés et prédits, chaque brevet compté une fois.</div>
   </div>
 </div>
 <div id="tab-inventors" class="section">
@@ -487,10 +486,10 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 <div id="tab-time" class="section">
   <div class="chart-card">
-    <h3 class="anchored">Évolution des brevets IA — top 15 déposants (1990–2023)</h3>
+    <h3 class="anchored">Évolution des brevets IA — top 15 déposants (1990–2024)</h3>
     <div class="desc">Nombre de brevets IA par année pour chaque déposant principal (équivalent fractionné). Permet d'observer la montée en puissance des nouveaux acteurs et le déclin des anciens.</div>
     <div id="ch-timeseries" style="height:500px"></div>
-    <div class="note">Source : REGPAT 202602, patCit, OpenAlex · Top 15 déposants par volume cumulé 1990–2023.</div>
+    <div class="note">Source : REGPAT 202602, patCit, OpenAlex · Top 15 déposants par volume cumulé 1990–2024, filiales regroupées.</div>
   </div>
 </div>
 </main>
@@ -552,9 +551,18 @@ document.addEventListener('DOMContentLoaded', () => {
 <h3 class="anchored" data-anchor-id="identification-des-brevets-ia">Identification des brevets IA</h3>
 <p>Un brevet est classifié <strong>brevet IA</strong> selon deux méthodes complémentaires :</p>
 <ul>
-<li><strong>Observé</strong> : le brevet cite au moins une publication dont le <em>primary topic</em> <a href="https://openalex.org/">OpenAlex</a> appartient au sous-domaine IA. Le lien est établi via <a href="https://github.com/epo/patcit">patCit</a> (EPO).</li>
-<li><strong>Prédit</strong> : un modèle ML (seuil 0,990) classifie les brevets à partir de leur titre et résumé, pour les cas sans citation directe disponible.</li>
+<li><strong>Observé</strong> : le brevet cite au moins une publication dont le <em>primary topic</em> <a href="https://openalex.org/">OpenAlex</a> figure dans une liste de 34 thématiques IA. Le lien est établi via <a href="https://github.com/epo/patcit">patCit</a> (EPO).</li>
+<li><strong>Prédit</strong> : pour les citations NPL qui ne sont pas résolues dans OpenAlex, un modèle ML (seuil 0,990) classe le <em>titre de la publication citée</em> comme IA ou non. Le brevet est prédit IA si au moins une de ses citations est classée IA.</li>
 </ul>
+</section>
+<section id="comptage" class="level3">
+<h3 class="anchored" data-anchor-id="comptage">Comptage</h3>
+<ul>
+<li>Un brevet = une demande EP. L’EPO publie souvent le même brevet plusieurs fois (A1, A2, A3, B1…) ; ces publications sont regroupées et comptées une seule fois, à l’année de la première publication.</li>
+<li>La géographie (pays, régions) utilise la pondération fractionnaire REGPAT ; chaque brevet pèse 1 au total.</li>
+<li>Les publications scientifiques (onglets Publications IA et Acteurs clés) ne peuvent être identifiées que pour les citations observées.</li>
+</ul>
+<p>Méthode détaillée : note méthodologique <em>Artificial Intelligence to the service of innovation</em> (Bergeaud, Delbouve, Terra, 2026).</p>
 </section>
 <section id="sources" class="level3">
 <h3 class="anchored" data-anchor-id="sources">Sources</h3>
@@ -567,8 +575,8 @@ document.addEventListener('DOMContentLoaded', () => {
 </thead>
 <tbody>
 <tr class="odd">
-<td>EPO</td>
-<td>Corpus de brevets avec citations NPL, 1990–2024</td>
+<td>Google Patents</td>
+<td>Citations NPL des brevets EP (texte brut), 1990–2024</td>
 </tr>
 <tr class="even">
 <td><a href="https://github.com/epo/patcit">patCit</a></td>
