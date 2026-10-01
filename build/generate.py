@@ -196,11 +196,12 @@ def main():
     (out / "publications.html").write_text(
         liste_publications(liste_pubs, membres_par_id, (live / "publications.html").read_text(), live))
 
-    # home: contador de membros
+    # home: contadores de membros e de publicações
     idx = (live / "index.html").read_text()
     n = len(data["membres"])
-    idx = re.sub(r'(<div class="stat-num">)\d+(</div>\s*<div class="stat-meta">\s*<div class="stat-key">Membres)',
-                 lambda mm: f'{mm.group(1)}{n:02d}{mm.group(2)}', idx)
+    for chave, total in (("Membres", n), ("Publications", len(liste_pubs))):
+        idx = re.sub(r'(<div class="stat-num">)\d+(</div>\s*<div class="stat-meta">\s*<div class="stat-key">' + chave + ')',
+                     lambda mm: f'{mm.group(1)}{total:02d}{mm.group(2)}', idx)
     (out / "index.html").write_text(idx)
     if a.check:
         difs = []

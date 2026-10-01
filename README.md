@@ -100,10 +100,10 @@ photo ou les CSV, quelqu'un s'en charge.
 
 | Page | Comment on la modifie |
 |---|---|
-| Liste des membres, page de chaque membre, compteur de l'accueil | **générées** depuis `content/members.json` — ne pas les éditer à la main |
-| Liste des publications, page de chaque publication | **générées** depuis `content/publications.json` |
+| Liste des membres, page de chaque membre, compteur « Membres » de l'accueil | **générées** depuis `content/members.json` — ne pas les éditer à la main |
+| Liste des publications, page de chaque publication, compteur « Publications » de l'accueil | **générées** depuis `content/publications.json` |
 | Graphiques des trackers | **données** : remplacer les CSV dans `data/` |
-| Page d'accueil (hors compteur), « À propos », textes des pages de trackers | encore en HTML, à modifier directement — avec précaution |
+| Page d'accueil (hors compteurs), « À propos », textes des pages de trackers | encore en HTML, à modifier directement — avec précaution |
 
 ## Pour les curieux
 

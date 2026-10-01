@@ -12,14 +12,14 @@ ne reproduit pas le design actuel : **ne jamais la rendre ni la publier**.
 ## Règle numéro un
 
 Le contenu éditorial vit dans `content/*.json` et les pages sont **générées**.
-Ne modifiez jamais à la main : `membres.html`, `membres/*.html`, ni le compteur de
-membres de `index.html`. Modifiez le JSON, puis lancez :
+Ne modifiez jamais à la main : `membres.html`, `membres/*.html`, ni les compteurs de
+membres et de publications de `index.html`. Modifiez le JSON, puis lancez :
 
 ```bash
 python3 build/validate.py && python3 build/generate.py
 ```
 
-Les pages non encore générées (publications, trackers, à-propos, accueil hors compteur)
+Les pages non encore générées (publications, trackers, à-propos, accueil hors compteurs)
 s'éditent encore en HTML — avec précaution, voir ci-dessous.
 
 ## Pièges connus (vécus)
