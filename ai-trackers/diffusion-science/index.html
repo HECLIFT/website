@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
     <div class="chart-card">
       <h3 class="anchored">Part des brevets IA (% du total)</h3>
-      <div class="desc">Share de brevets EP contenant au moins une citation NPL identifiée comme IA.</div>
+      <div class="desc">Part des brevets EP contenant au moins une citation NPL identifiée comme IA.</div>
       <div id="ch-overview-share" style="height:300px"></div>
     </div>
   </div>
@@ -347,9 +347,9 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
   <div class="chart-card">
     <h3 class="anchored">Évolution des brevets IA — observés vs. prédits</h3>
-    <div class="desc">Observés : citations NPL résolues exactement dans OpenAlex (patCit, DOI) dont le <em>primary topic</em> figure dans la liste IA. Prédits : citations NPL non résolues dans OpenAlex, classées IA par un modèle ML appliqué à leur titre (seuil 0,990).</div>
+    <div class="desc">Observés : citations NPL reliées à une publication OpenAlex (patCit, DOI écrit dans la citation, ou titre retrouvé dans arXiv, Crossref ou Semantic Scholar) dont le <em>primary topic</em> figure dans la liste IA. Prédits : citations NPL qui n’ont pu être reliées à aucune publication, classées IA par un modèle ML appliqué à leur titre.</div>
     <div id="ch-patents-stacked" style="height:380px"></div>
-    <div class="note">Corpus : brevets EP avec au moins une citation NPL. Source : REGPAT 202602, patCit, OpenAlex.<br><strong>Attention :</strong> à partir de 2019, presque aucune citation récente n’est encore résolue dans OpenAlex via patCit ; la hausse observée depuis 2019 repose donc quasi entièrement sur les brevets prédits par le modèle.</div>
+    <div class="note">Corpus : brevets EP avec au moins une citation NPL, datés par leur première publication. Source : Google Patents, patCit, OpenAlex, REGPAT 202602.<br><strong>2024 provisoire :</strong> une partie des brevets publiés en 2024 n’ont pas encore de rapport de recherche dans les données ; leur nombre sera revu à la hausse, la part de brevets IA est moins affectée.</div>
   </div>
   <div class="grid2">
     <div class="chart-card">
@@ -439,10 +439,10 @@ document.addEventListener('DOMContentLoaded', () => {
   <div class="chart-card">
     <h3 class="anchored">Publications scientifiques IA — évolution annuelle</h3>
     <div class="desc">
-      Publications IA (primary topic OpenAlex) citées par les brevets IA du corpus et identifiées exactement via patCit, par année de publication de l’article. Chaque publication est comptée une fois.
+      Publications IA (primary topic OpenAlex) citées par les brevets IA du corpus et reliées à une publication OpenAlex (patCit, DOI ou titre retrouvé), par année de publication de l’article. Chaque publication est comptée une fois.
     </div>
     <div id="ch-pubs-year" style="height:380px"></div>
-    <div class="note">Seules les citations résolues exactement dans OpenAlex (patCit) sont reliées à une publication ; les citations prédites par le modèle ne le sont pas. Presque aucune publication postérieure à 2016 n’est donc identifiée : la série ne mesure pas la production scientifique récente. OpenAlex date une partie des archives IEEE à fin 2002 ; pour ces publications, l’année indiquée dans la citation du brevet est utilisée.</div>
+    <div class="note">Seules les citations reliées à une publication OpenAlex sont comptées ; les citations prédites par le modèle ne le sont pas. Une publication récente n’apparaît qu’une fois citée par un brevet déjà publié : la série ne mesure pas la production scientifique récente. OpenAlex date une partie des archives IEEE à fin 2002 ; pour ces publications, l’année indiquée dans la citation du brevet est utilisée.</div>
   </div>
   <div class="chart-card">
     <h3 class="anchored">Top 20 thématiques de recherche IA</h3>
@@ -481,7 +481,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <h3 class="anchored">Publications scientifiques les plus citées</h3>
     <div class="desc">Publications les plus citées par les brevets IA européens — classées par nombre de brevets citants distincts.</div>
     <div id="papers-table"></div>
-    <div class="note">Source : patCit (EPO), OpenAlex · Seules les citations observées (mappées) sont comptabilisées.</div>
+    <div class="note">Source : patCit (EPO), Google Patents, OpenAlex · Seules les citations reliées à une publication sont comptabilisées.</div>
   </div>
 </div>
 <div id="tab-time" class="section">
@@ -551,8 +551,8 @@ document.addEventListener('DOMContentLoaded', () => {
 <h3 class="anchored" data-anchor-id="identification-des-brevets-ia">Identification des brevets IA</h3>
 <p>Un brevet est classifié <strong>brevet IA</strong> selon deux méthodes complémentaires :</p>
 <ul>
-<li><strong>Observé</strong> : le brevet cite au moins une publication dont le <em>primary topic</em> <a href="https://openalex.org/">OpenAlex</a> figure dans une liste de 34 thématiques IA. Le lien est établi via <a href="https://github.com/epo/patcit">patCit</a> (EPO).</li>
-<li><strong>Prédit</strong> : pour les citations NPL qui ne sont pas résolues dans OpenAlex, un modèle ML (seuil 0,990) classe le <em>titre de la publication citée</em> comme IA ou non. Le brevet est prédit IA si au moins une de ses citations est classée IA.</li>
+<li><strong>Observé</strong> : le brevet cite au moins une publication dont le <em>primary topic</em> <a href="https://openalex.org/">OpenAlex</a> figure dans une liste de 34 thématiques IA. Le lien est établi via <a href="https://github.com/epo/patcit">patCit</a> (EPO), via le DOI écrit dans la citation, ou en retrouvant le titre cité dans arXiv, Crossref ou Semantic Scholar.</li>
+<li><strong>Prédit</strong> : pour les citations NPL qui n’ont pu être reliées à aucune publication, un modèle ML classe le <em>titre de la publication citée</em> comme IA ou non (seuil choisi pour reproduire le nombre de citations IA observé sur les brevets récents). Le brevet est prédit IA si au moins une de ses citations est classée IA. Le modèle sert d’abord à désigner les citations à vérifier : celles qu’il juge possiblement IA sont cherchées dans les bases bibliographiques, et seules celles qu’on ne retrouve pas gardent sa prédiction.</li>
 </ul>
 </section>
 <section id="comptage" class="level3">
@@ -576,17 +576,21 @@ document.addEventListener('DOMContentLoaded', () => {
 <tbody>
 <tr class="odd">
 <td>Google Patents</td>
-<td>Citations NPL des brevets EP (texte brut), 1990–2024</td>
+<td>Citations NPL des brevets EP (texte brut), publications jusqu’à septembre 2026</td>
 </tr>
 <tr class="even">
 <td><a href="https://github.com/epo/patcit">patCit</a></td>
-<td>Résolution des citations non-patent literature</td>
+<td>Résolution des citations non-patent literature (jusqu’en 2018 environ)</td>
 </tr>
 <tr class="odd">
+<td>arXiv, Crossref, Semantic Scholar</td>
+<td>Recherche des publications citées sans DOI</td>
+</tr>
+<tr class="even">
 <td><a href="https://openalex.org/">OpenAlex</a></td>
 <td>Classification des publications (topic IA)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>REGPAT (OCDE 202602)</td>
 <td>Géolocalisation des inventeurs (fractionnaire)</td>
 </tr>
@@ -595,7 +599,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </section>
 <section id="mise-à-jour" class="level3">
 <h3 class="anchored" data-anchor-id="mise-à-jour">Mise à jour</h3>
-<p><strong>Annuelle</strong> — après intégration des nouvelles éditions REGPAT et patCit.</p>
+<p><strong>Annuelle</strong>, après une nouvelle extraction des citations (Google Patents) et, s’il y a lieu, une nouvelle édition REGPAT. Données au 1er octobre 2026.</p>
 
 
 </section>
