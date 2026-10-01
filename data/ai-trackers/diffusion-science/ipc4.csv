@@ -1,21 +1,21 @@
 ipc4,domaine,brevets_ia,brevets_total,part_ia_pct
-G06F,Traitement électronique données,2799,60991,4.59
-G06N,Informatique cognitive / IA,2628,10157,25.87
-G10L,Traitement parole / audio,1665,7194,23.14
-G06T,Traitement image,985,26075,3.78
-G06V,Reconnaissance visuelle,839,7638,10.98
-G06K,Reconnaissance de motifs,690,9690,7.12
-H04L,Transmission données,458,61640,0.74
-G06Q,Gestion / commerce,424,13019,3.26
-A61B,Instruments médicaux,355,21119,1.68
-G05B,Systèmes de contrôle,333,6290,5.29
-H04N,Transmission image,317,33460,0.95
-G01N,Analyse chimique,304,60008,0.51
-G16H,Informatique médicale,287,3965,7.24
-A61K,Préparations médicales,272,142796,0.19
-H04M,Téléphonie,265,7574,3.5
-A61P,Médicaments et thérapies,199,89706,0.22
-C07K,Biochimie protéique,172,56879,0.3
-C12Q,Biotechnologie / diagnostic,166,33691,0.49
-H04W,Réseaux sans fil,136,38103,0.36
-G16B,Bioinformatique,120,3482,3.45
+G06N,Informatique cognitive / IA,2922,10779,27.11
+G06F,Traitement électronique données,2836,60449,4.69
+G10L,Traitement parole / audio,1618,7260,22.29
+G06T,Traitement image,942,26428,3.56
+G06V,Reconnaissance visuelle,862,7998,10.78
+G06K,Reconnaissance de motifs,624,9652,6.46
+H04L,Transmission données,529,61948,0.85
+G06Q,Gestion / commerce,459,13170,3.49
+G16H,Informatique médicale,342,4172,8.2
+G05B,Systèmes de contrôle,331,6257,5.29
+A61B,Instruments médicaux,318,21376,1.49
+G01N,Analyse chimique,308,59658,0.52
+H04M,Téléphonie,263,7403,3.55
+H04N,Transmission image,256,33265,0.77
+A61K,Préparations médicales,208,142738,0.15
+C12Q,Biotechnologie / diagnostic,159,33842,0.47
+H04W,Réseaux sans fil,154,38725,0.4
+A61P,Médicaments et thérapies,153,90039,0.17
+C07K,Biochimie protéique,144,56807,0.25
+G16B,Bioinformatique,139,3614,3.85
