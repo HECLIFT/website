@@ -20,7 +20,7 @@
     indicators: {
       gdp_per_capita: {
         label: 'PIB par habitant',
-        unit: '$ (PPA 2017)',
+        unit: '$ (PPA 2020)',
         format: v => v.toLocaleString('fr-FR'),
         waveKey: 'wave_gdp'
       },
@@ -364,7 +364,7 @@
       xAxis: {
         type: 'value',
         min: 1890,
-        max: 2022,
+        max: wavesData.length ? Math.max(...wavesData.map(r => +r.year).filter(Number.isFinite)) : undefined,
         axisLabel: {
           formatter: v => v.toString(),
           fontFamily: "'Merriweather', Georgia, serif"
