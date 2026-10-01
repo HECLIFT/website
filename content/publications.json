@@ -1,6 +1,37 @@
 {
   "publications": [
     {
+      "id": "ia-productivite",
+      "titre": "Pourquoi l’IA ne rend pas (encore) la France plus productive",
+      "type": "pb",
+      "type_label": "Note de politique",
+      "date": "Septembre 2026",
+      "auteurs": [
+        "Antonin Bergeaud",
+        "Simon Bunel"
+      ],
+      "venue": "Policy Note LIFT n° 1 — Septembre 2026",
+      "tags": [
+        "AI",
+        "France",
+        "Productivité"
+      ],
+      "resume": "La France consacre autant que les États-Unis à l'informatique (6,5 % du PIB en 2025, contre 6,8 %), mais sa productivité horaire stagne depuis 2015 : son retard tient au rendement de ces dépenses. En amont, elle se situe dans la moyenne européenne pour la recherche, les brevets et le capital, mais sa puissance de calcul par habitant est plus de 50 % inférieure à la moyenne européenne. Les Français utilisent l'IA générative à titre individuel au moins autant que les autres Européens, mais leurs entreprises l'intègrent moins : seules 18 % l'utilisent, contre 26 % en Allemagne, et l'intégration reste superficielle, concentrée sur le développement de produits plutôt que sur les fonctions transversales. Ce retard tient d'abord aux organisations : 69 % des actifs français ne reçoivent de leur employeur ni encouragement, ni outil, ni formation à l'IA, contre 44 % aux États-Unis.",
+      "thumb": "images/pubs/ia-productivite.png",
+      "pdf": "files/papers/LIFT_PolicyNote_1.pdf",
+      "auteurs_liens": [
+        {
+          "membre": "abergeaud",
+          "nom": "Antonin Bergeaud"
+        },
+        {
+          "membre": "sbunel",
+          "nom": "Simon Bunel"
+        }
+      ],
+      "mots_cles_affiches": "IA, productivité, France, diffusion en entreprise"
+    },
+    {
       "id": "politique-travail",
       "titre": "La politique au travail : Vécu en entreprise et fractures politiques des salariés en France",
       "type": "pb",
