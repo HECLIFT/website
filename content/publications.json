@@ -77,10 +77,10 @@
       "type_label": "Working Paper",
       "date": "Octobre 2025",
       "auteurs": [
-        "Y. Coatanlem",
-        "O. Coste"
+        "Yann Coatanlem",
+        "Oliver Coste"
       ],
-      "venue": "Working paper — Octobre 2025",
+      "venue": "LIFT Working Paper 2025-03 — Octobre 2025",
       "tags": [
         "Innovation",
         "Europe",
@@ -100,9 +100,10 @@
           "nom": "Oliver Coste"
         }
       ],
-      "tag_hero": "Working paper · Octobre 2025",
+      "tag_hero": "Working Paper · Octobre 2025",
       "mots_cles_affiches": "Flexicurity, EPL, innovation disruptive, R&amp;D, biotech",
-      "resume_hero": "Ce papier élargit des travaux antérieurs en assemblant un échantillon plus large de plans de restructuration (250 plans) pour mesurer les coûts de restructuration supportés par les grandes entreprises et évaluer leurs liens avec la R&amp;D dans les secteurs disruptifs (tech/biotech). Les auteurs confirment un large fossé transatlantique — l'Allemagne à 31 mois de salaire moyen contre 7 mois aux États-Unis — et identifient des pays européens à faibles coûts (Danemark, Suisse). Ils montrent une forte corrélation négative entre les coûts de restructuration et l'intensité de la R&amp;D dans la tech et la biotech, et concluent avec des recommandations pour des réformes ciblées du droit du travail préservant la protection sociale tout en restaurant l'agilité nécessaire à l'innovation disruptive."
+      "resume_hero": "Ce papier élargit des travaux antérieurs en assemblant un échantillon plus large de plans de restructuration (250 plans) pour mesurer les coûts de restructuration supportés par les grandes entreprises et évaluer leurs liens avec la R&amp;D dans les secteurs disruptifs (tech/biotech). Les auteurs confirment un large fossé transatlantique — l'Allemagne à 31 mois de salaire moyen contre 7 mois aux États-Unis — et identifient des pays européens à faibles coûts (Danemark, Suisse). Ils montrent une forte corrélation négative entre les coûts de restructuration et l'intensité de la R&amp;D dans la tech et la biotech, et concluent avec des recommandations pour des réformes ciblées du droit du travail préservant la protection sociale tout en restaurant l'agilité nécessaire à l'innovation disruptive.",
+      "sous_titre": "LIFT Working Paper 2025-03 — Octobre 2025"
     },
     {
       "id": "ai-innov",
@@ -113,7 +114,7 @@
       "auteurs": [
         "Antonin Bergeaud"
       ],
-      "venue": "Working paper — Juillet 2025",
+      "venue": "LIFT Working Paper 2025-02 — Juillet 2025",
       "tags": [
         "AI",
         "Innovation"
@@ -122,7 +123,7 @@
       "thumb": "images/pubs/ai-innov.png",
       "pdf": "files/papers/ai-innov.pdf",
       "mots_cles": "Innovation, IA, R&amp;D, brevets",
-      "sous_titre": "Working paper — 2025-2",
+      "sous_titre": "LIFT Working Paper 2025-02 — Juillet 2025",
       "date_longue": "20 juillet 2025",
       "resume_long": "L’impact des technologies d’intelligence artificielle (IA) sur la croissance économique dépend en grande partie de leur capacité à accroître la productivité de la recherche. Dans cet article, nous proposons une mesure originale de la diffusion de l’IA à travers les technologies, fondée sur les brevets déposés aux États-Unis depuis 1990. Notre méthodologie identifie les brevets intégrant de l’IA via leurs références à des publications académiques classées comme relevant de l’IA. En décembre 2024, environ 5% des brevets déposés peuvent ainsi être caractérisés comme utilisant l’IA. Cette approche permet de capturer l’intégration de l’IA dans dautres domaines technologiques, en cohérence avec sa nature de technologie générique (general purpose technology). Nous montrons que ces brevets « IA » présentent systématiquement des indicateurs de qualité supérieurs à ceux des autres brevets, selon plusieurs métriques standards de la littérature.",
       "auteurs_liens": [
@@ -131,7 +132,7 @@
           "nom": "Antonin Bergeaud"
         }
       ],
-      "tag_hero": "Working paper · Juillet 2025",
+      "tag_hero": "Working Paper · Juillet 2025",
       "mots_cles_affiches": "Innovation, IA, R&amp;D, brevets",
       "resume_hero": "L'impact des technologies d'intelligence artificielle (IA) sur la croissance économique dépend en grande partie de leur capacité à accroître la productivité de la recherche. Dans cet article, nous proposons une mesure originale de la diffusion de l'IA à travers les technologies, fondée sur les brevets déposés aux États-Unis depuis 1990. Notre méthodologie identifie les brevets intégrant de l'IA via leurs références à des publications académiques classées comme relevant de l'IA. En décembre 2024, environ 5% des brevets déposés peuvent ainsi être caractérisés comme utilisant l'IA. Cette approche permet de capturer l'intégration de l'IA dans d'autres domaines technologiques, en cohérence avec sa nature de technologie générique. Nous montrons que ces brevets « IA » présentent systématiquement des indicateurs de qualité supérieurs à ceux des autres brevets, selon plusieurs métriques standards de la littérature."
     },
@@ -147,7 +148,7 @@
         "Simon Bunel",
         "Paul Delbouve"
       ],
-      "venue": "Working paper — Juillet 2025",
+      "venue": "LIFT Working Paper 2025-01 — Juillet 2025",
       "tags": [
         "AI",
         "France",
@@ -158,7 +159,7 @@
       "thumb": "images/pubs/ai-tracker.png",
       "pdf": "files/papers/ai-tracker.pdf",
       "mots_cles": "Diffusion, IA et emploi, France, NLP",
-      "sous_titre": "Working paper — 2025-1",
+      "sous_titre": "LIFT Working Paper 2025-01 — Juillet 2025",
       "date_longue": "10 juillet 2025",
       "resume_long": "À partir de plus de 120 millions d’offres d’emploi publiées en ligne en France depuis 2019, cette étude examine les caractéristiques de la diffusion de l’intelligence artificielle (IA) dans les entreprises et ses effets sur l’emploi. La diffusion de l’IA se révèle très hétérogène : elle est particulièrement avancée dans certains secteurs (informatique, finance, conseil) et au sein de grandes entreprises pionnières. Cette hétérogénéité s’observe aussi à l’échelle territoriale, les offres d’emploi en IA étant fortement concentrées dans les zones d’emploi accueillant des clusters de recherche ou des pôles industriels spécialisés (semi-conducteurs, assurances, aéronautique, etc.). Nous montrons que les entreprises les plus exposées à l’IA ont été significativement plus enclines à recruter des spécialistes de l’IA dès l’apparition de ChatGPT. En parallèle, on observe une baisse relative de la création d’emplois dans les professions les plus exposées à l’IA. Toutefois, les recrutements dans les métiers de l’IA s’accompagnent d’une hausse de la productivité du travail et du chiffre d’affaires, concomitante avec une hausse de l’emploi total dans les entreprises concernées, tirée par les professions fortement exposées, au détriment de celles qui le sont moins.",
       "auteurs_liens": [
@@ -179,7 +180,7 @@
           "nom": "Paul Delbouve"
         }
       ],
-      "tag_hero": "Working paper · Juillet 2025",
+      "tag_hero": "Working Paper · Juillet 2025",
       "mots_cles_affiches": "Diffusion, IA et emploi, France, NLP",
       "resume_hero": "À partir de plus de 120 millions d'offres d'emploi publiées en ligne en France depuis 2019, cette étude examine les caractéristiques de la diffusion de l'intelligence artificielle (IA) dans les entreprises et ses effets sur l'emploi. La diffusion de l'IA se révèle très hétérogène : elle est particulièrement avancée dans certains secteurs (informatique, finance, conseil) et au sein de grandes entreprises pionnières. Cette hétérogénéité s'observe aussi à l'échelle territoriale, les offres d'emploi en IA étant fortement concentrées dans les zones d'emploi accueillant des clusters de recherche ou des pôles industriels spécialisés. Nous montrons que les entreprises les plus exposées à l'IA ont été significativement plus enclines à recruter des spécialistes de l'IA dès l'apparition de ChatGPT. En parallèle, on observe une baisse relative de la création d'emplois dans les professions les plus exposées à l'IA."
     },
