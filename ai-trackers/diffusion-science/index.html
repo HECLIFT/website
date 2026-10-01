@@ -308,7 +308,8 @@ document.addEventListener('DOMContentLoaded', () => {
   <button class="nav-btn" onclick="show('superstars', this)">Acteurs clés</button>
 </nav>
 
-<main class="ds-main">
+<main class="ds-main" data-asof="2026-10-01" data-asof-label="1er octobre 2026">
+<div class="dash-databar" id="dash-databar"></div>
 
 <div id="vue-ensemble" class="section active">
   <div class="kpi-row" id="kpi-row"></div>
@@ -339,12 +340,6 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 
 <div id="brevets" class="section">
-  <div class="ds-dl-row">
-    <button class="ds-dl-btn" onclick="downloadPatentsCSV()" title="Télécharger les données brevets par année">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Brevets par année
-    </button>
-  </div>
   <div class="chart-card">
     <h3 class="anchored">Évolution des brevets IA — observés vs. prédits</h3>
     <div class="desc">Observés : citations NPL reliées à une publication OpenAlex (patCit, DOI écrit dans la citation, ou titre retrouvé dans arXiv, Crossref ou Semantic Scholar) dont le <em>primary topic</em> figure dans la liste IA. Prédits : citations NPL qui n’ont pu être reliées à aucune publication, classées IA par un modèle ML appliqué à leur titre.</div>
@@ -354,62 +349,49 @@ document.addEventListener('DOMContentLoaded', () => {
   <div class="grid2">
     <div class="chart-card">
       <h3 class="anchored">Part IA dans les brevets (%, par année)</h3>
-      <div class="desc">Pourcentage de brevets EP classifiés IA sur le total des brevets avec citations NPL.</div>
+      <div class="desc">Pourcentage de brevets EP classifiés IA sur le total des brevets avec citations NPL : tous les brevets IA, et ceux dont une citation IA est observée.</div>
       <div id="ch-patents-share" style="height:380px"></div>
     </div>
     <div class="chart-card">
       <h3 class="anchored">Corpus total NPL vs. brevets IA</h3>
-      <div class="desc">Volume absolu du corpus de brevets avec citations non-patent literature (NPL).</div>
+      <div class="desc">Volume absolu du corpus de brevets avec citations non-patent literature (NPL). L’échelle log permet de comparer les rythmes de croissance.</div>
       <div id="ch-patents-total" style="height:380px"></div>
     </div>
   </div>
 </div>
 
 <div id="geographie" class="section">
-  <div class="ds-dl-row">
-    <button class="ds-dl-btn" onclick="downloadCtryCSV()" title="Télécharger les données par pays">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Pays
-    </button>
-  </div>
   <div class="chart-card">
     <h3 class="anchored">Brevets IA par pays — top 25 (géographie inventeurs)</h3>
-    <div class="desc">Poids fractionné REGPAT. Chaque brevet contribue à plusieurs pays proportionnellement aux inventeurs. Barres colorées par share IA.</div>
+    <div class="desc">Poids fractionné REGPAT. Chaque brevet contribue à plusieurs pays proportionnellement aux inventeurs. « Part IA » classe les pays selon la part de leurs brevets qui sont IA.</div>
     <div id="ch-geo-bar" style="height:520px"></div>
     <div class="note">Source : REGPAT 202602 · EPO_Inv_reg · Pondération : reg_share × inv_share.</div>
   </div>
   <div class="chart-card">
-    <h3 class="anchored">Volume total vs. share IA — comparaison pays</h3>
-    <div class="desc">Volume total pondéré (axe X, log) vs. share IA (axe Y). Taille des bulles proportionnelle aux brevets IA. Les pays en haut à gauche = forte spécialisation IA relative.</div>
+    <h3 class="anchored">Volume total et part des brevets IA par pays</h3>
+    <div class="desc">Brevets EP du pays (axe horizontal, échelle log) et part des brevets IA (axe vertical). La taille des bulles suit le nombre de brevets IA. En haut à gauche, les pays relativement spécialisés en IA.</div>
     <div id="ch-geo-scatter" style="height:420px"></div>
   </div>
   <div class="chart-card">
     <h3 class="anchored">Carte Europe — brevets IA par région NUTS1</h3>
-    <div class="desc">Poids fractionné REGPAT par région NUTS1 en Europe.</div>
-    <iframe src="../../assets/maps/europe_ia.html" style="width:100%;height:520px;border:none;border-radius:var(--radius-sm);display:block;" loading="lazy"></iframe>
+    <div class="desc">Poids fractionné REGPAT par grande région (NUTS1). Part de l’Europe : part de la région dans les brevets IA des régions européennes. Part IA locale : part des brevets de la région qui sont IA.</div>
+    <div id="ch-europe-map" style="height:560px"></div>
   </div>
   <div class="chart-card">
     <h3 class="anchored">Carte mondiale — brevets IA par pays</h3>
-    <div class="desc">Distribution mondiale des brevets IA, pondération REGPAT par inventeur.</div>
-    <iframe src="../../assets/maps/world_ia.html" style="width:100%;height:520px;border:none;border-radius:var(--radius-sm);display:block;" loading="lazy"></iframe>
+    <div class="desc">Distribution mondiale des brevets, 1990–2024, pondération REGPAT selon les inventeurs ou les déposants.</div>
+    <div id="ch-world-map" style="height:520px"></div>
   </div>
 </div>
 
 <div id="technologie" class="section">
-  <div class="ds-dl-row">
-    <button class="ds-dl-btn" onclick="downloadIPC4CSV()" title="Télécharger les données IPC4">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Domaines IPC4
-    </button>
-  </div>
-  <div class="ds-filter-bar">
-    <span class="ds-filter-label">Filtre :</span>
-    <button class="ds-btn" onclick="toggleG06(this)">− Exclure G06*</button>
-    <span class="ds-filter-hint">G06* = informatique générale (traitement données, image, vision, IA, gestion)</span>
+  <div class="ds-filter-bar" id="ipc-filter">
+    <span class="ds-filter-label">Domaines</span>
+    <span class="ds-filter-hint">G06* = informatique générale (traitement de données, image, vision, IA, gestion). Le choix vaut pour les trois graphiques de l’onglet.</span>
   </div>
   <div class="chart-card">
     <h3 class="anchored">Brevets IA par domaine IPC4 — volume et intensité</h3>
-    <div class="desc">Barres = nombre absolu de brevets IA. Ligne = share IA dans le groupe (% du groupe classifiés IA).</div>
+    <div class="desc">Volume : nombre de brevets IA du domaine. Intensité : part des brevets du domaine qui sont IA.</div>
     <div id="ch-ipc-combo" style="height:480px"></div>
     <div class="note">IPC4 = 4 premiers caractères de la classification internationale des brevets.</div>
   </div>
@@ -426,16 +408,6 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 
 <div id="publications" class="section">
-  <div class="ds-dl-row">
-    <button class="ds-dl-btn" onclick="downloadPubsCSV()" title="Télécharger publications par année">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Publications par année
-    </button>
-    <button class="ds-dl-btn" onclick="downloadTopicsCSV()" title="Télécharger les thématiques">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Thématiques
-    </button>
-  </div>
   <div class="chart-card">
     <h3 class="anchored">Publications scientifiques IA — évolution annuelle</h3>
     <div class="desc">
@@ -487,7 +459,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <div id="tab-time" class="section">
   <div class="chart-card">
     <h3 class="anchored">Évolution des brevets IA — top 15 déposants (1990–2024)</h3>
-    <div class="desc">Nombre de brevets IA par année pour chaque déposant principal (équivalent fractionné). Permet d'observer la montée en puissance des nouveaux acteurs et le déclin des anciens.</div>
+    <div class="desc">Nombre de brevets IA par année pour chaque déposant principal (équivalent fractionné). Permet d'observer la montée en puissance des nouveaux acteurs et le déclin des anciens. Choisir les déposants à comparer.</div>
     <div id="ch-timeseries" style="height:500px"></div>
     <div class="note">Source : REGPAT 202602, patCit, OpenAlex · Top 15 déposants par volume cumulé 1990–2024, filiales regroupées.</div>
   </div>
