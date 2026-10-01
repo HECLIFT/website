@@ -344,7 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </svg>
       </div>
       <div class="iht-kpi-content">
-        <span class="iht-kpi-label">Leader (année récente)</span>
+        <span class="iht-kpi-label" id="iht-kpi-leader-label">Leader (année récente)</span>
         <span class="iht-kpi-value" id="iht-kpi-leader">--</span>
       </div>
     </div>
@@ -411,6 +411,7 @@ document.addEventListener('DOMContentLoaded', () => {
     via BigQuery. Attribution géographique par comptage fractionnaire des inventeurs via
     OECD RegPat.
     Classifications technologiques : IPC (OMPI) et CPC (EPO/USPTO).
+    <br><strong>2025 incomplète :</strong> une partie des demandes PCT déposées en 2025 n’est pas encore publiée dans RegPat (édition d’août 2026). Les nombres de brevets de 2025 seront revus à la hausse ; les parts sont moins affectées. L’année 2024 est presque complète : il lui manque encore environ 7 % des demandes, ce qui explique une partie de sa baisse apparente.
   </div>
 
 </div>
@@ -473,7 +474,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <tr class="odd">
 <td>Semi-conducteurs</td>
 <td>CPC</td>
-<td>Dispositifs semi-conducteurs</td>
+<td>Dispositifs semi-conducteurs (H10, qui reprend H01L depuis les réformes de la CPC de 2023 à 2026)</td>
 </tr>
 <tr class="even">
 <td>Pharmacie</td>
@@ -517,7 +518,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <h4 class="anchored" data-anchor-id="sources-de-données">Sources de données</h4>
 <ul>
 <li><strong>Google Patents Public Data</strong> : Publications PCT (WO) avec classifications IPC et CPC</li>
-<li><strong>OECD RegPat</strong> (édition 2025) : Registre des inventeurs avec attribution géographique fractionnaire</li>
+<li><strong>OECD RegPat</strong> (édition d’août 2026) : Registre des inventeurs avec attribution géographique fractionnaire</li>
 <li><strong>Classification IPC</strong> : International Patent Classification (OMPI)</li>
 <li><strong>Classification CPC</strong> : Cooperative Patent Classification (EPO/USPTO)</li>
 </ul>
@@ -540,7 +541,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </section>
 <section id="mise-à-jour" class="level3">
 <h3 class="anchored" data-anchor-id="mise-à-jour">Mise à jour</h3>
-<p>Ce tracker est mis à jour deux fois par an, en fonction de la disponibilité des données RegPat de l’OECD.</p>
+<p>Données au 1er octobre 2026 : demandes PCT extraites de Google Patents le 1er octobre 2026 et RegPat (OCDE) d’août 2026. Le tracker est mis à jour après chaque nouvelle édition de RegPat. La dernière année affichée (2025) est incomplète.</p>
 
 
 </section>

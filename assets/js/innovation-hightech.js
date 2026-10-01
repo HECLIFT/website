@@ -142,6 +142,19 @@
     return mode === 'EUR' ? EUR_MODE_ENTITIES : EU_MODE_ENTITIES;
   }
 
+  // Bande grisée sur l'année incomplète (summary.json : year_incomplete)
+  function incompleteMark(years) {
+    var y = summaryData && summaryData.year_incomplete;
+    var i = y ? years.indexOf(y) : -1;
+    if (i < 0) return undefined;
+    return {
+      silent: true,
+      itemStyle: { color: 'rgba(14, 42, 71, 0.07)' },
+      label: { show: true, position: 'insideTop', formatter: y + ' incomplète', color: '#55657D', fontSize: 11 },
+      data: [[{ xAxis: i }, { xAxis: i }]]
+    };
+  }
+
   // --- Chart building ---
   function buildShareChart(sector) {
     var container = document.getElementById('iht-chart-share');
@@ -226,6 +239,7 @@
       series: series
     };
 
+    if (series.length) series[0].markArea = incompleteMark(years);
     shareChart.setOption(option, true);
     shareChart.resize();
   }
@@ -283,7 +297,8 @@
         areaStyle: { opacity: 0.15 },
         lineStyle: { width: 2.5 },
         symbol: 'none',
-        data: totalData
+        data: totalData,
+        markArea: incompleteMark(years)
       }]
     };
 
@@ -322,8 +337,12 @@
     if (data.length === 0) { el.textContent = '—'; return; }
 
     var years = getYears(data);
-    var latestYear = years[years.length - 1];
+    // Dernière année complète (summary.json : year_last_complete), sinon la dernière année des données
+    var latestYear = (summaryData && summaryData.year_last_complete && years.indexOf(summaryData.year_last_complete) >= 0)
+      ? summaryData.year_last_complete : years[years.length - 1];
     var latestData = data.filter(function (r) { return parseInt(r.year) === latestYear; });
+    var lab = document.getElementById('iht-kpi-leader-label');
+    if (lab) lab.textContent = 'Leader en ' + latestYear;
 
     var leader = null;
     var maxPatents = 0;
