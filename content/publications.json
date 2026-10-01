@@ -10,7 +10,7 @@
         "Antonin Bergeaud",
         "Simon Bunel"
       ],
-      "venue": "Policy Note LIFT n° 1 — Septembre 2026",
+      "venue": "LIFT Policy Paper 2026-01 — Septembre 2026",
       "tags": [
         "AI",
         "France",
@@ -34,15 +34,15 @@
     {
       "id": "politique-travail",
       "titre": "La politique au travail : Vécu en entreprise et fractures politiques des salariés en France",
-      "type": "pb",
-      "type_label": "Note de politique",
+      "type": "wp",
+      "type_label": "Working Paper",
       "date": "Février 2026",
       "auteurs": [
         "Yann Algan",
         "Antonin Bergeaud",
-        "C. Frouard"
+        "Camille Frouard"
       ],
-      "venue": "Policy Note HEC — Février 2026",
+      "venue": "LIFT Working Paper 2026-01 — Février 2026 (première diffusion : Policy Note HEC)",
       "tags": [
         "Démocratie",
         "Travail",
@@ -188,11 +188,11 @@
       "titre": "Exposition à l’intelligence artificielle générative et emploi : une application à la classification socio-professionnelle française",
       "type": "wp",
       "type_label": "Working Paper",
-      "date": "2024",
+      "date": "Janvier 2024",
       "auteurs": [
         "Antonin Bergeaud"
       ],
-      "venue": "Working paper — 2024",
+      "venue": "LIFT Working Paper 2024-01 — Janvier 2024",
       "tags": [
         "AI",
         "France",
@@ -202,7 +202,7 @@
       "thumb": "images/pubs/ai-exposure.png",
       "pdf": "files/papers/ai-exposure.pdf",
       "mots_cles": "Exposition, IA et emploi, France",
-      "sous_titre": "Working paper — 2024-1",
+      "sous_titre": "LIFT Working Paper 2024-01 — Janvier 2024",
       "date_longue": "1 janvier 2024",
       "resume_long": "Ce document analyse l’exposition des professions françaises à l’intelligence artificielle générative à travers la nomenclature socio-professionnelle. En mobilisant les données O*NET et un protocole d’évaluation par GPT-4, il propose deux indices : substituabilité et complémentarité. Les résultats mettent en évidence une forte hétérogénéité entre métiers, avec une exposition accrue pour les professions les plus qualifiées. Cette approche permet de mieux cerner risques d’automatisation et opportunités de complémentarité, et souligne la nécessité d’intégrer coûts d’adoption et transformations endogènes pour anticiper les impacts sur l’emploi.",
       "auteurs_liens": [
@@ -211,7 +211,7 @@
           "nom": "Antonin Bergeaud"
         }
       ],
-      "tag_hero": "Working paper · Janvier 2024",
+      "tag_hero": "Working Paper · Janvier 2024",
       "mots_cles_affiches": "Exposition, IA et emploi, France"
     }
   ]
