@@ -1,11 +1,14 @@
 {
-  "total_patents": 4529513,
-  "countries_count": 37,
+  "total_patents": 4649857,
+  "countries_count": 24,
   "sectors_count": 8,
   "year_min": 1983,
   "year_max": 2024,
   "influence_max_year": 2019,
+  "year_incomplete": 2024,
+  "year_last_coverage": 0.828,
   "breakthrough_percentile": 99,
   "data_source": "PATSTAT + REGPAT + CPC",
-  "last_update": "2026-04-06"
+  "regpat_version": "202608",
+  "last_update": "2026-10-03"
 }

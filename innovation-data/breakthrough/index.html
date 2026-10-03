@@ -491,10 +491,11 @@ window.Quarto = {
 
   <!-- Source note -->
   <div class="bt-source">
-    <strong>Sources :</strong> 4,5 millions d'abstracts de brevets EPO (PATSTAT, 1983-2024). Localisation des inventeurs
-    via REGPAT (OECD). Classification CPC (4 sous-classes). Population : Banque Mondiale.
+    <strong>Sources :</strong> 4,6 millions de résumés de brevets EPO déposés de 1983 à 2024 (Google Patents). Localisation des inventeurs
+    via REGPAT (OCDE, édition d'août 2026). Classification CPC (4 domaines). Population : Banque mondiale.
     Scores calculés par similarité cosinus sur embeddings d'abstracts (<a href="https://huggingface.co/AAUBS/PatentSBERTa_V2" target="_blank">PatentSBERTa_V2</a>).
     Méthodologie inspirée de <a href="https://www.aeaweb.org/articles?id=10.1257/aeri.20190499" target="_blank">Kelly, Papanikolaou, Seru &amp; Taddy (2021, AER Insights)</a>.
+    <br><strong>2024 incomplète :</strong> les demandes de brevet sont publiées environ 18 mois après le dépôt, et l'année ne compte encore qu'environ 83 % des brevets d'une année complète. Les parts sont peu affectées ; les nombres par million d'habitants de 2024 seront revus à la hausse.
   </div>
 </div>
 
@@ -502,7 +503,7 @@ window.Quarto = {
 <script src="../../assets/js/breakthrough-tracker.js"></script>
 <section id="à-propos-de-ce-tracker" class="level2">
 <h2 class="anchored" data-anchor-id="à-propos-de-ce-tracker">À propos de ce tracker</h2>
-<p>Ce tableau de bord analyse <strong>4,5 millions de brevets</strong> déposés à l’Office Européen des Brevets (EPO) entre <strong>1983 et 2024</strong>, couvrant <strong>37 pays</strong> européens. Il identifie les brevets de rupture et mesure leur production par pays, par région (NUTS2) et par domaine technologique.</p>
+<p>Ce tableau de bord analyse <strong>4,6 millions de brevets</strong> déposés à l’Office européen des brevets (OEB) entre <strong>1983 et 2024</strong>, couvrant <strong>24 pays</strong> européens. Il identifie les brevets de rupture et mesure leur production par pays, par région (NUTS2) et par domaine technologique.</p>
 <p>Un brevet est considéré comme un <strong>brevet de rupture</strong> s’il se situe dans le <strong>top 1%</strong> de la distribution annuelle selon l’une des deux mesures suivantes :</p>
 <ul>
 <li><p><strong>Nouveauté</strong> (<em>backward-looking</em>) : mesure à quel point un brevet est différent de l’art antérieur au moment de son dépôt. Formellement, c’est la somme des similarités cosinus entre le vecteur d’embedding de l’abstract et ceux de tous les brevets déposés dans les 5 années précédentes. Un brevet est classé comme <strong>fortement nouveau</strong> s’il a un score <strong>faible</strong> (bottom 1%), indiquant qu’il est distant des technologies existantes. Cette mesure est disponible pour toutes les années, y compris les plus récentes.</p></li>
@@ -546,7 +547,7 @@ window.Quarto = {
 </section>
 <section id="classification-technologique-cpc" class="level4">
 <h4 class="anchored" data-anchor-id="classification-technologique-cpc">Classification technologique (CPC)</h4>
-<p>Le graphique de nouveauté par domaine technologique utilise 4 sous-classes de la <strong>Cooperative Patent Classification</strong> (CPC, système harmonisé EPO/USPTO) :</p>
+<p>Le graphique de nouveauté par domaine technologique utilise 4 domaines de la <strong>Cooperative Patent Classification</strong> (CPC, système harmonisé EPO/USPTO) :</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -568,8 +569,8 @@ window.Quarto = {
 <td>Pharmacie</td>
 </tr>
 <tr class="even">
-<td>H01L</td>
-<td>Semi-conducteurs</td>
+<td>H01L et H10</td>
+<td>Semi-conducteurs (H10 reprend H01L depuis les réformes de la CPC ; les codes actuels s’appliquent à toutes les années)</td>
 </tr>
 </tbody>
 </table>
@@ -582,16 +583,16 @@ window.Quarto = {
 <section id="sources-de-données" class="level4">
 <h4 class="anchored" data-anchor-id="sources-de-données">Sources de données</h4>
 <ul>
-<li><strong>Brevets</strong> : PATSTAT (European Patent Office) — 4 529 513 brevets EPO, 1983-2024</li>
-<li><strong>Localisation</strong> : REGPAT (OECD) — pays et région (NUTS2) d’origine des inventeurs</li>
-<li><strong>Classification</strong> : Codes CPC (Cooperative Patent Classification) — 4 sous-classes ciblées</li>
+<li><strong>Brevets</strong> : résumés et codes CPC des publications EPO, Google Patents Public Data (BigQuery) — 4 649 857 brevets EPO déposés de 1983 à 2024</li>
+<li><strong>Localisation</strong> : REGPAT (OCDE, édition d’août 2026) — pays et région (NUTS2) d’origine des inventeurs</li>
+<li><strong>Classification</strong> : codes CPC (Cooperative Patent Classification) — 4 domaines ciblés</li>
 <li><strong>Population</strong> : Banque Mondiale (indicateur SP.POP.TOTL) — pour la normalisation par million d’habitants</li>
 </ul>
 </section>
 </section>
 <section id="mise-à-jour" class="level3">
 <h3 class="anchored" data-anchor-id="mise-à-jour">Mise à jour</h3>
-<p>Les données sont mises à jour <strong>deux fois par an</strong>, après intégration des nouvelles données PATSTAT.</p>
+<p>Données au 3 octobre 2026 : publications EPO jusqu’au 16 septembre 2026 (Google Patents) et REGPAT (OCDE) d’août 2026. Le tracker est mis à jour après chaque nouvelle édition de REGPAT. 2024 est incomplète : les demandes de brevet sont publiées environ 18 mois après le dépôt, et l’année ne compte encore qu’environ 83 % des brevets d’une année complète. Les parts sont peu affectées ; les nombres par million d’habitants de 2024 seront revus à la hausse.</p>
 
 
 </section>

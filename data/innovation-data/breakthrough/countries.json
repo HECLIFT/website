@@ -7,21 +7,9 @@
     "name": "Belgique",
     "flag": "🇧🇪"
   },
-  "BG": {
-    "name": "Bulgarie",
-    "flag": "🇧🇬"
-  },
-  "BY": {
-    "name": "Biélorussie",
-    "flag": "🇧🇾"
-  },
   "CH": {
     "name": "Suisse",
     "flag": "🇨🇭"
-  },
-  "CY": {
-    "name": "Chypre",
-    "flag": "🇨🇾"
   },
   "CZ": {
     "name": "Tchéquie",
@@ -34,10 +22,6 @@
   "DK": {
     "name": "Danemark",
     "flag": "🇩🇰"
-  },
-  "EE": {
-    "name": "Estonie",
-    "flag": "🇪🇪"
   },
   "ES": {
     "name": "Espagne",
@@ -59,10 +43,6 @@
     "name": "Grèce",
     "flag": "🇬🇷"
   },
-  "HR": {
-    "name": "Croatie",
-    "flag": "🇭🇷"
-  },
   "HU": {
     "name": "Hongrie",
     "flag": "🇭🇺"
@@ -70,10 +50,6 @@
   "IE": {
     "name": "Irlande",
     "flag": "🇮🇪"
-  },
-  "IS": {
-    "name": "Islande",
-    "flag": "🇮🇸"
   },
   "IT": {
     "name": "Italie",
@@ -83,25 +59,9 @@
     "name": "Liechtenstein",
     "flag": "🇱🇮"
   },
-  "LT": {
-    "name": "Lituanie",
-    "flag": "🇱🇹"
-  },
   "LU": {
     "name": "Luxembourg",
     "flag": "🇱🇺"
-  },
-  "LV": {
-    "name": "Lettonie",
-    "flag": "🇱🇻"
-  },
-  "MC": {
-    "name": "Monaco",
-    "flag": "🇲🇨"
-  },
-  "MT": {
-    "name": "Malte",
-    "flag": "🇲🇹"
   },
   "NL": {
     "name": "Pays-Bas",
@@ -123,10 +83,6 @@
     "name": "Roumanie",
     "flag": "🇷🇴"
   },
-  "RS": {
-    "name": "Serbie",
-    "flag": "🇷🇸"
-  },
   "SE": {
     "name": "Suède",
     "flag": "🇸🇪"
@@ -138,13 +94,5 @@
   "SK": {
     "name": "Slovaquie",
     "flag": "🇸🇰"
-  },
-  "SM": {
-    "name": "Saint-Marin",
-    "flag": "🇸🇲"
-  },
-  "UA": {
-    "name": "Ukraine",
-    "flag": "🇺🇦"
   }
 }

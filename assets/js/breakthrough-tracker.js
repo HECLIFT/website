@@ -165,6 +165,24 @@
   }
 
   /**
+   * Shade the last filing year when it is still incomplete (summary.json: year_incomplete).
+   * EP applications are published about 18 months after filing, so the last year lacks part
+   * of its patents. `years` is the category list of the chart. On the stacked areas the band
+   * stays behind the series and only its label shows; the subtitle also says it.
+   */
+  function incompleteArea(years) {
+    const y = summaryData && summaryData.year_incomplete;
+    const i = y ? years.indexOf(y) : -1;
+    if (i < 1) return undefined;
+    return {
+      silent: true,
+      itemStyle: { color: 'rgba(14, 42, 71, 0.07)' },
+      label: { show: true, position: 'insideTop', formatter: y + ' incomplète', color: '#55657D', fontSize: 11 },
+      data: [[{ xAxis: String(years[i - 1]) }, { xAxis: String(years[i]) }]]  // category values
+    };
+  }
+
+  /**
    * Format numbers for display
    */
   function formatNumber(n) {
@@ -540,6 +558,9 @@
     if (indicator.isForwardLooking) {
       subtitle += ' (données tronquées après cette date)';
     }
+    if (summaryData.year_incomplete && years.includes(summaryData.year_incomplete)) {
+      subtitle += ` · ${summaryData.year_incomplete} incomplète`;
+    }
 
     const option = {
       backgroundColor: 'transparent',
@@ -658,6 +679,8 @@
       series: series
     };
 
+    // Incomplete last year: label at the top of the last segment (and in the subtitle)
+    if (series.length) series[series.length - 1].markArea = incompleteArea(years);
     timeseriesChart.setOption(option, true);
   }
 
@@ -806,8 +829,8 @@
     const option = {
       backgroundColor: 'transparent',
       title: {
-        text: 'Indice de nouveaute par domaine technologique',
-        subtext: 'Ecart relatif a la moyenne (positif = plus nouveau que la moyenne)',
+        text: 'Indice de nouveauté par domaine technologique',
+        subtext: 'Écart relatif à la moyenne (positif = plus nouveau que la moyenne)',
         left: 'center',
         textStyle: {
           fontFamily: "'Playfair Display', Georgia, serif",
@@ -870,7 +893,7 @@
       },
       yAxis: {
         type: 'value',
-        name: 'Indice de nouveaute (%)',
+        name: 'Indice de nouveauté (%)',
         nameLocation: 'middle',
         nameGap: 45,
         axisLabel: {
@@ -890,6 +913,7 @@
       series: series
     };
 
+    if (series.length) series[0].markArea = incompleteArea(years);
     techChart.setOption(option, true);
   }
 
@@ -1148,8 +1172,8 @@
       const option = {
         backgroundColor: 'transparent',
         title: {
-          text: `${countryName} — Brevets fortement nouveaux par region (NUTS2)`,
-          subtext: 'Nombre de brevets (top 1%, 2015-2024)',
+          text: `${countryName} — Brevets fortement nouveaux par région (NUTS2)`,
+          subtext: `Nombre de brevets fortement nouveaux (top 1 %), ${summaryData.year_min}-${summaryData.year_max}`,
           left: 'center',
           textStyle: {
             fontFamily: "'Playfair Display', Georgia, serif",
@@ -1174,7 +1198,7 @@
         visualMap: {
           min: 0, max: maxVal,
           left: 'left', top: 'bottom',
-          text: ['Eleve', 'Faible'],
+          text: ['Élevé', 'Faible'],
           textStyle: { fontFamily: "'Merriweather', Georgia, serif", fontSize: 10 },
           inRange: { color: ['#E6EBF2', '#5F84E8', '#0E2A47'] },
           calculable: true
@@ -1225,37 +1249,34 @@
       }
     }
 
-    // Use last 10 years (2015-2024): average the 5-year periods within that range
-    const matchingPeriods = europeMapData
-      .map(d => d.period)
-      .filter(p => {
-        if (p === 'all') return false;
-        const [ps] = p.split('-').map(Number);
-        return ps >= 2015 && ps <= 2024;
-      });
-    const uniquePeriods = [...new Set(matchingPeriods)];
-
+    // Average of the last 10 complete years, computed from the annual series (timeseries.csv):
+    // the window follows the data and leaves out an incomplete last year (summary.json).
+    const lastYear = summaryData.year_incomplete ? summaryData.year_incomplete - 1 : summaryData.year_max;
+    const firstYear = lastYear ? lastYear - 9 : null;
     let dataForPeriod;
-    if (uniquePeriods.length > 0) {
-      const periodData = europeMapData.filter(d => uniquePeriods.includes(d.period));
+    let mapPeriodLabel;
+    if (lastYear && timeseriesData.length > 0) {
       const byCountry = {};
-      periodData.forEach(d => {
-        if (!byCountry[d.country]) byCountry[d.country] = { sum: 0, count: 0 };
+      timeseriesData.forEach(d => {
+        const y = parseInt(d.year);
+        if (y < firstYear || y > lastYear) return;
         const val = d[mapColumn];
-        if (val && !isNaN(val)) {
-          byCountry[d.country].sum += val;
-          byCountry[d.country].count += 1;
-        }
+        if (val === '' || val === null || val === undefined || isNaN(val)) return;
+        if (!byCountry[d.country]) byCountry[d.country] = { sum: 0, count: 0 };
+        byCountry[d.country].sum += val;
+        byCountry[d.country].count += 1;
       });
       dataForPeriod = Object.entries(byCountry).map(([country, agg]) => ({
         country,
         value: agg.count > 0 ? agg.sum / agg.count : 0
       }));
+      mapPeriodLabel = `${firstYear}-${lastYear}, moyenne annuelle`;
     } else {
       dataForPeriod = europeMapData.filter(d => d.period === 'all').map(d => ({
         country: d.country,
         value: d[mapColumn] || 0
       }));
+      mapPeriodLabel = 'toutes les années';
     }
 
     const mapData = dataForPeriod.map(d => ({
@@ -1270,7 +1291,7 @@
       backgroundColor: 'transparent',
       title: {
         text: 'Brevets fortement nouveaux par pays (par million hab.)',
-        subtext: '2015-2024 — Cliquez sur un pays pour voir les régions',
+        subtext: `${mapPeriodLabel} — Cliquez sur un pays pour voir les régions`,
         left: 'center',
         textStyle: {
           fontFamily: "'Playfair Display', Georgia, serif",
@@ -1294,7 +1315,7 @@
       visualMap: {
         min: 0, max: maxVal,
         left: 'left', top: 'bottom',
-        text: ['Eleve', 'Faible'],
+        text: ['Élevé', 'Faible'],
         textStyle: { fontFamily: "'Merriweather', Georgia, serif", fontSize: 10 },
         inRange: { color: ['#E6EBF2', '#5F84E8', '#0E2A47'] },
         calculable: true
