@@ -20,7 +20,7 @@
         "Emploi",
         "Marché du travail"
       ],
-      "resume": "Depuis novembre 2022, les embauches en CDI des 21-29 ans ont reculé de 28,3 % dans les métiers les plus exposés à l'IA générative, contre 7,5 % dans les moins exposés. Les fins de contrat reculent aussi, mais moins que les embauches : le renouvellement des salariés ralentit et le marché se fige pour les jeunes des métiers exposés. L'écart diminue avec l'âge, de plus de 20 points chez les 21-29 ans à moins de 4 points après 50 ans, et il persiste lorsque l'on ajoute les CDD aux CDI. Il ne tient pas aux seuls développeurs, dont les embauches de jeunes en CDI baissent de 42 % : sans eux, l'écart reste de 17 points. Les entreprises qui déclarent un usage intensif de l'IA recrutent relativement moins de jeunes, sans que leur effectif total s'écarte nettement de celui des autres. L'analyse porte sur les mouvements de main-d'œuvre de janvier 2019 à mars 2026, appariés à l'enquête de conjoncture de la Banque de France, avec qui ce travail a été mené.",
+      "resume": "Depuis novembre 2022, les embauches en CDI des 21-29 ans ont reculé de 28,3 % dans les métiers les plus exposés à l'IA générative, contre 7,5 % dans les moins exposés. Les fins de contrat reculent aussi, mais moins que les embauches : le renouvellement des salariés ralentit et le marché se fige pour les jeunes des métiers exposés. L'écart diminue avec l'âge, de plus de 20 points chez les 21-29 ans à moins de 4 points après 50 ans, et il persiste lorsque l'on ajoute les CDD aux CDI. Il ne tient pas aux seuls développeurs, dont les embauches de jeunes en CDI baissent de 42 % : sans eux, l'écart reste de 17 points. Les entreprises qui déclarent un usage intensif de l'IA recrutent relativement moins de jeunes, sans que leur effectif total s'écarte nettement de celui des autres. L'analyse porte sur les mouvements de main-d'œuvre de janvier 2019 à mars 2026, appariés à l'enquête de conjoncture de la Banque de France, avec qui ce travail a été mené. La méthode et l'ensemble des résultats sont détaillés dans le LIFT Working Paper 2026-02.",
       "thumb": "images/pubs/emploi-jeunes.png",
       "pdf": "files/papers/LIFT_PolicyPaper_2026-02.pdf",
       "auteurs_liens": [
@@ -44,6 +44,51 @@
         }
       ],
       "mots_cles_affiches": "IA générative, emploi des jeunes, embauches, mouvements de main-d'œuvre, France"
+    },
+    {
+      "id": "exposition-ia-emploi",
+      "titre": "Exposition des métiers à l’IA générative, adoption par les entreprises et dynamiques du marché du travail en France",
+      "type": "wp",
+      "type_label": "Working Paper",
+      "date": "Octobre 2026",
+      "auteurs": [
+        "Marco Guido Palladino",
+        "Antonin Bergeaud",
+        "Antoine Bertheau",
+        "Simon Bunel",
+        "Oscar Degos"
+      ],
+      "venue": "LIFT Working Paper 2026-02 — Octobre 2026",
+      "tags": [
+        "AI",
+        "France",
+        "Emploi",
+        "Marché du travail"
+      ],
+      "resume": "Ce document étudie comment l'emploi en France évolue en fonction de l'exposition des métiers à l'intelligence artificielle générative et de l'âge des salariés. Nous construisons un nouvel indice qui classe les métiers des moins exposés aux plus exposés, puis nous mobilisons des données administratives exhaustives sur les embauches et les fins de contrat entre janvier 2019 et mars 2026. Depuis novembre 2022, mois du lancement public de ChatGPT, aussi bien les embauches que les fins de contrat en CDI reculent davantage dans les métiers les plus exposés, en particulier chez les jeunes. Ces évolutions dessinent une forme de gel des mouvements de main-d'œuvre pour les nouveaux entrants au sein des métiers exposés, avec moins d'entrées et moins de sorties. Ce résultat se retrouve parmi les entreprises qui déclarent utiliser intensivement l'IA : leurs recrutements de jeunes en CDI diminuent relativement à ceux des autres entreprises, sans divergence nette de l'évolution de leur emploi total par rapport aux autres entreprises. Les principaux résultats sont présentés sous une forme courte dans le LIFT Policy Paper 2026-02.",
+      "thumb": "images/pubs/exposition-ia-emploi.png",
+      "pdf": "files/papers/LIFT_WP_2026-02.pdf",
+      "auteurs_liens": [
+        {
+          "nom": "Marco Guido Palladino"
+        },
+        {
+          "membre": "abergeaud",
+          "nom": "Antonin Bergeaud"
+        },
+        {
+          "nom": "Antoine Bertheau"
+        },
+        {
+          "membre": "sbunel",
+          "nom": "Simon Bunel"
+        },
+        {
+          "membre": "odegos",
+          "nom": "Oscar Degos"
+        }
+      ],
+      "mots_cles_affiches": "IA générative, exposition des métiers, adoption de l'IA, embauches, mouvements de main-d'œuvre, France"
     },
     {
       "id": "ia-productivite",
