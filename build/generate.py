@@ -46,7 +46,7 @@ def pubs_section(m, pubs_by_id, pubs_ordre):
            '<div class="member-pubs">']
     for pid in ids:
         p = pubs_by_id[pid]
-        links = f'<div class="links"><a class="btn-pdf" href="../{p["pdf"]}">PDF</a></div>' if p.get("pdf") else '<div class="links"></div>'
+        links = f'<div class="links"><a class="btn-pdf" href="../{p["pdf"]}" data-goatcounter-click="pdf-{pid}">PDF</a></div>' if p.get("pdf") else '<div class="links"></div>'
         out += ['<div class="member-pub">',
                 f'  <a class="thumb" href="../pubs/{pid}/"><img src="../{p["thumb"]}" alt=""></a>',
                 '  <div class="meta">',
@@ -129,7 +129,7 @@ def page_publication(p, tmpl, membres, racine=Path(".")):
     if len(d["auteurs_liens"]) == 1:
         h = h.replace('<div class="quarto-title-meta-heading">Auteurs</div>',
                       '<div class="quarto-title-meta-heading">Auteur</div>')
-    for k in ("titre", "sous_titre", "date_longue", "tag_hero", "mots_cles",
+    for k in ("id", "titre", "sous_titre", "date_longue", "tag_hero", "mots_cles",
               "mots_cles_affiches", "resume_long", "resume_hero", "pdf"):
         h = h.replace("{{%s}}" % k, str(d.get(k, "")))
     return h
@@ -139,7 +139,7 @@ def liste_publications(pubs, membres, live_html, racine=Path(".")):
     for p in pubs:
         d = pub_defaults(p)
         cats = "".join(f'<span class="pub-cat">{t}</span>' for t in d["tags"])
-        pdf = (f'\n      <a href="./{d["pdf"]}" class="pub-pdf-btn" target="_blank">PDF ↓</a>'
+        pdf = (f'\n      <a href="./{d["pdf"]}" class="pub-pdf-btn" data-goatcounter-click="pdf-{d["id"]}" target="_blank">PDF ↓</a>'
                if d.get("pdf") else "")
         blocs.append(f'''  <div class="pub-entry" data-type="{d["type"]}" data-tags="{" ".join(d["tags"])}">
     <div class="pub-thumb"><img src="./{d["thumb"]}" alt="" loading="lazy"></div>

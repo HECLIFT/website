@@ -40,6 +40,13 @@ s'éditent encore en HTML — avec précaution, voir ci-dessous.
 - **Trackers** : les graphiques lisent les CSV dans le navigateur. Changer un CSV suffit ;
   garder noms de fichiers et de colonnes. Certains titres contiennent encore des années
   en dur dans `assets/js/*.js` — à vérifier quand la série s'allonge.
+- **Mesure d'audience (GoatCounter, compte `heclift`)** : toute page HTML porte, juste avant
+  `</head>`, le script GoatCounter ; une nouvelle page doit le reprendre, `build/validate.py`
+  le vérifie. Pas de cookies, donc pas de bandeau de consentement. Les boutons PDF portent
+  `data-goatcounter-click="pdf-<id>"` (posé par `build/generate.py`), y compris le bouton PDF
+  de « Dernière publication » sur l'accueil, **à mettre à jour à la main** quand la publication
+  mise en avant change. Les pages de `assets/maps/` (iframes) n'ont pas le script, pour ne pas
+  compter deux fois une visite.
 - **`data/pubs.json`** est un vestige orphelin : personne ne le lit. Ne pas s'y fier.
 
 ## Ne pas faire

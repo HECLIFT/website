@@ -73,6 +73,15 @@ for f, cols in ESPERADO.items():
             erro(f"[tracker] {f}: anos fora do intervalo plausível ({min(anos)}–{max(anos)})")
         if anos and max(anos) < 2015: aviso(f"[tracker] {f}: dados param em {max(anos)}")
 
+# --------------------------------------------- mesure d'audience (GoatCounter)
+# Toute page servie porte le script juste avant </head> ; les iframes de assets/ n'en ont pas.
+for f in sorted(Path(".").rglob("*.html")):
+    s_ = str(f)
+    if s_.startswith((".git/", "site_libs/", "assets/")):
+        continue
+    if "heclift.goatcounter.com/count" not in f.read_text(encoding="utf-8"):
+        erro(f"[audiência] {s_}: falta o script do GoatCounter antes de </head> (ver AGENTS.md)")
+
 for a in avisos: print(f"⚠️  {a}")
 if erros:
     print(f"\n❌ {len(erros)} problema(s):"); [print("   •", e) for e in erros]; sys.exit(1)
