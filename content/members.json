@@ -1,7 +1,9 @@
 {
   "sections": [
-    "Direction",
+    "Membres permanents",
     "Fellows",
+    "Chercheurs associés",
+    "Doctorants",
     "Chargés d'étude",
     "Conseil scientifique"
   ],
@@ -9,8 +11,8 @@
     {
       "id": "abergeaud",
       "nom": "Antonin Bergeaud",
-      "section": "Direction",
-      "role": "Direction",
+      "section": "Membres permanents",
+      "role": "Codirecteur",
       "photo": "images/membres/antonin.jpg",
       "bio": "Antonin Bergeaud est professeur associé au département d'Économie de HEC Paris et chercheur affilié au Centre for Economic Performance de la LSE, au CEPR et à l'Innovation Lab du Collège de France. Ses recherches portent sur la croissance de long terme, la dynamique de la productivité et le rôle de l'innovation dans la diffusion des connaissances. Lauréat du Prix du Meilleur Jeune Économiste 2025 (Le Monde / Cercle des Économistes).",
       "bio_courte": "Professeur associé à HEC Paris, chercheur affilié au CEP/LSE, CEPR et Innovation Lab du Collège de France. Ses recherches portent sur la croissance, la productivité et l'innovation.",
@@ -22,13 +24,20 @@
     {
       "id": "yalgan",
       "nom": "Yann Algan",
-      "section": "Direction",
-      "role": "Direction",
+      "section": "Membres permanents",
+      "role": "Codirecteur",
       "photo": "images/membres/yalgan.jpg",
       "bio": "Yann Algan est le Doyen associé des Programmes Pré-Expérience et professeur d'économie à HEC, membre du Conseil d'Analyse Économique.",
       "bio_courte": "Doyen associé des Programmes Pré-Expérience et professeur d'économie à HEC Paris. Ses recherches portent sur la confiance, le bien-être dans les organisations et l'évaluation des politiques publiques.",
       "page_perso": "https://www.yann-algan.com/",
       "email": "algan@hec.fr"
+    },
+    {
+      "id": "cmazet",
+      "nom": "Clément Mazet-Sonilhac",
+      "section": "Membres permanents",
+      "role": "Membre permanent",
+      "photo": "images/membres/anonyme.jpg"
     },
     {
       "id": "sbunel",
@@ -53,14 +62,61 @@
       "email": "flaviocalvino@gmail.com"
     },
     {
-      "id": "pdelbouve",
-      "nom": "Paul Delbouve",
+      "id": "mpalladino",
+      "nom": "Marco Guido Palladino",
       "section": "Fellows",
       "role": "Fellow",
+      "photo": "images/membres/anonyme.jpg"
+    },
+    {
+      "id": "trenault",
+      "nom": "Thomas Renault",
+      "section": "Chercheurs associés",
+      "role": "Chercheur associé",
+      "photo": "images/membres/trenault.jpg",
+      "bio": "Thomas Renault est professeur d'économie à l'Université Paris-Saclay. Sa recherche se situe à l'intersection de l'économie, de la finance et de l'analyse des données.",
+      "bio_courte": "Professeur d'économie à l'Université Paris-Saclay. Sa recherche se situe à l'intersection de l'économie, de la finance et de la technologie, avec une utilisation des outils de machine learning et de l'analyse sémantique.",
+      "page_perso": "https://www.thomas-renault.com/",
+      "email": "info@thomas-renault.com"
+    },
+    {
+      "id": "ehazan",
+      "nom": "Eric Hazan",
+      "section": "Chercheurs associés",
+      "role": "Chercheur associé",
+      "photo": "images/membres/anonyme.jpg"
+    },
+    {
+      "id": "psaintamans",
+      "nom": "Pascal Saint-Amans",
+      "section": "Chercheurs associés",
+      "role": "Chercheur associé",
+      "photo": "images/membres/anonyme.jpg"
+    },
+    {
+      "id": "adyevre",
+      "nom": "Arnaud Dyèvre",
+      "section": "Chercheurs associés",
+      "role": "Chercheur associé",
+      "photo": "images/membres/anonyme.jpg"
+    },
+    {
+      "id": "pdelbouve",
+      "nom": "Paul Delbouve",
+      "section": "Doctorants",
+      "role": "Doctorant",
       "photo": "images/membres/pdelbouve.jpg",
       "bio": "Paul Delbouve est doctorant en macroéconomie à la Paris School of Economics (EHESS) et chercheur au Ministère de l'Économie et des Finances. Ses recherches portent sur la diffusion de l'intelligence artificielle dans l'économie française, en exploitant des données d'offres d'emploi pour retracer l'adoption de l'IA à travers les entreprises, les secteurs et les professions.",
       "bio_courte": "Doctorant en macroéconomie à la PSE (EHESS) et chercheur au Ministère de l'Économie et des Finances. Il étudie la diffusion de l'IA dans l'économie française.",
       "email": "paul.delbouve@finances.gouv.fr"
+    },
+    {
+      "id": "golterra",
+      "nom": "Gabriela Terra",
+      "section": "Doctorants",
+      "role": "Doctorante",
+      "photo": "images/membres/golterra.jpg",
+      "email": "oliveira-terra@hec.fr"
     },
     {
       "id": "vauplat",
@@ -95,14 +151,6 @@
       "email": "remy.siahaan--gensollen@ensae.fr"
     },
     {
-      "id": "golterra",
-      "nom": "Gabriela Terra",
-      "section": "Chargés d'étude",
-      "role": "Chargée d'étude",
-      "photo": "images/membres/golterra.jpg",
-      "email": "oliveira-terra@hec.fr"
-    },
-    {
       "id": "mvalibhay",
       "nom": "Mathieu Valibhay",
       "section": "Chargés d'étude",
@@ -111,15 +159,33 @@
       "email": "Mathieu.Valibhay@etu.univ-paris1.fr"
     },
     {
-      "id": "trenault",
-      "nom": "Thomas Renault",
+      "id": "pclarke",
+      "nom": "Pierre Clarke",
+      "section": "Chargés d'étude",
+      "role": "Chargé d'étude",
+      "photo": "images/membres/anonyme.jpg"
+    },
+    {
+      "id": "cabon",
+      "nom": "Carla Abon",
+      "section": "Chargés d'étude",
+      "role": "Chargée d'étude",
+      "photo": "images/membres/anonyme.jpg"
+    },
+    {
+      "id": "paghion",
+      "nom": "Philippe Aghion",
       "section": "Conseil scientifique",
       "role": "Conseil scientifique",
-      "photo": "images/membres/trenault.jpg",
-      "bio": "Thomas Renault est professeur d'économie à l'Université Paris-Saclay. Sa recherche se situe à l'intersection de l'économie, de la finance et de l'analyse des données.",
-      "bio_courte": "Professeur d'économie à l'Université Paris-Saclay. Sa recherche se situe à l'intersection de l'économie, de la finance et de la technologie, avec une utilisation des outils de machine learning et de l'analyse sémantique.",
-      "page_perso": "https://www.thomas-renault.com/",
-      "email": "info@thomas-renault.com"
+      "photo": "images/membres/anonyme.jpg",
+      "bio": "Philippe Aghion est économiste, professeur au Collège de France, à l'INSEAD et à la London School of Economics. Ses travaux portent principalement sur la croissance économique, l'innovation et les politiques publiques."
+    },
+    {
+      "id": "cperignon",
+      "nom": "Christophe Pérignon",
+      "section": "Conseil scientifique",
+      "role": "Conseil scientifique",
+      "photo": "images/membres/anonyme.jpg"
     }
   ]
 }
