@@ -493,7 +493,7 @@ window.Quarto = {
   <div class="bt-source">
     <strong>Sources :</strong> 4,6 millions de résumés de brevets EPO déposés de 1983 à 2024 (Google Patents). Localisation des inventeurs
     via REGPAT (OCDE, édition d'août 2026). Classification CPC (4 domaines). Population : Banque mondiale.
-    Scores calculés par similarité cosinus sur embeddings d'abstracts (<a href="https://huggingface.co/AAUBS/PatentSBERTa_V2" target="_blank">PatentSBERTa_V2</a>).
+    Scores calculés par similarité cosinus sur embeddings des résumés en anglais (<a href="https://huggingface.co/AAUBS/PatentSBERTa_V2" target="_blank">PatentSBERTa_V2</a>).
     Méthodologie inspirée de <a href="https://www.aeaweb.org/articles?id=10.1257/aeri.20190499" target="_blank">Kelly, Papanikolaou, Seru &amp; Taddy (2021, AER Insights)</a>.
     <br><strong>2024 incomplète :</strong> les demandes de brevet sont publiées environ 18 mois après le dépôt, et l'année ne compte encore qu'environ 83 % des brevets d'une année complète. Les parts sont peu affectées ; les nombres par million d'habitants de 2024 seront revus à la hausse.
   </div>
@@ -524,7 +524,7 @@ window.Quarto = {
 <h4 class="anchored" data-anchor-id="calcul-des-scores-kpst">Calcul des scores (KPST)</h4>
 <p>La méthodologie s’inspire de <a href="https://www.aeaweb.org/articles?id=10.1257/aeri.20190499">Kelly, Papanikolaou, Seru et Taddy (2021, AER Insights)</a> :</p>
 <ol type="1">
-<li><strong>Embeddings textuels</strong> : l’<strong>abstract</strong> de chaque brevet est transformé en vecteur numérique de haute dimension via le modèle <a href="https://huggingface.co/AAUBS/PatentSBERTa_V2">PatentSBERTa_V2</a>, un modèle Sentence-BERT pré-entraîné sur des textes de brevets.</li>
+<li><strong>Embeddings textuels</strong> : l’<strong>abstract</strong> en anglais de chaque brevet est transformé en vecteur numérique de haute dimension via le modèle <a href="https://huggingface.co/AAUBS/PatentSBERTa_V2">PatentSBERTa_V2</a>, un modèle Sentence-BERT pré-entraîné sur des textes de brevets. Quand le brevet n’a de résumé qu’en allemand ou en français (environ 16 % des brevets), c’est la traduction anglaise automatique de Google Patents qui est utilisée : tous les brevets sont ainsi comparés dans la même langue.</li>
 <li><strong>Score de nouveauté</strong> (<code>backward_sum</code>) : somme des similarités cosinus entre le vecteur de l’abstract du brevet et ceux de tous les brevets déposés dans les 5 années précédentes. Un score faible signifie que le brevet est éloigné de l’état de l’art.</li>
 <li><strong>Proximité future</strong> (<code>forward_sum</code>) : somme des similarités cosinus entre le vecteur de l’abstract et ceux de tous les brevets déposés dans les 5 années suivantes. Utilisé comme numérateur du score de rupture.</li>
 <li><strong>Score de rupture</strong> (<code>importance</code>) : ratio <code>forward_sum / backward_sum</code>. Un ratio élevé identifie les brevets qui sont simultanément éloignés de l’existant et proches des innovations futures.</li>
@@ -583,7 +583,7 @@ window.Quarto = {
 <section id="sources-de-données" class="level4">
 <h4 class="anchored" data-anchor-id="sources-de-données">Sources de données</h4>
 <ul>
-<li><strong>Brevets</strong> : résumés et codes CPC des publications EPO, Google Patents Public Data (BigQuery) — 4 649 857 brevets EPO déposés de 1983 à 2024</li>
+<li><strong>Brevets</strong> : résumés et codes CPC des publications EPO, Google Patents Public Data (BigQuery) — 4 649 815 brevets EPO déposés de 1983 à 2024</li>
 <li><strong>Localisation</strong> : REGPAT (OCDE, édition d’août 2026) — pays et région (NUTS2) d’origine des inventeurs</li>
 <li><strong>Classification</strong> : codes CPC (Cooperative Patent Classification) — 4 domaines ciblés</li>
 <li><strong>Population</strong> : Banque Mondiale (indicateur SP.POP.TOTL) — pour la normalisation par million d’habitants</li>
@@ -592,7 +592,7 @@ window.Quarto = {
 </section>
 <section id="mise-à-jour" class="level3">
 <h3 class="anchored" data-anchor-id="mise-à-jour">Mise à jour</h3>
-<p>Données au 3 octobre 2026 : publications EPO jusqu’au 16 septembre 2026 (Google Patents) et REGPAT (OCDE) d’août 2026. Le tracker est mis à jour après chaque nouvelle édition de REGPAT. 2024 est incomplète : les demandes de brevet sont publiées environ 18 mois après le dépôt, et l’année ne compte encore qu’environ 83 % des brevets d’une année complète. Les parts sont peu affectées ; les nombres par million d’habitants de 2024 seront revus à la hausse.</p>
+<p>Données au 6 octobre 2026 : publications EPO jusqu’au 16 septembre 2026 (Google Patents) et REGPAT (OCDE) d’août 2026. Le tracker est mis à jour après chaque nouvelle édition de REGPAT. 2024 est incomplète : les demandes de brevet sont publiées environ 18 mois après le dépôt, et l’année ne compte encore qu’environ 83 % des brevets d’une année complète. Les parts sont peu affectées ; les nombres par million d’habitants de 2024 seront revus à la hausse.</p>
 
 
 </section>
