@@ -1,6 +1,41 @@
 {
   "publications": [
     {
+      "id": "factures-ia-open-weight",
+      "titre": "L’augmentation des factures d’IA et la montée de l’open weight",
+      "type": "pb",
+      "type_label": "Note de politique",
+      "date": "Octobre 2026",
+      "auteurs": [
+        "Antonin Bergeaud",
+        "Paul Delbouve",
+        "Etienne Grass"
+      ],
+      "venue": "LIFT Policy Paper 2026-03 — Octobre 2026",
+      "tags": [
+        "AI",
+        "France",
+        "Modèles ouverts"
+      ],
+      "resume": "La facture d'IA des entreprises augmente alors que le coût unitaire d'un token baisse fortement : la hausse vient des volumes bien plus que des tarifs. Sur OpenRouter, la part des modèles à poids ouverts passe de 40 % à 73 % des tokens entre janvier et août 2026, et de 11 % à 34 % des dépenses. Les utilisateurs rattachés à la France consacrent 31,0 % de leurs dépenses aux modèles ouverts, contre 19,3 % à l'échelle mondiale. Les appels adressés aux modèles ouverts sont quatre fois plus longs qu'en janvier, mais leur coût moyen n'est multiplié que par 3,8 : l'avantage de coût subsiste. La réallocation vers l'ouvert explique 43 % de la baisse simulée du coût d'un panier français constant ; elle ouvre une marge de déploiement plutôt qu'une économie automatique, ce qui invite les organisations à raisonner en coût par tâche accomplie.",
+      "thumb": "images/pubs/factures-ia-open-weight.png",
+      "pdf": "files/papers/LIFT_PolicyPaper_2026-03.pdf",
+      "auteurs_liens": [
+        {
+          "membre": "abergeaud",
+          "nom": "Antonin Bergeaud"
+        },
+        {
+          "membre": "pdelbouve",
+          "nom": "Paul Delbouve"
+        },
+        {
+          "nom": "Etienne Grass"
+        }
+      ],
+      "mots_cles_affiches": "IA, open weight, modèles ouverts, tokens, coûts, OpenRouter, France"
+    },
+    {
       "id": "emploi-jeunes",
       "titre": "IA générative : un gel des embauches de jeunes dans les métiers exposés",
       "type": "pb",
