@@ -66,7 +66,12 @@
       "nom": "Marco Guido Palladino",
       "section": "Fellows",
       "role": "Fellow",
-      "photo": "images/membres/anonyme.jpg"
+      "photo": "images/membres/mpalladino.jpg",
+      "bio": "Marco G. Palladino est économiste senior à la Banque de France et professeur adjoint à Sciences Po (École d'Affaires Publiques). Il est également chercheur affilié à l'IZA@LISER et membre du réseau LinkEED de l'OCDE. Ses recherches en économie du travail mobilisent des données administratives appariées employeurs-salariés, en France et à l'international, pour étudier le rôle des entreprises dans la formation des salaires, la protection de l'emploi et le recours aux contrats à durée déterminée. Il travaille également sur les effets de l'intelligence artificielle sur le marché du travail.",
+      "bio_courte": "Économiste senior à la Banque de France et professeur adjoint à Sciences Po. Ses recherches portent sur le rôle des entreprises dans la formation des salaires et sur les effets de l'IA sur le marché du travail.",
+      "page_perso": "https://marcoguidopalladino.com/",
+      "email": "marcoguidopalladino@gmail.com",
+      "linkedin": "https://www.linkedin.com/in/marco-g-palladino-687a80ab/"
     },
     {
       "id": "trenault",
