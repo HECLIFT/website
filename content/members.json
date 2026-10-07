@@ -81,10 +81,15 @@
     },
     {
       "id": "ehazan",
-      "nom": "Eric Hazan",
+      "nom": "Éric Hazan",
       "section": "Chercheurs associés",
       "role": "Chercheur associé",
-      "photo": "images/membres/anonyme.jpg"
+      "photo": "images/membres/ehazan.jpg",
+      "bio": "Éric Hazan est entrepreneur, investisseur et enseignant à HEC Paris et Sciences Po, spécialiste des transformations économiques et sociales liées à l’intelligence artificielle. Après 17 ans chez McKinsey, il a cofondé Ardabelle Capital. Ses travaux explorent comment l’IA transforme les entreprises, le travail et la compétitivité européenne. Il est notamment co-auteur de <em>Faut-il encore décider ?</em>, consacré à la décision à l’ère de l’IA.",
+      "bio_courte": "Entrepreneur, investisseur et enseignant à HEC Paris et Sciences Po. Ses travaux explorent comment l’IA transforme les entreprises, le travail et la compétitivité européenne.",
+      "email": "hazaneric@icloud.com",
+      "x": "https://x.com/eric5555",
+      "linkedin": "https://www.linkedin.com/in/hazaneric/"
     },
     {
       "id": "psaintamans",
