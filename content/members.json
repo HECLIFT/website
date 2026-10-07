@@ -108,7 +108,13 @@
       "nom": "Arnaud Dyèvre",
       "section": "Chercheurs associés",
       "role": "Chercheur associé",
-      "photo": "images/membres/anonyme.jpg"
+      "photo": "images/membres/adyevre.jpg",
+      "bio": "Arnaud Dyèvre est professeur assistant d’économie à HEC Paris. Ses recherches portent sur la croissance, l’innovation et les différences de productivité entre entreprises, avec une attention particulière au rôle de la recherche publique dans la diffusion des connaissances. Il est titulaire d’un doctorat de la London School of Economics et a été chercheur postdoctoral au MIT.",
+      "bio_courte": "Professeur assistant d’économie à HEC Paris. Ses recherches portent sur la croissance, l’innovation et le rôle de la recherche publique dans la diffusion des connaissances.",
+      "page_perso": "https://www.arnauddyevre.com",
+      "email": "dyevre@hec.fr",
+      "x": "https://x.com/ArnaudDyevre",
+      "linkedin": "https://www.linkedin.com/in/arnaud-dy%C3%A8vre-b652338a"
     },
     {
       "id": "pdelbouve",
