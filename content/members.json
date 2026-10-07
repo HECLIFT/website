@@ -37,7 +37,10 @@
       "nom": "Clément Mazet-Sonilhac",
       "section": "Membres permanents",
       "role": "Membre permanent",
-      "photo": "images/membres/anonyme.jpg"
+      "photo": "images/membres/cmazet.jpg",
+      "bio": "Clément Mazet-Sonilhac est professeur assistant à l’Université Bocconi et chercheur associé à l’Economics of Innovation Lab du Collège de France et à l’IGIER. Il rejoindra prochainement le département d’économie d’HEC Paris comme professeur assistant. Auparavant économiste-chercheur à la Banque de France, il a obtenu son doctorat en économie à Sciences Po Paris en 2022. Ses recherches portent sur le changement technologique et l’intermédiation financière : il combine économétrie appliquée, modélisation structurelle et apprentissage automatique pour étudier l’innovation, le changement climatique et la réduction de la pauvreté. Ses travaux ont été publiés dans l’<em>American Economic Review</em>, le <em>Journal of International Economics</em> et le <em>Journal of Labor Economics</em>.",
+      "bio_courte": "Professeur assistant à l’Université Bocconi, il rejoindra prochainement HEC Paris. Ses recherches portent sur le changement technologique et l’intermédiation financière.",
+      "page_perso": "https://cms27.github.io/"
     },
     {
       "id": "sbunel",
