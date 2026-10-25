@@ -1,6 +1,32 @@
 {
   "publications": [
     {
+      "id": "innovation-rattrapage-modeles-ia",
+      "titre": "Innovation et rattrapage sur le marché des modèles d’IA",
+      "type": "pb",
+      "type_label": "Note de politique",
+      "date": "Octobre 2026",
+      "auteurs": [
+        "Paul Delbouve"
+      ],
+      "venue": "LIFT Policy Paper 2026-04 — Octobre 2026",
+      "tags": [
+        "AI",
+        "Innovation",
+        "Concurrence"
+      ],
+      "resume": "Dans l’IA, le meilleur modèle vendu 0,1 dollar par million de tokens ou moins, soit au moins cinquante fois moins cher qu’un modèle de frontière, en rattrape la qualité en moins d’un an. Ce rattrapage pourrait décourager des investissements croissants, de l’ordre de 715 milliards de dollars en 2026 pour les principaux développeurs d’IA, en réduisant la rente que procure une avance technologique. Sur OpenRouter, les laboratoires de frontière ne traitent plus que 28 % des tokens en août 2026, contre les trois quarts au printemps 2025, mais perçoivent encore 71 % des revenus grâce à des tarifs plus élevés. Par rapport à ses concurrents, un fournisseur qui sort un modèle de frontière voit son chiffre d’affaires imputé environ doubler dans les mois qui suivent, et les utilisateurs d’un modèle concurrencé se reportent surtout vers d’autres modèles haut de gamme. Cet équilibre repose sur une croissance exceptionnelle de la consommation et reste fragile : la part des laboratoires de frontière dans les revenus est passée de 82 % à 71 % entre la mi-juillet et la mi-août 2026.",
+      "thumb": "images/pubs/innovation-rattrapage-modeles-ia.png",
+      "pdf": "files/papers/LIFT_PolicyPaper_2026-04.pdf",
+      "auteurs_liens": [
+        {
+          "membre": "pdelbouve",
+          "nom": "Paul Delbouve"
+        }
+      ],
+      "mots_cles_affiches": "IA, innovation, concurrence, modèles de frontière, rattrapage, tokens, OpenRouter"
+    },
+    {
       "id": "factures-ia-open-weight",
       "titre": "L’augmentation des factures d’IA et la montée de l’open weight",
       "type": "pb",
