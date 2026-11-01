@@ -104,7 +104,9 @@
       "nom": "Pascal Saint-Amans",
       "section": "Chercheurs associés",
       "role": "Chercheur associé",
-      "photo": "images/membres/anonyme.jpg"
+      "photo": "images/membres/psaintamans.jpg",
+      "bio": "Pascal Saint-Amans a dirigé de 2012 à 2022 le Centre de politique et d’administration fiscales de l’OCDE, où il a conduit les négociations internationales sur la fiscalité des multinationales, jusqu’à l’accord sur un impôt minimum mondial. Il enseigne à HEC Paris et à l’Université de Lausanne et est affilié à Bruegel.",
+      "bio_courte": "Ancien directeur du Centre de politique et d’administration fiscales de l’OCDE. Il enseigne à HEC Paris et à l’Université de Lausanne."
     },
     {
       "id": "adyevre",
