@@ -45,7 +45,8 @@ s'éditent encore en HTML — avec précaution, voir ci-dessous.
   le vérifie. Pas de cookies, donc pas de bandeau de consentement. Les boutons PDF portent
   `data-goatcounter-click="pdf-<id>"` (posé par `build/generate.py`), y compris le bouton PDF
   de « Dernière publication » sur l'accueil, **à mettre à jour à la main** quand la publication
-  mise en avant change. Les pages de `assets/maps/` (iframes) n'ont pas le script, pour ne pas
+  mise en avant change. Une version anglaise (champ `pdf_en` de `content/publications.json`) a son propre
+  bouton, compté sous `pdf-en-<id>` ; le PDF garde le nom de la version française suivi de `_en`. Les pages de `assets/maps/` (iframes) n'ont pas le script, pour ne pas
   compter deux fois une visite.
 - **`data/pubs.json`** est un vestige orphelin : personne ne le lit. Ne pas s'y fier.
 

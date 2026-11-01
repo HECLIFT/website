@@ -1904,6 +1904,9 @@ main:has(.ai-tracker) section.level3 > h3 {
 }
 .pub-hero-cta:hover { background: transparent; color: var(--fg) !important; }
 .pub-hero-cta svg { flex-shrink: 0; }
+.pub-hero-main .pub-hero-cta { margin-right: 10px; }
+.pub-hero-cta-en { margin-top: 10px; background: transparent; color: var(--fg) !important; }
+.pub-hero-cta-en:hover { background: var(--fg); color: #fff !important; }
 
 /* — Share sidebar (round filled icons) — */
 .pub-hero-share { margin-bottom: 28px; }

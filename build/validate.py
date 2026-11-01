@@ -41,6 +41,8 @@ for p in pubs:
         erro(f"[pub] {who}: vignette não encontrada — {p['thumb']}")
     if p.get("pdf") and not Path(p["pdf"]).exists():
         erro(f"[pub] {who}: PDF não encontrado — {p['pdf']}")
+    if p.get("pdf_en") and not Path(p["pdf_en"]).exists():
+        erro(f"[pub] {who}: PDF anglais introuvable — {p['pdf_en']}")
 for m in d["membres"]:
     for pid in m.get("publications", []):
         if pid not in ids_pubs:

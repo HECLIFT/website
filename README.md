@@ -61,6 +61,9 @@ publication dont il est auteur dans `publications.json`. Rien à tenir à jour e
      "pdf": "files/papers/ia-competences.pdf"
    }
    ```
+   Champ facultatif `"pdf_en": "files/papers/LIFT_PolicyPaper_AAAA-NN_en.pdf"` pour une note
+   traduite : un second bouton « English version (PDF) » apparaît sur sa page et un bouton
+   « PDF (EN) » dans la liste (clics comptés sous `pdf-en-<id>`).
    `type` vaut `pb` (note de politique) ou `wp` (working paper). Un auteur externe
    s'écrit `{"nom": "Camille Frouard"}` — sans `membre`, donc sans lien.
 2. Déposer le PDF dans `files/papers/` et la vignette dans `images/pubs/`

@@ -129,6 +129,11 @@ def page_publication(p, tmpl, membres, racine=Path(".")):
     if len(d["auteurs_liens"]) == 1:
         h = h.replace('<div class="quarto-title-meta-heading">Auteurs</div>',
                       '<div class="quarto-title-meta-heading">Auteur</div>')
+    cta_en = ""
+    if d.get("pdf_en"):
+        cta_en = (f'\n      <a href="../../{d["pdf_en"]}" class="pub-hero-cta pub-hero-cta-en" hreflang="en" lang="en" '
+                  f'data-goatcounter-click="pdf-en-{d["id"]}" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> English version (PDF)</a>')
+    h = h.replace("{{CTA_EN}}", cta_en)
     for k in ("id", "titre", "sous_titre", "date_longue", "tag_hero", "mots_cles",
               "mots_cles_affiches", "resume_long", "resume_hero", "pdf"):
         h = h.replace("{{%s}}" % k, str(d.get(k, "")))
@@ -141,6 +146,9 @@ def liste_publications(pubs, membres, live_html, racine=Path(".")):
         cats = "".join(f'<span class="pub-cat">{t}</span>' for t in d["tags"])
         pdf = (f'\n      <a href="./{d["pdf"]}" class="pub-pdf-btn" data-goatcounter-click="pdf-{d["id"]}" target="_blank">PDF ↓</a>'
                if d.get("pdf") else "")
+        if d.get("pdf_en"):
+            pdf += (f'\n      <a href="./{d["pdf_en"]}" class="pub-pdf-btn" hreflang="en" lang="en" '
+                    f'data-goatcounter-click="pdf-en-{d["id"]}" target="_blank">PDF (EN) ↓</a>')
         blocs.append(f'''  <div class="pub-entry" data-type="{d["type"]}" data-tags="{" ".join(d["tags"])}">
     <div class="pub-thumb"><img src="./{d["thumb"]}" alt="" loading="lazy"></div>
     <div class="pub-type-line pub-type-{d["type"]}">{d["type_label"]} · {d["date"]}</div>
