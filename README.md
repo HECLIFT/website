@@ -31,11 +31,13 @@ les pages et publie. Vous n'avez rien à lancer sur votre ordinateur.
    }
    ```
 2. Déposer la photo dans `images/membres/` sous le nom indiqué (JPG carré, 800×800).
+   Sans photo, omettre le champ `photo` : la page affiche l'avatar par défaut
+   (`images/membres/anonyme.jpg`), et on ajoute la photo plus tard.
 3. « Commit ». Une minute plus tard : sa page existe, elle apparaît dans la bonne
    section, le compteur de la page d'accueil est à jour.
 
 Champs facultatifs : `bio` (texte sur sa page), `bio_courte` (texte dans la liste),
-`page_perso`, `email`, `x`, `linkedin`. Les autres sont obligatoires.
+`photo`, `page_perso`, `email`, `x`, `linkedin`. Les autres sont obligatoires.
 
 **Ses publications, on ne les écrit pas ici** : sa page liste automatiquement toute
 publication dont il est auteur dans `publications.json`. Rien à tenir à jour en double.

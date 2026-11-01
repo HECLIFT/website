@@ -17,7 +17,7 @@ except Exception as e:
 vus = set()
 for m in d["membres"]:
     who = m.get("nom") or m.get("id") or "?"
-    for champ in ("id", "nom", "section", "role", "photo"):
+    for champ in ("id", "nom", "section", "role"):
         if not m.get(champ): erro(f"{who}: falta o campo « {champ} »")
     if m["id"] in vus: erro(f"{who}: id « {m['id']} » repetido")
     vus.add(m["id"])

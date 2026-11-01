@@ -12,7 +12,7 @@ ICONS = {
 
 def hero(m):
     out = ['<div class="member-hero">',
-           f'<img class="member-hero-photo" src="../{m["photo"]}" alt="{m["nom"]}">',
+           f'<img class="member-hero-photo" src="../{photo(m)}" alt="{m["nom"]}">',
            '<div class="member-hero-text">', '<h1 class="member-hero-name">', m["nom"], '</h1>',
            '<div class="member-hero-role">', m["role"], '</div>']
     if m.get("bio"):
@@ -76,7 +76,7 @@ def liste_membres(data, live_html):
             bio = f'\n      <p class="mbr-bio">{m["bio_courte"]}</p>' if m.get("bio_courte") else ""
             rows.append(
 f'''  <a class="mbr-entry" href="./membres/{m["id"]}.html">
-    <img class="mbr-photo" src="./{m["photo"]}" alt="{m["nom"]}">
+    <img class="mbr-photo" src="./{photo(m)}" alt="{m["nom"]}">
     <div class="mbr-info">
       <div class="mbr-role">{m["role"]}</div>
       <h3 class="mbr-name">{m["nom"]}</h3>{bio}
@@ -88,6 +88,12 @@ f'''  <a class="mbr-entry" href="./membres/{m["id"]}.html">
     j = live_html.rindex('</div>', 0, live_html.index("</main> <!-- /main -->")) + len('</div>')
     return live_html[:i] + novo + live_html[j:]
 
+
+AVATAR = "images/membres/anonyme.jpg"
+
+def photo(m):
+    """Photo du membre ; sans photo, l'avatar par défaut."""
+    return m.get("photo") or AVATAR
 
 def _curly(t):
     """Apóstrofo tipográfico, como no bloco Résumé das páginas de publicação."""

@@ -34,7 +34,8 @@ s'éditent encore en HTML — avec précaution, voir ci-dessous.
   jamais inventer une couleur. Toujours en `.png`, jamais les vieux `.svg` de carte.
 - **Rendu des vignettes** : carré, `object-fit: cover`, sans cadre gris ni padding,
   bordure fine + `border-radius: 6px`.
-- **Photos de membre** : JPG carré 800×800, `images/membres/<id>.jpg`.
+- **Photos de membre** : JPG carré 800×800, `images/membres/<id>.jpg` ; facultative : sans champ
+  `photo`, le générateur met l'avatar par défaut `images/membres/anonyme.jpg`.
 - **Co-auteurs externes** : en texte simple, jamais en lien — une page membre qui
   n'existe pas donne un 404.
 - **Trackers** : les graphiques lisent les CSV dans le navigateur. Changer un CSV suffit ;
