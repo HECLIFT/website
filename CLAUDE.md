@@ -19,8 +19,20 @@ membres et de publications de `index.html`. Modifiez le JSON, puis lancez :
 python3 build/validate.py && python3 build/generate.py
 ```
 
-Les pages non encore générées (publications, trackers, à-propos, accueil hors compteurs)
-s'éditent encore en HTML — avec précaution, voir ci-dessous.
+**Pages assemblées et version anglaise (depuis le 2 novembre 2026, pilote sur l'accueil).**
+Une page listée dans `content/pages.json` est assemblée par `build/generate.py` à partir de
+`build/templates/base.html` (en-tête, menu, sélecteur FR | EN, pied de page, communs à toutes
+ces pages), de son contenu de `<main>` (`content/pages/fr/<chemin>` et, si elle a une version
+anglaise, `content/pages/en/<chemin>`) et de son bloc `<style>` propre
+(`content/pages/head/<chemin>`). Les libellés de l'interface (menu, pied de page, recherche,
+marque) sont dans `content/interface.json`, en français et en anglais. Ne modifiez jamais à la
+main ces pages ni leur jumeau `en/<chemin>`, ni `sitemap.xml`, ni `en/search.json` : modifiez
+les fragments ou le JSON, puis lancez le générateur. Les liens de la page anglaise vers une page
+qui n'a pas encore de version anglaise mènent à la page française (réécrits automatiquement).
+Une modification de structure du fragment français doit être reportée dans le fragment anglais :
+`build/validate.py` refuse deux fragments dont les balises, `id` et classes diffèrent.
+Seul l'accueil est assemblé pour l'instant ; les autres pages (publications, trackers,
+à-propos, vues d'ensemble) s'éditent encore en HTML, avec précaution, voir ci-dessous.
 
 ## Pièges connus (vécus)
 
@@ -45,15 +57,17 @@ s'éditent encore en HTML — avec précaution, voir ci-dessous.
   `</head>`, le script GoatCounter ; une nouvelle page doit le reprendre, `build/validate.py`
   le vérifie. Pas de cookies, donc pas de bandeau de consentement. Les boutons PDF portent
   `data-goatcounter-click="pdf-<id>"` (posé par `build/generate.py`), y compris le bouton PDF
-  de « Dernière publication » sur l'accueil, **à mettre à jour à la main** quand la publication
-  mise en avant change. Une version anglaise (champ `pdf_en` de `content/publications.json`) a son propre
+  de « Dernière publication » sur l'accueil, **à mettre à jour à la main** dans
+  `content/pages/fr/index.html` et `content/pages/en/index.html` quand la publication mise en
+  avant change (avec « Activité récente »). Une version anglaise (champ `pdf_en` de `content/publications.json`) a son propre
   bouton, compté sous `pdf-en-<id>` ; le PDF garde le nom de la version française suivi de `_en`. Les pages de `assets/maps/` (iframes) n'ont pas le script, pour ne pas
   compter deux fois une visite.
 - **`data/pubs.json`** est un vestige orphelin : personne ne le lit. Ne pas s'y fier.
 
 - **Bandeau et logos des partenaires** : la mention « Avec le soutien d’Accenture et Google »
   (ligne `line3` de la marque, en haut à gauche) et les logos du pied de page sont écrits en dur
-  dans chaque page et dans `build/templates/` : une modification se fait partout à la fois. Le logo
+  dans chaque page, dans `build/templates/` et dans `content/interface.json` (clé `marque.soutien`,
+  « With the support of Accenture and Google » en anglais) : une modification se fait partout à la fois. Le logo
   Google pointe vers https://www.google.org/ (demande de Google, octobre 2026).
 
 ## Ne pas faire

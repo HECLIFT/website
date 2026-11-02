@@ -79,10 +79,43 @@ for f, cols in ESPERADO.items():
 # Toute page servie porte le script juste avant </head> ; les iframes de assets/ n'en ont pas.
 for f in sorted(Path(".").rglob("*.html")):
     s_ = str(f)
-    if s_.startswith((".git/", "site_libs/", "assets/")):
+    if s_.startswith((".git/", "site_libs/", "assets/", "content/")):
         continue
     if "heclift.goatcounter.com/count" not in f.read_text(encoding="utf-8"):
         erro(f"[audiência] {s_}: falta o script do GoatCounter antes de </head> (ver AGENTS.md)")
+
+# --------------------------------------------- langues (pages anglaises sous en/)
+interface = json.loads(Path("content/interface.json").read_text())
+if set(interface["fr"]) != set(interface["en"]):
+    erro(f"[langues] content/interface.json : clés différentes entre fr et en : {sorted(set(interface['fr']) ^ set(interface['en']))}")
+RE_SQUELETTE = re.compile(r'<(/?[a-zA-Z][a-zA-Z0-9]*)((?:\s[^>]*)?)>')
+def squelette(texte):
+    """Suite des balises avec leurs id et classes : doit être la même en français et en anglais."""
+    out = []
+    for nom, attrs in RE_SQUELETTE.findall(texte):
+        ident = re.search(r'\bid="([^"]*)"', attrs)
+        classe = re.search(r'\bclass="([^"]*)"', attrs)
+        out.append((nom.lower(), ident.group(1) if ident else "", classe.group(1) if classe else ""))
+    return out
+for p in json.loads(Path("content/pages.json").read_text())["pages"]:
+    for lang in p["langues"]:
+        if not Path("content/pages", lang, p["chemin"]).exists():
+            erro(f"[langues] fragment absent : content/pages/{lang}/{p['chemin']}")
+    if "en" in p["langues"] and Path("content/pages/en", p["chemin"]).exists():
+        sq_fr = squelette(Path("content/pages/fr", p["chemin"]).read_text())
+        sq_en = squelette(Path("content/pages/en", p["chemin"]).read_text())
+        if sq_fr != sq_en:
+            k = next((i for i, (a, b) in enumerate(zip(sq_fr, sq_en)) if a != b), min(len(sq_fr), len(sq_en)))
+            erro(f"[langues] {p['chemin']} : la structure de la version anglaise s'écarte de la française "
+                 f"à la balise n° {k + 1} ({sq_fr[k] if k < len(sq_fr) else 'fin'} / {sq_en[k] if k < len(sq_en) else 'fin'})")
+for f in sorted(Path(".").rglob("*.html")):
+    s_ = str(f)
+    if s_.startswith((".git/", "site_libs/", "assets/", "content/", "build/")):
+        continue
+    attendu = "en" if s_.startswith("en/") else "fr"
+    m_ = re.search(r'<html[^>]*\blang="([a-z]+)"', f.read_text(encoding="utf-8"))
+    if not m_ or m_.group(1) != attendu:
+        erro(f"[langues] {s_} : <html lang> devrait valoir « {attendu} »")
 
 for a in avisos: print(f"⚠️  {a}")
 if erros:

@@ -131,6 +131,32 @@ hr {
 }
 @media (max-width: 480px) {
   .navbar-brand-text .line3 { font-size: 7px; letter-spacing: -0.03em; }
+  /* nom du laboratoire en entier sur téléphone (il était coupé) */
+  .navbar-brand-container { max-width: calc(100% - 80px) !important; }
+}
+@media (max-width: 389.98px) {
+  .navbar-brand-container { max-width: calc(100% - 92px) !important; }
+  .navbar-brand-text .line1 { font-size: 11.5px; letter-spacing: -0.025em; }
+  .navbar-brand-text .line2 { font-size: 8.5px; letter-spacing: 0.03em; }
+  .navbar-brand-text .line3 { font-size: 6.5px; letter-spacing: -0.06em; }
+}
+
+/* Sélecteur de langue FR | EN (menu ; sur téléphone, dernière ligne du menu déroulant) */
+.lang-switch {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 14px;
+  font-family: var(--mono) !important; font-size: 10.5px; letter-spacing: 0.08em;
+  text-transform: uppercase; white-space: nowrap;
+}
+.lang-switch .lang-current { color: #2C5784; font-weight: 700; }
+.lang-switch .lang-sep { color: #5A5A5A; opacity: 0.6; }
+.lang-switch a.lang-other { color: #5A5A5A !important; text-decoration: none; }
+.lang-switch a.lang-other:hover, .lang-switch a.lang-other:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
+.nav-lang { display: flex; align-items: center; margin-left: 6px; padding-left: 6px; border-left: 1px solid rgba(0,0,0,.12); }
+@media (max-width: 991.98px) {
+  .nav-lang { border-left: 0; margin-left: 0; padding-left: 0; margin-top: 4px; border-top: 1px solid rgba(0,0,0,.08); }
+  /* menu déroulant du téléphone : fond blanc (il était transparent et laissait voir la page) */
+  #navbarCollapse { background: #fff; padding: 4px 0 10px; box-shadow: 0 6px 12px rgba(0,0,0,.06); }
 }
 
 .navbar-nav .nav-link {

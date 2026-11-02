@@ -108,13 +108,15 @@ photo ou les CSV, quelqu'un s'en charge.
 | Liste des membres, page de chaque membre, compteur « Membres » de l'accueil | **générées** depuis `content/members.json` — ne pas les éditer à la main |
 | Liste des publications, page de chaque publication, compteur « Publications » de l'accueil | **générées** depuis `content/publications.json` |
 | Graphiques des trackers | **données** : remplacer les CSV dans `data/` |
-| Page d'accueil (hors compteurs), « À propos », textes des pages de trackers | encore en HTML, à modifier directement — avec précaution |
+| Page d'accueil, en français et en anglais (`en/index.html`) | **assemblée** depuis `content/pages/fr/index.html`, `content/pages/en/index.html`, `content/interface.json` et `build/templates/base.html` |
+| « À propos », vues d'ensemble, textes des pages de trackers | encore en HTML, à modifier directement — avec précaution |
+| `sitemap.xml`, `en/search.json` | **générés** |
 
 ## Pour les curieux
 
 | Dossier | Contenu |
 |---|---|
-| `content/` | le contenu éditorial (membres, publications) |
+| `content/` | le contenu éditorial (membres, publications, pages assemblées en français et en anglais, libellés de l'interface) |
 | `data/` | les données des trackers (CSV/JSON lus par le navigateur) |
 | `build/` | le générateur (`generate.py`) et le validateur (`validate.py`) |
 | `assets/js/` | le code des graphiques |

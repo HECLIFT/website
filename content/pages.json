@@ -1,0 +1,12 @@
+{
+  "_lisezmoi": "Pages assemblées par build/generate.py à partir de build/templates/base.html : une entrée par page, contenu de <main> dans content/pages/<langue>/<chemin>, bloc <style> propre à la page dans content/pages/head/<chemin>. Une page listée en « en » a son jumeau anglais sous en/<chemin> et le sélecteur FR | EN. Voir AGENTS.md.",
+  "pages": [
+    {
+      "chemin": "index.html",
+      "langues": ["fr", "en"],
+      "actif": "index",
+      "classe_body": "nav-fixed quarto-light",
+      "titre": {"fr": "Accueil", "en": "Home"}
+    }
+  ]
+}

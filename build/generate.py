@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Gera as páginas do site a partir de content/*.json. Não apaga nada:
 escreve só os arquivos que produz, dentro de --out."""
-import json, re, argparse, shutil
+import json, re, argparse, shutil, posixpath
 from pathlib import Path
 
 ICONS = {
@@ -178,6 +178,144 @@ def liste_publications(pubs, membres, live_html, racine=Path(".")):
     j = live_html.index("\n  </div>\n", live_html.index("pub-actions", dernier)) + len("\n  </div>")
     return live_html[:i] + novo + live_html[j:]
 
+# ------------------------------------------------------------------ pages assemblées
+# Une page listée dans content/pages.json est assemblée à partir de
+# build/templates/base.html (en-tête, menu, pied de page communs), de son
+# contenu de <main> (content/pages/<langue>/<chemin>) et de son bloc <style>
+# propre (content/pages/head/<chemin>). Les libellés de l'interface viennent
+# de content/interface.json. La page anglaise est écrite sous en/<chemin> :
+# ses liens vers une page qui a un jumeau anglais mènent à ce jumeau, les
+# autres liens (pages sans jumeau, images, PDF, données) mènent au français.
+BASE_URL = "https://heclift.github.io/website/"
+LOCALE = {"fr": "fr_FR", "en": "en_US"}
+RE_LIEN = re.compile(r'\b(href|src)="([^"]*)"')
+
+def jumeaux():
+    pages = json.loads(Path("content/pages.json").read_text())["pages"]
+    return pages, {p["chemin"] for p in pages if "en" in p["langues"]}
+
+def relocaliser(html, chemin, pages_en):
+    """Réécrit les liens relatifs d'une page écrite pour <chemin> afin qu'elle serve sous en/<chemin>."""
+    dir_fr = posixpath.dirname(chemin)
+    dir_en = posixpath.join("en", dir_fr) if dir_fr else "en"
+    def sub(m):
+        attr, url = m.group(1), m.group(2)
+        if not url or url.startswith(("http:", "https:", "//", "#", "mailto:", "data:", "javascript:")):
+            return m.group(0)
+        url, diese, ancre = url.partition("#")
+        url, point_q, requete = url.partition("?")
+        dossier = url.endswith("/") or url in (".", "./")
+        cible = posixpath.normpath(posixpath.join(dir_fr, url))
+        page = cible if cible.endswith(".html") else (posixpath.join(cible, "index.html") if dossier else None)
+        if page is not None and posixpath.normpath(page) in pages_en:
+            cible = posixpath.join("en", cible) if cible != "." else "en"
+        rel = posixpath.relpath(cible, dir_en)
+        if dossier:
+            rel = "./" if rel == "." else rel + "/"
+        elif url.startswith("./") and not rel.startswith("../"):
+            rel = "./" + rel
+        return f'{attr}="{rel}{point_q}{requete}{diese}{ancre}"'
+    return RE_LIEN.sub(sub, html)
+
+def selecteur(lang, lien, t):
+    if lang == "fr":
+        dedans = ('<span class="lang-current" lang="fr" aria-current="true">FR</span><span class="lang-sep" aria-hidden="true">|</span>'
+                  f'<a class="lang-other" href="{lien}" hreflang="en" lang="en" title="{t["selecteur.autre_titre"]}">EN</a>')
+    else:
+        dedans = (f'<a class="lang-other" href="{lien}" hreflang="fr" lang="fr" title="{t["selecteur.autre_titre"]}">FR</a>'
+                  '<span class="lang-sep" aria-hidden="true">|</span><span class="lang-current" lang="en" aria-current="true">EN</span>')
+    return (f'  <li class="nav-item nav-lang">\n    <span class="lang-switch" role="group" aria-label="{t["selecteur.groupe"]}">'
+            f'{dedans}</span>\n  </li>\n')
+
+def meta_langues(lang, chemin):
+    fr, en = BASE_URL + chemin, BASE_URL + "en/" + chemin
+    autre = "en" if lang == "fr" else "fr"
+    return (f'<link rel="canonical" href="{fr if lang == "fr" else en}">\n'
+            f'<link rel="alternate" hreflang="fr" href="{fr}">\n'
+            f'<link rel="alternate" hreflang="en" href="{en}">\n'
+            f'<link rel="alternate" hreflang="x-default" href="{fr}">\n'
+            f'<meta property="og:locale" content="{LOCALE[lang]}">\n'
+            f'<meta property="og:locale:alternate" content="{LOCALE[autre]}">\n')
+
+def assembler(p, lang, base, interface, compteurs, pages_en):
+    t = interface[lang]
+    chemin = p["chemin"]
+    profondeur = chemin.count("/")
+    deux = "en" in p["langues"]
+    html = base
+    for cle, val in (("head_page", Path("content/pages/head", chemin).read_text()),
+                     ("main", Path("content/pages", lang, chemin).read_text()),
+                     ("lang", lang), ("titre", p["titre"][lang]), ("classe_body", p["classe_body"]),
+                     ("meta_langues", meta_langues(lang, chemin) if deux else ""),
+                     ("H", "../" * profondeur), ("P", "../" * profondeur or "./")):
+        html = html.replace("{{%s}}" % cle, val)
+    for cle, val in compteurs.items():
+        html = html.replace("{{%s}}" % cle, val)
+    html = re.sub(r"\{\{actif:(\w+)\}\}", lambda m: " active" if m.group(1) == p.get("actif") else "", html)
+    html = re.sub(r"\{\{courant:(\w+)\}\}", lambda m: ' aria-current="page"' if m.group(1) == p.get("actif") else "", html)
+    html = re.sub(r"\{\{t:([\w.-]+)\}\}", lambda m: t[m.group(1)], html)
+    if lang == "en":
+        html = relocaliser(html, chemin, pages_en)
+    if deux:
+        dir_fr = posixpath.dirname(chemin)
+        lien = (posixpath.relpath("en/" + chemin, dir_fr or ".") if lang == "fr"
+                else posixpath.relpath(chemin, posixpath.join("en", dir_fr)))
+        html = html.replace("{{selecteur}}", selecteur(lang, lien, t))
+    else:
+        html = html.replace("{{selecteur}}", "")
+    reste = re.findall(r"\{\{[^}]*\}\}", html)
+    if reste:
+        raise SystemExit(f"❌ {lang}/{chemin} : balises non remplacées {sorted(set(reste))}")
+    return html
+
+def pages_assemblees(out, live, compteurs):
+    pages, pages_en = jumeaux()
+    base = Path("build/templates/base.html").read_text()
+    interface = json.loads(Path("content/interface.json").read_text())
+    produits = []
+    for p in pages:
+        for lang in p["langues"]:
+            dest = out / p["chemin"] if lang == "fr" else out / "en" / p["chemin"]
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            dest.write_text(assembler(p, lang, base, interface, compteurs, pages_en))
+            produits.append((lang, p))
+    return produits
+
+def sitemap(live, produits):
+    """Toutes les pages françaises servies, plus les jumeaux anglais, avec leurs liens hreflang ; sans lastmod."""
+    _, pages_en = jumeaux()
+    exclus = ("site_libs/", "assets/", "build/", "content/", "en/", ".git/")
+    fr = sorted(str(f.relative_to(live)) for f in live.rglob("*.html")
+                if not str(f.relative_to(live)).startswith(exclus))
+    lignes = ['<?xml version="1.0" encoding="UTF-8"?>',
+              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
+    for c in fr:
+        urls = [BASE_URL + c] + ([BASE_URL + "en/" + c] if c in pages_en else [])
+        for u in urls:
+            lignes += ["  <url>", f"    <loc>{u}</loc>"]
+            if c in pages_en:
+                lignes += [f'    <xhtml:link rel="alternate" hreflang="fr" href="{BASE_URL + c}"/>',
+                           f'    <xhtml:link rel="alternate" hreflang="en" href="{BASE_URL}en/{c}"/>',
+                           f'    <xhtml:link rel="alternate" hreflang="x-default" href="{BASE_URL + c}"/>']
+            lignes.append("  </url>")
+    lignes.append("</urlset>")
+    return "\n".join(lignes) + "\n"
+
+def recherche_en(out, produits):
+    """Index de recherche des pages anglaises (en/search.json), tiré du texte des pages produites."""
+    import html as h
+    entrees = []
+    for lang, p in produits:
+        if lang != "en":
+            continue
+        s = (out / "en" / p["chemin"]).read_text()
+        corps = s[s.index("<main"):s.index("</main>")]
+        corps = re.sub(r"<(script|style)\b.*?</\1>", " ", corps, flags=re.S)
+        texte = re.sub(r"\s+", " ", h.unescape(re.sub(r"<[^>]+>", " ", corps))).strip()
+        entrees.append({"objectID": p["chemin"], "href": p["chemin"], "title": p["titre"]["en"],
+                        "section": "", "text": texte})
+    return json.dumps(entrees, ensure_ascii=False)
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--live", default=".", help="raiz do site (padrão: o próprio repo)")
@@ -210,16 +348,16 @@ def main():
     (out / "publications.html").write_text(
         liste_publications(liste_pubs, membres_par_id, (live / "publications.html").read_text(), live))
 
-    # home: contadores de membros e de publicações
-    idx = (live / "index.html").read_text()
+    # pages assemblées (base.html + fragments fr/en) ; compteurs de l'accueil
     n = len(data["membres"])
-    for chave, total in (("Membres", n), ("Publications", len(liste_pubs))):
-        idx = re.sub(r'(<div class="stat-num">)\d+(</div>\s*<div class="stat-meta">\s*<div class="stat-key">' + chave + ')',
-                     lambda mm: f'{mm.group(1)}{total:02d}{mm.group(2)}', idx)
-    (out / "index.html").write_text(idx)
+    compteurs = {"n_membres": f"{n:02d}", "n_publications": f"{len(liste_pubs):02d}"}
+    produits = pages_assemblees(out, live, compteurs)
+    (out / "sitemap.xml").write_text(sitemap(live, produits))
+    (out / "en").mkdir(exist_ok=True)
+    (out / "en" / "search.json").write_text(recherche_en(out, produits))
     if a.check:
         difs = []
-        for f in sorted(out.rglob("*.html")):
+        for f in sorted([*out.rglob("*.html"), out / "sitemap.xml", out / "en" / "search.json"]):
             rel = f.relative_to(out)
             atual = (live / rel)
             if not atual.exists() or atual.read_text() != f.read_text():
