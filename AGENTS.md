@@ -51,6 +51,11 @@ s'éditent encore en HTML — avec précaution, voir ci-dessous.
   compter deux fois une visite.
 - **`data/pubs.json`** est un vestige orphelin : personne ne le lit. Ne pas s'y fier.
 
+- **Bandeau et logos des partenaires** : la mention « Avec le soutien d’Accenture et Google »
+  (ligne `line3` de la marque, en haut à gauche) et les logos du pied de page sont écrits en dur
+  dans chaque page et dans `build/templates/` : une modification se fait partout à la fois. Le logo
+  Google pointe vers https://www.google.org/ (demande de Google, octobre 2026).
+
 ## Ne pas faire
 
 - Ne pas supprimer de fichiers sans demander : ce dépôt **est** le site en production.
