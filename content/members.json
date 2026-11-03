@@ -184,7 +184,9 @@
       "id": "afelix",
       "nom": "Arthur Felix",
       "section": "Chargés d'étude",
-      "role": "Chargé d'étude"
+      "role": "Chargé d'étude",
+      "photo": "images/membres/afelix.jpg",
+      "email": "arthurfelixk01@gmail.com"
     },
     {
       "id": "lmilani",
