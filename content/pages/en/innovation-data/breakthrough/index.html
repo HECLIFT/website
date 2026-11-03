@@ -1,0 +1,314 @@
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Breakthrough innovation</h1>
+<p class="subtitle lead">Breakthrough patents by European country</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Innovation</div>
+    <div class="quarto-category">Patents</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Breakthrough patents by European country and technology field.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta column-page">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!-- ECharts CDN -->
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+
+<!-- Tracker CSS -->
+<link rel="stylesheet" href="../../assets/css/breakthrough-tracker.css">
+
+<div class="bt-container">
+  <!-- KPI Cards -->
+  <div class="bt-kpi-grid">
+    <div class="bt-kpi-card">
+      <div class="bt-kpi-icon">
+        <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 6v6l4 2"></path>
+        </svg>
+      </div>
+      <div class="bt-kpi-content">
+        <span class="bt-kpi-label">Patent abstracts</span>
+        <span class="bt-kpi-value" id="kpi-total-patents">--</span>
+      </div>
+    </div>
+    <div class="bt-kpi-card">
+      <div class="bt-kpi-icon">
+        <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+          <path d="M2 17l10 5 10-5"></path>
+          <path d="M2 12l10 5 10-5"></path>
+        </svg>
+      </div>
+      <div class="bt-kpi-content">
+        <span class="bt-kpi-label">European countries</span>
+        <span class="bt-kpi-value" id="kpi-countries">--</span>
+      </div>
+    </div>
+    <div class="bt-kpi-card">
+      <div class="bt-kpi-icon">
+        <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+      </div>
+      <div class="bt-kpi-content">
+        <span class="bt-kpi-label">NUTS2 regions</span>
+        <span class="bt-kpi-value" id="kpi-regions">--</span>
+      </div>
+    </div>
+    <div class="bt-kpi-card">
+      <div class="bt-kpi-icon">
+        <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+        </svg>
+      </div>
+      <div class="bt-kpi-content">
+        <span class="bt-kpi-label">Period covered</span>
+        <span class="bt-kpi-value" id="kpi-period">--</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Controls -->
+  <div class="bt-controls">
+    <div class="bt-controls-left">
+      <label for="indicator-select">Indicator:</label>
+      <select id="indicator-select">
+        <option value="nouveaute">Novelty</option>
+        <option value="rupture">Breakthrough</option>
+      </select>
+    </div>
+    <div class="bt-controls-right">
+      <button id="btn-download" class="bt-btn bt-btn-primary">
+        <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7,10 12,15 17,10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        CSV
+      </button>
+      <button id="btn-reset" class="bt-btn bt-btn-secondary">
+        <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="1,4 1,10 7,10"></polyline>
+          <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+        </svg>
+        Reset
+      </button>
+    </div>
+  </div>
+
+  <!-- Time Series Chart -->
+  <div class="bt-section">
+    <h3 class="bt-section-title anchored">Trend over time</h3>
+    <div id="timeseries-chart" class="bt-chart"></div>
+  </div>
+
+  <!-- Country selector -->
+  <div class="bt-country-wrap">
+    <span class="bt-country-label">Countries:</span>
+    <div id="country-selector"></div>
+  </div>
+
+  <!-- Technology Fields Chart -->
+  <div class="bt-section">
+    <div class="bt-section-header">
+      <h3 class="bt-section-title anchored">Novelty by technology field</h3>
+      <button id="btn-download-tech" class="bt-btn bt-btn-secondary bt-btn-sm">
+        <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7,10 12,15 17,10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        CSV
+      </button>
+    </div>
+    <div id="tech-chart" class="bt-chart"></div>
+  </div>
+
+  <!-- Comparison Charts Row: Country + Regions -->
+  <div class="bt-comparison-row">
+    <div class="bt-comparison-col">
+      <div class="bt-section-header">
+        <h3 class="bt-section-title anchored">Comparison by country</h3>
+        <button id="btn-download-country" class="bt-btn bt-btn-secondary bt-btn-sm">
+          <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7,10 12,15 17,10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          CSV
+        </button>
+      </div>
+      <div class="bt-period-controls">
+        <label for="country-indicator-select">Indicator:</label>
+        <select id="country-indicator-select">
+          <option value="nouveaute">Novelty</option>
+          <option value="rupture">Breakthrough</option>
+        </select>
+        <label for="country-period-select">Period:</label>
+        <select id="country-period-select">
+          <option value="all">All years</option>
+        </select>
+      </div>
+      <div id="country-chart" class="bt-chart bt-chart-half"></div>
+    </div>
+    <div class="bt-comparison-col">
+      <div class="bt-section-header">
+        <h3 class="bt-section-title anchored">Top 10 European regions</h3>
+        <button id="btn-download-region" class="bt-btn bt-btn-secondary bt-btn-sm">
+          <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7,10 12,15 17,10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          CSV
+        </button>
+      </div>
+      <div class="bt-period-controls">
+        <label for="region-indicator-select">Indicator:</label>
+        <select id="region-indicator-select">
+          <option value="nouveaute">Novelty</option>
+          <option value="rupture">Breakthrough</option>
+        </select>
+        <label for="region-period-select">Period:</label>
+        <select id="region-period-select">
+          <option value="all">All years</option>
+        </select>
+      </div>
+      <div id="region-chart" class="bt-chart bt-chart-half"></div>
+    </div>
+  </div>
+
+  <!-- Europe Map -->
+  <div class="bt-section">
+    <h3 class="bt-section-title anchored">Map of Europe</h3>
+    <div id="map-chart" class="bt-chart bt-chart-map"></div>
+  </div>
+
+  <!-- Source note -->
+  <div class="bt-source">
+    <strong>Sources:</strong> 4.6 million abstracts of EPO patents filed from 1983 to 2024 (Google Patents). Inventor location
+    via REGPAT (OECD, August 2026 edition). CPC classification (4 fields). Population: World Bank.
+    Scores computed by cosine similarity on embeddings of the English abstracts (<a href="https://huggingface.co/AAUBS/PatentSBERTa_V2" target="_blank">PatentSBERTa_V2</a>).
+    Methodology inspired by <a href="https://www.aeaweb.org/articles?id=10.1257/aeri.20190499" target="_blank">Kelly, Papanikolaou, Seru &amp; Taddy (2021, AER Insights)</a>.
+    <br><strong>2024 incomplete:</strong> patent applications are published about 18 months after filing, and the year still contains only about 83% of the patents of a complete year. Shares are little affected; the 2024 figures per million inhabitants will be revised upward.
+  </div>
+</div>
+
+<!-- Tracker JS -->
+<script src="../../assets/js/lift-i18n.js"></script>
+<script src="../../assets/js/breakthrough-tracker.js"></script>
+<section id="à-propos-de-ce-tracker" class="level2">
+<h2 class="anchored" data-anchor-id="à-propos-de-ce-tracker">About this tracker</h2>
+<p>This dashboard analyzes <strong>4.6 million patents</strong> filed with the European Patent Office (EPO) between <strong>1983 and 2024</strong>, covering <strong>24</strong> European countries. It identifies breakthrough patents and measures their output by country, by region (NUTS2) and by technology field.</p>
+<p>A patent is considered a <strong>breakthrough patent</strong> if it is in the <strong>top 1%</strong> of the annual distribution according to one of the following two measures:</p>
+<ul>
+<li><p><strong>Novelty</strong> (<em>backward-looking</em>): measures how different a patent is from prior art at the time of filing. Formally, it is the sum of the cosine similarities between the embedding vector of the abstract and those of all patents filed in the previous 5 years. A patent is classified as <strong>highly novel</strong> if it has a <strong>low</strong> score (bottom 1%), indicating that it is distant from existing technologies. This measure is available for all years, including the most recent.</p></li>
+<li><p><strong>Breakthrough</strong> : ratio between future influence and proximity to prior art (forward_sum / backward_sum). A patent is classified as a <strong>breakthrough</strong> patent if it has a <strong>high</strong> ratio (top 1%), which identifies patents that are both very different from existing technologies and very influential on future innovations. <em>Note: this measure is not available after 2019 because it requires observing the patents filed in the following 5 years.</em></p></li>
+</ul>
+<p>The country charts show the <strong>number of breakthrough patents per million inhabitants</strong>.</p>
+<section id="auteurs" class="level3">
+<h3 class="anchored" data-anchor-id="auteurs">Authors</h3>
+<p>This tracker is developed by:</p>
+<ul>
+<li><strong><a href="../../membres/abergeaud.html">Antonin Bergeaud</a></strong></li>
+<li><strong>Dario Marino</strong></li>
+</ul>
+</section>
+<section id="méthodologie" class="level3">
+<h3 class="anchored" data-anchor-id="méthodologie">Methodology</h3>
+<section id="calcul-des-scores-kpst" class="level4">
+<h4 class="anchored" data-anchor-id="calcul-des-scores-kpst">Computing the scores (KPST)</h4>
+<p>The methodology is inspired by <a href="https://www.aeaweb.org/articles?id=10.1257/aeri.20190499">Kelly, Papanikolaou, Seru and Taddy (2021, AER Insights)</a> :</p>
+<ol type="1">
+<li><strong>Text embeddings</strong> : the English<strong>abstract</strong> of each patent is turned into a high-dimensional numerical vector with the <a href="https://huggingface.co/AAUBS/PatentSBERTa_V2">PatentSBERTa_V2</a> model, a Sentence-BERT model pre-trained on patent texts. When a patent has an abstract only in German or French (about 16% of patents), the machine English translation from Google Patents is used: all patents are thus compared in the same language.</li>
+<li><strong>Novelty score</strong> (<code>backward_sum</code>): sum of the cosine similarities between the vector of the patent’s abstract and those of all patents filed in the previous 5 years. A low score means that the patent is far from the state of the art.</li>
+<li><strong>Future proximity</strong> (<code>forward_sum</code>): sum of the cosine similarities between the vector of the abstract and those of all patents filed in the following 5 years. Used as the numerator of the breakthrough score.</li>
+<li><strong>Breakthrough score</strong> (<code>importance</code>): ratio <code>forward_sum / backward_sum</code>. A high ratio identifies patents that are both far from existing technologies and close to future innovations.</li>
+</ol>
+</section>
+<section id="définition-des-brevets-de-rupture" class="level4">
+<h4 class="anchored" data-anchor-id="définition-des-brevets-de-rupture">Definition of breakthrough patents</h4>
+<p>A patent is classified in the top 1% within each filing year:</p>
+<ul>
+<li><strong>Highly novel</strong> : bottom 1% of the distribution of <code>backward_sum</code> (the most distant from prior art)</li>
+<li><strong>Breakthrough</strong> : top 1% of the distribution of <code>importance</code> (the highest forward/backward ratio)</li>
+</ul>
+<p>Thresholds are computed separately for each year to control for changes in the distributions over time.</p>
+</section>
+<section id="indice-de-nouveauté-par-domaine-technologique" class="level4">
+<h4 class="anchored" data-anchor-id="indice-de-nouveauté-par-domaine-technologique">Novelty index by technology field</h4>
+<p>The index shown in the chart by technology field measures the relative gap between the average novelty score of a technology field and the overall average:</p>
+<p><span class="math display">\[\text{Index} = \frac{\overline{backward\_sum}_{\text{global}} - \overline{backward\_sum}_{\text{field}}}{\overline{backward\_sum}_{\text{global}}}\]</span></p>
+<p>A positive index means that the field’s patents are on average more novel than the average. The index is computed each year.</p>
+</section>
+<section id="classification-technologique-cpc" class="level4">
+<h4 class="anchored" data-anchor-id="classification-technologique-cpc">Technology classification (CPC)</h4>
+<p>The chart of novelty by technology field uses 4 fields of the <strong>Cooperative Patent Classification</strong> (CPC, the harmonized EPO/USPTO system):</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>CPC code</th>
+<th>Field</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>G06N</td>
+<td>AI / Machine learning</td>
+</tr>
+<tr class="even">
+<td>C12N</td>
+<td>Biotechnology</td>
+</tr>
+<tr class="odd">
+<td>A61K</td>
+<td>Pharmaceuticals</td>
+</tr>
+<tr class="even">
+<td>H01L and H10</td>
+<td>Semiconductors (H10 takes over H01L since the CPC reforms; current codes apply to all years)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="attribution-géographique" class="level4">
+<h4 class="anchored" data-anchor-id="attribution-géographique">Geographic attribution</h4>
+<p><strong>By country:</strong> patents are attributed based on the <strong>location of the inventors</strong> (source: REGPAT, OECD). When a patent has several inventors from different countries, it is counted fractionally (1/N per inventor).</p>
+<p><strong>By region (NUTS2):</strong> patents are attributed to NUTS2 regions according to the regional code of the inventor’s residence. The regional data cover about 380 European NUTS2 regions.</p>
+</section>
+<section id="sources-de-données" class="level4">
+<h4 class="anchored" data-anchor-id="sources-de-données">Data sources</h4>
+<ul>
+<li><strong>Patents</strong> : abstracts and CPC codes of EPO publications, Google Patents Public Data (BigQuery) — 4,649,815 EPO patents filed from 1983 to 2024</li>
+<li><strong>Location</strong> : REGPAT (OECD, August 2026 edition) — country and region (NUTS2) of origin of the inventors</li>
+<li><strong>Classification</strong> : CPC codes (Cooperative Patent Classification) — 4 targeted fields</li>
+<li><strong>Population</strong> : World Bank (indicator SP.POP.TOTL) — for normalization per million inhabitants</li>
+</ul>
+</section>
+</section>
+<section id="mise-à-jour" class="level3">
+<h3 class="anchored" data-anchor-id="mise-à-jour">Update</h3>
+<p>Data as of October 6, 2026: EPO publications up to September 16, 2026 (Google Patents) and REGPAT (OECD) of August 2026. The tracker is updated after each new REGPAT edition. 2024 is incomplete: patent applications are published about 18 months after filing, and the year still contains only about 83% of the patents of a complete year. Shares are little affected; the 2024 figures per million inhabitants will be revised upward.</p>
+
+
+</section>
+</section>

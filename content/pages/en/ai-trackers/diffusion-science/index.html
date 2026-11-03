@@ -1,0 +1,318 @@
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">AI diffusion (science)</h1>
+<p class="subtitle lead">AI adoption in European patents and scientific publications</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">AI</div>
+    <div class="quarto-category">Science</div>
+    <div class="quarto-category">Patents</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Tracker measuring the diffusion of artificial intelligence in EPO patents and scientific publications. Data: REGPAT (OECD), OpenAlex, patCit.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta column-page">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<script src="https://cdn.plot.ly/plotly-2.35.0.min.js"></script>
+<link rel="stylesheet" href="../../assets/css/diffusion-science.css">
+<link rel="stylesheet" href="../../assets/css/superstars.css">
+<style>
+.ss-nav .nav-btn { border:1px solid #D5DDE8 !important; border-radius:999px !important; background:#fff !important; color:#0E2A47 !important; }
+.ss-nav .nav-btn:hover { background:#E6EBF2 !important; border-color:#5F84E8 !important; }
+.ss-nav .nav-btn.active { background:#0E2A47 !important; border-color:#0E2A47 !important; color:#fff !important; }
+</style>
+
+<nav class="ds-nav">
+  <button class="nav-btn active" onclick="show('vue-ensemble', this)">Overview</button>
+  <button class="nav-btn" onclick="show('brevets', this)">AI patents</button>
+  <button class="nav-btn" onclick="show('geographie', this)">Geography</button>
+  <button class="nav-btn" onclick="show('technologie', this)">IPC fields</button>
+  <button class="nav-btn" onclick="show('publications', this)">AI publications</button>
+  <button class="nav-btn" onclick="show('superstars', this)">Key players</button>
+</nav>
+
+<main class="ds-main" data-asof="2026-10-01" data-asof-label="October 1, 2026">
+<div class="dash-databar" id="dash-databar"></div>
+
+<div id="vue-ensemble" class="section active">
+  <div class="kpi-row" id="kpi-row"></div>
+  <div class="grid2">
+    <div class="chart-card">
+      <h3 class="anchored">AI patents per year</h3>
+      <div class="desc">Number of EP patents citing publications classified as AI (observed + predicted by ML).</div>
+      <div id="ch-overview-patents" style="height:300px"></div>
+    </div>
+    <div class="chart-card">
+      <h3 class="anchored">Share of AI patents (% of total)</h3>
+      <div class="desc">Share of EP patents containing at least one NPL citation identified as AI.</div>
+      <div id="ch-overview-share" style="height:300px"></div>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="chart-card">
+      <h3 class="anchored">Top 10 countries — AI patents (inventors)</h3>
+      <div class="desc">REGPAT fractional weights, inventor geography.</div>
+      <div id="ch-overview-ctry" style="height:320px"></div>
+    </div>
+    <div class="chart-card">
+      <h3 class="anchored">Top 10 technology fields (IPC4)</h3>
+      <div class="desc">Number of AI patents per IPC4 group.</div>
+      <div id="ch-overview-ipc" style="height:320px"></div>
+    </div>
+  </div>
+</div>
+
+<div id="brevets" class="section">
+  <div class="chart-card">
+    <h3 class="anchored">Trend in AI patents — observed vs. predicted</h3>
+    <div class="desc">Observed: NPL citations linked to an OpenAlex publication (patCit, DOI written in the citation, or title found in arXiv, Crossref or Semantic Scholar) whose <em>primary topic</em> is in the AI list. Predicted: NPL citations that could not be linked to any publication, classified as AI by an ML model applied to their title.</div>
+    <div id="ch-patents-stacked" style="height:380px"></div>
+    <div class="note">Corpus: EP patents with at least one NPL citation, dated by their first publication. Source: Google Patents, patCit, OpenAlex, REGPAT 202602.<br><strong>2024 provisional:</strong> some of the patents published in 2024 do not yet have a search report in the data; their number will be revised upward, while the share of AI patents is less affected.</div>
+  </div>
+  <div class="grid2">
+    <div class="chart-card">
+      <h3 class="anchored">AI share of patents (%, by year)</h3>
+      <div class="desc">Percentage of EP patents classified as AI among all patents with NPL citations: all AI patents, and those with an observed AI citation.</div>
+      <div id="ch-patents-share" style="height:380px"></div>
+    </div>
+    <div class="chart-card">
+      <h3 class="anchored">Total NPL corpus vs. AI patents</h3>
+      <div class="desc">Absolute size of the corpus of patents with non-patent literature (NPL) citations. The log scale makes it possible to compare growth rates.</div>
+      <div id="ch-patents-total" style="height:380px"></div>
+    </div>
+  </div>
+</div>
+
+<div id="geographie" class="section">
+  <div class="chart-card">
+    <h3 class="anchored">AI patents by country — top 25 (inventor geography)</h3>
+    <div class="desc">REGPAT fractional weights. Each patent contributes to several countries in proportion to its inventors. “AI share” ranks countries by the share of their patents that are AI.</div>
+    <div id="ch-geo-bar" style="height:520px"></div>
+    <div class="note">Source: REGPAT 202602 · EPO_Inv_reg · Weighting: reg_share × inv_share.</div>
+  </div>
+  <div class="chart-card">
+    <h3 class="anchored">Total volume and share of AI patents by country</h3>
+    <div class="desc">EP patents of the country (horizontal axis, log scale) and share of AI patents (vertical axis). Bubble size follows the number of AI patents. Top left: countries relatively specialized in AI.</div>
+    <div id="ch-geo-scatter" style="height:420px"></div>
+  </div>
+  <div class="chart-card">
+    <h3 class="anchored">Europe map — AI patents by NUTS1 region</h3>
+    <div class="desc">REGPAT fractional weights by major region (NUTS1). Share of Europe: the region’s share of AI patents across European regions. Local AI share: share of the region’s patents that are AI.</div>
+    <div id="ch-europe-map" style="height:560px"></div>
+  </div>
+  <div class="chart-card">
+    <h3 class="anchored">World map — AI patents by country</h3>
+    <div class="desc">Worldwide distribution of patents, 1990–2024, REGPAT weighting by inventors or applicants.</div>
+    <div id="ch-world-map" style="height:520px"></div>
+  </div>
+</div>
+
+<div id="technologie" class="section">
+  <div class="ds-filter-bar" id="ipc-filter">
+    <span class="ds-filter-label">Fields</span>
+    <span class="ds-filter-hint">G06* = general computing (data processing, image, vision, AI, management). The choice applies to the three charts in this tab.</span>
+  </div>
+  <div class="chart-card">
+    <h3 class="anchored">AI patents by IPC4 field — volume and intensity</h3>
+    <div class="desc">Volume: number of AI patents in the field. Intensity: share of the field’s patents that are AI.</div>
+    <div id="ch-ipc-combo" style="height:480px"></div>
+    <div class="note">IPC4 = first 4 characters of the International Patent Classification.</div>
+  </div>
+  <div class="chart-card">
+    <h3 class="anchored">Trend over time — top 8 IPC4 (AI patents per year)</h3>
+    <div class="desc">Diffusion of AI across technology fields, 1990–2024.</div>
+    <div id="ch-ipc-time" style="height:420px"></div>
+  </div>
+  <div class="chart-card">
+    <h3 class="anchored">Composition of AI patents by IPC4 field (% per year)</h3>
+    <div class="desc">Share of each field among the AI patents of the top 8 IPC4 fields (total = 100%), 1990–2024. A patent can belong to several fields.</div>
+    <div id="ch-ipc-share-time" style="height:420px"></div>
+  </div>
+</div>
+
+<div id="publications" class="section">
+  <div class="chart-card">
+    <h3 class="anchored">AI scientific publications — annual trend</h3>
+    <div class="desc">
+      AI publications (OpenAlex primary topic) cited by the AI patents in the corpus and linked to an OpenAlex publication (patCit, DOI or title found), by the article’s year of publication. Each publication is counted once.
+    </div>
+    <div id="ch-pubs-year" style="height:380px"></div>
+    <div class="note">Only citations linked to an OpenAlex publication are counted; citations predicted by the model are not. A recent publication appears only once it has been cited by an already published patent: the series does not measure recent scientific output. OpenAlex dates part of the IEEE archives to late 2002; for these publications, the year given in the patent citation is used.</div>
+  </div>
+  <div class="chart-card">
+    <h3 class="anchored">Top 20 AI research topics</h3>
+    <div class="desc">OpenAlex primary topics of the AI publications cited by the patents in the corpus (observed citations). Number of distinct publications.</div>
+    <div id="ch-topics" style="height:520px"></div>
+  </div>
+</div>
+
+<div id="superstars" class="section">
+<div class="ss-kpi-row" id="ss-kpis"></div>
+<nav class="ss-nav">
+  <button class="nav-btn active" onclick="showSS('tab-applicants', this)">Top applicants</button>
+  <button class="nav-btn" onclick="showSS('tab-inventors', this)">Top inventors</button>
+  <button class="nav-btn" onclick="showSS('tab-papers', this)">Key publications</button>
+  <button class="nav-btn" onclick="showSS('tab-time', this)">Trend over time</button>
+</nav>
+<main class="ss-main">
+<div id="tab-applicants" class="section active">
+  <div class="chart-card">
+    <h3 class="anchored">Top 25 applicants — European AI patents</h3>
+    <div class="desc">Applicants with the largest number of European AI patents (1990–2024). Subsidiaries of the same group are combined (e.g., Microsoft Corporation and Microsoft Technology Licensing). The fractional equivalent accounts for joint filings.</div>
+    <div id="ch-applicants" style="height:580px"></div>
+    <div class="note">Source: REGPAT 202602, patCit, OpenAlex · Observed and predicted AI patents, each patent counted once.</div>
+  </div>
+</div>
+<div id="tab-inventors" class="section">
+  <div class="chart-card">
+    <h3 class="anchored">Top 25 inventors — European AI patents</h3>
+    <div class="desc">Most prolific inventors in EPO patents citing AI scientific publications. The fractional equivalent weights by the number of co-inventors.</div>
+    <div id="ch-inventors" style="height:580px"></div>
+    <div class="note">Source: REGPAT 202602, patCit, OpenAlex · Fractional weighting per patent.</div>
+  </div>
+</div>
+<div id="tab-papers" class="section">
+  <div class="chart-card">
+    <h3 class="anchored">Most cited scientific publications</h3>
+    <div class="desc">Publications most cited by European AI patents — ranked by number of distinct citing patents.</div>
+    <div id="papers-table"></div>
+    <div class="note">Source: patCit (EPO), Google Patents, OpenAlex · Only citations linked to a publication are counted.</div>
+  </div>
+</div>
+<div id="tab-time" class="section">
+  <div class="chart-card">
+    <h3 class="anchored">Trend in AI patents — top 15 applicants (1990–2024)</h3>
+    <div class="desc">Number of AI patents per year for each main applicant (fractional equivalent). Shows the rise of new players and the decline of older ones. Choose the applicants to compare.</div>
+    <div id="ch-timeseries" style="height:500px"></div>
+    <div class="note">Source: REGPAT 202602, patCit, OpenAlex · Top 15 applicants by cumulative volume 1990–2024, subsidiaries combined.</div>
+  </div>
+</div>
+</main>
+</div>
+
+</main>
+
+<script src="../../assets/js/lift-i18n.js"></script>
+<script src="../../assets/js/diffusion-science.js"></script>
+<script src="../../assets/js/superstars.js"></script>
+<section id="à-propos-de-ce-tracker" class="level2">
+<h2 class="anchored" data-anchor-id="à-propos-de-ce-tracker">About this tracker</h2>
+<p>This dashboard analyzes European patents (EPO) between <strong>1990 and 2024</strong> that cite scientific publications identified as artificial intelligence, as well as the main players (firms, inventors and publications) at the heart of this dynamic.</p>
+<section id="auteure" class="level3">
+<h3 class="anchored" data-anchor-id="auteure">Author</h3>
+<p>This tracker is developed by <strong><a href="../../membres/golterra.html">Gabriela Terra</a></strong> — HEC Paris.</p>
+</section>
+<section id="ce-que-mesure-ce-tracker" class="level3">
+<h3 class="anchored" data-anchor-id="ce-que-mesure-ce-tracker">What this tracker measures</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tab</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Overview</td>
+<td>Overall KPIs, AI patents per year, top countries and IPC fields</td>
+</tr>
+<tr class="even">
+<td>AI patents</td>
+<td>Observed (direct citation) vs.&nbsp;predicted (ML model)</td>
+</tr>
+<tr class="odd">
+<td>Geography</td>
+<td>Distribution by inventor country (REGPAT) and NUTS1 maps</td>
+</tr>
+<tr class="even">
+<td>IPC fields</td>
+<td>AI intensity by technology class (IPC4)</td>
+</tr>
+<tr class="odd">
+<td>AI publications</td>
+<td>AI scientific publications cited by patents</td>
+</tr>
+<tr class="even">
+<td>Key players</td>
+<td>Top applicants, inventors and most cited publications</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="identification-des-brevets-ia" class="level3">
+<h3 class="anchored" data-anchor-id="identification-des-brevets-ia">Identifying AI patents</h3>
+<p>A patent is classified as an <strong>AI patent</strong> using two complementary methods:</p>
+<ul>
+<li><strong>Observed</strong> : the patent cites at least one publication whose <em>primary topic</em> in <a href="https://openalex.org/">OpenAlex</a> is one of 34 AI topics. The link is made through <a href="https://github.com/epo/patcit">patCit</a> (EPO), through the DOI written in the citation, or by finding the cited title in arXiv, Crossref or Semantic Scholar.</li>
+<li><strong>Predicted</strong> : for NPL citations that could not be linked to any publication, an ML model classifies the <em>title of the cited publication</em> as AI or not (threshold chosen to reproduce the number of AI citations observed on recent patents). The patent is predicted AI if at least one of its citations is classified as AI. The model first serves to flag the citations to check: those it deems possibly AI are searched for in bibliographic databases, and only those that cannot be found keep its prediction.</li>
+</ul>
+</section>
+<section id="comptage" class="level3">
+<h3 class="anchored" data-anchor-id="comptage">Counting</h3>
+<ul>
+<li>One patent = one EP application. The EPO often publishes the same patent several times (A1, A2, A3, B1…); these publications are grouped and counted only once, in the year of the first publication.</li>
+<li>Geography (countries, regions) uses REGPAT fractional weighting; each patent weighs 1 in total.</li>
+<li>Scientific publications (AI publications and Key players tabs) can only be identified for observed citations.</li>
+</ul>
+<p>Detailed method: methodological note <em>Artificial intelligence in the service of innovation</em> (Bergeaud, Delbouve, Terra, 2026).</p>
+</section>
+<section id="sources" class="level3">
+<h3 class="anchored" data-anchor-id="sources">Sources</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Source</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Google Patents</td>
+<td>NPL citations of EP patents (raw text), publications up to September 2026</td>
+</tr>
+<tr class="even">
+<td><a href="https://github.com/epo/patcit">patCit</a></td>
+<td>Resolution of non-patent literature citations (up to about 2018)</td>
+</tr>
+<tr class="odd">
+<td>arXiv, Crossref, Semantic Scholar</td>
+<td>Search for cited publications without a DOI</td>
+</tr>
+<tr class="even">
+<td><a href="https://openalex.org/">OpenAlex</a></td>
+<td>Classification of publications (AI topic)</td>
+</tr>
+<tr class="odd">
+<td>REGPAT (OECD 202602)</td>
+<td>Geolocation of inventors (fractional)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="mise-à-jour" class="level3">
+<h3 class="anchored" data-anchor-id="mise-à-jour">Update</h3>
+<p><strong>Annual</strong>, after a new extraction of citations (Google Patents) and, where applicable, a new REGPAT edition. Data as of October 1, 2026.</p>
+
+
+</section>
+</section>

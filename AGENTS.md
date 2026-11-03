@@ -19,20 +19,31 @@ membres et de publications de `index.html`. Modifiez le JSON, puis lancez :
 python3 build/validate.py && python3 build/generate.py
 ```
 
-**Pages assemblées et version anglaise (depuis le 2 novembre 2026, pilote sur l'accueil).**
+**Pages assemblées et version anglaise (depuis novembre 2026, tout le site sous `en/`).**
 Une page listée dans `content/pages.json` est assemblée par `build/generate.py` à partir de
 `build/templates/base.html` (en-tête, menu, sélecteur FR | EN, pied de page, communs à toutes
 ces pages), de son contenu de `<main>` (`content/pages/fr/<chemin>` et, si elle a une version
 anglaise, `content/pages/en/<chemin>`) et de son bloc `<style>` propre
 (`content/pages/head/<chemin>`). Les libellés de l'interface (menu, pied de page, recherche,
 marque) sont dans `content/interface.json`, en français et en anglais. Ne modifiez jamais à la
-main ces pages ni leur jumeau `en/<chemin>`, ni `sitemap.xml`, ni `en/search.json` : modifiez
+main ces pages ni leur jumeau `en/<chemin>`, ni `sitemap.xml`, ni `search.json`, `en/search.json` ou `en/listings.json` : modifiez
 les fragments ou le JSON, puis lancez le générateur. Les liens de la page anglaise vers une page
 qui n'a pas encore de version anglaise mènent à la page française (réécrits automatiquement).
 Une modification de structure du fragment français doit être reportée dans le fragment anglais :
 `build/validate.py` refuse deux fragments dont les balises, `id` et classes diffèrent.
-Seul l'accueil est assemblé pour l'instant ; les autres pages (publications, trackers,
-à-propos, vues d'ensemble) s'éditent encore en HTML, avec précaution, voir ci-dessous.
+Toutes les pages du site sont assemblées (accueil, à-propos, actualités, vues d'ensemble,
+listes, trackers) ou générées (membres, publications) : aucune ne s'édite plus en HTML.
+
+**Textes des graphiques des trackers en anglais.** Les textes écrits par le JavaScript
+(titres de graphiques, infobulles, légendes, boutons, noms de pays, de secteurs, de métiers)
+passent par un traducteur : `T('texte français')` (ou `trad(...)` dans `diffusion-science.js`
+et `superstars.js`). Les traductions sont en tête de chaque fichier de `assets/js/`, la clé
+étant le texte français ; les noms de pays et quelques libellés communs sont dans
+`assets/js/lift-i18n.js`, chargé avant chaque tracker. Un texte sans traduction reste en
+français : sur une page anglaise, taper `LIFT_I18N.manquants` dans la console du navigateur
+liste ceux qui manquent. Nouveau texte ou nouvelle catégorie dans les données (pays, secteur,
+métier) : ajouter sa traduction dans le fichier du tracker. Les chemins des données marchent
+sous `/en/` (le préfixe `en` est retiré). Les nombres suivent la langue (`12,5 %` / `12.5%`).
 
 ## Pièges connus (vécus)
 

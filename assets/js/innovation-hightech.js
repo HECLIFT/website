@@ -1,10 +1,33 @@
 (function () {
   'use strict';
 
+  // Langue de la page (voir assets/js/lift-i18n.js) ; clé = texte français
+  var I18N = window.LIFT_I18N || { lang: 'fr', locale: 'fr-FR', traducteur: () => (s, ...a) => String(s).replace(/\{(\d+)\}/g, (m, i) => (a[i] !== undefined ? a[i] : m)) };
+  var LANG = I18N.lang;
+  var SEP = LANG === 'en' ? ',' : ' ';  // séparateur des milliers
+  var T = I18N.traducteur({
+    'Erreur de chargement des données.': 'Error loading data.',
+    'Erreur de chargement : ': 'Loading error: ',
+    '{0} incomplète': '{0} incomplete',
+    '{0} : {1}% ({2} brevets)': '{0}: {1}% ({2} patents)',
+    'Total : {0} brevets': 'Total: {0} patents',
+    'Leader en {0}': 'Leader in {0}',
+    'Biotechnologie': 'Biotechnology',
+    "Technologies de l'information": 'Information technology',
+    'Intelligence artificielle': 'Artificial intelligence',
+    'Technologies vertes': 'Green technologies',
+    'Semi-conducteurs': 'Semiconductors',
+    'Pharmacie': 'Pharmaceuticals',
+    'Nanotechnologie': 'Nanotechnology',
+    'Robotique': 'Robotics',
+    'Batteries': 'Batteries',
+    'Fabrication additive': 'Additive manufacturing'
+  });
+
   // --- Base path detection ---
   function getBasePath() {
     var match = window.location.pathname.match(/^(.*?)\/innovation-data\/innovation-hightech/);
-    return match ? match[1] : '';
+    return match ? match[1].replace(/\/en$/, '') : '';
   }
 
   var BASE_PATH = getBasePath();
@@ -47,19 +70,19 @@
 
   function formatNumber(n) {
     if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
-    if (n >= 1000) return (n / 1000).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    if (n >= 1000) return (n / 1000).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, SEP);
     return Math.round(n).toString();
   }
 
   function formatNumberFull(n) {
-    return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, SEP);
   }
 
   function getDisplayName(entityCode) {
     if (!entitiesData) return entityCode;
     var code = entityCode.replace('_EU', '').replace('_EUR', '');
-    if (code === 'RoW') return entitiesData.RoW ? entitiesData.RoW.name : 'Reste du monde';
-    return entitiesData[code] ? entitiesData[code].name : entityCode;
+    if (code === 'RoW') return T(entitiesData.RoW ? entitiesData.RoW.name : 'Reste du monde');
+    return entitiesData[code] ? T(entitiesData[code].name) : entityCode;
   }
 
   function getEntityColor(entityCode) {
@@ -92,7 +115,7 @@
       ]);
 
       if (!responses[0].ok || !responses[1].ok || !responses[2].ok) {
-        showError('Erreur de chargement des données.');
+        showError(T('Erreur de chargement des données.'));
         return false;
       }
 
@@ -104,7 +127,7 @@
 
       return true;
     } catch (e) {
-      showError('Erreur de chargement : ' + e.message);
+      showError(T('Erreur de chargement : ') + e.message);
       return false;
     }
   }
@@ -150,7 +173,7 @@
     return {
       silent: true,
       itemStyle: { color: 'rgba(14, 42, 71, 0.07)' },
-      label: { show: true, position: 'insideTop', formatter: y + ' incomplète', color: '#55657D', fontSize: 11 },
+      label: { show: true, position: 'insideTop', formatter: T('{0} incomplète', y), color: '#55657D', fontSize: 11 },
       data: [[{ xAxis: i }, { xAxis: i }]]
     };
   }
@@ -209,7 +232,7 @@
               lines.push(
                 '<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:' +
                 p.color + ';margin-right:6px;"></span>' +
-                p.seriesName + ' : ' + p.value.toFixed(1) + '% (' + count + ' brevets)'
+                T('{0} : {1}% ({2} brevets)', p.seriesName, p.value.toFixed(1), count)
               );
             }
           });
@@ -274,7 +297,7 @@
         trigger: 'axis',
         formatter: function (params) {
           var year = params[0].axisValue;
-          return '<strong>' + year + '</strong><br>Total : ' + formatNumberFull(params[0].value) + ' brevets';
+          return '<strong>' + year + '</strong><br>' + T('Total : {0} brevets', formatNumberFull(params[0].value));
         }
       },
       grid: { left: 70, right: 20, top: 30, bottom: 30 },
@@ -342,7 +365,7 @@
       ? summaryData.year_last_complete : years[years.length - 1];
     var latestData = data.filter(function (r) { return parseInt(r.year) === latestYear; });
     var lab = document.getElementById('iht-kpi-leader-label');
-    if (lab) lab.textContent = 'Leader en ' + latestYear;
+    if (lab) lab.textContent = T('Leader en {0}', latestYear);
 
     var leader = null;
     var maxPatents = 0;
@@ -370,7 +393,7 @@
       var btn = document.createElement('button');
       btn.className = 'iht-tab';
       var emoji = SECTOR_EMOJIS[sectorKey] || '';
-      btn.textContent = (emoji ? emoji + ' ' : '') + sector.label_fr;
+      btn.textContent = (emoji ? emoji + ' ' : '') + T(sector.label_fr);
       btn.dataset.sector = sectorKey;
 
       btn.addEventListener('click', function () {
@@ -396,7 +419,7 @@
     // Update section title
     var titleEl = document.getElementById('iht-section-title');
     if (titleEl && summaryData && summaryData.sectors[currentSector]) {
-      titleEl.textContent = summaryData.sectors[currentSector].label_fr;
+      titleEl.textContent = T(summaryData.sectors[currentSector].label_fr);
     }
   }
 

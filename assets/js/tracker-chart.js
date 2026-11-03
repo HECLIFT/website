@@ -6,11 +6,26 @@
 (function() {
   'use strict';
 
+  // Langue de la page (voir assets/js/lift-i18n.js) ; clé = texte français
+  const I18N = window.LIFT_I18N || { lang: 'fr', locale: 'fr-FR', traducteur: () => (s, ...a) => String(s).replace(/\{(\d+)\}/g, (m, i) => (a[i] !== undefined ? a[i] : m)) };
+  const LANG = I18N.lang;
+  const LOCALE = I18N.locale;
+  const T = I18N.traducteur({
+    'PIB par habitant': 'GDP per capita',
+    '$ (PPA 2020)': '$ (2020 PPP)',
+    'Productivité horaire': 'Hourly labor productivity',
+    '$/heure': '$/hour',
+    'Productivité globale des facteurs': 'Total factor productivity',
+    ' (échelle log)': ' (log scale)',
+    'Vagues de croissance (tendance HP, λ=500)': 'Growth waves (HP trend, λ=500)',
+    'Taux de croissance (%)': 'Growth rate (%)'
+  });
+
   // Detect base path for subdirectory hosting
   const getBasePath = () => {
     const path = window.location.pathname;
     const match = path.match(/^(.*?)\/innovation-data\/productivite/);
-    return match ? match[1] : '';
+    return match ? match[1].replace(/\/en$/, '') : '';
   };
 
   const BASE_PATH = getBasePath();
@@ -19,19 +34,19 @@
   const CONFIG = {
     indicators: {
       gdp_per_capita: {
-        label: 'PIB par habitant',
-        unit: '$ (PPA 2020)',
-        format: v => v.toLocaleString('fr-FR'),
+        label: T('PIB par habitant'),
+        unit: T('$ (PPA 2020)'),
+        format: v => v.toLocaleString(LOCALE),
         waveKey: 'wave_gdp'
       },
       labor_productivity: {
-        label: 'Productivité horaire',
-        unit: '$/heure',
+        label: T('Productivité horaire'),
+        unit: T('$/heure'),
         format: v => v.toFixed(1),
         waveKey: 'wave_lp'
       },
       pgf: {
-        label: 'Productivité globale des facteurs',
+        label: T('Productivité globale des facteurs'),
         unit: '',
         format: v => v.toFixed(2),
         waveKey: 'wave_pgf'
@@ -98,11 +113,12 @@
       wavesData = parseCSV(wavesText);
 
       countriesData = await jsonResponse.json();
+      Object.values(countriesData).forEach(c => { c.name = T(c.name); });
 
       return true;
     } catch (error) {
       console.error('Error loading data:', error);
-      showError('Impossible de charger les données. Veuillez rafraîchir la page.');
+      showError(T('Impossible de charger les données. Veuillez rafraîchir la page.'));
       return false;
     }
   }
@@ -214,7 +230,7 @@
     const option = {
       backgroundColor: 'transparent',
       title: {
-        text: indicator.label + (useLogScale ? ' (échelle log)' : ''),
+        text: indicator.label + (useLogScale ? T(' (échelle log)') : ''),
         left: 'center',
         top: 5,
         textStyle: {
@@ -278,7 +294,7 @@
         nameGap: 60,
         nameRotate: 90,
         axisLabel: {
-          formatter: v => useLogScale ? v.toLocaleString('fr-FR') : indicator.format(v),
+          formatter: v => useLogScale ? v.toLocaleString(LOCALE) : indicator.format(v),
           fontFamily: "'Merriweather', Georgia, serif"
         },
         nameTextStyle: {
@@ -317,7 +333,7 @@
     const option = {
       backgroundColor: 'transparent',
       title: {
-        text: 'Vagues de croissance (tendance HP, λ=500)',
+        text: T('Vagues de croissance (tendance HP, λ=500)'),
         left: 'center',
         top: 5,
         textStyle: {
@@ -375,7 +391,7 @@
       },
       yAxis: {
         type: 'value',
-        name: 'Taux de croissance (%)',
+        name: T('Taux de croissance (%)'),
         nameLocation: 'middle',
         nameGap: 45,
         nameRotate: 90,
@@ -429,7 +445,7 @@
     const sortedEntries = Object.entries(countriesData).sort((a, b) => {
       if (a[0] === 'EA') return -1;
       if (b[0] === 'EA') return 1;
-      return a[1].name.localeCompare(b[1].name, 'fr');
+      return a[1].name.localeCompare(b[1].name, LANG);
     });
 
     sortedEntries.forEach(([code, data]) => {
@@ -496,7 +512,7 @@
    */
   function downloadCSV() {
     const indicator = CONFIG.indicators[currentIndicator];
-    const headers = ['Pays', 'Année', indicator.label];
+    const headers = [T('Pays'), T('Année'), indicator.label];
     const rows = [];
 
     selectedCountries.forEach(code => {
@@ -552,9 +568,9 @@
     }
 
     // Show loading
-    mainChartContainer.innerHTML = '<div class="tracker-loading">Chargement des données...</div>';
+    mainChartContainer.innerHTML = '<div class="tracker-loading">' + T('Chargement des données...') + '</div>';
     if (wavesChartContainer) {
-      wavesChartContainer.innerHTML = '<div class="tracker-loading">Chargement...</div>';
+      wavesChartContainer.innerHTML = '<div class="tracker-loading">' + T('Chargement...') + '</div>';
     }
 
     // Load data

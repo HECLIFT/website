@@ -450,6 +450,12 @@ def main():
     (out / "en").mkdir(exist_ok=True)
     (out / "en" / "search.json").write_text(recherche(produits, "en"))
     ecrits += ["sitemap.xml", "search.json", "en/search.json"]
+    # quarto.js lit listings.json à la racine de la langue de la page : copie anglaise
+    listings = json.loads((live / "listings.json").read_text())
+    en_listings = [{"listing": l["listing"], "items": [i for i in l["items"] if i.lstrip("/") in pages_en]}
+                   for l in listings if l["listing"].lstrip("/") in pages_en]
+    (out / "en" / "listings.json").write_text(json.dumps(en_listings, ensure_ascii=False, indent=2) + "\n")
+    ecrits.append("en/listings.json")
     n_fr = sum(1 for l, *_ in produits if l == "fr"); n_en = len(produits) - n_fr
     if a.check:
         difs = [r for r in ecrits if not (live / r).exists() or (live / r).read_text() != (out / r).read_text()]

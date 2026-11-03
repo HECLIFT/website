@@ -108,9 +108,9 @@ photo ou les CSV, quelqu'un s'en charge.
 | Liste des membres, page de chaque membre, compteur « Membres » de l'accueil | **générées** depuis `content/members.json` — ne pas les éditer à la main |
 | Liste des publications, page de chaque publication, compteur « Publications » de l'accueil | **générées** depuis `content/publications.json` |
 | Graphiques des trackers | **données** : remplacer les CSV dans `data/` |
-| Page d'accueil, en français et en anglais (`en/index.html`) | **assemblée** depuis `content/pages/fr/index.html`, `content/pages/en/index.html`, `content/interface.json` et `build/templates/base.html` |
-| « À propos », vues d'ensemble, textes des pages de trackers | encore en HTML, à modifier directement — avec précaution |
-| `sitemap.xml`, `en/search.json` | **générés** |
+| Accueil, « À propos », actualités, vues d'ensemble, textes des pages de trackers, en français et en anglais (`en/...`) | **assemblées** depuis `content/pages/fr/`, `content/pages/en/`, `content/pages/head/`, `content/pages.json`, `content/interface.json` et `build/templates/base.html` |
+| Textes écrits par les graphiques (titres, infobulles, légendes) en anglais | traductions en tête de chaque fichier de `assets/js/` et dans `assets/js/lift-i18n.js` |
+| `sitemap.xml`, `search.json`, `en/search.json`, `en/listings.json` | **générés** |
 
 ## Pour les curieux
 

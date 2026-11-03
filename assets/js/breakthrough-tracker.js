@@ -6,6 +6,65 @@
 (function() {
   'use strict';
 
+  // Langue de la page (voir assets/js/lift-i18n.js) ; clé = texte français affiché
+  const I18N = window.LIFT_I18N || { lang: 'fr', locale: 'fr-FR', traducteur: () => (s, ...a) => String(s).replace(/\{(\d+)\}/g, (m, i) => (a[i] !== undefined ? a[i] : m)) };
+  const LANG = I18N.lang;
+  const LOCALE = I18N.locale;
+  const T = I18N.traducteur({
+    "Nouveauté": "Novelty",
+    "Rupture": "Breakthrough",
+    "Brevets fortement nouveaux (top 1%) par million d'habitants": "Highly novel patents (top 1%) per million inhabitants",
+    "Brevets de rupture (top 1%) par million d'habitants": "Breakthrough patents (top 1%) per million inhabitants",
+    "par million hab.": "per million inhabitants",
+    " incomplète": " incomplete",
+    "<div class=\"bt-loading\">Chargement des données...</div>": "<div class=\"bt-loading\">Loading data...</div>",
+    "Fichier timeseries.csv introuvable": "File timeseries.csv not found",
+    "Autres pays": "Other countries",
+    " (données tronquées après cette date)": " (data truncated after this date)",
+    "Part des brevets (%)": "Share of patents (%)",
+    "toutes les années": "all years",
+    "Indice de nouveauté par domaine technologique": "Novelty index by technology field",
+    "Écart relatif à la moyenne (positif = plus nouveau que la moyenne)": "Relative gap to the average (positive = more novel than average)",
+    "Indice de nouveauté (%)": "Novelty index (%)",
+    "Nombre de brevets": "Number of patents",
+    "Élevé": "High",
+    "Faible": "Low",
+    "Brevets fortement nouveaux par pays (par million hab.)": "Highly novel patents by country (per million inhabitants)",
+    " (part %)": " (share %)",
+    " (par million)": " (per million)",
+    " (par million hab.)": " (per million inhabitants)",
+    "Code ISO": "ISO code",
+    "Code NUTS2": "NUTS2 code",
+    "Nouveaute (nb)": "Novelty (count)",
+    "Rupture (nb)": "Breakthrough (count)",
+    "Total brevets": "Total patents",
+    "Domaine technologique": "Technology field",
+    "Code CPC": "CPC code",
+    "Annee": "Year",
+    "Indice de nouveaute": "Novelty index",
+    "Données non disponibles": "Data not available",
+    "Brevets fortement nouveaux": "Highly novel patents",
+    "Brevets de rupture": "Breakthrough patents",
+    "{0} incomplète": "{0} incomplete",
+    "Top 10 régions": "Top 10 regions",
+    "Brevets fortement nouveaux par région (NUTS2)": "Highly novel patents by region (NUTS2)",
+    "Nombre de brevets fortement nouveaux (top 1 %)": "Number of highly novel patents (top 1%)",
+    "moyenne annuelle": "annual average",
+    "Cliquez sur un pays pour voir les régions": "Click on a country to see its regions",
+    "Nécessités courantes de la vie": "Human necessities",
+    "Techniques industrielles": "Performing operations; transporting",
+    "Chimie et métallurgie": "Chemistry and metallurgy",
+    "Textiles et papier": "Textiles and paper",
+    "Constructions fixes": "Fixed constructions",
+    "Mécanique et éclairage": "Mechanical engineering and lighting",
+    "Physique": "Physics",
+    "Électricité": "Electricity",
+    "IA / Apprentissage automatique": "AI / Machine learning",
+    "Biotechnologie": "Biotechnology",
+    "Pharmacie": "Pharmaceuticals",
+    "Semi-conducteurs": "Semiconductors"
+  });
+
   // ═══════════════════════════════════════════════════════════════════════════
   // CONFIGURATION
   // ═══════════════════════════════════════════════════════════════════════════
@@ -14,7 +73,7 @@
   const getBasePath = () => {
     const path = window.location.pathname;
     const match = path.match(/^(.*?)\/innovation-data\/breakthrough/);
-    return match ? match[1] : '';
+    return match ? match[1].replace(/\/en$/, '') : '';
   };
 
   const BASE_PATH = getBasePath();
@@ -25,25 +84,27 @@
     // Indicators: breakthrough patents per million population
     indicators: {
       nouveaute: {
-        label: 'Nouveauté',
+        label: T('Nouveauté'),
         brevetLabel: 'fortement nouveaux',
+        brevets: T('Brevets fortement nouveaux'),
         column: 'nouveaute_per_million',
         countColumn: 'nouveaute_count',
         shareColumn: 'nouveaute_share',
-        unit: 'par million hab.',
+        unit: T('par million hab.'),
         format: v => v.toFixed(1),
-        description: 'Brevets fortement nouveaux (top 1%) par million d\'habitants',
+        description: T('Brevets fortement nouveaux (top 1%) par million d\'habitants'),
         isForwardLooking: false
       },
       rupture: {
-        label: 'Rupture',
+        label: T('Rupture'),
         brevetLabel: 'de rupture',
+        brevets: T('Brevets de rupture'),
         column: 'rupture_per_million',
         countColumn: 'rupture_count',
         shareColumn: 'rupture_share',
-        unit: 'par million hab.',
+        unit: T('par million hab.'),
         format: v => v.toFixed(1),
-        description: 'Brevets de rupture (top 1%) par million d\'habitants',
+        description: T('Brevets de rupture (top 1%) par million d\'habitants'),
         isForwardLooking: true
       }
     },
@@ -177,7 +238,7 @@
     return {
       silent: true,
       itemStyle: { color: 'rgba(14, 42, 71, 0.07)' },
-      label: { show: true, position: 'insideTop', formatter: y + ' incomplète', color: '#55657D', fontSize: 11 },
+      label: { show: true, position: 'insideTop', formatter: y + T(' incomplète'), color: '#55657D', fontSize: 11 },
       data: [[{ xAxis: String(years[i - 1]) }, { xAxis: String(years[i]) }]]  // category values
     };
   }
@@ -189,7 +250,7 @@
     if (typeof n !== 'number' || isNaN(n)) return '--';
     if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
     if (n >= 1000) return (n / 1000).toFixed(1) + 'k';
-    return n.toLocaleString('fr-FR');
+    return n.toLocaleString(LOCALE);
   }
 
   /**
@@ -208,7 +269,7 @@
   function showLoading(containerId) {
     const container = document.getElementById(containerId);
     if (container) {
-      container.innerHTML = '<div class="bt-loading">Chargement des données...</div>';
+      container.innerHTML = T('<div class="bt-loading">Chargement des données...</div>');
     }
   }
 
@@ -243,7 +304,7 @@
 
       // Check responses
       if (!timeseriesResponse.ok) {
-        throw new Error('Fichier timeseries.csv introuvable');
+        throw new Error(T('Fichier timeseries.csv introuvable'));
       }
 
       // Parse time series data
@@ -276,10 +337,12 @@
 
       if (countriesResponse.ok) {
         countriesData = await countriesResponse.json();
+        Object.values(countriesData).forEach(c => { c.name = T(c.name); });
       }
 
       if (sectorsMetaResponse.ok) {
         sectorsData = await sectorsMetaResponse.json();
+        Object.values(sectorsData).forEach(c => { c.name = T(c.name); });
       }
 
       if (summaryResponse.ok) {
@@ -522,7 +585,7 @@
 
     // "Autres pays" at the bottom
     series.push({
-      name: 'Autres pays',
+      name: T('Autres pays'),
       type: 'line',
       stack: 'total',
       areaStyle: { opacity: 0.5 },
@@ -556,16 +619,16 @@
     // Subtitle with truncation note for forward-looking measures
     let subtitle = `${yearRange.min} - ${yearRange.max}`;
     if (indicator.isForwardLooking) {
-      subtitle += ' (données tronquées après cette date)';
+      subtitle += T(' (données tronquées après cette date)');
     }
     if (summaryData.year_incomplete && years.includes(summaryData.year_incomplete)) {
-      subtitle += ` · ${summaryData.year_incomplete} incomplète`;
+      subtitle += ` · ${T('{0} incomplète', summaryData.year_incomplete)}`;
     }
 
     const option = {
       backgroundColor: 'transparent',
       title: {
-        text: `Brevets ${indicator.brevetLabel} (top 1%)`,
+        text: `${indicator.brevets} (top 1%)`,
         subtext: subtitle,
         left: 'center',
         textStyle: {
@@ -622,7 +685,7 @@
       xAxis: {
         type: 'category',
         data: years.map(String),
-        name: 'Année',
+        name: T('Année'),
         nameLocation: 'middle',
         nameGap: 30,
         axisLabel: {
@@ -637,7 +700,7 @@
       },
       yAxis: {
         type: 'value',
-        name: 'Part des brevets (%)',
+        name: T('Part des brevets (%)'),
         nameLocation: 'middle',
         nameGap: 45,
         min: 0,
@@ -705,7 +768,7 @@
     const option = {
       backgroundColor: 'transparent',
       title: {
-        text: `${indicator.label} — ${countryPeriod === 'all' ? 'toutes les années' : countryPeriod}`,
+        text: `${indicator.label} — ${countryPeriod === 'all' ? T('toutes les années') : countryPeriod}`,
         left: 'center',
         textStyle: {
           fontFamily: "'Playfair Display', Georgia, serif",
@@ -726,7 +789,7 @@
         },
         formatter: function(params) {
           const p = params[0];
-          return `${p.name}<br/>Brevets ${indicator.brevetLabel}: <strong>${indicator.format(p.value)}</strong> ${indicator.unit}`;
+          return `${p.name}<br/>${indicator.brevets}: <strong>${indicator.format(p.value)}</strong> ${indicator.unit}`;
         }
       },
       grid: {
@@ -829,8 +892,8 @@
     const option = {
       backgroundColor: 'transparent',
       title: {
-        text: 'Indice de nouveauté par domaine technologique',
-        subtext: 'Écart relatif à la moyenne (positif = plus nouveau que la moyenne)',
+        text: T('Indice de nouveauté par domaine technologique'),
+        subtext: T('Écart relatif à la moyenne (positif = plus nouveau que la moyenne)'),
         left: 'center',
         textStyle: {
           fontFamily: "'Playfair Display', Georgia, serif",
@@ -893,7 +956,7 @@
       },
       yAxis: {
         type: 'value',
-        name: 'Indice de nouveauté (%)',
+        name: T('Indice de nouveauté (%)'),
         nameLocation: 'middle',
         nameGap: 45,
         axisLabel: {
@@ -964,8 +1027,8 @@
     const option = {
       backgroundColor: 'transparent',
       title: {
-        text: `Top 10 régions — ${indicator.label}`,
-        subtext: regionPeriod === 'all' ? 'Toutes les années' : regionPeriod,
+        text: `${T('Top 10 régions')} — ${indicator.label}`,
+        subtext: regionPeriod === 'all' ? T('Toutes les années') : regionPeriod,
         left: 'center',
         textStyle: {
           fontFamily: "'Playfair Display', Georgia, serif",
@@ -996,7 +1059,7 @@
           const countryPrefix = code.substring(0, 2);
           const flag = NUTS_TO_FLAG[countryPrefix] || '';
           return `${flag} <strong>${region.region_name}</strong> (${code})<br/>` +
-            `Brevets ${indicator.brevetLabel}: <strong>${Math.round(p.value).toLocaleString('fr-FR')}</strong>`;
+            `${indicator.brevets}: <strong>${Math.round(p.value).toLocaleString(LOCALE)}</strong>`;
         }
       },
       grid: {
@@ -1007,7 +1070,7 @@
       },
       xAxis: {
         type: 'value',
-        name: 'Nombre de brevets',
+        name: T('Nombre de brevets'),
         nameLocation: 'middle',
         nameGap: 30,
         axisLabel: {
@@ -1172,8 +1235,8 @@
       const option = {
         backgroundColor: 'transparent',
         title: {
-          text: `${countryName} — Brevets fortement nouveaux par région (NUTS2)`,
-          subtext: `Nombre de brevets fortement nouveaux (top 1 %), ${summaryData.year_min}-${summaryData.year_max}`,
+          text: `${countryName} — ${T('Brevets fortement nouveaux par région (NUTS2)')}`,
+          subtext: `${T('Nombre de brevets fortement nouveaux (top 1 %)')}, ${summaryData.year_min}-${summaryData.year_max}`,
           left: 'center',
           textStyle: {
             fontFamily: "'Playfair Display', Georgia, serif",
@@ -1192,13 +1255,13 @@
           formatter: function(params) {
             const displayName = nuts2Names[params.name] || params.name;
             const val = params.value || 0;
-            return `<strong>${displayName}</strong> (${params.name})<br/>Brevets fortement nouveaux: <strong>${Math.round(val).toLocaleString('fr-FR')}</strong>`;
+            return `<strong>${displayName}</strong> (${params.name})<br/>${T('Brevets fortement nouveaux')}: <strong>${Math.round(val).toLocaleString(LOCALE)}</strong>`;
           }
         },
         visualMap: {
           min: 0, max: maxVal,
           left: 'left', top: 'bottom',
-          text: ['Élevé', 'Faible'],
+          text: [T('Élevé'), T('Faible')],
           textStyle: { fontFamily: "'Merriweather', Georgia, serif", fontSize: 10 },
           inRange: { color: ['#E6EBF2', '#5F84E8', '#0E2A47'] },
           calculable: true
@@ -1270,13 +1333,13 @@
         country,
         value: agg.count > 0 ? agg.sum / agg.count : 0
       }));
-      mapPeriodLabel = `${firstYear}-${lastYear}, moyenne annuelle`;
+      mapPeriodLabel = `${firstYear}-${lastYear}, ${T('moyenne annuelle')}`;
     } else {
       dataForPeriod = europeMapData.filter(d => d.period === 'all').map(d => ({
         country: d.country,
         value: d[mapColumn] || 0
       }));
-      mapPeriodLabel = 'toutes les années';
+      mapPeriodLabel = T('toutes les années');
     }
 
     const mapData = dataForPeriod.map(d => ({
@@ -1290,8 +1353,8 @@
     const option = {
       backgroundColor: 'transparent',
       title: {
-        text: 'Brevets fortement nouveaux par pays (par million hab.)',
-        subtext: `${mapPeriodLabel} — Cliquez sur un pays pour voir les régions`,
+        text: T('Brevets fortement nouveaux par pays (par million hab.)'),
+        subtext: `${mapPeriodLabel} — ${T('Cliquez sur un pays pour voir les régions')}`,
         left: 'center',
         textStyle: {
           fontFamily: "'Playfair Display', Georgia, serif",
@@ -1309,13 +1372,13 @@
         textStyle: { fontFamily: "'Merriweather', Georgia, serif", color: '#0E1320' },
         formatter: function(params) {
           const val = params.value || 0;
-          return `<strong>${params.name}</strong><br/>Brevets fortement nouveaux: ${val.toFixed(1)} ${mapIndicator.unit}`;
+          return `<strong>${params.name}</strong><br/>${T('Brevets fortement nouveaux')}: ${val.toFixed(1)} ${mapIndicator.unit}`;
         }
       },
       visualMap: {
         min: 0, max: maxVal,
         left: 'left', top: 'bottom',
-        text: ['Élevé', 'Faible'],
+        text: [T('Élevé'), T('Faible')],
         textStyle: { fontFamily: "'Merriweather', Georgia, serif", fontSize: 10 },
         inRange: { color: ['#E6EBF2', '#5F84E8', '#0E2A47'] },
         calculable: true
@@ -1384,7 +1447,7 @@
     }
 
     // Sort by name
-    countryList.sort((a, b) => (a[1].name || a[0]).localeCompare(b[1].name || b[0]));
+    countryList.sort((a, b) => (a[1].name || a[0]).localeCompare(b[1].name || b[0], LANG));
 
     countryList.forEach(([code, data]) => {
       const chip = document.createElement('button');
@@ -1437,7 +1500,7 @@
    */
   function downloadCSV() {
     const indicator = CONFIG.indicators[currentIndicator];
-    const headers = ['Pays', 'Année', indicator.label + ' (part %)', indicator.label + ' (par million)'];
+    const headers = [T('Pays'), T('Année'), indicator.label + T(' (part %)'), indicator.label + T(' (par million)')];
     const rows = [];
 
     selectedCountries.forEach(code => {
@@ -1478,7 +1541,7 @@
   function downloadCountryCSV() {
     const indicator = CONFIG.indicators[countryIndicator];
     const data = getCountryComparisonData();
-    const headers = ['Pays', 'Code ISO', indicator.label + ' (par million hab.)'];
+    const headers = [T('Pays'), T('Code ISO'), indicator.label + T(' (par million hab.)')];
     let csv = headers.join(',') + '\n';
     data.forEach(d => {
       csv += `"${d.name}","${d.code}","${d.value.toFixed(2)}"\n`;
@@ -1501,7 +1564,7 @@
     const filteredData = regionsData.filter(d => (d.period || 'all') === regionPeriod);
     const sorted = [...filteredData].sort((a, b) => (b[countCol] || 0) - (a[countCol] || 0));
 
-    const headers = ['Region', 'Code NUTS2', 'Nouveaute (nb)', 'Rupture (nb)', 'Total brevets'];
+    const headers = ['Region', T('Code NUTS2'), T('Nouveaute (nb)'), T('Rupture (nb)'), T('Total brevets')];
     let csv = headers.join(',') + '\n';
     sorted.forEach(d => {
       csv += `"${d.region_name || d.nuts2_code}","${d.nuts2_code}","${d.nouveaute_count || 0}","${d.rupture_count || 0}","${d.total_patents || 0}"\n`;
@@ -1520,7 +1583,7 @@
    */
   function downloadTechCSV() {
     if (!techTimeseriesData || techTimeseriesData.length === 0) return;
-    const headers = ['Domaine technologique', 'Code CPC', 'Annee', 'Indice de nouveaute'];
+    const headers = [T('Domaine technologique'), T('Code CPC'), T('Annee'), T('Indice de nouveaute')];
     let csv = headers.join(',') + '\n';
     techTimeseriesData.forEach(d => {
       const label = sectorsData[d.technology]?.name || d.technology;
@@ -1581,11 +1644,11 @@
     const success = await loadData();
 
     if (!success) {
-      showError('timeseries-chart', 'Impossible de charger les données. Veuillez rafraîchir la page.');
-      showError('country-chart', 'Données non disponibles');
-      showError('tech-chart', 'Données non disponibles');
-      showError('region-chart', 'Données non disponibles');
-      showError('map-chart', 'Données non disponibles');
+      showError('timeseries-chart', T('Impossible de charger les données. Veuillez rafraîchir la page.'));
+      showError('country-chart', T('Données non disponibles'));
+      showError('tech-chart', T('Données non disponibles'));
+      showError('region-chart', T('Données non disponibles'));
+      showError('map-chart', T('Données non disponibles'));
       return;
     }
 
@@ -1678,7 +1741,7 @@
       // Add "all" option
       const allOpt = document.createElement('option');
       allOpt.value = 'all';
-      allOpt.textContent = 'Toutes les années';
+      allOpt.textContent = T('Toutes les années');
       periodSelect.appendChild(allOpt);
 
       // Generate 10-year periods
@@ -1713,7 +1776,7 @@
       regionPeriodSelect.innerHTML = '';
       const allOpt2 = document.createElement('option');
       allOpt2.value = 'all';
-      allOpt2.textContent = 'Toutes les années';
+      allOpt2.textContent = T('Toutes les années');
       regionPeriodSelect.appendChild(allOpt2);
       regionPeriods.forEach(p => {
         const opt = document.createElement('option');

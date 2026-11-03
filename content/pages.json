@@ -82,21 +82,25 @@
     {
       "chemin": "ai-trackers/diffusion-emploi/index.html",
       "langues": [
-        "fr"
+        "fr",
+        "en"
       ],
       "classe_body": "nav-fixed quarto-light",
       "titre": {
-        "fr": "Diffusion de l’IA (emploi)"
+        "fr": "Diffusion de l’IA (emploi)",
+        "en": "AI diffusion (jobs)"
       }
     },
     {
       "chemin": "ai-trackers/diffusion-science/index.html",
       "langues": [
-        "fr"
+        "fr",
+        "en"
       ],
       "classe_body": "nav-fixed quarto-light",
       "titre": {
-        "fr": "Diffusion de l’IA (science)"
+        "fr": "Diffusion de l’IA (science)",
+        "en": "AI diffusion (science)"
       }
     },
     {
@@ -115,31 +119,37 @@
     {
       "chemin": "innovation-data/productivite/index.html",
       "langues": [
-        "fr"
+        "fr",
+        "en"
       ],
       "classe_body": "nav-fixed quarto-light",
       "titre": {
-        "fr": "Productivité internationale"
+        "fr": "Productivité internationale",
+        "en": "International productivity"
       }
     },
     {
       "chemin": "innovation-data/innovation-hightech/index.html",
       "langues": [
-        "fr"
+        "fr",
+        "en"
       ],
       "classe_body": "nav-fixed quarto-light",
       "titre": {
-        "fr": "Innovation High-Tech"
+        "fr": "Innovation High-Tech",
+        "en": "High-tech innovation"
       }
     },
     {
       "chemin": "innovation-data/breakthrough/index.html",
       "langues": [
-        "fr"
+        "fr",
+        "en"
       ],
       "classe_body": "nav-fixed quarto-light",
       "titre": {
-        "fr": "Innovation de rupture"
+        "fr": "Innovation de rupture",
+        "en": "Breakthrough innovation"
       }
     }
   ]

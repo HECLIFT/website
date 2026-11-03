@@ -6,6 +6,139 @@
 (function() {
   'use strict';
 
+  // Langue de la page (voir assets/js/lift-i18n.js) ; clé = texte français affiché
+  const I18N = window.LIFT_I18N || { lang: 'fr', locale: 'fr-FR', traducteur: () => (s, ...a) => String(s).replace(/\{(\d+)\}/g, (m, i) => (a[i] !== undefined ? a[i] : m)) };
+  const LANG = I18N.lang;
+  const LOCALE = I18N.locale;
+  const PCT = LANG === 'en' ? '%' : ' %';  // « 12,5 % » en français, « 12.5% » en anglais
+  const T = I18N.traducteur({
+    "IA Générative": "Generative AI",
+    "IA Générale": "General AI",
+    "Vision par Ordinateur": "Computer vision",
+    "Nombre d'offres": "Number of job postings",
+    "Part des offres (%)": "Share of job postings (%)",
+    "Part": "Share",
+    "Industrie": "Industry",
+    "IA Non-générative": "Non-generative AI",
+    "IA": "AI",
+    "<div style=\"text-align:center;padding:20px;color:#E46A4E\">Carte non disponible</div>": "<div style=\"text-align:center;padding:20px;color:#E46A4E\">Map not available</div>",
+    "<p class=\"ai-map-info-placeholder\">Cliquez sur une zone pour voir les détails</p>": "<p class=\"ai-map-info-placeholder\">Click on a zone to see the details</p>",
+    "Date,Industrie,Services\n": "Date,Industry,Services\n",
+    "Taille,Valeur\n": "Size,Value\n",
+    "Zone,IA Total,IA Part (%),IA Gen Total,IA Gen Part (%),Total Offres\n": "Zone,AI Total,AI Share (%),GenAI Total,GenAI Share (%),Total Postings\n",
+    "Rémunération & avantages": "Pay & benefits",
+    "Diversité": "Diversity",
+    "Équilibre vie pro/perso": "Work-life balance",
+    "Culture & valeurs": "Culture & values",
+    "Opportunités professionnelles": "Career opportunities",
+    "Part (%)": "Share (%)",
+    "Date,Catégorie,Part (%),Total": "Date,Category,Share (%),Total",
+    "pour 10 000 offres": "per 10,000 job postings",
+    " dernier trimestre": " last quarter",
+    "Code zone": "Zone code",
+    "Offres IA": "AI job postings",
+    "Offres IA Générative": "Generative AI job postings",
+    "Total offres": "Total job postings",
+    "IA Gén.": "GenAI",
+    "Offres {0}": "{0} job postings",
+    "ETI": "Mid-sized firms",
+    "GE": "Large firms",
+    "PME": "SMEs",
+    "ia générative": "generative ai",
+    "autres": "others",
+    "0 - Administration": "0 - Public administration",
+    "B,C - Industrie": "B,C - Industry",
+    "D,E - Electricité - Eau": "D,E - Electricity - Water",
+    "G - Commerce": "G - Trade",
+    "H - Transports et entreposage": "H - Transportation and storage",
+    "I - Hébergement et restauration": "I - Accommodation and food services",
+    "J - Information et communication": "J - Information and communication",
+    "K - Activités financières et d'assurance": "K - Financial and insurance activities",
+    "L - Activités immobilières": "L - Real estate activities",
+    "M - Activités spécialisées, scientifiques et techniques": "M - Professional, scientific and technical activities",
+    "N - Activités de services administratifs et de soutien": "N - Administrative and support service activities",
+    "P - Enseignement": "P - Education",
+    "Q - Santé humaine et action sociale": "Q - Human health and social work",
+    "R - Arts, spectacles et activités récréatives": "R - Arts, entertainment and recreation",
+    "S - Autres services": "S - Other services",
+    "c1105 - actuariat": "c1105 - actuarial science",
+    "d1407 - relation technico-commerciale": "d1407 - technical sales",
+    "e1205 - designer ux/ui": "e1205 - ux/ui designer",
+    "h1206 - management et ingénierie études, recherche et développement industriel": "h1206 - industrial research and development management and engineering",
+    "h1208 - intervention technique en études et conception en automatisme": "h1208 - technical work in automation design",
+    "j1102 - médecine généraliste et spécialisée": "j1102 - general and specialist medicine",
+    "k1903 - juriste": "k1903 - lawyer",
+    "k2108 - enseignement supérieur": "k2108 - higher education",
+    "k2111 - formation professionnelle": "k2111 - vocational training",
+    "k2402 - biostatisticien": "k2402 - biostatistician",
+    "k2402 - recherche en sciences naturelles": "k2402 - natural science research",
+    "m1201 - analyse et ingénierie financière": "m1201 - financial analysis and engineering",
+    "m1202 - audit et contrôle comptables et financiers": "m1202 - accounting and financial audit",
+    "m1203 - comptabilité": "m1203 - accounting",
+    "m1204 - contrôle de gestion": "m1204 - management control",
+    "m1205 - direction administrative et financière": "m1205 - administrative and financial management",
+    "m1402 - chef de projet agile": "m1402 - agile project manager",
+    "m1402 - chef de projet autre": "m1402 - other project manager",
+    "m1402 - coach numérique/agile/scrum": "m1402 - digital/agile/scrum coach",
+    "m1402 - conseil générique": "m1402 - general consulting",
+    "m1403 - autres": "m1403 - others",
+    "m1403 - chef de projet data": "m1403 - data project manager",
+    "m1502 - développement des ressources humaines": "m1502 - human resources development",
+    "m1703 - management et gestion de produit": "m1703 - product management",
+    "m1704 - management relation clientèle": "m1704 - customer relationship management",
+    "m1707 - stratégie commerciale": "m1707 - sales strategy",
+    "m1801 - administration de systèmes d'information": "m1801 - information systems administration",
+    "m1802 - architecte it, cloud, réseaux": "m1802 - it, cloud, network architect",
+    "m1802 - expert cybersécurité": "m1802 - cybersecurity expert",
+    "m1803 - direction des systèmes d'information": "m1803 - information systems management",
+    "m1804 - études et développement de réseaux de télécoms": "m1804 - telecom network design and development",
+    "m1805 - autres": "m1805 - others",
+    "m1805 - chef de projet ia": "m1805 - ai project manager",
+    "m1805 - chef de projet numérique": "m1805 - digital project manager",
+    "m1805 - développeur web/application": "m1805 - web/app developer",
+    "m1805 - ingénieur ia/ml/cv/genai": "m1805 - ai/ml/cv/genai engineer",
+    "m1805 - ingénieur logiciel": "m1805 - software engineer",
+    "m1806 - conseil data": "m1806 - data consulting",
+    "m1806 - conseil ia": "m1806 - ai consulting",
+    "m1806 - conseil numérique": "m1806 - digital consulting",
+    "m1806 - maîtrise d'ouvrage en systèmes d'information": "m1806 - information systems project ownership",
+    "n1301 - logisticien": "n1301 - logistics specialist",
+    "NLP": "NLP",
+    "Services": "Services",
+    "Leadership": "Leadership",
+    "F - Construction": "F - Construction",
+    "A - Agriculture": "A - Agriculture",
+    "nan": "nan",
+    "e1103 - communication": "e1103 - communication",
+    "m1403 - data engineer": "m1403 - data engineer",
+    "m1403 - data scientist": "m1403 - data scientist",
+    "m1705 - marketing": "m1705 - marketing",
+    "m1803 - cto": "m1803 - cto",
+    "m1805 - expert aiops": "m1805 - expert aiops",
+    "tensorflow": "tensorflow",
+    "pytorch": "pytorch",
+    "keras": "keras",
+    "scikit-learn": "scikit-learn",
+    "other nlp (nltk, spacy)": "other nlp (nltk, spacy)",
+    "hugging-face": "hugging-face",
+    "langchain": "langchain",
+    "svm": "svm",
+    "kmeans": "kmeans",
+    "xgboost": "xgboost",
+    "random forest": "random forest",
+    "neural networks": "neural networks",
+    "reinforcement learning": "reinforcement learning",
+    "llm": "llm",
+    "gan": "gan",
+    "transformers": "transformers",
+    "rag": "rag",
+    "machine learning": "machine learning",
+    "deep learning": "deep learning",
+    "big data": "big data",
+    "data mining": "data mining",
+    "data science": "data science"
+  });
+
   // ═══════════════════════════════════════════════════════════════════════════
   // CONFIGURATION
   // ═══════════════════════════════════════════════════════════════════════════
@@ -15,7 +148,7 @@
     const path = window.location.pathname;
     // If we're at /ai-trackers/diffusion-emploi/index.html, go up 2 levels
     const match = path.match(/^(.*?)\/ai-trackers\/diffusion-emploi/);
-    return match ? match[1] : '';
+    return match ? match[1].replace(/\/en$/, '') : '';
   };
 
   const CONFIG = {
@@ -113,7 +246,7 @@
     Chart.defaults.plugins.tooltip.padding = 12;
     Chart.defaults.animation.duration = 700;
     Chart.defaults.animation.easing = 'easeOutCubic';
-    Chart.defaults.locale = 'fr-FR';
+    Chart.defaults.locale = LOCALE;
 
     // Rounded bar plugin
     const roundedBar = {
@@ -187,13 +320,13 @@
       const d = rows.reduce((h, r) => (h[r[0]] = +r[1] || 0, h), {});
 
       setText('aiOffersValue', formatNumber(d['Total IA offers'] ?? 0));
-      setText('aiOffersLastQuarter', `+${formatNumber(d['Number of AI offers in last quarter'] ?? 0)} dernier trimestre`);
+      setText('aiOffersLastQuarter', `+${formatNumber(d['Number of AI offers in last quarter'] ?? 0)}${T(' dernier trimestre')}`);
       setText('aiFirmsValue', formatNumber(d['Number of firms with AI offers'] ?? 0));
-      setText('aiFirmsLastQuarter', `+${formatNumber(d['Number of new AI adopters in last quarter'] ?? 0)} dernier trimestre`);
+      setText('aiFirmsLastQuarter', `+${formatNumber(d['Number of new AI adopters in last quarter'] ?? 0)}${T(' dernier trimestre')}`);
       setText('genAiOffersValue', formatNumber(d['Total IA générative offers'] ?? 0));
-      setText('genAiOffersLastQuarter', `+${formatNumber(d['Number of GenAI offers in last quarter'] ?? 0)} dernier trimestre`);
+      setText('genAiOffersLastQuarter', `+${formatNumber(d['Number of GenAI offers in last quarter'] ?? 0)}${T(' dernier trimestre')}`);
       setText('genAiFirmsValue', formatNumber(d['Number of firms with GenAI offers'] ?? 0));
-      setText('genAiFirmsLastQuarter', `+${formatNumber(d['Number of new GenAI adopters in last quarter'] ?? 0)} dernier trimestre`);
+      setText('genAiFirmsLastQuarter', `+${formatNumber(d['Number of new GenAI adopters in last quarter'] ?? 0)}${T(' dernier trimestre')}`);
     } catch (e) {
       console.error('Error loading home figures:', e);
     }
@@ -205,7 +338,7 @@
   }
 
   function formatNumber(n) {
-    return new Intl.NumberFormat('fr-FR').format(Math.round(n));
+    return new Intl.NumberFormat(LOCALE).format(Math.round(n));
   }
 
   async function loadOffersFile(file) {
@@ -261,7 +394,7 @@
     if (dateArr.length === 0) d.forEach(x => dateArr.push(x.date));
     Object.keys(d[0]).filter(k => k !== 'date' && k !== '').forEach((k, i) => {
       targetArr.push({
-        label: k,
+        label: T(k),
         data: d.map(x => +x[k]),
         borderColor: CONFIG.pastelColors(i),
         backgroundColor: CONFIG.pastelColors(i),
@@ -271,7 +404,7 @@
     });
   }
 
-  async function loadMetier(file, targetArr, dateArr) {
+  async function loadMetier(file, targetArr, dateArr, traduire = true) {
     const txt = await fetchCsv(CONFIG.dataPath + file);
     const d = Papa.parse(txt, { header: true, skipEmptyLines: true }).data;
     if (!d.length) return;
@@ -295,7 +428,7 @@
             parts[i] = parts[i].replace(/(^|\s)([a-zA-ZÀ-ÿ])/g, function(_, sp, c) { return sp + c.toUpperCase(); });
           }
           return parts.join(' - ');
-        })(k),
+        })(traduire ? T(k) : k),
         data: d.map(x => toNum(x[k])),
         borderColor: fill,
         backgroundColor: bg,
@@ -312,7 +445,7 @@
     DATA.skillsDates[key] = d.map(x => x.date);
     const keys = Object.keys(d[0]).filter(k => k !== 'date');
     DATA.skillsSets[key] = keys.map((k, i) => ({
-      label: k,
+      label: T(k),
       data: d.map(x => +x[k]),
       borderColor: CONFIG.chartColors[i % CONFIG.chartColors.length],
       pointRadius: 0,
@@ -333,10 +466,10 @@
       data: {
         labels: DATA.dateLabels,
         datasets: [
-          { label: 'IA Générative', data: DATA.totalGen, backgroundColor: CONFIG.chartColors[0] },
-          { label: 'IA Générale', data: DATA.totalAI, backgroundColor: CONFIG.chartColors[1] },
-          { label: 'Vision par Ordinateur', data: DATA.totalCV, backgroundColor: CONFIG.chartColors[2] },
-          { label: 'NLP', data: DATA.totalNLP, backgroundColor: CONFIG.chartColors[3] }
+          { label: T('IA Générative'), data: DATA.totalGen, backgroundColor: CONFIG.chartColors[0] },
+          { label: T('IA Générale'), data: DATA.totalAI, backgroundColor: CONFIG.chartColors[1] },
+          { label: T('Vision par Ordinateur'), data: DATA.totalCV, backgroundColor: CONFIG.chartColors[2] },
+          { label: T('NLP'), data: DATA.totalNLP, backgroundColor: CONFIG.chartColors[3] }
         ]
       },
       options: {
@@ -346,7 +479,7 @@
           x: { stacked: true },
           y: {
             stacked: true,
-            title: { display: true, text: 'Nombre d\'offres' }
+            title: { display: true, text: T('Nombre d\'offres') }
           }
         },
         plugins: {
@@ -362,13 +495,13 @@
     offersChart.data.datasets[1].data = offersMode === 'total' ? DATA.totalAI : DATA.shareAI;
     offersChart.data.datasets[2].data = offersMode === 'total' ? DATA.totalCV : DATA.shareCV;
     offersChart.data.datasets[3].data = offersMode === 'total' ? DATA.totalNLP : DATA.shareNLP;
-    offersChart.options.scales.y.title.text = offersMode === 'total' ? 'Nombre d\'offres' : 'Part des offres (%)';
+    offersChart.options.scales.y.title.text = offersMode === 'total' ? T('Nombre d\'offres') : T('Part des offres (%)');
     offersChart.update();
 
     const btn = document.getElementById('btnOfferMode');
     const lbl = document.getElementById('lblOfferMode');
     if (btn) btn.classList.toggle('active', offersMode === 'share');
-    if (lbl) lbl.textContent = offersMode === 'total' ? 'Total' : 'Part';
+    if (lbl) lbl.textContent = offersMode === 'total' ? 'Total' : T('Part');
   };
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -384,8 +517,8 @@
       data: {
         labels: DATA.qLabels,
         datasets: [
-          { label: 'Industrie', backgroundColor: CONFIG.chartColors[2], data: [] },
-          { label: 'Services', backgroundColor: CONFIG.chartColors[1], data: [] }
+          { label: T('Industrie'), backgroundColor: CONFIG.chartColors[2], data: [] },
+          { label: T('Services'), backgroundColor: CONFIG.chartColors[1], data: [] }
         ]
       },
       options: {
@@ -414,7 +547,7 @@
     const btn = document.getElementById('btnSectorMode');
     const lbl = document.getElementById('lblSectorMode');
     if (btn) btn.classList.toggle('active', secMode === 'share');
-    if (lbl) lbl.textContent = secMode === 'total' ? 'Total' : 'Part';
+    if (lbl) lbl.textContent = secMode === 'total' ? 'Total' : T('Part');
     refreshSectors();
   };
 
@@ -423,7 +556,7 @@
     const btn = document.getElementById('btnSectorCat');
     const lbl = document.getElementById('lblSectorCat');
     if (btn) btn.classList.toggle('active', secCat !== 'gen');
-    if (lbl) lbl.textContent = secCat === 'gen' ? 'IA Générative' : 'IA Non-générative';
+    if (lbl) lbl.textContent = secCat === 'gen' ? T('IA Générative') : T('IA Non-générative');
     refreshSectors();
   };
 
@@ -505,7 +638,7 @@
     const btn = document.getElementById('btnSizeCat');
     const lbl = document.getElementById('lblSizeCat');
     if (btn) btn.classList.toggle('active', sizeCat === 'gen');
-    if (lbl) lbl.textContent = sizeCat === 'gen' ? 'IA Générative' : 'IA';
+    if (lbl) lbl.textContent = sizeCat === 'gen' ? T('IA Générative') : T('IA');
     sizeChart.data.datasets[0].data = sizeCat === 'ai' ? DATA.sizeAi : DATA.sizeGen;
     sizeChart.update();
   };
@@ -549,7 +682,7 @@
     const btn = document.getElementById('btnMetierCat');
     const lbl = document.getElementById('lblMetierCat');
     if (btn) btn.classList.toggle('active', metierMode === 'data');
-    if (lbl) lbl.textContent = metierMode === 'data' ? 'IA' : 'IA';
+    if (lbl) lbl.textContent = metierMode === 'data' ? T('IA') : T('IA');
     metierChart.data.labels = metierMode === 'ia' ? DATA.metierDates : DATA.metierDatesData;
     metierChart.data.datasets = metierMode === 'ia' ? DATA.metierIA : DATA.metierData;
     metierChart.update();
@@ -633,7 +766,7 @@
     } catch (e) {
       console.error('Map failed:', e);
       const container = document.getElementById('ai-mapOffers');
-      if (container) container.innerHTML = '<div style="text-align:center;padding:20px;color:#E46A4E">Carte non disponible</div>';
+      if (container) container.innerHTML = T('<div style="text-align:center;padding:20px;color:#E46A4E">Carte non disponible</div>');
     }
   }
 
@@ -677,7 +810,7 @@
       if (!panel) return;
 
       if (!zone || !v) {
-        panel.innerHTML = '<p class="ai-map-info-placeholder">Cliquez sur une zone pour voir les détails</p>';
+        panel.innerHTML = T('<p class="ai-map-info-placeholder">Cliquez sur une zone pour voir les détails</p>');
         return;
       }
 
@@ -686,21 +819,21 @@
       panel.innerHTML = `
         <div class="ai-map-info-content">
           <h4>${zone}</h4>
-          <p class="ai-map-info-code">Code zone : ${zoneCode}</p>
+          <p class="ai-map-info-code">${T('Code zone')}${LANG === 'en' ? ':' : ' :'} ${zoneCode}</p>
           <div class="ai-map-info-stats">
             <div class="ai-map-info-stat">
-              <span class="ai-map-info-label">Offres IA</span>
-              <span class="ai-map-info-value">${v.ia?.toLocaleString('fr-FR') ?? 'n/a'}</span>
+              <span class="ai-map-info-label">${T('Offres IA')}</span>
+              <span class="ai-map-info-value">${v.ia?.toLocaleString(LOCALE) ?? 'n/a'}</span>
               <span class="ai-map-info-pct">${v.ia_rel != null ? (v.ia_rel * 100).toFixed(2) + '%' : ''}</span>
             </div>
             <div class="ai-map-info-stat">
-              <span class="ai-map-info-label">Offres IA Générative</span>
-              <span class="ai-map-info-value">${v.gen?.toLocaleString('fr-FR') ?? 'n/a'}</span>
+              <span class="ai-map-info-label">${T('Offres IA Générative')}</span>
+              <span class="ai-map-info-value">${v.gen?.toLocaleString(LOCALE) ?? 'n/a'}</span>
               <span class="ai-map-info-pct">${v.gen_rel != null ? (v.gen_rel * 100).toFixed(2) + '%' : ''}</span>
             </div>
             <div class="ai-map-info-stat">
-              <span class="ai-map-info-label">Total offres</span>
-              <span class="ai-map-info-value">${v.total_offers?.toLocaleString('fr-FR') ?? 'n/a'}</span>
+              <span class="ai-map-info-label">${T('Total offres')}</span>
+              <span class="ai-map-info-value">${v.total_offers?.toLocaleString(LOCALE) ?? 'n/a'}</span>
             </div>
           </div>
         </div>
@@ -730,8 +863,8 @@
           const v = DATA.mapData.get(zone);
           tip.html(`<b>${zone}</b><br/>` +
             (mapCat === 'ai'
-              ? `IA: <b>${formatMapValue(v?.ia)}</b>${mapMode === 'share' ? ` (${formatMapValue(v?.ia_rel)}%)` : ''}`
-              : `IA Gén.: <b>${formatMapValue(v?.gen)}</b>${mapMode === 'share' ? ` (${formatMapValue(v?.gen_rel)}%)` : ''}`
+              ? `${T('IA')}: <b>${formatMapValue(v?.ia)}</b>${mapMode === 'share' ? ` (${formatMapValue(v?.ia_rel)}%)` : ''}`
+              : `${T('IA Gén.')}: <b>${formatMapValue(v?.gen)}</b>${mapMode === 'share' ? ` (${formatMapValue(v?.gen_rel)}%)` : ''}`
             )
           )
           .style('left', (ev.pageX + 12) + 'px')
@@ -779,7 +912,7 @@
 
   function formatMapValue(x) {
     if (!Number.isFinite(x)) return 'n/a';
-    return mapMode === 'share' ? x.toFixed(2) : Math.round(x).toLocaleString('fr-FR');
+    return mapMode === 'share' ? x.toFixed(2) : Math.round(x).toLocaleString(LOCALE);
   }
 
   function currentMapMetric(v) {
@@ -935,13 +1068,13 @@
     const values = top10.map(d => d.value).reverse();
 
     // Determine labels
-    const catLabel = mapCat === 'ai' ? 'IA' : 'IA Générative';
+    const catLabel = mapCat === 'ai' ? T('IA') : T('IA Générative');
 
     const option = {
       backgroundColor: 'transparent',
       title: {
-        text: `Offres ${catLabel}`,
-        subtext: 'pour 10 000 offres',
+        text: T('Offres {0}', catLabel),
+        subtext: T('pour 10 000 offres'),
         left: 'center',
         top: 0,
         textStyle: {
@@ -970,7 +1103,7 @@
         formatter: function(params) {
           const p = params[0];
           const formattedValue = p.value.toFixed(1);
-          return `<strong>${p.name}</strong><br/>${catLabel}: <strong>${formattedValue}</strong> pour 10 000 offres`;
+          return `<strong>${p.name}</strong><br/>${catLabel}: <strong>${formattedValue}</strong> ${T('pour 10 000 offres')}`;
         }
       },
       grid: {
@@ -1044,7 +1177,7 @@
     const btn = document.getElementById('btnMapMode');
     const lbl = document.getElementById('lblMapMode');
     if (btn) btn.classList.toggle('active', mapMode === 'share');
-    if (lbl) lbl.textContent = mapMode === 'total' ? 'Total' : 'Part';
+    if (lbl) lbl.textContent = mapMode === 'total' ? 'Total' : T('Part');
     recolorMap();
     // Top 10 chart always shows totals, no need to rebuild
   };
@@ -1054,7 +1187,7 @@
     const btn = document.getElementById('btnMapCat');
     const lbl = document.getElementById('lblMapCat');
     if (btn) btn.classList.toggle('active', mapCat === 'gen');
-    if (lbl) lbl.textContent = mapCat === 'gen' ? 'IA Générative' : 'IA';
+    if (lbl) lbl.textContent = mapCat === 'gen' ? T('IA Générative') : T('IA');
     recolorMap();
     buildTop10Chart();
   };
@@ -1089,7 +1222,7 @@
   }
 
   window.downloadOffersCSV = function() {
-    const headers = ['Date', 'IA Générative', 'IA Générale', 'Vision par Ordinateur', 'NLP'];
+    const headers = ['Date', T('IA Générative'), T('IA Générale'), T('Vision par Ordinateur'), T('NLP')];
     const isShare = offersMode === 'share';
     const gen = isShare ? DATA.shareGen : DATA.totalGen;
     const ai = isShare ? DATA.shareAI : DATA.totalAI;
@@ -1110,7 +1243,7 @@
     const ind = isShare ? (isGen ? DATA.indShGen : DATA.indShNon) : (isGen ? DATA.indTotGen : DATA.indTotNon);
     const serv = isShare ? (isGen ? DATA.servShGen : DATA.servShNon) : (isGen ? DATA.servTotGen : DATA.servTotNon);
 
-    let csv = 'Date,Industrie,Services\n';
+    let csv = T('Date,Industrie,Services\n');
     DATA.qLabels.forEach((date, i) => {
       csv += `${date},${ind[i] ?? ''},${serv[i] ?? ''}\n`;
     });
@@ -1137,7 +1270,7 @@
 
   window.downloadSizeCSV = function() {
     const data = sizeCat === 'ai' ? DATA.sizeAi : DATA.sizeGen;
-    let csv = 'Taille,Valeur\n';
+    let csv = T('Taille,Valeur\n');
     DATA.sizeLabels.forEach((label, i) => {
       csv += `"${label}",${data[i] ?? ''}\n`;
     });
@@ -1181,7 +1314,7 @@
   };
 
   window.downloadMapCSV = function() {
-    let csv = 'Zone,IA Total,IA Part (%),IA Gen Total,IA Gen Part (%),Total Offres\n';
+    let csv = T('Zone,IA Total,IA Part (%),IA Gen Total,IA Gen Part (%),Total Offres\n');
 
     DATA.mapData.forEach((v, zone) => {
       csv += `"${zone}",${v.ia ?? ''},${v.ia_rel ?? ''},${v.gen ?? ''},${v.gen_rel ?? ''},${v.total_offers ?? ''}\n`;
@@ -1230,7 +1363,7 @@
 
       // Size
       parseCsv(await fetchCsv(CONFIG.dataPath + 'distrib_size.csv')).forEach(r => {
-        DATA.sizeLabels.push(r[1]);   // Company_Category (GE/ETI/PME)
+        DATA.sizeLabels.push(T(r[1]));   // Company_Category (GE/ETI/PME)
         DATA.sizeAi.push(+r[3]);      // share_pct_ai
         DATA.sizeGen.push(+r[2]);     // share_pct_genai
       });
@@ -1238,7 +1371,8 @@
 
       // Metiers
       await loadMetier('metier_area_ia.csv', DATA.metierIA, DATA.metierDates);
-      await loadMetier('metier_area_data.csv', DATA.metierData, DATA.metierDatesData);
+      // les 581 libellés ROME de ce fichier restent en français
+      await loadMetier('metier_area_data.csv', DATA.metierData, DATA.metierDatesData, false);
       buildMetier();
 
       // Skills
@@ -1267,12 +1401,12 @@
   let amenitiesMode = 'share';
 
   const AMENITY_LABELS = {
-    'REMUNERATION_BENEFITS':      'Rémunération & avantages',
-    'DIVERSITY':                  'Diversité',
-    'WORK_LIFE_BALANCE':          'Équilibre vie pro/perso',
-    'LEADERSHIP':                 'Leadership',
-    'CULTURE_VALUES':             'Culture & valeurs',
-    'PROFESSIONAL_OPPORTUNITIES': 'Opportunités professionnelles'
+    'REMUNERATION_BENEFITS':      T('Rémunération & avantages'),
+    'DIVERSITY':                  T('Diversité'),
+    'WORK_LIFE_BALANCE':          T('Équilibre vie pro/perso'),
+    'LEADERSHIP':                 T('Leadership'),
+    'CULTURE_VALUES':             T('Culture & valeurs'),
+    'PROFESSIONAL_OPPORTUNITIES': T('Opportunités professionnelles')
   };
 
   const AMENITY_COLORS = [
@@ -1338,8 +1472,8 @@
           y: {
             ticks: {
               callback: v => amenitiesMode === 'share'
-                ? v.toFixed(1) + ' %'
-                : v.toLocaleString('fr-FR')
+                ? v.toFixed(1) + PCT
+                : v.toLocaleString(LOCALE)
             }
           }
         },
@@ -1351,7 +1485,7 @@
   window.toggleAmenMode = function() {
     amenitiesMode = amenitiesMode === 'share' ? 'total' : 'share';
     const lbl = document.getElementById('lblAmenMode');
-    if (lbl) lbl.textContent = amenitiesMode === 'share' ? 'Part (%)' : 'Total';
+    if (lbl) lbl.textContent = amenitiesMode === 'share' ? T('Part (%)') : 'Total';
     const btn = document.getElementById('btnAmenMode');
     if (btn) btn.classList.toggle('active', amenitiesMode === 'total');
 
@@ -1361,13 +1495,13 @@
       ds.data = DATA.amenitiesDates.map(d => DATA.amenitiesData[cat]?.[d]?.[amenitiesMode] ?? null);
     });
     amenitiesChart.options.scales.y.ticks.callback = v => amenitiesMode === 'share'
-      ? v.toFixed(1) + ' %'
-      : v.toLocaleString('fr-FR');
+      ? v.toFixed(1) + PCT
+      : v.toLocaleString(LOCALE);
     amenitiesChart.update();
   };
 
   window.downloadAmenitiesCSV = function() {
-    const lines = ['Date,Catégorie,Part (%),Total'];
+    const lines = [T('Date,Catégorie,Part (%),Total')];
     DATA.amenitiesDates.forEach(d => {
       Object.entries(AMENITY_LABELS).forEach(([cat, label]) => {
         const v = DATA.amenitiesData[cat]?.[d];
