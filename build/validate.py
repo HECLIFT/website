@@ -79,7 +79,7 @@ for f, cols in ESPERADO.items():
 # Toute page servie porte le script juste avant </head> ; les iframes de assets/ n'en ont pas.
 for f in sorted(Path(".").rglob("*.html")):
     s_ = str(f)
-    if s_.startswith((".git/", "site_libs/", "assets/", "content/")):
+    if s_.startswith((".git/", "site_libs/", "assets/", "content/", "build/")):
         continue
     if "heclift.goatcounter.com/count" not in f.read_text(encoding="utf-8"):
         erro(f"[audiência] {s_}: falta o script do GoatCounter antes de </head> (ver AGENTS.md)")

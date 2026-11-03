@@ -1,12 +1,146 @@
 {
-  "_lisezmoi": "Pages assemblées par build/generate.py à partir de build/templates/base.html : une entrée par page, contenu de <main> dans content/pages/<langue>/<chemin>, bloc <style> propre à la page dans content/pages/head/<chemin>. Une page listée en « en » a son jumeau anglais sous en/<chemin> et le sélecteur FR | EN. Voir AGENTS.md.",
+  "_lisezmoi": "Pages écrites à la main, assemblées par build/generate.py à partir de build/templates/base.html : contenu de <main> dans content/pages/<langue>/<chemin>, morceaux de <head> propres à la page dans content/pages/head/<chemin> (blocs <!--@nom--> ou <!--@nom:fr-->, <!--@nom:en-->). Une page dont « langues » contient « en » a son jumeau sous en/<chemin> et le sélecteur FR | EN. Les pages des membres et des publications sont générées depuis members.json et publications.json. Voir AGENTS.md.",
   "pages": [
     {
       "chemin": "index.html",
-      "langues": ["fr", "en"],
+      "langues": [
+        "fr",
+        "en"
+      ],
       "actif": "index",
       "classe_body": "nav-fixed quarto-light",
-      "titre": {"fr": "Accueil", "en": "Home"}
+      "titre": {
+        "fr": "Accueil",
+        "en": "Home"
+      }
+    },
+    {
+      "chemin": "publications.html",
+      "langues": [
+        "fr",
+        "en"
+      ],
+      "actif": "publications",
+      "classe_body": "nav-fixed quarto-light",
+      "titre": {
+        "fr": "Nos Publications",
+        "en": "Our Publications"
+      }
+    },
+    {
+      "chemin": "membres.html",
+      "langues": [
+        "fr",
+        "en"
+      ],
+      "actif": "membres",
+      "classe_body": "nav-fixed quarto-light memberpage",
+      "titre": {
+        "fr": "Équipe",
+        "en": "Team"
+      }
+    },
+    {
+      "chemin": "a-propos.html",
+      "langues": [
+        "fr",
+        "en"
+      ],
+      "actif": "a_propos",
+      "classe_body": "nav-fixed quarto-light",
+      "titre": {
+        "fr": "À propos",
+        "en": "About"
+      }
+    },
+    {
+      "chemin": "posts.html",
+      "langues": [
+        "fr",
+        "en"
+      ],
+      "classe_body": "nav-fixed quarto-light",
+      "classe_main": "column-page-left",
+      "titre": {
+        "fr": "Actualités",
+        "en": "News"
+      }
+    },
+    {
+      "chemin": "ai-trackers.html",
+      "langues": [
+        "fr",
+        "en"
+      ],
+      "actif": "ai_trackers",
+      "classe_body": "nav-fixed quarto-light",
+      "titre": {
+        "fr": "Trackers IA",
+        "en": "AI trackers"
+      }
+    },
+    {
+      "chemin": "ai-trackers/diffusion-emploi/index.html",
+      "langues": [
+        "fr"
+      ],
+      "classe_body": "nav-fixed quarto-light",
+      "titre": {
+        "fr": "Diffusion de l’IA (emploi)"
+      }
+    },
+    {
+      "chemin": "ai-trackers/diffusion-science/index.html",
+      "langues": [
+        "fr"
+      ],
+      "classe_body": "nav-fixed quarto-light",
+      "titre": {
+        "fr": "Diffusion de l’IA (science)"
+      }
+    },
+    {
+      "chemin": "innovation-data.html",
+      "langues": [
+        "fr",
+        "en"
+      ],
+      "actif": "innovation_data",
+      "classe_body": "nav-fixed quarto-light",
+      "titre": {
+        "fr": "Données Innovation",
+        "en": "Innovation data"
+      }
+    },
+    {
+      "chemin": "innovation-data/productivite/index.html",
+      "langues": [
+        "fr"
+      ],
+      "classe_body": "nav-fixed quarto-light",
+      "titre": {
+        "fr": "Productivité internationale"
+      }
+    },
+    {
+      "chemin": "innovation-data/innovation-hightech/index.html",
+      "langues": [
+        "fr"
+      ],
+      "classe_body": "nav-fixed quarto-light",
+      "titre": {
+        "fr": "Innovation High-Tech"
+      }
+    },
+    {
+      "chemin": "innovation-data/breakthrough/index.html",
+      "langues": [
+        "fr"
+      ],
+      "classe_body": "nav-fixed quarto-light",
+      "titre": {
+        "fr": "Innovation de rupture"
+      }
     }
   ]
 }

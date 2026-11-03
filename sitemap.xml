@@ -2,9 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://heclift.github.io/website/a-propos.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/a-propos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/a-propos.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/a-propos.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/a-propos.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/a-propos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/a-propos.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/a-propos.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/ai-trackers.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/ai-trackers.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/ai-trackers.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/ai-trackers.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/ai-trackers.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/ai-trackers.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/ai-trackers.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/ai-trackers.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/ai-trackers/diffusion-emploi/index.html</loc>
@@ -26,6 +44,15 @@
   </url>
   <url>
     <loc>https://heclift.github.io/website/innovation-data.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/innovation-data.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/innovation-data.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/innovation-data.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/innovation-data.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/innovation-data.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/innovation-data.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/innovation-data.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/innovation-data/breakthrough/index.html</loc>
@@ -38,110 +65,434 @@
   </url>
   <url>
     <loc>https://heclift.github.io/website/membres.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/membres.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/membres/abergeaud.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/abergeaud.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/abergeaud.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/abergeaud.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/membres/abergeaud.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/abergeaud.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/abergeaud.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/abergeaud.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/membres/adyevre.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/adyevre.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/adyevre.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/adyevre.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/membres/adyevre.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/adyevre.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/adyevre.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/adyevre.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/membres/afelix.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/afelix.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/afelix.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/afelix.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/membres/afelix.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/afelix.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/afelix.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/afelix.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/membres/cabon.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/cabon.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/cabon.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/cabon.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/membres/cabon.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/cabon.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/cabon.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/cabon.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/membres/cmazet.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/cmazet.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/cmazet.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/cmazet.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/membres/cmazet.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/cmazet.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/cmazet.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/cmazet.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/membres/cperignon.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/cperignon.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/cperignon.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/cperignon.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/membres/cperignon.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/cperignon.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/cperignon.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/cperignon.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/membres/ehazan.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/ehazan.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/ehazan.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/ehazan.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/membres/ehazan.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/ehazan.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/ehazan.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/ehazan.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/membres/fcalvino.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/fcalvino.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/fcalvino.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/fcalvino.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/membres/fcalvino.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/fcalvino.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/fcalvino.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/fcalvino.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/membres/golterra.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/golterra.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/golterra.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/golterra.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/membres/golterra.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/golterra.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/golterra.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/golterra.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/membres/lmilani.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/lmilani.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/lmilani.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/lmilani.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/membres/lmilani.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/lmilani.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/lmilani.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/lmilani.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/membres/mpalladino.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/mpalladino.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/mpalladino.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/mpalladino.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/membres/mpalladino.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/mpalladino.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/mpalladino.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/mpalladino.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/membres/mvalibhay.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/mvalibhay.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/mvalibhay.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/mvalibhay.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/membres/mvalibhay.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/mvalibhay.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/mvalibhay.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/mvalibhay.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/membres/nbaruchel.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/nbaruchel.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/nbaruchel.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/nbaruchel.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/membres/nbaruchel.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/nbaruchel.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/nbaruchel.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/nbaruchel.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/membres/odegos.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/odegos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/odegos.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/odegos.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/membres/odegos.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/odegos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/odegos.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/odegos.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/membres/paghion.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/paghion.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/paghion.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/paghion.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/membres/paghion.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/paghion.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/paghion.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/paghion.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/membres/pclarke.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/pclarke.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/pclarke.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/pclarke.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/membres/pclarke.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/pclarke.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/pclarke.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/pclarke.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/membres/pdelbouve.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/pdelbouve.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/pdelbouve.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/pdelbouve.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/membres/pdelbouve.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/pdelbouve.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/pdelbouve.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/pdelbouve.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/membres/psaintamans.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/psaintamans.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/psaintamans.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/psaintamans.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/membres/psaintamans.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/psaintamans.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/psaintamans.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/psaintamans.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/membres/rsiahaan.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/rsiahaan.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/rsiahaan.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/rsiahaan.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/membres/rsiahaan.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/rsiahaan.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/rsiahaan.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/rsiahaan.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/membres/sbunel.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/sbunel.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/sbunel.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/sbunel.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/membres/sbunel.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/sbunel.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/sbunel.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/sbunel.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/membres/trenault.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/trenault.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/trenault.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/trenault.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/membres/trenault.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/trenault.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/trenault.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/trenault.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/membres/vauplat.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/vauplat.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/vauplat.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/vauplat.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/membres/vauplat.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/vauplat.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/vauplat.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/vauplat.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/membres/yalgan.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/yalgan.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/yalgan.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/yalgan.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/membres/yalgan.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/yalgan.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/yalgan.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/yalgan.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/posts.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/posts.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/posts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/posts.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/posts.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/posts.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/posts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/posts.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/publications.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/publications.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/publications.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/publications.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/publications.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/publications.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/publications.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/publications.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/pubs/ai-exposure/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/pubs/ai-exposure/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/pubs/ai-exposure/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/pubs/ai-exposure/index.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/pubs/ai-exposure/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/pubs/ai-exposure/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/pubs/ai-exposure/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/pubs/ai-exposure/index.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/pubs/ai-innov/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/pubs/ai-innov/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/pubs/ai-innov/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/pubs/ai-innov/index.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/pubs/ai-innov/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/pubs/ai-innov/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/pubs/ai-innov/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/pubs/ai-innov/index.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/pubs/ai-tracker/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/pubs/ai-tracker/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/pubs/ai-tracker/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/pubs/ai-tracker/index.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/pubs/ai-tracker/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/pubs/ai-tracker/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/pubs/ai-tracker/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/pubs/ai-tracker/index.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/pubs/emploi-jeunes/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/pubs/emploi-jeunes/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/pubs/emploi-jeunes/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/pubs/emploi-jeunes/index.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/pubs/emploi-jeunes/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/pubs/emploi-jeunes/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/pubs/emploi-jeunes/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/pubs/emploi-jeunes/index.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/pubs/exposition-ia-emploi/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/pubs/exposition-ia-emploi/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/pubs/exposition-ia-emploi/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/pubs/exposition-ia-emploi/index.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/pubs/exposition-ia-emploi/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/pubs/exposition-ia-emploi/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/pubs/exposition-ia-emploi/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/pubs/exposition-ia-emploi/index.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/pubs/factures-ia-open-weight/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/pubs/factures-ia-open-weight/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/pubs/factures-ia-open-weight/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/pubs/factures-ia-open-weight/index.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/pubs/factures-ia-open-weight/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/pubs/factures-ia-open-weight/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/pubs/factures-ia-open-weight/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/pubs/factures-ia-open-weight/index.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/pubs/flexicurity/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/pubs/flexicurity/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/pubs/flexicurity/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/pubs/flexicurity/index.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/pubs/flexicurity/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/pubs/flexicurity/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/pubs/flexicurity/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/pubs/flexicurity/index.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/pubs/ia-productivite/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/pubs/ia-productivite/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/pubs/ia-productivite/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/pubs/ia-productivite/index.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/pubs/ia-productivite/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/pubs/ia-productivite/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/pubs/ia-productivite/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/pubs/ia-productivite/index.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/pubs/innovation-rattrapage-modeles-ia/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/pubs/innovation-rattrapage-modeles-ia/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/pubs/innovation-rattrapage-modeles-ia/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/pubs/innovation-rattrapage-modeles-ia/index.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/pubs/innovation-rattrapage-modeles-ia/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/pubs/innovation-rattrapage-modeles-ia/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/pubs/innovation-rattrapage-modeles-ia/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/pubs/innovation-rattrapage-modeles-ia/index.html"/>
   </url>
   <url>
     <loc>https://heclift.github.io/website/pubs/politique-travail/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/pubs/politique-travail/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/pubs/politique-travail/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/pubs/politique-travail/index.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/pubs/politique-travail/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/pubs/politique-travail/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/pubs/politique-travail/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/pubs/politique-travail/index.html"/>
   </url>
 </urlset>

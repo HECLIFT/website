@@ -1,0 +1,291 @@
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Innovation High-Tech</h1>
+<p class="subtitle lead">Comparaison internationale des brevets PCT dans les technologies de pointe</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Innovation</div>
+    <div class="quarto-category">Brevets</div>
+    <div class="quarto-category">Technologies</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Brevets PCT dans 10 secteurs high-tech : UE, États-Unis, Chine, Japon.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta column-page">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!-- ECharts CDN -->
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+
+<!-- Tracker CSS -->
+<link rel="stylesheet" href="../../assets/css/innovation-hightech.css">
+
+<div class="iht-container">
+
+  <!-- KPI Cards -->
+  <div class="iht-kpi-grid">
+    <div class="iht-kpi-card">
+      <div class="iht-kpi-icon">
+        <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path>
+          <polyline points="14,2 14,8 20,8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+        </svg>
+      </div>
+      <div class="iht-kpi-content">
+        <span class="iht-kpi-label">Total brevets analysés</span>
+        <span class="iht-kpi-value" id="iht-kpi-total">--</span>
+      </div>
+    </div>
+    <div class="iht-kpi-card">
+      <div class="iht-kpi-icon">
+        <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+          <path d="M2 17l10 5 10-5"></path>
+          <path d="M2 12l10 5 10-5"></path>
+        </svg>
+      </div>
+      <div class="iht-kpi-content">
+        <span class="iht-kpi-label">Secteurs analysés</span>
+        <span class="iht-kpi-value" id="iht-kpi-sectors">--</span>
+      </div>
+    </div>
+    <div class="iht-kpi-card">
+      <div class="iht-kpi-icon">
+        <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 6v6l4 2"></path>
+        </svg>
+      </div>
+      <div class="iht-kpi-content">
+        <span class="iht-kpi-label">Période couverte</span>
+        <span class="iht-kpi-value" id="iht-kpi-period">--</span>
+      </div>
+    </div>
+    <div class="iht-kpi-card">
+      <div class="iht-kpi-icon">
+        <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 20V10"></path>
+          <path d="M12 20V4"></path>
+          <path d="M6 20v-6"></path>
+        </svg>
+      </div>
+      <div class="iht-kpi-content">
+        <span class="iht-kpi-label" id="iht-kpi-leader-label">Leader (année récente)</span>
+        <span class="iht-kpi-value" id="iht-kpi-leader">--</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sector Tabs -->
+  <div class="iht-tabs" id="iht-tabs">
+    <div class="iht-loading">Chargement des secteurs...</div>
+  </div>
+
+  <!-- Chart Section -->
+  <div class="iht-section">
+    <div class="iht-section-header">
+      <h3 class="iht-section-title anchored" id="iht-section-title">—</h3>
+    </div>
+
+    <!-- Share chart -->
+    <div class="iht-chart-label">
+      <span>Part de chaque entité (%)</span>
+      <div class="iht-chart-controls">
+        <div class="iht-toggle-wrap">
+          <span class="iht-toggle-label active" id="iht-label-eu">UE-27</span>
+          <div class="iht-toggle" id="iht-toggle">
+            <div class="iht-toggle-knob"></div>
+          </div>
+          <span class="iht-toggle-label inactive" id="iht-label-eur">Europe</span>
+        </div>
+        <span class="iht-toggle-hint">UE-27 ou Europe (UE + NO, CH, UK)</span>
+        <button class="iht-btn" id="iht-dl-share">
+          <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path>
+            <polyline points="7,10 12,15 17,10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          CSV
+        </button>
+      </div>
+    </div>
+    <div class="iht-chart" id="iht-chart-share">
+      <div class="iht-loading">Chargement...</div>
+    </div>
+
+    <!-- Count chart -->
+    <div class="iht-chart-label">
+      <span>Nombre de brevets (comptage fractionnaire)</span>
+      <button class="iht-btn" id="iht-dl-count">
+        <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path>
+          <polyline points="7,10 12,15 17,10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        CSV
+      </button>
+    </div>
+    <div class="iht-chart" id="iht-chart-count">
+      <div class="iht-loading">Chargement...</div>
+    </div>
+  </div>
+
+  <!-- Source note -->
+  <div class="iht-source">
+    <strong>Sources :</strong> Données de brevets PCT extraites de
+    Google Patents Public Data
+    via BigQuery. Attribution géographique par comptage fractionnaire des inventeurs via
+    OECD RegPat.
+    Classifications technologiques : IPC (OMPI) et CPC (EPO/USPTO).
+    <br><strong>2025 incomplète :</strong> une partie des demandes PCT déposées en 2025 n’est pas encore publiée dans RegPat (édition d’août 2026). Les nombres de brevets de 2025 seront revus à la hausse ; les parts sont moins affectées. L’année 2024 est presque complète : il lui manque encore environ 7 % des demandes, ce qui explique une partie de sa baisse apparente.
+  </div>
+
+</div>
+
+<!-- Tracker JS -->
+<script src="../../assets/js/innovation-hightech.js"></script>
+<section id="à-propos-de-ce-tracker" class="level2">
+<h2 class="anchored" data-anchor-id="à-propos-de-ce-tracker">À propos de ce tracker</h2>
+<p>Ce tableau de bord suit l'évolution de l'activité inventive dans les secteurs de haute technologie à travers les dépôts de brevets internationaux (PCT). Il mesure la contribution de chaque pays et région aux technologies clés — IA, biotechnologie, technologies de l'information, technologies vertes et semi-conducteurs — depuis les années 1980.</p>
+<section id="auteur" class="level3">
+<h3 class="anchored" data-anchor-id="auteur">Auteur</h3>
+<p>Ce tracker est développé par <strong><a href="../../membres/abergeaud.html">Antonin Bergeaud</a></strong> — HEC Paris, LSE, CEPR.</p>
+</section>
+<section id="méthodologie" class="level3">
+<h3 class="anchored" data-anchor-id="méthodologie">Méthodologie</h3>
+<section id="données-source" class="level4">
+<h4 class="anchored" data-anchor-id="données-source">Données source</h4>
+<p>Les brevets analysés sont les demandes internationales déposées via le Traité de Coopération en matière de Brevets (PCT) de l’Organisation Mondiale de la Propriété Intellectuelle (OMPI). Les données sont extraites de <a href="https://console.cloud.google.com/marketplace/product/google_patents_public_datasets/google-patents-public-data">Google Patents Public Data</a> via BigQuery. Le PCT couvre les dépôts dans plus de 150 pays membres et constitue un indicateur fiable de l’activité inventive internationale.</p>
+</section>
+<section id="comptage-fractionnaire" class="level4">
+<h4 class="anchored" data-anchor-id="comptage-fractionnaire">Comptage fractionnaire</h4>
+<p>Chaque brevet est attribué aux pays des inventeurs de manière fractionnaire grâce à la base <a href="https://www.oecd.org/sti/inno/intellectual-property-statistics-and-analysis.htm">OECD RegPat</a>. Si un brevet a 3 inventeurs (2 en France, 1 en Allemagne), la France reçoit 2/3 du brevet et l’Allemagne 1/3. Cette méthode évite le double comptage et reflète la contribution réelle de chaque pays.</p>
+</section>
+<section id="classification-technologique" class="level4">
+<h4 class="anchored" data-anchor-id="classification-technologique">Classification technologique</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Secteur</th>
+<th>Système</th>
+<th>Définition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Biotechnologie</td>
+<td>IPC</td>
+<td>Définition OECD (2009)</td>
+</tr>
+<tr class="even">
+<td>Technologies de l’information</td>
+<td>IPC</td>
+<td>Inaba &amp; Squicciarini (2017)</td>
+</tr>
+<tr class="odd">
+<td>Intelligence artificielle</td>
+<td>CPC</td>
+<td>Réseaux neuronaux, apprentissage automatique</td>
+</tr>
+<tr class="even">
+<td>Technologies vertes</td>
+<td>CPC</td>
+<td>Classification EPO, changement climatique</td>
+</tr>
+<tr class="odd">
+<td>Semi-conducteurs</td>
+<td>CPC</td>
+<td>Dispositifs semi-conducteurs (H10, qui reprend H01L depuis les réformes de la CPC de 2023 à 2026)</td>
+</tr>
+<tr class="even">
+<td>Pharmacie</td>
+<td>IPC</td>
+<td>Préparations médicales</td>
+</tr>
+<tr class="odd">
+<td>Nanotechnologie</td>
+<td>IPC</td>
+<td>Définition OECD (2009)</td>
+</tr>
+<tr class="even">
+<td>Robotique</td>
+<td>IPC</td>
+<td>Manipulateurs et robots</td>
+</tr>
+<tr class="odd">
+<td>Batteries</td>
+<td>CPC</td>
+<td>Cellules secondaires</td>
+</tr>
+<tr class="even">
+<td>Fabrication additive</td>
+<td>CPC</td>
+<td>Impression 3D</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="entités-géographiques" class="level4">
+<h4 class="anchored" data-anchor-id="entités-géographiques">Entités géographiques</h4>
+<ul>
+<li><strong>UE-27</strong> : Les 27 États membres actuels de l’Union européenne (après Brexit)</li>
+<li><strong>Europe</strong> : UE-27 + Norvège, Suisse, Royaume-Uni</li>
+<li><strong>États-Unis</strong>, <strong>Chine</strong>, <strong>Japon</strong> : pays individuels</li>
+<li><strong>Reste du monde</strong> : Tous les autres pays (la composition varie selon le mode UE/Europe sélectionné)</li>
+</ul>
+<p>Les parts sont calculées sur le total mondial (incluant toutes les entités). La somme des 5 entités = 100% pour chaque année.</p>
+</section>
+<section id="sources-de-données" class="level4">
+<h4 class="anchored" data-anchor-id="sources-de-données">Sources de données</h4>
+<ul>
+<li><strong>Google Patents Public Data</strong> : Publications PCT (WO) avec classifications IPC et CPC</li>
+<li><strong>OECD RegPat</strong> (édition d’août 2026) : Registre des inventeurs avec attribution géographique fractionnaire</li>
+<li><strong>Classification IPC</strong> : International Patent Classification (OMPI)</li>
+<li><strong>Classification CPC</strong> : Cooperative Patent Classification (EPO/USPTO)</li>
+</ul>
+</section>
+</section>
+<section id="références" class="level3">
+<h3 class="anchored" data-anchor-id="références">Références</h3>
+<ul>
+<li>OECD (2009). <em>OECD Patent Statistics Manual</em>. OECD Publishing. <a href="https://doi.org/10.1787/9789264056442-en">DOI</a></li>
+<li>Schmoch, U. (2008). <a href="https://www.wipo.int/export/sites/www/ipstats/en/docs/wipo_ipc_technology.pdf">“Concept of a Technology Classification for Country Comparisons.”</a> Final report to WIPO.</li>
+<li>Inaba, T. &amp; Squicciarini, M. (2017). <a href="https://doi.org/10.1787/ab16c396-en">“ICT: A new taxonomy based on the international patent classification.”</a> <em>OECD STI Working Papers</em>, 2017/01.</li>
+<li>WIPO (2019). <a href="https://www.wipo.int/publications/en/details.jsp?id=4386"><em>WIPO Technology Trends 2019: Artificial Intelligence</em></a>. Geneva: WIPO.</li>
+<li>Fujii, H. &amp; Managi, S. (2018). <a href="https://www.sciencedirect.com/science/article/abs/pii/S0301421513000967">“Trends and priority shifts in artificial intelligence technology invention.”</a> <em>Economics Letters</em>, 171, 188-191.</li>
+<li>Haščič, I. &amp; Migotto, M. (2015). <a href="https://doi.org/10.1787/5js009kf48xw-en">“Measuring environmental innovation using patent data.”</a> <em>OECD Environment Working Papers</em>, No.&nbsp;89.</li>
+<li>Veefkind, V. et al.&nbsp;(2012). <a href="https://doi.org/10.1016/j.wpi.2011.12.004">“A new EPO classification scheme for climate change mitigation technologies.”</a> <em>World Patent Information</em>, 34(2), 106-111.</li>
+<li>Graetz, G. &amp; Michaels, G. (2018). <a href="https://doi.org/10.1162/rest_a_00754">“Robots at Work.”</a> <em>Review of Economics and Statistics</em>, 100(5), 753-768.</li>
+<li>EPO/EUIPO (2020). <a href="https://link.epo.org/web/additive_manufacturing_study_executive_summary_en.pdf"><em>Patents and Additive Manufacturing: Trends in 3D Printing Technologies</em></a>. Munich: EPO.</li>
+<li>OECD (2009). <a href="https://doi.org/10.1787/223147043844">“Nanotechnology: An Overview Based on Indicators and Statistics.”</a> <em>OECD STI Working Papers</em>, 2009/07.</li>
+</ul>
+</section>
+<section id="mise-à-jour" class="level3">
+<h3 class="anchored" data-anchor-id="mise-à-jour">Mise à jour</h3>
+<p>Données au 1er octobre 2026 : demandes PCT extraites de Google Patents le 1er octobre 2026 et RegPat (OCDE) d’août 2026. Le tracker est mis à jour après chaque nouvelle édition de RegPat. La dernière année affichée (2025) est incomplète.</p>
+
+
+</section>
+</section>

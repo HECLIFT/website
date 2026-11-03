@@ -3,6 +3,7 @@
     {
       "id": "innovation-rattrapage-modeles-ia",
       "titre": "Innovation et rattrapage sur le marché des modèles d’IA",
+      "titre_en": "Innovation and catch-up in the AI model market",
       "type": "pb",
       "type_label": "Note de politique",
       "date": "Octobre 2026",
@@ -16,6 +17,7 @@
         "Concurrence"
       ],
       "resume": "Dans l’IA, le meilleur modèle vendu 0,1 dollar par million de tokens ou moins, soit au moins cinquante fois moins cher qu’un modèle de frontière, en rattrape la qualité en moins d’un an. Ce rattrapage pourrait décourager des investissements croissants, de l’ordre de 715 milliards de dollars en 2026 pour les principaux développeurs d’IA, en réduisant la rente que procure une avance technologique. Sur OpenRouter, les laboratoires de frontière ne traitent plus que 28 % des tokens en août 2026, contre les trois quarts au printemps 2025, mais perçoivent encore 71 % des revenus grâce à des tarifs plus élevés. Par rapport à ses concurrents, un fournisseur qui sort un modèle de frontière voit son chiffre d’affaires imputé environ doubler dans les mois qui suivent, et les utilisateurs d’un modèle concurrencé se reportent surtout vers d’autres modèles haut de gamme. Cet équilibre repose sur une croissance exceptionnelle de la consommation et reste fragile : la part des laboratoires de frontière dans les revenus est passée de 82 % à 71 % entre la mi-juillet et la mi-août 2026.",
+      "resume_en": "In AI, the best model sold for 0.1 dollar per million tokens or less, at least fifty times cheaper than a frontier model, catches up with its quality in less than a year. This catch-up could discourage growing investment, on the order of 715 billion dollars in 2026 for the main AI developers, by reducing the rent that a technological lead provides. On OpenRouter, frontier labs handle only 28% of tokens in August 2026, compared with three quarters in spring 2025, but still collect 71% of revenue thanks to higher prices. Relative to its competitors, a provider that releases a frontier model sees its imputed revenue roughly double in the following months, and the users of a model facing new competition mostly switch to other high-end models. This equilibrium rests on exceptional growth in consumption and remains fragile: frontier labs’ share of revenue fell from 82% to 71% between mid-July and mid-August 2026.",
       "thumb": "images/pubs/innovation-rattrapage-modeles-ia.png",
       "pdf": "files/papers/LIFT_PolicyPaper_2026-04.pdf",
       "auteurs_liens": [
@@ -24,11 +26,13 @@
           "nom": "Paul Delbouve"
         }
       ],
-      "mots_cles_affiches": "IA, innovation, concurrence, modèles de frontière, rattrapage, tokens, OpenRouter"
+      "mots_cles_affiches": "IA, innovation, concurrence, modèles de frontière, rattrapage, tokens, OpenRouter",
+      "mots_cles_affiches_en": "AI, innovation, competition, frontier models, catch-up, tokens, OpenRouter"
     },
     {
       "id": "factures-ia-open-weight",
       "titre": "L’augmentation des factures d’IA et la montée de l’open weight",
+      "titre_en": "Rising AI spending and the rise of open-weight models",
       "type": "pb",
       "type_label": "Note de politique",
       "date": "Octobre 2026",
@@ -44,6 +48,7 @@
         "Modèles ouverts"
       ],
       "resume": "La facture d’IA des entreprises augmente alors que le coût unitaire d’un token baisse fortement : la hausse vient des volumes bien plus que des tarifs. Sur OpenRouter, la part des modèles à poids ouverts passe de 40 % à 73 % des tokens entre janvier et août 2026, et de 11 % à 34 % des dépenses. Les utilisateurs rattachés à la France consacrent 31,0 % de leurs dépenses aux modèles ouverts, contre 19,3 % à l’échelle mondiale. Les appels adressés aux modèles ouverts sont quatre fois plus longs qu’en janvier, mais leur coût moyen n’est multiplié que par 3,8 : l’avantage de coût subsiste. La réallocation vers l’ouvert explique 43 % de la baisse simulée du coût d’un panier français constant ; elle ouvre une marge de déploiement plutôt qu’une économie automatique, ce qui invite les organisations à raisonner en coût par tâche accomplie.",
+      "resume_en": "Firms’ AI spending is rising even as the unit cost of a token falls sharply: the increase comes from volumes far more than from prices. On OpenRouter, the share of open-weight models rises from 40% to 73% of tokens between January and August 2026, and from 11% to 34% of spending. Users attributed to France devote 31.0% of their spending to open models, compared with 19.3% worldwide. Calls to open models are four times longer than in January, but their average cost is only 3.8 times higher: the cost advantage persists. Reallocation toward open models accounts for 43% of the simulated decline in the cost of a constant French basket; it opens room for wider deployment rather than an automatic saving, which invites organizations to reason in terms of cost per completed task.",
       "thumb": "images/pubs/factures-ia-open-weight.png",
       "pdf": "files/papers/LIFT_PolicyPaper_2026-03.pdf",
       "auteurs_liens": [
@@ -59,11 +64,13 @@
           "nom": "Etienne Grass"
         }
       ],
-      "mots_cles_affiches": "IA, open weight, modèles ouverts, tokens, coûts, OpenRouter, France"
+      "mots_cles_affiches": "IA, open weight, modèles ouverts, tokens, coûts, OpenRouter, France",
+      "mots_cles_affiches_en": "AI, open weight, open models, tokens, costs, OpenRouter, France"
     },
     {
       "id": "emploi-jeunes",
       "titre": "IA générative : un gel des embauches de jeunes dans les métiers exposés",
+      "titre_en": "Generative AI: a freeze on youth hiring in exposed occupations",
       "type": "pb",
       "type_label": "Note de politique",
       "date": "Octobre 2026",
@@ -82,6 +89,7 @@
         "Marché du travail"
       ],
       "resume": "Depuis novembre 2022, les embauches en CDI des 21-29 ans ont reculé de 28,3 % dans les métiers les plus exposés à l’IA générative, contre 7,5 % dans les moins exposés. Les fins de contrat reculent aussi, mais moins que les embauches : le renouvellement des salariés ralentit et le marché se fige pour les jeunes des métiers exposés. L’écart diminue avec l’âge, de plus de 20 points chez les 21-29 ans à moins de 4 points après 50 ans, et il persiste lorsque l’on ajoute les CDD aux CDI. Il ne tient pas aux seuls développeurs, dont les embauches de jeunes en CDI baissent de 42 % : sans eux, l’écart reste de 17 points. Les entreprises qui déclarent un usage intensif de l’IA recrutent relativement moins de jeunes, sans que leur effectif total s’écarte nettement de celui des autres. L’analyse porte sur les mouvements de main-d’œuvre de janvier 2019 à mars 2026, appariés à l’enquête de conjoncture de la Banque de France, avec qui ce travail a été mené. La méthode et l’ensemble des résultats sont détaillés dans le LIFT Working Paper 2026-02.",
+      "resume_en": "Since November 2022, hires of 21-29-year-olds on open-ended contracts have fallen by 28.3% in the occupations most exposed to generative AI, compared with 7.5% in the least exposed. Separations are also falling, but less than hires: worker turnover is slowing and the market is freezing for young people in exposed occupations. The gap narrows with age, from more than 20 percentage points among 21-29-year-olds to less than 4 points after age 50, and it persists when fixed-term contracts are added to open-ended ones. It is not driven by developers alone, whose hires of young people on open-ended contracts fall by 42%: without them, the gap remains 17 points. Firms that report intensive use of AI hire relatively fewer young people, while their total headcount does not clearly diverge from that of other firms. The analysis covers labor turnover data from January 2019 to March 2026, matched with the Banque de France business survey, with which this work was carried out. The method and the full set of results are detailed in LIFT Working Paper 2026-02.",
       "thumb": "images/pubs/emploi-jeunes.png",
       "pdf": "files/papers/LIFT_PolicyPaper_2026-02.pdf",
       "auteurs_liens": [
@@ -105,11 +113,13 @@
           "membre": "mpalladino"
         }
       ],
-      "mots_cles_affiches": "IA générative, emploi des jeunes, embauches, mouvements de main-d’œuvre, France"
+      "mots_cles_affiches": "IA générative, emploi des jeunes, embauches, mouvements de main-d’œuvre, France",
+      "mots_cles_affiches_en": "Generative AI, youth employment, hiring, labor turnover data, France"
     },
     {
       "id": "exposition-ia-emploi",
       "titre": "Exposition des métiers à l’IA générative, adoption par les entreprises et dynamiques du marché du travail en France",
+      "titre_en": "Occupational exposure to generative AI, firm adoption and labor market dynamics in France",
       "type": "wp",
       "type_label": "Working Paper",
       "date": "Octobre 2026",
@@ -128,6 +138,7 @@
         "Marché du travail"
       ],
       "resume": "Ce document étudie comment l’emploi en France évolue en fonction de l’exposition des métiers à l’intelligence artificielle générative et de l’âge des salariés. Nous construisons un nouvel indice qui classe les métiers des moins exposés aux plus exposés, puis nous mobilisons des données administratives exhaustives sur les embauches et les fins de contrat entre janvier 2019 et mars 2026. Depuis novembre 2022, mois du lancement public de ChatGPT, aussi bien les embauches que les fins de contrat en CDI reculent davantage dans les métiers les plus exposés, en particulier chez les jeunes. Ces évolutions dessinent une forme de gel des mouvements de main-d’œuvre pour les nouveaux entrants au sein des métiers exposés, avec moins d’entrées et moins de sorties. Ce résultat se retrouve parmi les entreprises qui déclarent utiliser intensivement l’IA : leurs recrutements de jeunes en CDI diminuent relativement à ceux des autres entreprises, sans divergence nette de l’évolution de leur emploi total par rapport aux autres entreprises. Les principaux résultats sont présentés sous une forme courte dans le LIFT Policy Paper 2026-02.",
+      "resume_en": "This paper studies how employment in France evolves with occupations’ exposure to generative artificial intelligence and with workers’ age. We build a new index that ranks occupations from least to most exposed, then draw on comprehensive administrative data on hires and separations between January 2019 and March 2026. Since November 2022, the month of ChatGPT’s public launch, both hires and separations on open-ended contracts have fallen more in the most exposed occupations, especially among young people. These trends point to a kind of freeze in labor turnover for new entrants in exposed occupations, with fewer entries and fewer exits. The result also holds among firms that report intensive use of AI: their hiring of young people on open-ended contracts declines relative to other firms, with no clear divergence in the evolution of their total employment compared with other firms. The main results are presented in short form in LIFT Policy Paper 2026-02.",
       "thumb": "images/pubs/exposition-ia-emploi.png",
       "pdf": "files/papers/LIFT_WP_2026-02.pdf",
       "auteurs_liens": [
@@ -151,11 +162,13 @@
           "nom": "Oscar Degos"
         }
       ],
-      "mots_cles_affiches": "IA générative, exposition des métiers, adoption de l’IA, embauches, mouvements de main-d’œuvre, France"
+      "mots_cles_affiches": "IA générative, exposition des métiers, adoption de l’IA, embauches, mouvements de main-d’œuvre, France",
+      "mots_cles_affiches_en": "Generative AI, occupational exposure, AI adoption, hiring, labor turnover data, France"
     },
     {
       "id": "ia-productivite",
       "titre": "Pourquoi l’IA ne rend pas (encore) la France plus productive",
+      "titre_en": "Why AI is not (yet) making France more productive",
       "type": "pb",
       "type_label": "Note de politique",
       "date": "Septembre 2026",
@@ -170,6 +183,7 @@
         "Productivité"
       ],
       "resume": "La France consacre autant que les États-Unis à l’informatique (6,5 % du PIB en 2025, contre 6,8 %), mais sa productivité horaire stagne depuis 2015 : son retard tient au rendement de ces dépenses. En amont, elle se situe dans la moyenne européenne pour la recherche, les brevets et le capital, mais sa puissance de calcul par habitant est plus de 50 % inférieure à la moyenne européenne. Les Français utilisent l’IA générative à titre individuel au moins autant que les autres Européens, mais leurs entreprises l’intègrent moins : seules 18 % l’utilisent, contre 26 % en Allemagne, et l’intégration reste superficielle, concentrée sur le développement de produits plutôt que sur les fonctions transversales. Ce retard tient d’abord aux organisations : 69 % des actifs français ne reçoivent de leur employeur ni encouragement, ni outil, ni formation à l’IA, contre 44 % aux États-Unis.",
+      "resume_en": "France spends as much as the United States on information technology (6.5% of GDP in 2025, compared with 6.8%), but its hourly productivity has stagnated since 2015: its lag stems from the return on this spending. Upstream, it is at the European average for research, patents and capital, but its computing power per capita is more than 50% below the European average. The French use generative AI individually at least as much as other Europeans, but their firms integrate it less: only 18% use it, compared with 26% in Germany, and integration remains shallow, concentrated in product development rather than in cross-cutting functions. This lag is above all organizational: 69% of French workers receive neither encouragement, nor tools, nor training in AI from their employer, compared with 44% in the United States.",
       "thumb": "images/pubs/ia-productivite.png",
       "pdf": "files/papers/LIFT_PolicyPaper_2026-01.pdf",
       "auteurs_liens": [
@@ -182,11 +196,13 @@
           "nom": "Simon Bunel"
         }
       ],
-      "mots_cles_affiches": "IA, productivité, France, diffusion en entreprise"
+      "mots_cles_affiches": "IA, productivité, France, diffusion en entreprise",
+      "mots_cles_affiches_en": "AI, productivity, France, diffusion in firms"
     },
     {
       "id": "politique-travail",
       "titre": "La politique au travail : Vécu en entreprise et fractures politiques des salariés en France",
+      "titre_en": "Politics at work: workplace experience and political divides among employees in France",
       "type": "wp",
       "type_label": "Working Paper",
       "date": "Février 2026",
@@ -196,6 +212,7 @@
         "Camille Frouard"
       ],
       "venue": "LIFT Working Paper 2026-01 — Février 2026 (première diffusion : Policy Note HEC)",
+      "venue_en": "LIFT Working Paper 2026-01 — February 2026 (first released as an HEC Policy Note)",
       "tags": [
         "Démocratie",
         "Travail",
@@ -203,11 +220,15 @@
         "Politique"
       ],
       "resume": "À partir d’une enquête menée auprès de 3 900 salariés du privé en 2024-2025, cette note analyse comment le vécu quotidien en entreprise structure les fractures politiques en France. L’axe qui sépare les électorats au travail n’est ni le salaire, ni la catégorie socioprofessionnelle, mais la qualité du lien social vécu au quotidien dans l’entreprise. Le salarié proche du RN présente une forte confiance dans l’entreprise mais se défie de ses collègues et se trouve isolé socialement, tandis que le salarié LFI se méfie de la direction mais fait confiance à ses collègues. Un tiers des salariés, les plus isolés au travail, sont non-affiliés et ne votent pas : l’atonie professionnelle précède l’atonie civique.",
+      "resume_en": "Drawing on a survey of 3,900 private-sector employees in 2024-2025, this note analyzes how everyday experience at work shapes political divides in France. The axis that separates electorates at work is neither wages nor socio-occupational category, but the quality of the social ties experienced day to day in the firm. Employees close to the Rassemblement National (RN) show strong trust in their firm but distrust their colleagues and are socially isolated, while employees close to La France insoumise (LFI) distrust management but trust their colleagues. One third of employees, the most isolated at work, are unaffiliated and do not vote: disengagement at work precedes civic disengagement.",
       "thumb": "images/pubs/politique-travail.png",
       "pdf": "files/papers/politique-travail.pdf",
       "mots_cles": "démocratie, travail, fractures politiques, confiance sociale, RN, LFI",
+      "mots_cles_en": "democracy, work, political divides, social trust, RN, LFI",
       "date_longue": "1 février 2026",
+      "date_longue_en": "February 1, 2026",
       "resume_long": "À partir d’une enquête menée auprès de 3 900 salariés du privé en 2024-2025, cette note analyse comment le vécu quotidien en entreprise structure les fractures politiques en France. L’axe qui sépare les électorats au travail n’est ni le salaire, ni la catégorie socioprofessionnelle, mais la qualité du lien social vécu au quotidien dans l’entreprise. Le salarié proche du RN présente une forte confiance dans l’entreprise mais se défie de ses collègues et se trouve isolé socialement, tandis que le salarié LFI se méfie de la direction mais fait confiance à ses collègues. Un tiers des salariés, les plus isolés au travail, sont non-affiliés et ne votent pas : l’atonie professionnelle précède l’atonie civique.",
+      "resume_long_en": "Drawing on a survey of 3,900 private-sector employees in 2024-2025, this note analyzes how everyday experience at work shapes political divides in France. The axis that separates electorates at work is neither wages nor socio-occupational category, but the quality of the social ties experienced day to day in the firm. Employees close to the Rassemblement National (RN) show strong trust in their firm but distrust their colleagues and are socially isolated, while employees close to La France insoumise (LFI) distrust management but trust their colleagues. One third of employees, the most isolated at work, are unaffiliated and do not vote: disengagement at work precedes civic disengagement.",
       "auteurs_liens": [
         {
           "membre": "yalgan",
@@ -221,11 +242,13 @@
           "nom": "Camille Frouard"
         }
       ],
-      "mots_cles_affiches": "Démocratie, travail, fractures politiques, confiance sociale"
+      "mots_cles_affiches": "Démocratie, travail, fractures politiques, confiance sociale",
+      "mots_cles_affiches_en": "Democracy, work, political divides, social trust"
     },
     {
       "id": "flexicurity",
       "titre": "Cost of Failure, Disruptive Innovation and Targeted Flexicurity",
+      "titre_en": "Cost of Failure, Disruptive Innovation and Targeted Flexicurity",
       "type": "wp",
       "type_label": "Working Paper",
       "date": "Octobre 2025",
@@ -240,11 +263,15 @@
         "Marché du travail"
       ],
       "resume": "Ce papier élargit des travaux antérieurs en assemblant un échantillon plus large de plans de restructuration (250 plans) pour mesurer les coûts de restructuration supportés par les grandes entreprises et évaluer leurs liens avec la R&D dans les secteurs disruptifs (tech/biotech). Les auteurs confirment un large fossé transatlantique — l’Allemagne à 31 mois de salaire moyen contre 7 mois aux États-Unis — et identifient des pays européens à faibles coûts (Danemark, Suisse). Ils montrent une forte corrélation négative entre les coûts de restructuration et l’intensité de la R&D dans la tech et la biotech, et concluent avec des recommandations pour des réformes ciblées du droit du travail préservant la protection sociale tout en restaurant l’agilité nécessaire à l’innovation disruptive.",
+      "resume_en": "This paper expands earlier work by assembling a larger sample of restructuring plans (250 plans) to measure the restructuring costs borne by large firms and to assess their links with business R&D in disruptive sectors (tech/biotech). The authors confirm a wide transatlantic gap, with Germany at 31 months of average salary versus 7 months in the United States, and identify low-cost outliers within Europe (Denmark, Switzerland). They show a strong negative correlation between restructuring costs and R&D intensity in tech and biotech, and conclude with recommendations for targeted reforms of employment protection laws that preserve social protection while restoring the agility critical for disruptive innovation.",
       "thumb": "images/pubs/flexicurity.png",
       "pdf": "files/papers/flexicurity.pdf",
       "mots_cles": "flexicurity, EPL, coût de l’échec, innovation disruptive, R&amp;D, biotech",
+      "mots_cles_en": "flexicurity, EPL, cost of failure, disruptive innovation, R&amp;D, biotech",
       "date_longue": "1 octobre 2025",
+      "date_longue_en": "October 1, 2025",
       "resume_long": "Ce papier élargit des travaux antérieurs en assemblant un échantillon plus large de plans de restructuration (250 plans) pour mesurer les coûts de restructuration supportés par les grandes entreprises et évaluer leurs liens avec la R&amp;D dans les secteurs disruptifs (tech/biotech). Les auteurs confirment un large fossé transatlantique — l’Allemagne à 31 mois de salaire moyen contre 7 mois aux États-Unis — et identifient des pays européens à faibles coûts (Danemark, Suisse). Ils montrent une forte corrélation négative entre les coûts de restructuration et l’intensité de la R&amp;D dans la tech et la biotech, et concluent avec des recommandations pour des réformes ciblées du droit du travail préservant la protection sociale tout en restaurant l’agilité nécessaire à l’innovation disruptive.",
+      "resume_long_en": "This paper expands earlier work by assembling a larger sample of restructuring plans (250 plans) to measure the restructuring costs borne by large firms and to assess their links with business R&amp;D in disruptive sectors (tech/biotech). The authors confirm a wide transatlantic gap, with Germany at 31 months of average salary versus 7 months in the United States, and identify low-cost outliers within Europe (Denmark, Switzerland). They show a strong negative correlation between restructuring costs and R&amp;D intensity in tech and biotech, and conclude with recommendations for targeted reforms of employment protection laws that preserve social protection while restoring the agility critical for disruptive innovation.",
       "auteurs_liens": [
         {
           "nom": "Yann Coatanlem"
@@ -254,13 +281,19 @@
         }
       ],
       "tag_hero": "Working Paper · Octobre 2025",
+      "tag_hero_en": "Working Paper · October 2025",
       "mots_cles_affiches": "Flexicurity, EPL, innovation disruptive, R&amp;D, biotech",
+      "mots_cles_affiches_en": "Flexicurity, EPL, disruptive innovation, R&amp;D, biotech",
       "resume_hero": "Ce papier élargit des travaux antérieurs en assemblant un échantillon plus large de plans de restructuration (250 plans) pour mesurer les coûts de restructuration supportés par les grandes entreprises et évaluer leurs liens avec la R&amp;D dans les secteurs disruptifs (tech/biotech). Les auteurs confirment un large fossé transatlantique — l’Allemagne à 31 mois de salaire moyen contre 7 mois aux États-Unis — et identifient des pays européens à faibles coûts (Danemark, Suisse). Ils montrent une forte corrélation négative entre les coûts de restructuration et l’intensité de la R&amp;D dans la tech et la biotech, et concluent avec des recommandations pour des réformes ciblées du droit du travail préservant la protection sociale tout en restaurant l’agilité nécessaire à l’innovation disruptive.",
-      "sous_titre": "LIFT Working Paper 2025-03 — Octobre 2025"
+      "resume_hero_en": "This paper expands earlier work by assembling a larger sample of restructuring plans (250 plans) to measure the restructuring costs borne by large firms and to assess their links with business R&amp;D in disruptive sectors (tech/biotech). The authors confirm a wide transatlantic gap, with Germany at 31 months of average salary versus 7 months in the United States, and identify low-cost outliers within Europe (Denmark, Switzerland). They show a strong negative correlation between restructuring costs and R&amp;D intensity in tech and biotech, and conclude with recommendations for targeted reforms of employment protection laws that preserve social protection while restoring the agility critical for disruptive innovation.",
+      "sous_titre": "LIFT Working Paper 2025-03 — Octobre 2025",
+      "sous_titre_en": "LIFT Working Paper 2025-03 — October 2025",
+      "langue": "en"
     },
     {
       "id": "ai-innov",
       "titre": "L’intelligence artificielle au service de l’innovation : une analyse sur données de brevets",
+      "titre_en": "Artificial intelligence in the service of innovation: an analysis of patent data",
       "type": "wp",
       "type_label": "Working Paper",
       "date": "Juillet 2025",
@@ -273,12 +306,17 @@
         "Innovation"
       ],
       "resume": "L’impact des technologies d’intelligence artificielle (IA) sur la croissance économique dépend en grande partie de leur capacité à accroître la productivité de la recherche. Dans cet article, nous proposons une mesure originale de la diffusion de l’IA à travers les technologies, fondée sur les brevets déposés aux États-Unis depuis 1990. Notre méthodologie identifie les brevets intégrant de l’IA via leurs références à des publications académiques classées comme relevant de l’IA. En décembre 2024, environ 5% des brevets déposés peuvent ainsi être caractérisés comme utilisant l’IA. Cette approche permet de capturer l’intégration de l’IA dans d’autres domaines technologiques, en cohérence avec sa nature de technologie générique. Nous montrons que ces brevets « IA » présentent systématiquement des indicateurs de qualité supérieurs à ceux des autres brevets, selon plusieurs métriques standards.",
+      "resume_en": "The impact of artificial intelligence (AI) technologies on economic growth depends largely on their ability to increase research productivity. In this article, we propose an original measure of the diffusion of AI across technologies, based on patents filed in the United States since 1990. Our methodology identifies patents that incorporate AI through their references to academic publications classified as AI. As of December 2024, about 5% of patents filed can thus be characterized as using AI. This approach captures the integration of AI into other technological fields, consistent with its nature as a general-purpose technology. We show that these “AI” patents systematically display higher quality indicators than other patents, according to several standard metrics.",
       "thumb": "images/pubs/ai-innov.png",
       "pdf": "files/papers/ai-innov.pdf",
       "mots_cles": "Innovation, IA, R&amp;D, brevets",
+      "mots_cles_en": "Innovation, AI, R&amp;D, patents",
       "sous_titre": "LIFT Working Paper 2025-02 — Juillet 2025",
+      "sous_titre_en": "LIFT Working Paper 2025-02 — July 2025",
       "date_longue": "20 juillet 2025",
+      "date_longue_en": "July 20, 2025",
       "resume_long": "L’impact des technologies d’intelligence artificielle (IA) sur la croissance économique dépend en grande partie de leur capacité à accroître la productivité de la recherche. Dans cet article, nous proposons une mesure originale de la diffusion de l’IA à travers les technologies, fondée sur les brevets déposés aux États-Unis depuis 1990. Notre méthodologie identifie les brevets intégrant de l’IA via leurs références à des publications académiques classées comme relevant de l’IA. En décembre 2024, environ 5% des brevets déposés peuvent ainsi être caractérisés comme utilisant l’IA. Cette approche permet de capturer l’intégration de l’IA dans dautres domaines technologiques, en cohérence avec sa nature de technologie générique (general purpose technology). Nous montrons que ces brevets « IA » présentent systématiquement des indicateurs de qualité supérieurs à ceux des autres brevets, selon plusieurs métriques standards de la littérature.",
+      "resume_long_en": "The impact of artificial intelligence (AI) technologies on economic growth depends largely on their ability to increase research productivity. In this article, we propose an original measure of the diffusion of AI across technologies, based on patents filed in the United States since 1990. Our methodology identifies patents that incorporate AI through their references to academic publications classified as AI. As of December 2024, about 5% of patents filed can thus be characterized as using AI. This approach captures the integration of AI into other technological fields, consistent with its nature as a general-purpose technology. We show that these “AI” patents systematically display higher quality indicators than other patents, according to several standard metrics in the literature.",
       "auteurs_liens": [
         {
           "membre": "abergeaud",
@@ -286,12 +324,16 @@
         }
       ],
       "tag_hero": "Working Paper · Juillet 2025",
+      "tag_hero_en": "Working Paper · July 2025",
       "mots_cles_affiches": "Innovation, IA, R&amp;D, brevets",
-      "resume_hero": "L’impact des technologies d’intelligence artificielle (IA) sur la croissance économique dépend en grande partie de leur capacité à accroître la productivité de la recherche. Dans cet article, nous proposons une mesure originale de la diffusion de l’IA à travers les technologies, fondée sur les brevets déposés aux États-Unis depuis 1990. Notre méthodologie identifie les brevets intégrant de l’IA via leurs références à des publications académiques classées comme relevant de l’IA. En décembre 2024, environ 5% des brevets déposés peuvent ainsi être caractérisés comme utilisant l’IA. Cette approche permet de capturer l’intégration de l’IA dans d’autres domaines technologiques, en cohérence avec sa nature de technologie générique. Nous montrons que ces brevets « IA » présentent systématiquement des indicateurs de qualité supérieurs à ceux des autres brevets, selon plusieurs métriques standards de la littérature."
+      "mots_cles_affiches_en": "Innovation, AI, R&amp;D, patents",
+      "resume_hero": "L’impact des technologies d’intelligence artificielle (IA) sur la croissance économique dépend en grande partie de leur capacité à accroître la productivité de la recherche. Dans cet article, nous proposons une mesure originale de la diffusion de l’IA à travers les technologies, fondée sur les brevets déposés aux États-Unis depuis 1990. Notre méthodologie identifie les brevets intégrant de l’IA via leurs références à des publications académiques classées comme relevant de l’IA. En décembre 2024, environ 5% des brevets déposés peuvent ainsi être caractérisés comme utilisant l’IA. Cette approche permet de capturer l’intégration de l’IA dans d’autres domaines technologiques, en cohérence avec sa nature de technologie générique. Nous montrons que ces brevets « IA » présentent systématiquement des indicateurs de qualité supérieurs à ceux des autres brevets, selon plusieurs métriques standards de la littérature.",
+      "resume_hero_en": "The impact of artificial intelligence (AI) technologies on economic growth depends largely on their ability to increase research productivity. In this article, we propose an original measure of the diffusion of AI across technologies, based on patents filed in the United States since 1990. Our methodology identifies patents that incorporate AI through their references to academic publications classified as AI. As of December 2024, about 5% of patents filed can thus be characterized as using AI. This approach captures the integration of AI into other technological fields, consistent with its nature as a general-purpose technology. We show that these “AI” patents systematically display higher quality indicators than other patents, according to several standard metrics in the literature."
     },
     {
       "id": "ai-tracker",
       "titre": "Diffusion de l’Intelligence Artificielle en France",
+      "titre_en": "The diffusion of artificial intelligence in France",
       "type": "wp",
       "type_label": "Working Paper",
       "date": "Juillet 2025",
@@ -309,12 +351,17 @@
         "Emploi"
       ],
       "resume": "À partir de plus de 120 millions d’offres d’emploi publiées en ligne en France depuis 2019, cette étude examine les caractéristiques de la diffusion de l’intelligence artificielle (IA) dans les entreprises et ses effets sur l’emploi. La diffusion de l’IA se révèle très hétérogène : elle est particulièrement avancée dans certains secteurs (informatique, finance, conseil) et au sein de grandes entreprises pionnières. Nous montrons que les entreprises les plus exposées à l’IA ont été significativement plus enclines à recruter des spécialistes de l’IA dès l’apparition de ChatGPT. En parallèle, on observe une baisse relative de la création d’emplois dans les professions les plus exposées à l’IA, mais une hausse de la productivité du travail dans les entreprises concernées.",
+      "resume_en": "Using more than 120 million job postings published online in France since 2019, this study examines the characteristics of the diffusion of artificial intelligence (AI) in firms and its effects on employment. AI diffusion turns out to be highly heterogeneous: it is particularly advanced in certain sectors (IT, finance, consulting) and within large pioneering firms. We show that the firms most exposed to AI were significantly more inclined to hire AI specialists as soon as ChatGPT appeared. At the same time, we observe a relative decline in job creation in the occupations most exposed to AI, but an increase in labor productivity in the firms concerned.",
       "thumb": "images/pubs/ai-tracker.png",
       "pdf": "files/papers/ai-tracker.pdf",
       "mots_cles": "Diffusion, IA et emploi, France, NLP",
+      "mots_cles_en": "Diffusion, AI and employment, France, NLP",
       "sous_titre": "LIFT Working Paper 2025-01 — Juillet 2025",
+      "sous_titre_en": "LIFT Working Paper 2025-01 — July 2025",
       "date_longue": "10 juillet 2025",
+      "date_longue_en": "July 10, 2025",
       "resume_long": "À partir de plus de 120 millions d’offres d’emploi publiées en ligne en France depuis 2019, cette étude examine les caractéristiques de la diffusion de l’intelligence artificielle (IA) dans les entreprises et ses effets sur l’emploi. La diffusion de l’IA se révèle très hétérogène : elle est particulièrement avancée dans certains secteurs (informatique, finance, conseil) et au sein de grandes entreprises pionnières. Cette hétérogénéité s’observe aussi à l’échelle territoriale, les offres d’emploi en IA étant fortement concentrées dans les zones d’emploi accueillant des clusters de recherche ou des pôles industriels spécialisés (semi-conducteurs, assurances, aéronautique, etc.). Nous montrons que les entreprises les plus exposées à l’IA ont été significativement plus enclines à recruter des spécialistes de l’IA dès l’apparition de ChatGPT. En parallèle, on observe une baisse relative de la création d’emplois dans les professions les plus exposées à l’IA. Toutefois, les recrutements dans les métiers de l’IA s’accompagnent d’une hausse de la productivité du travail et du chiffre d’affaires, concomitante avec une hausse de l’emploi total dans les entreprises concernées, tirée par les professions fortement exposées, au détriment de celles qui le sont moins.",
+      "resume_long_en": "Using more than 120 million job postings published online in France since 2019, this study examines the characteristics of the diffusion of artificial intelligence (AI) in firms and its effects on employment. AI diffusion turns out to be highly heterogeneous: it is particularly advanced in certain sectors (IT, finance, consulting) and within large pioneering firms. This heterogeneity is also visible geographically, with AI job postings highly concentrated in employment zones that host research clusters or specialized industrial hubs (semiconductors, insurance, aeronautics, etc.). We show that the firms most exposed to AI were significantly more inclined to hire AI specialists as soon as ChatGPT appeared. At the same time, we observe a relative decline in job creation in the occupations most exposed to AI. However, hiring in AI occupations goes hand in hand with an increase in labor productivity and revenue, together with an increase in total employment in the firms concerned, driven by highly exposed occupations at the expense of less exposed ones.",
       "auteurs_liens": [
         {
           "membre": "paghion",
@@ -334,12 +381,16 @@
         }
       ],
       "tag_hero": "Working Paper · Juillet 2025",
+      "tag_hero_en": "Working Paper · July 2025",
       "mots_cles_affiches": "Diffusion, IA et emploi, France, NLP",
-      "resume_hero": "À partir de plus de 120 millions d’offres d’emploi publiées en ligne en France depuis 2019, cette étude examine les caractéristiques de la diffusion de l’intelligence artificielle (IA) dans les entreprises et ses effets sur l’emploi. La diffusion de l’IA se révèle très hétérogène : elle est particulièrement avancée dans certains secteurs (informatique, finance, conseil) et au sein de grandes entreprises pionnières. Cette hétérogénéité s’observe aussi à l’échelle territoriale, les offres d’emploi en IA étant fortement concentrées dans les zones d’emploi accueillant des clusters de recherche ou des pôles industriels spécialisés. Nous montrons que les entreprises les plus exposées à l’IA ont été significativement plus enclines à recruter des spécialistes de l’IA dès l’apparition de ChatGPT. En parallèle, on observe une baisse relative de la création d’emplois dans les professions les plus exposées à l’IA."
+      "mots_cles_affiches_en": "Diffusion, AI and employment, France, NLP",
+      "resume_hero": "À partir de plus de 120 millions d’offres d’emploi publiées en ligne en France depuis 2019, cette étude examine les caractéristiques de la diffusion de l’intelligence artificielle (IA) dans les entreprises et ses effets sur l’emploi. La diffusion de l’IA se révèle très hétérogène : elle est particulièrement avancée dans certains secteurs (informatique, finance, conseil) et au sein de grandes entreprises pionnières. Cette hétérogénéité s’observe aussi à l’échelle territoriale, les offres d’emploi en IA étant fortement concentrées dans les zones d’emploi accueillant des clusters de recherche ou des pôles industriels spécialisés. Nous montrons que les entreprises les plus exposées à l’IA ont été significativement plus enclines à recruter des spécialistes de l’IA dès l’apparition de ChatGPT. En parallèle, on observe une baisse relative de la création d’emplois dans les professions les plus exposées à l’IA.",
+      "resume_hero_en": "Using more than 120 million job postings published online in France since 2019, this study examines the characteristics of the diffusion of artificial intelligence (AI) in firms and its effects on employment. AI diffusion turns out to be highly heterogeneous: it is particularly advanced in certain sectors (IT, finance, consulting) and within large pioneering firms. This heterogeneity is also visible geographically, with AI job postings highly concentrated in employment zones that host research clusters or specialized industrial hubs. We show that the firms most exposed to AI were significantly more inclined to hire AI specialists as soon as ChatGPT appeared. At the same time, we observe a relative decline in job creation in the occupations most exposed to AI."
     },
     {
       "id": "ai-exposure",
       "titre": "Exposition à l’intelligence artificielle générative et emploi : une application à la classification socio-professionnelle française",
+      "titre_en": "Exposure to generative artificial intelligence and employment: an application to the French socio-occupational classification",
       "type": "wp",
       "type_label": "Working Paper",
       "date": "Janvier 2024",
@@ -353,12 +404,17 @@
         "Emploi"
       ],
       "resume": "Ce document analyse l’exposition des professions françaises à l’intelligence artificielle générative à travers la nomenclature socio-professionnelle. En mobilisant les données O*NET et un protocole d’évaluation par GPT-4, il propose deux indices : substituabilité et complémentarité. Les résultats mettent en évidence une forte hétérogénéité entre métiers, avec une exposition accrue pour les professions les plus qualifiées. Cette approche permet de mieux cerner risques d’automatisation et opportunités de complémentarité, et souligne la nécessité d’intégrer coûts d’adoption et transformations endogènes pour anticiper les impacts sur l’emploi.",
+      "resume_en": "This paper analyzes the exposure of French occupations to generative artificial intelligence through the socio-occupational classification. Drawing on O*NET data and a GPT-4 assessment protocol, it proposes two indices: substitutability and complementarity. The results reveal strong heterogeneity across occupations, with higher exposure for the most skilled occupations. This approach helps to better identify automation risks and complementarity opportunities, and underscores the need to account for adoption costs and endogenous transformations to anticipate impacts on employment.",
       "thumb": "images/pubs/ai-exposure.png",
       "pdf": "files/papers/ai-exposure.pdf",
       "mots_cles": "Exposition, IA et emploi, France",
+      "mots_cles_en": "Exposure, AI and employment, France",
       "sous_titre": "LIFT Working Paper 2024-01 — Janvier 2024",
+      "sous_titre_en": "LIFT Working Paper 2024-01 — January 2024",
       "date_longue": "1 janvier 2024",
+      "date_longue_en": "January 1, 2024",
       "resume_long": "Ce document analyse l’exposition des professions françaises à l’intelligence artificielle générative à travers la nomenclature socio-professionnelle. En mobilisant les données O*NET et un protocole d’évaluation par GPT-4, il propose deux indices : substituabilité et complémentarité. Les résultats mettent en évidence une forte hétérogénéité entre métiers, avec une exposition accrue pour les professions les plus qualifiées. Cette approche permet de mieux cerner risques d’automatisation et opportunités de complémentarité, et souligne la nécessité d’intégrer coûts d’adoption et transformations endogènes pour anticiper les impacts sur l’emploi.",
+      "resume_long_en": "This paper analyzes the exposure of French occupations to generative artificial intelligence through the socio-occupational classification. Drawing on O*NET data and a GPT-4 assessment protocol, it proposes two indices: substitutability and complementarity. The results reveal strong heterogeneity across occupations, with higher exposure for the most skilled occupations. This approach helps to better identify automation risks and complementarity opportunities, and underscores the need to account for adoption costs and endogenous transformations to anticipate impacts on employment.",
       "auteurs_liens": [
         {
           "membre": "abergeaud",
@@ -366,7 +422,9 @@
         }
       ],
       "tag_hero": "Working Paper · Janvier 2024",
-      "mots_cles_affiches": "Exposition, IA et emploi, France"
+      "tag_hero_en": "Working Paper · January 2024",
+      "mots_cles_affiches": "Exposition, IA et emploi, France",
+      "mots_cles_affiches_en": "Exposure, AI and employment, France"
     }
   ]
 }

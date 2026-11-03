@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-
+{{head_meta}}
 <title>{{titre}} – {{t:nom_long}}</title>
 <style>
 /* Default styles provided by pandoc.
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+{{head_pandoc}}</style>
 
 
 <script src="{{H}}site_libs/quarto-nav/quarto-nav.js"></script>
@@ -33,7 +33,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="{{H}}site_libs/quarto-search/fuse.min.js"></script>
 <script src="{{H}}site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="{{P}}">
-<script src="{{H}}site_libs/quarto-html/quarto.js" type="module"></script>
+{{head_scripts}}<script src="{{H}}site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="{{H}}site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="{{H}}site_libs/quarto-html/popper.min.js"></script>
 <script src="{{H}}site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -70,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "{{t:recherche.label}}"
   }
 }</script>
-{{head_page}}<link rel="preconnect" href="https://fonts.googleapis.com">
+{{head_listing}}{{head_page}}<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@300;400;500&amp;family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,400&amp;display=swap" rel="stylesheet">
 
@@ -125,9 +125,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
-
+{{head_fin}}
 {{meta_langues}}<link rel="stylesheet" href="{{H}}styles.css">
-<!-- Mesure d'audience sans cookies (GoatCounter) : ne pas retirer, voir AGENTS.md -->
+{{head_apres_css}}<!-- Mesure d'audience sans cookies (GoatCounter) : ne pas retirer, voir AGENTS.md -->
 <script data-goatcounter="https://heclift.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 </head>
@@ -220,9 +220,9 @@ document.addEventListener('DOMContentLoaded', () => {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    {{marge}}
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content {{classe_main}}" id="quarto-document-content">
 {{main}}
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -639,12 +639,12 @@ document.addEventListener('DOMContentLoaded', () => {
 </a>
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="{{P}}ai-trackers.html">
+    <a class="nav-link{{actif:ai_trackers}}" href="{{P}}ai-trackers.html"{{courant:ai_trackers}}>
 <p>{{t:pied.trackers}}</p>
 </a>
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="{{P}}innovation-data.html">
+    <a class="nav-link{{actif:innovation_data}}" href="{{P}}innovation-data.html"{{courant:innovation_data}}>
 <p>{{t:pied.donnees}}</p>
 </a>
   </li>  
@@ -654,7 +654,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </a>
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="{{P}}a-propos.html">
+    <a class="nav-link{{actif:a_propos}}" href="{{P}}a-propos.html"{{courant:a_propos}}>
 <p>{{t:pied.a_propos}}</p>
 </a>
   </li>  

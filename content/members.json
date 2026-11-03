@@ -15,7 +15,9 @@
       "role": "Codirecteur",
       "photo": "images/membres/antonin.jpg",
       "bio": "Antonin Bergeaud est professeur associé au département d'Économie de HEC Paris et chercheur affilié au Centre for Economic Performance de la LSE, au CEPR et à l'Innovation Lab du Collège de France. Ses recherches portent sur la croissance de long terme, la dynamique de la productivité et le rôle de l'innovation dans la diffusion des connaissances. Lauréat du Prix du Meilleur Jeune Économiste 2025 (Le Monde / Cercle des Économistes).",
+      "bio_en": "Antonin Bergeaud is an associate professor in the Economics Department of HEC Paris and a research affiliate of the LSE’s Centre for Economic Performance, the CEPR and the Collège de France’s Innovation Lab. His research focuses on long-run growth, productivity dynamics and the role of innovation in the diffusion of knowledge. He received the 2025 Best Young Economist Prize (Le Monde / Cercle des économistes).",
       "bio_courte": "Professeur associé à HEC Paris, chercheur affilié au CEP/LSE, CEPR et Innovation Lab du Collège de France. Ses recherches portent sur la croissance, la productivité et l'innovation.",
+      "bio_courte_en": "Associate professor at HEC Paris, research affiliate of the CEP/LSE, the CEPR and the Collège de France’s Innovation Lab. His research focuses on growth, productivity and innovation.",
       "page_perso": "https://sites.google.com/site/abergeaudeco/home",
       "email": "bergeaud@hec.fr",
       "x": "https://x.com/a_bergeaud",
@@ -28,7 +30,9 @@
       "role": "Codirecteur",
       "photo": "images/membres/yalgan.jpg",
       "bio": "Yann Algan est le Doyen associé des Programmes Pré-Expérience et professeur d'économie à HEC, membre du Conseil d'Analyse Économique.",
+      "bio_en": "Yann Algan is Associate Dean of Pre-Experience Programs and professor of economics at HEC, and a member of the Conseil d’analyse économique (French Council of Economic Analysis).",
       "bio_courte": "Doyen associé des Programmes Pré-Expérience et professeur d'économie à HEC Paris. Ses recherches portent sur la confiance, le bien-être dans les organisations et l'évaluation des politiques publiques.",
+      "bio_courte_en": "Associate Dean of Pre-Experience Programs and professor of economics at HEC Paris. His research focuses on trust, well-being in organizations and the evaluation of public policy.",
       "page_perso": "https://www.yann-algan.com/",
       "email": "algan@hec.fr"
     },
@@ -39,7 +43,9 @@
       "role": "Membre permanent",
       "photo": "images/membres/cmazet.jpg",
       "bio": "Clément Mazet-Sonilhac est professeur assistant à l’Université Bocconi et chercheur associé à l’Economics of Innovation Lab du Collège de France et à l’IGIER. Il rejoindra le département d’économie d’HEC Paris comme professeur assistant le 1er janvier 2027. Auparavant économiste-chercheur à la Banque de France, il a obtenu son doctorat en économie à Sciences Po Paris en 2022. Ses recherches portent sur le changement technologique et l’intermédiation financière : il combine économétrie appliquée, modélisation structurelle et apprentissage automatique pour étudier l’innovation, le changement climatique et la réduction de la pauvreté. Ses travaux ont été publiés dans l’<em>American Economic Review</em>, le <em>Journal of International Economics</em> et le <em>Journal of Labor Economics</em>.",
+      "bio_en": "Clément Mazet-Sonilhac is an assistant professor at Bocconi University and a research associate at the Collège de France’s Economics of Innovation Lab and at IGIER. He will join the Economics Department of HEC Paris as an assistant professor on January 1, 2027. Previously a research economist at the Banque de France, he received his PhD in economics from Sciences Po Paris in 2022. His research focuses on technological change and financial intermediation: he combines applied econometrics, structural modeling and machine learning to study innovation, climate change and poverty reduction. His work has been published in the <em>American Economic Review</em>, the <em>Journal of International Economics</em> and the <em>Journal of Labor Economics</em>.",
       "bio_courte": "Professeur assistant à l’Université Bocconi, il rejoindra HEC Paris le 1er janvier 2027. Ses recherches portent sur le changement technologique et l’intermédiation financière.",
+      "bio_courte_en": "Assistant professor at Bocconi University, he will join HEC Paris on January 1, 2027. His research focuses on technological change and financial intermediation.",
       "page_perso": "https://cms27.github.io/"
     },
     {
@@ -49,7 +55,9 @@
       "role": "Fellow",
       "photo": "images/membres/sbunel.jpg",
       "bio": "Simon Bunel est administrateur de l'INSEE, chercheur postdoctoral au INSEAD Stone Centre for the Study of Wealth Inequality et professeur adjoint à l'École Normale Supérieure. Chercheur associé au Farhi Economics of Innovation Lab du Collège de France, ses travaux portent sur l'évaluation des politiques publiques d'innovation, les effets du changement technologique sur l'emploi et les conséquences macroéconomiques de l'intelligence artificielle. Il est co-auteur de <em>Le Pouvoir de la destruction créatrice</em> (Odile Jacob, 2023) et a contribué au rapport de la Commission sur l'Intelligence Artificielle remis au Président de la République en 2024.",
+      "bio_en": "Simon Bunel is an administrator of INSEE (the French national statistics institute), a postdoctoral researcher at the INSEAD Stone Centre for the Study of Wealth Inequality and an adjunct professor at the École normale supérieure. A research associate at the Collège de France’s Farhi Economics of Innovation Lab, he works on the evaluation of public innovation policies, the effects of technological change on employment and the macroeconomic consequences of artificial intelligence. He is a co-author of <em>Le Pouvoir de la destruction créatrice</em> (Odile Jacob, 2023) and contributed to the report of the Artificial Intelligence Commission submitted to the President of the Republic in 2024.",
       "bio_courte": "Administrateur de l'INSEE, chercheur postdoctoral à l'INSEAD Stone Centre et professeur adjoint à l'ENS. Ses travaux portent sur les effets macroéconomiques de l'IA.",
+      "bio_courte_en": "Administrator of INSEE, postdoctoral researcher at the INSEAD Stone Centre and adjunct professor at the ENS. His work focuses on the macroeconomic effects of AI.",
       "page_perso": "https://sites.google.com/view/simon-bunel/home",
       "email": "simon.bunel@insead.edu"
     },
@@ -60,7 +68,9 @@
       "role": "Fellow",
       "photo": "images/membres/fcalvino.jpg",
       "bio": "Flavio Calvino est économiste senior à l'OCDE, où il dirige l'équipe « Entreprises, transformation numérique et diffusion des technologies ». Ses recherches analysent l'impact de l'innovation et des technologies numériques — dont l'IA — sur les dynamiques d'entreprises, l'emploi et la productivité.",
+      "bio_en": "Flavio Calvino is a senior economist at the OECD, where he leads the “Firms, digital transformation and technology diffusion” team. His research analyzes the impact of innovation and digital technologies, including AI, on firm dynamics, employment and productivity.",
       "bio_courte": "Économiste senior à l'OCDE. Ses recherches analysent l'impact du numérique et de l'IA sur les dynamiques d'entreprises et la productivité.",
+      "bio_courte_en": "Senior economist at the OECD. His research analyzes the impact of digital technologies and AI on firm dynamics and productivity.",
       "page_perso": "https://sites.google.com/view/flaviocalvino/",
       "email": "flaviocalvino@gmail.com"
     },
@@ -71,7 +81,9 @@
       "role": "Fellow",
       "photo": "images/membres/mpalladino.jpg",
       "bio": "Marco G. Palladino est économiste senior à la Banque de France et professeur adjoint à Sciences Po (École d'Affaires Publiques). Il est également chercheur affilié à l'IZA@LISER et membre du réseau LinkEED de l'OCDE. Ses recherches en économie du travail mobilisent des données administratives appariées employeurs-salariés, en France et à l'international, pour étudier le rôle des entreprises dans la formation des salaires, la protection de l'emploi et le recours aux contrats à durée déterminée. Il travaille également sur les effets de l'intelligence artificielle sur le marché du travail.",
+      "bio_en": "Marco G. Palladino is a senior economist at the Banque de France and an adjunct professor at Sciences Po (School of Public Affairs). He is also a research affiliate of IZA@LISER and a member of the OECD’s LinkEED network. His research in labor economics uses matched employer-employee administrative data, in France and internationally, to study the role of firms in wage setting, employment protection and the use of fixed-term contracts. He also works on the effects of artificial intelligence on the labor market.",
       "bio_courte": "Économiste senior à la Banque de France et professeur adjoint à Sciences Po. Ses recherches portent sur le rôle des entreprises dans la formation des salaires et sur les effets de l'IA sur le marché du travail.",
+      "bio_courte_en": "Senior economist at the Banque de France and adjunct professor at Sciences Po. His research focuses on the role of firms in wage setting and on the effects of AI on the labor market.",
       "page_perso": "https://marcoguidopalladino.com/",
       "email": "marcoguidopalladino@gmail.com",
       "linkedin": "https://www.linkedin.com/in/marco-g-palladino-687a80ab/"
@@ -83,7 +95,9 @@
       "role": "Chercheur associé",
       "photo": "images/membres/trenault.jpg",
       "bio": "Thomas Renault est professeur d'économie à l'Université Paris-Saclay. Sa recherche se situe à l'intersection de l'économie, de la finance et de l'analyse des données.",
+      "bio_en": "Thomas Renault is a professor of economics at Université Paris-Saclay. His research lies at the intersection of economics, finance and data analysis.",
       "bio_courte": "Professeur d'économie à l'Université Paris-Saclay. Sa recherche se situe à l'intersection de l'économie, de la finance et de la technologie, avec une utilisation des outils de machine learning et de l'analyse sémantique.",
+      "bio_courte_en": "Professor of economics at Université Paris-Saclay. His research lies at the intersection of economics, finance and technology, using machine learning and semantic analysis tools.",
       "page_perso": "https://www.thomas-renault.com/",
       "email": "info@thomas-renault.com"
     },
@@ -94,7 +108,9 @@
       "role": "Chercheur associé",
       "photo": "images/membres/ehazan.jpg",
       "bio": "Éric Hazan est entrepreneur, investisseur et enseignant à HEC Paris et Sciences Po, spécialiste des transformations économiques et sociales liées à l’intelligence artificielle. Après 17 ans chez McKinsey, il a cofondé Ardabelle Capital. Ses travaux explorent comment l’IA transforme les entreprises, le travail et la compétitivité européenne. Il est notamment co-auteur de <em>Faut-il encore décider ?</em>, consacré à la décision à l’ère de l’IA.",
+      "bio_en": "Éric Hazan is an entrepreneur, investor and lecturer at HEC Paris and Sciences Po, specializing in the economic and social transformations brought about by artificial intelligence. After 17 years at McKinsey, he co-founded Ardabelle Capital. His work explores how AI is transforming firms, work and European competitiveness. He is notably a co-author of <em>Faut-il encore décider ?</em>, on decision-making in the age of AI.",
       "bio_courte": "Entrepreneur, investisseur et enseignant à HEC Paris et Sciences Po. Ses travaux explorent comment l’IA transforme les entreprises, le travail et la compétitivité européenne.",
+      "bio_courte_en": "Entrepreneur, investor and lecturer at HEC Paris and Sciences Po. His work explores how AI is transforming firms, work and European competitiveness.",
       "email": "hazaneric@icloud.com",
       "x": "https://x.com/eric5555",
       "linkedin": "https://www.linkedin.com/in/hazaneric/"
@@ -106,7 +122,9 @@
       "role": "Chercheur associé",
       "photo": "images/membres/psaintamans.jpg",
       "bio": "Pascal Saint-Amans a dirigé de 2012 à 2022 le Centre de politique et d’administration fiscales de l’OCDE, où il a conduit les négociations internationales sur la fiscalité des multinationales, jusqu’à l’accord sur un impôt minimum mondial. Il enseigne à HEC Paris et à l’Université de Lausanne et est affilié à Bruegel.",
+      "bio_en": "From 2012 to 2022, Pascal Saint-Amans headed the OECD Centre for Tax Policy and Administration, where he led the international negotiations on the taxation of multinationals that resulted in the agreement on a global minimum tax. He teaches at HEC Paris and the University of Lausanne and is affiliated with Bruegel.",
       "bio_courte": "Ancien directeur du Centre de politique et d’administration fiscales de l’OCDE. Il enseigne à HEC Paris et à l’Université de Lausanne.",
+      "bio_courte_en": "Former director of the OECD Centre for Tax Policy and Administration. He teaches at HEC Paris and the University of Lausanne.",
       "linkedin": "https://www.linkedin.com/in/pascal-saint-amans/"
     },
     {
@@ -116,7 +134,9 @@
       "role": "Chercheur associé",
       "photo": "images/membres/adyevre.jpg",
       "bio": "Arnaud Dyèvre est professeur assistant d’économie à HEC Paris. Ses recherches portent sur la croissance, l’innovation et les différences de productivité entre entreprises, avec une attention particulière au rôle de la recherche publique dans la diffusion des connaissances. Il est titulaire d’un doctorat de la London School of Economics et a été chercheur postdoctoral au MIT.",
+      "bio_en": "Arnaud Dyèvre is an assistant professor of economics at HEC Paris. His research focuses on growth, innovation and productivity differences across firms, with particular attention to the role of public research in the diffusion of knowledge. He holds a PhD from the London School of Economics and was a postdoctoral researcher at MIT.",
       "bio_courte": "Professeur assistant d’économie à HEC Paris. Ses recherches portent sur la croissance, l’innovation et le rôle de la recherche publique dans la diffusion des connaissances.",
+      "bio_courte_en": "Assistant professor of economics at HEC Paris. His research focuses on growth, innovation and the role of public research in the diffusion of knowledge.",
       "page_perso": "https://www.arnauddyevre.com",
       "email": "dyevre@hec.fr",
       "x": "https://x.com/ArnaudDyevre",
@@ -129,7 +149,9 @@
       "role": "Doctorant",
       "photo": "images/membres/pdelbouve.jpg",
       "bio": "Paul Delbouve est doctorant en macroéconomie à la Paris School of Economics (EHESS) et chercheur au Ministère de l'Économie et des Finances. Ses recherches portent sur la diffusion de l'intelligence artificielle dans l'économie française, en exploitant des données d'offres d'emploi pour retracer l'adoption de l'IA à travers les entreprises, les secteurs et les professions.",
+      "bio_en": "Paul Delbouve is a PhD student in macroeconomics at the Paris School of Economics (EHESS) and a researcher at the French Ministry of the Economy and Finance. His research focuses on the diffusion of artificial intelligence in the French economy, using job posting data to trace AI adoption across firms, sectors and occupations.",
       "bio_courte": "Doctorant en macroéconomie à la PSE (EHESS) et chercheur au Ministère de l'Économie et des Finances. Il étudie la diffusion de l'IA dans l'économie française.",
+      "bio_courte_en": "PhD student in macroeconomics at PSE (EHESS) and researcher at the French Ministry of the Economy and Finance. He studies the diffusion of AI in the French economy.",
       "email": "paul.delbouve@finances.gouv.fr"
     },
     {
@@ -212,7 +234,9 @@
       "section": "Conseil scientifique",
       "role": "Conseil scientifique",
       "bio": "Philippe Aghion est professeur au Collège de France, où il est titulaire de la chaire Économie des institutions, de l’innovation et de la croissance, professeur à l’INSEAD et professeur invité à la London School of Economics. Ses recherches portent sur la croissance économique : avec Peter Howitt, il a développé le paradigme schumpétérien de la croissance, fondé sur l’innovation et la destruction créatrice. Il a reçu en 2025 le prix Nobel d’économie, avec Joel Mokyr et Peter Howitt, pour ses travaux sur l’impact des nouvelles technologies sur la croissance.",
+      "bio_en": "Philippe Aghion is a professor at the Collège de France, where he holds the chair in Economics of Institutions, Innovation and Growth, a professor at INSEAD and a visiting professor at the London School of Economics. His research focuses on economic growth: with Peter Howitt, he developed the Schumpeterian growth paradigm, based on innovation and creative destruction. In 2025 he received the Nobel Prize in Economics, with Joel Mokyr and Peter Howitt, for his work on the impact of new technologies on growth.",
       "bio_courte": "Professeur au Collège de France, à l’INSEAD et à la London School of Economics, prix Nobel d’économie 2025 pour ses travaux sur l’innovation et la croissance.",
+      "bio_courte_en": "Professor at the Collège de France, INSEAD and the London School of Economics, 2025 Nobel Prize in Economics for his work on innovation and growth.",
       "email": "philippe.aghion@insead.edu"
     },
     {
@@ -221,7 +245,9 @@
       "section": "Conseil scientifique",
       "role": "Conseil scientifique",
       "bio": "Christophe Pérignon est professeur de finance à HEC Paris, doyen associé à la recherche et directeur du laboratoire GREGHEC (CNRS-HEC). Il est codirecteur scientifique de Hi! PARIS et titulaire de la chaire Deloitte « AI for Business Innovation ». Ses recherches portent sur les applications et les implications de l’intelligence artificielle en finance. Il a cofondé cascad, agence qui certifie la reproductibilité des résultats scientifiques. Docteur du Swiss Finance Institute, il a enseigné à l’université Simon Fraser avant de rejoindre HEC Paris en 2007.",
+      "bio_en": "Christophe Pérignon is a professor of finance at HEC Paris, Associate Dean for Research and director of the GREGHEC laboratory (CNRS-HEC). He is co-scientific director of Hi! PARIS and holds the Deloitte “AI for Business Innovation” chair. His research focuses on the applications and implications of artificial intelligence in finance. He co-founded cascad, an agency that certifies the reproducibility of scientific results. He received his PhD from the Swiss Finance Institute and taught at Simon Fraser University before joining HEC Paris in 2007.",
       "bio_courte": "Professeur de finance et doyen associé à la recherche à HEC Paris. Ses recherches portent sur l’intelligence artificielle en finance.",
+      "bio_courte_en": "Professor of finance and Associate Dean for Research at HEC Paris. His research focuses on artificial intelligence in finance.",
       "page_perso": "https://www.hec.edu/fr/faculty-research/faculty-directory/faculty-member/perignon-christophe"
     }
   ]

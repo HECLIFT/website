@@ -1,0 +1,317 @@
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Diffusion de l’IA (science)</h1>
+<p class="subtitle lead">Adoption de l’IA dans les brevets européens et les publications scientifiques</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">IA</div>
+    <div class="quarto-category">Science</div>
+    <div class="quarto-category">Brevets</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Tracker mesurant la diffusion de l’intelligence artificielle dans les brevets EPO et les publications scientifiques. Données : REGPAT (OCDE), OpenAlex, patCit.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta column-page">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<script src="https://cdn.plot.ly/plotly-2.35.0.min.js"></script>
+<link rel="stylesheet" href="../../assets/css/diffusion-science.css">
+<link rel="stylesheet" href="../../assets/css/superstars.css">
+<style>
+.ss-nav .nav-btn { border:1px solid #D5DDE8 !important; border-radius:999px !important; background:#fff !important; color:#0E2A47 !important; }
+.ss-nav .nav-btn:hover { background:#E6EBF2 !important; border-color:#5F84E8 !important; }
+.ss-nav .nav-btn.active { background:#0E2A47 !important; border-color:#0E2A47 !important; color:#fff !important; }
+</style>
+
+<nav class="ds-nav">
+  <button class="nav-btn active" onclick="show('vue-ensemble', this)">Vue d'ensemble</button>
+  <button class="nav-btn" onclick="show('brevets', this)">Brevets IA</button>
+  <button class="nav-btn" onclick="show('geographie', this)">Géographie</button>
+  <button class="nav-btn" onclick="show('technologie', this)">Domaines IPC</button>
+  <button class="nav-btn" onclick="show('publications', this)">Publications IA</button>
+  <button class="nav-btn" onclick="show('superstars', this)">Acteurs clés</button>
+</nav>
+
+<main class="ds-main" data-asof="2026-10-01" data-asof-label="1er octobre 2026">
+<div class="dash-databar" id="dash-databar"></div>
+
+<div id="vue-ensemble" class="section active">
+  <div class="kpi-row" id="kpi-row"></div>
+  <div class="grid2">
+    <div class="chart-card">
+      <h3 class="anchored">Brevets IA par année</h3>
+      <div class="desc">Nombre de brevets EP citant des publications classifiées IA (observés + prédits par ML).</div>
+      <div id="ch-overview-patents" style="height:300px"></div>
+    </div>
+    <div class="chart-card">
+      <h3 class="anchored">Part des brevets IA (% du total)</h3>
+      <div class="desc">Part des brevets EP contenant au moins une citation NPL identifiée comme IA.</div>
+      <div id="ch-overview-share" style="height:300px"></div>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="chart-card">
+      <h3 class="anchored">Top 10 pays — brevets IA (inventeurs)</h3>
+      <div class="desc">Poids fractionné REGPAT, géographie inventeurs.</div>
+      <div id="ch-overview-ctry" style="height:320px"></div>
+    </div>
+    <div class="chart-card">
+      <h3 class="anchored">Top 10 domaines technologiques (IPC4)</h3>
+      <div class="desc">Nombre de brevets IA par groupe IPC4.</div>
+      <div id="ch-overview-ipc" style="height:320px"></div>
+    </div>
+  </div>
+</div>
+
+<div id="brevets" class="section">
+  <div class="chart-card">
+    <h3 class="anchored">Évolution des brevets IA — observés vs. prédits</h3>
+    <div class="desc">Observés : citations NPL reliées à une publication OpenAlex (patCit, DOI écrit dans la citation, ou titre retrouvé dans arXiv, Crossref ou Semantic Scholar) dont le <em>primary topic</em> figure dans la liste IA. Prédits : citations NPL qui n’ont pu être reliées à aucune publication, classées IA par un modèle ML appliqué à leur titre.</div>
+    <div id="ch-patents-stacked" style="height:380px"></div>
+    <div class="note">Corpus : brevets EP avec au moins une citation NPL, datés par leur première publication. Source : Google Patents, patCit, OpenAlex, REGPAT 202602.<br><strong>2024 provisoire :</strong> une partie des brevets publiés en 2024 n’ont pas encore de rapport de recherche dans les données ; leur nombre sera revu à la hausse, la part de brevets IA est moins affectée.</div>
+  </div>
+  <div class="grid2">
+    <div class="chart-card">
+      <h3 class="anchored">Part IA dans les brevets (%, par année)</h3>
+      <div class="desc">Pourcentage de brevets EP classifiés IA sur le total des brevets avec citations NPL : tous les brevets IA, et ceux dont une citation IA est observée.</div>
+      <div id="ch-patents-share" style="height:380px"></div>
+    </div>
+    <div class="chart-card">
+      <h3 class="anchored">Corpus total NPL vs. brevets IA</h3>
+      <div class="desc">Volume absolu du corpus de brevets avec citations non-patent literature (NPL). L’échelle log permet de comparer les rythmes de croissance.</div>
+      <div id="ch-patents-total" style="height:380px"></div>
+    </div>
+  </div>
+</div>
+
+<div id="geographie" class="section">
+  <div class="chart-card">
+    <h3 class="anchored">Brevets IA par pays — top 25 (géographie inventeurs)</h3>
+    <div class="desc">Poids fractionné REGPAT. Chaque brevet contribue à plusieurs pays proportionnellement aux inventeurs. « Part IA » classe les pays selon la part de leurs brevets qui sont IA.</div>
+    <div id="ch-geo-bar" style="height:520px"></div>
+    <div class="note">Source : REGPAT 202602 · EPO_Inv_reg · Pondération : reg_share × inv_share.</div>
+  </div>
+  <div class="chart-card">
+    <h3 class="anchored">Volume total et part des brevets IA par pays</h3>
+    <div class="desc">Brevets EP du pays (axe horizontal, échelle log) et part des brevets IA (axe vertical). La taille des bulles suit le nombre de brevets IA. En haut à gauche, les pays relativement spécialisés en IA.</div>
+    <div id="ch-geo-scatter" style="height:420px"></div>
+  </div>
+  <div class="chart-card">
+    <h3 class="anchored">Carte Europe — brevets IA par région NUTS1</h3>
+    <div class="desc">Poids fractionné REGPAT par grande région (NUTS1). Part de l’Europe : part de la région dans les brevets IA des régions européennes. Part IA locale : part des brevets de la région qui sont IA.</div>
+    <div id="ch-europe-map" style="height:560px"></div>
+  </div>
+  <div class="chart-card">
+    <h3 class="anchored">Carte mondiale — brevets IA par pays</h3>
+    <div class="desc">Distribution mondiale des brevets, 1990–2024, pondération REGPAT selon les inventeurs ou les déposants.</div>
+    <div id="ch-world-map" style="height:520px"></div>
+  </div>
+</div>
+
+<div id="technologie" class="section">
+  <div class="ds-filter-bar" id="ipc-filter">
+    <span class="ds-filter-label">Domaines</span>
+    <span class="ds-filter-hint">G06* = informatique générale (traitement de données, image, vision, IA, gestion). Le choix vaut pour les trois graphiques de l’onglet.</span>
+  </div>
+  <div class="chart-card">
+    <h3 class="anchored">Brevets IA par domaine IPC4 — volume et intensité</h3>
+    <div class="desc">Volume : nombre de brevets IA du domaine. Intensité : part des brevets du domaine qui sont IA.</div>
+    <div id="ch-ipc-combo" style="height:480px"></div>
+    <div class="note">IPC4 = 4 premiers caractères de la classification internationale des brevets.</div>
+  </div>
+  <div class="chart-card">
+    <h3 class="anchored">Évolution temporelle — top 8 IPC4 (brevets IA par année)</h3>
+    <div class="desc">Diffusion de l'IA dans les différents domaines technologiques, 1990–2024.</div>
+    <div id="ch-ipc-time" style="height:420px"></div>
+  </div>
+  <div class="chart-card">
+    <h3 class="anchored">Composition des brevets IA par domaine IPC4 (% annuel)</h3>
+    <div class="desc">Part de chaque domaine parmi les brevets IA des 8 premiers domaines IPC4 (total = 100 %), 1990–2024. Un brevet peut relever de plusieurs domaines.</div>
+    <div id="ch-ipc-share-time" style="height:420px"></div>
+  </div>
+</div>
+
+<div id="publications" class="section">
+  <div class="chart-card">
+    <h3 class="anchored">Publications scientifiques IA — évolution annuelle</h3>
+    <div class="desc">
+      Publications IA (primary topic OpenAlex) citées par les brevets IA du corpus et reliées à une publication OpenAlex (patCit, DOI ou titre retrouvé), par année de publication de l’article. Chaque publication est comptée une fois.
+    </div>
+    <div id="ch-pubs-year" style="height:380px"></div>
+    <div class="note">Seules les citations reliées à une publication OpenAlex sont comptées ; les citations prédites par le modèle ne le sont pas. Une publication récente n’apparaît qu’une fois citée par un brevet déjà publié : la série ne mesure pas la production scientifique récente. OpenAlex date une partie des archives IEEE à fin 2002 ; pour ces publications, l’année indiquée dans la citation du brevet est utilisée.</div>
+  </div>
+  <div class="chart-card">
+    <h3 class="anchored">Top 20 thématiques de recherche IA</h3>
+    <div class="desc">Primary topics OpenAlex des publications IA citées par les brevets du corpus (citations observées). Nombre de publications distinctes.</div>
+    <div id="ch-topics" style="height:520px"></div>
+  </div>
+</div>
+
+<div id="superstars" class="section">
+<div class="ss-kpi-row" id="ss-kpis"></div>
+<nav class="ss-nav">
+  <button class="nav-btn active" onclick="showSS('tab-applicants', this)">Top Déposants</button>
+  <button class="nav-btn" onclick="showSS('tab-inventors', this)">Top Inventeurs</button>
+  <button class="nav-btn" onclick="showSS('tab-papers', this)">Publications clés</button>
+  <button class="nav-btn" onclick="showSS('tab-time', this)">Évolution temporelle</button>
+</nav>
+<main class="ss-main">
+<div id="tab-applicants" class="section active">
+  <div class="chart-card">
+    <h3 class="anchored">Top 25 déposants — brevets IA européens</h3>
+    <div class="desc">Déposants du plus grand nombre de brevets IA européens (1990–2024). Les filiales d’un même groupe sont regroupées (ex. Microsoft Corporation et Microsoft Technology Licensing). L'équivalent fractionné tient compte des co-dépôts.</div>
+    <div id="ch-applicants" style="height:580px"></div>
+    <div class="note">Source : REGPAT 202602, patCit, OpenAlex · Brevets IA observés et prédits, chaque brevet compté une fois.</div>
+  </div>
+</div>
+<div id="tab-inventors" class="section">
+  <div class="chart-card">
+    <h3 class="anchored">Top 25 inventeurs — brevets IA européens</h3>
+    <div class="desc">Inventeurs les plus prolifiques dans les brevets EPO citant des publications scientifiques d'IA. L'équivalent fractionné pondère par le nombre de co-inventeurs.</div>
+    <div id="ch-inventors" style="height:580px"></div>
+    <div class="note">Source : REGPAT 202602, patCit, OpenAlex · Pondération fractionnée par brevet.</div>
+  </div>
+</div>
+<div id="tab-papers" class="section">
+  <div class="chart-card">
+    <h3 class="anchored">Publications scientifiques les plus citées</h3>
+    <div class="desc">Publications les plus citées par les brevets IA européens — classées par nombre de brevets citants distincts.</div>
+    <div id="papers-table"></div>
+    <div class="note">Source : patCit (EPO), Google Patents, OpenAlex · Seules les citations reliées à une publication sont comptabilisées.</div>
+  </div>
+</div>
+<div id="tab-time" class="section">
+  <div class="chart-card">
+    <h3 class="anchored">Évolution des brevets IA — top 15 déposants (1990–2024)</h3>
+    <div class="desc">Nombre de brevets IA par année pour chaque déposant principal (équivalent fractionné). Permet d'observer la montée en puissance des nouveaux acteurs et le déclin des anciens. Choisir les déposants à comparer.</div>
+    <div id="ch-timeseries" style="height:500px"></div>
+    <div class="note">Source : REGPAT 202602, patCit, OpenAlex · Top 15 déposants par volume cumulé 1990–2024, filiales regroupées.</div>
+  </div>
+</div>
+</main>
+</div>
+
+</main>
+
+<script src="../../assets/js/diffusion-science.js"></script>
+<script src="../../assets/js/superstars.js"></script>
+<section id="à-propos-de-ce-tracker" class="level2">
+<h2 class="anchored" data-anchor-id="à-propos-de-ce-tracker">À propos de ce tracker</h2>
+<p>Ce tableau de bord analyse les brevets européens (EPO) entre <strong>1990 et 2024</strong> qui citent des publications scientifiques identifiées comme relevant de l’intelligence artificielle, ainsi que les principaux acteurs — entreprises, inventeurs et publications — au cœur de cette dynamique.</p>
+<section id="auteure" class="level3">
+<h3 class="anchored" data-anchor-id="auteure">Auteure</h3>
+<p>Ce tracker est développé par <strong><a href="../../membres/golterra.html">Gabriela Terra</a></strong> — HEC Paris.</p>
+</section>
+<section id="ce-que-mesure-ce-tracker" class="level3">
+<h3 class="anchored" data-anchor-id="ce-que-mesure-ce-tracker">Ce que mesure ce tracker</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Onglet</th>
+<th>Contenu</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Vue d’ensemble</td>
+<td>KPIs globaux, brevets IA par année, top pays et domaines IPC</td>
+</tr>
+<tr class="even">
+<td>Brevets IA</td>
+<td>Observés (citation directe) vs.&nbsp;prédits (modèle ML)</td>
+</tr>
+<tr class="odd">
+<td>Géographie</td>
+<td>Distribution par pays inventeurs (REGPAT) et cartes NUTS1</td>
+</tr>
+<tr class="even">
+<td>Domaines IPC</td>
+<td>Intensité IA par classe technologique (IPC4)</td>
+</tr>
+<tr class="odd">
+<td>Publications IA</td>
+<td>Publications scientifiques IA citées par les brevets</td>
+</tr>
+<tr class="even">
+<td>Acteurs clés</td>
+<td>Top déposants, inventeurs et publications les plus citées</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="identification-des-brevets-ia" class="level3">
+<h3 class="anchored" data-anchor-id="identification-des-brevets-ia">Identification des brevets IA</h3>
+<p>Un brevet est classifié <strong>brevet IA</strong> selon deux méthodes complémentaires :</p>
+<ul>
+<li><strong>Observé</strong> : le brevet cite au moins une publication dont le <em>primary topic</em> <a href="https://openalex.org/">OpenAlex</a> figure dans une liste de 34 thématiques IA. Le lien est établi via <a href="https://github.com/epo/patcit">patCit</a> (EPO), via le DOI écrit dans la citation, ou en retrouvant le titre cité dans arXiv, Crossref ou Semantic Scholar.</li>
+<li><strong>Prédit</strong> : pour les citations NPL qui n’ont pu être reliées à aucune publication, un modèle ML classe le <em>titre de la publication citée</em> comme IA ou non (seuil choisi pour reproduire le nombre de citations IA observé sur les brevets récents). Le brevet est prédit IA si au moins une de ses citations est classée IA. Le modèle sert d’abord à désigner les citations à vérifier : celles qu’il juge possiblement IA sont cherchées dans les bases bibliographiques, et seules celles qu’on ne retrouve pas gardent sa prédiction.</li>
+</ul>
+</section>
+<section id="comptage" class="level3">
+<h3 class="anchored" data-anchor-id="comptage">Comptage</h3>
+<ul>
+<li>Un brevet = une demande EP. L’EPO publie souvent le même brevet plusieurs fois (A1, A2, A3, B1…) ; ces publications sont regroupées et comptées une seule fois, à l’année de la première publication.</li>
+<li>La géographie (pays, régions) utilise la pondération fractionnaire REGPAT ; chaque brevet pèse 1 au total.</li>
+<li>Les publications scientifiques (onglets Publications IA et Acteurs clés) ne peuvent être identifiées que pour les citations observées.</li>
+</ul>
+<p>Méthode détaillée : note méthodologique <em>Artificial Intelligence to the service of innovation</em> (Bergeaud, Delbouve, Terra, 2026).</p>
+</section>
+<section id="sources" class="level3">
+<h3 class="anchored" data-anchor-id="sources">Sources</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Source</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Google Patents</td>
+<td>Citations NPL des brevets EP (texte brut), publications jusqu’à septembre 2026</td>
+</tr>
+<tr class="even">
+<td><a href="https://github.com/epo/patcit">patCit</a></td>
+<td>Résolution des citations non-patent literature (jusqu’en 2018 environ)</td>
+</tr>
+<tr class="odd">
+<td>arXiv, Crossref, Semantic Scholar</td>
+<td>Recherche des publications citées sans DOI</td>
+</tr>
+<tr class="even">
+<td><a href="https://openalex.org/">OpenAlex</a></td>
+<td>Classification des publications (topic IA)</td>
+</tr>
+<tr class="odd">
+<td>REGPAT (OCDE 202602)</td>
+<td>Géolocalisation des inventeurs (fractionnaire)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="mise-à-jour" class="level3">
+<h3 class="anchored" data-anchor-id="mise-à-jour">Mise à jour</h3>
+<p><strong>Annuelle</strong>, après une nouvelle extraction des citations (Google Patents) et, s’il y a lieu, une nouvelle édition REGPAT. Données au 1er octobre 2026.</p>
+
+
+</section>
+</section>

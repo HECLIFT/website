@@ -1,0 +1,313 @@
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Innovation de rupture</h1>
+<p class="subtitle lead">Brevets de rupture par pays européen</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Innovation</div>
+    <div class="quarto-category">Brevets</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Brevets de rupture par pays européen et domaine technologique.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta column-page">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!-- ECharts CDN -->
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+
+<!-- Tracker CSS -->
+<link rel="stylesheet" href="../../assets/css/breakthrough-tracker.css">
+
+<div class="bt-container">
+  <!-- KPI Cards -->
+  <div class="bt-kpi-grid">
+    <div class="bt-kpi-card">
+      <div class="bt-kpi-icon">
+        <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 6v6l4 2"></path>
+        </svg>
+      </div>
+      <div class="bt-kpi-content">
+        <span class="bt-kpi-label">Abstracts de brevets</span>
+        <span class="bt-kpi-value" id="kpi-total-patents">--</span>
+      </div>
+    </div>
+    <div class="bt-kpi-card">
+      <div class="bt-kpi-icon">
+        <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+          <path d="M2 17l10 5 10-5"></path>
+          <path d="M2 12l10 5 10-5"></path>
+        </svg>
+      </div>
+      <div class="bt-kpi-content">
+        <span class="bt-kpi-label">Pays européens</span>
+        <span class="bt-kpi-value" id="kpi-countries">--</span>
+      </div>
+    </div>
+    <div class="bt-kpi-card">
+      <div class="bt-kpi-icon">
+        <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+      </div>
+      <div class="bt-kpi-content">
+        <span class="bt-kpi-label">Régions NUTS2</span>
+        <span class="bt-kpi-value" id="kpi-regions">--</span>
+      </div>
+    </div>
+    <div class="bt-kpi-card">
+      <div class="bt-kpi-icon">
+        <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+        </svg>
+      </div>
+      <div class="bt-kpi-content">
+        <span class="bt-kpi-label">Période couverte</span>
+        <span class="bt-kpi-value" id="kpi-period">--</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Controls -->
+  <div class="bt-controls">
+    <div class="bt-controls-left">
+      <label for="indicator-select">Indicateur :</label>
+      <select id="indicator-select">
+        <option value="nouveaute">Nouveauté</option>
+        <option value="rupture">Rupture</option>
+      </select>
+    </div>
+    <div class="bt-controls-right">
+      <button id="btn-download" class="bt-btn bt-btn-primary">
+        <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7,10 12,15 17,10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        CSV
+      </button>
+      <button id="btn-reset" class="bt-btn bt-btn-secondary">
+        <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="1,4 1,10 7,10"></polyline>
+          <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+        </svg>
+        Reset
+      </button>
+    </div>
+  </div>
+
+  <!-- Time Series Chart -->
+  <div class="bt-section">
+    <h3 class="bt-section-title anchored">Évolution temporelle</h3>
+    <div id="timeseries-chart" class="bt-chart"></div>
+  </div>
+
+  <!-- Country selector -->
+  <div class="bt-country-wrap">
+    <span class="bt-country-label">Pays :</span>
+    <div id="country-selector"></div>
+  </div>
+
+  <!-- Technology Fields Chart -->
+  <div class="bt-section">
+    <div class="bt-section-header">
+      <h3 class="bt-section-title anchored">Nouveauté par domaine technologique</h3>
+      <button id="btn-download-tech" class="bt-btn bt-btn-secondary bt-btn-sm">
+        <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7,10 12,15 17,10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        CSV
+      </button>
+    </div>
+    <div id="tech-chart" class="bt-chart"></div>
+  </div>
+
+  <!-- Comparison Charts Row: Country + Regions -->
+  <div class="bt-comparison-row">
+    <div class="bt-comparison-col">
+      <div class="bt-section-header">
+        <h3 class="bt-section-title anchored">Comparaison par pays</h3>
+        <button id="btn-download-country" class="bt-btn bt-btn-secondary bt-btn-sm">
+          <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7,10 12,15 17,10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          CSV
+        </button>
+      </div>
+      <div class="bt-period-controls">
+        <label for="country-indicator-select">Indicateur :</label>
+        <select id="country-indicator-select">
+          <option value="nouveaute">Nouveauté</option>
+          <option value="rupture">Rupture</option>
+        </select>
+        <label for="country-period-select">Période :</label>
+        <select id="country-period-select">
+          <option value="all">Toutes les années</option>
+        </select>
+      </div>
+      <div id="country-chart" class="bt-chart bt-chart-half"></div>
+    </div>
+    <div class="bt-comparison-col">
+      <div class="bt-section-header">
+        <h3 class="bt-section-title anchored">Top 10 régions européennes</h3>
+        <button id="btn-download-region" class="bt-btn bt-btn-secondary bt-btn-sm">
+          <svg width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7,10 12,15 17,10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          CSV
+        </button>
+      </div>
+      <div class="bt-period-controls">
+        <label for="region-indicator-select">Indicateur :</label>
+        <select id="region-indicator-select">
+          <option value="nouveaute">Nouveauté</option>
+          <option value="rupture">Rupture</option>
+        </select>
+        <label for="region-period-select">Période :</label>
+        <select id="region-period-select">
+          <option value="all">Toutes les années</option>
+        </select>
+      </div>
+      <div id="region-chart" class="bt-chart bt-chart-half"></div>
+    </div>
+  </div>
+
+  <!-- Europe Map -->
+  <div class="bt-section">
+    <h3 class="bt-section-title anchored">Carte de l'Europe</h3>
+    <div id="map-chart" class="bt-chart bt-chart-map"></div>
+  </div>
+
+  <!-- Source note -->
+  <div class="bt-source">
+    <strong>Sources :</strong> 4,6 millions de résumés de brevets EPO déposés de 1983 à 2024 (Google Patents). Localisation des inventeurs
+    via REGPAT (OCDE, édition d'août 2026). Classification CPC (4 domaines). Population : Banque mondiale.
+    Scores calculés par similarité cosinus sur embeddings des résumés en anglais (<a href="https://huggingface.co/AAUBS/PatentSBERTa_V2" target="_blank">PatentSBERTa_V2</a>).
+    Méthodologie inspirée de <a href="https://www.aeaweb.org/articles?id=10.1257/aeri.20190499" target="_blank">Kelly, Papanikolaou, Seru &amp; Taddy (2021, AER Insights)</a>.
+    <br><strong>2024 incomplète :</strong> les demandes de brevet sont publiées environ 18 mois après le dépôt, et l'année ne compte encore qu'environ 83 % des brevets d'une année complète. Les parts sont peu affectées ; les nombres par million d'habitants de 2024 seront revus à la hausse.
+  </div>
+</div>
+
+<!-- Tracker JS -->
+<script src="../../assets/js/breakthrough-tracker.js"></script>
+<section id="à-propos-de-ce-tracker" class="level2">
+<h2 class="anchored" data-anchor-id="à-propos-de-ce-tracker">À propos de ce tracker</h2>
+<p>Ce tableau de bord analyse <strong>4,6 millions de brevets</strong> déposés à l’Office européen des brevets (OEB) entre <strong>1983 et 2024</strong>, couvrant <strong>24 pays</strong> européens. Il identifie les brevets de rupture et mesure leur production par pays, par région (NUTS2) et par domaine technologique.</p>
+<p>Un brevet est considéré comme un <strong>brevet de rupture</strong> s’il se situe dans le <strong>top 1%</strong> de la distribution annuelle selon l’une des deux mesures suivantes :</p>
+<ul>
+<li><p><strong>Nouveauté</strong> (<em>backward-looking</em>) : mesure à quel point un brevet est différent de l’art antérieur au moment de son dépôt. Formellement, c’est la somme des similarités cosinus entre le vecteur d’embedding de l’abstract et ceux de tous les brevets déposés dans les 5 années précédentes. Un brevet est classé comme <strong>fortement nouveau</strong> s’il a un score <strong>faible</strong> (bottom 1%), indiquant qu’il est distant des technologies existantes. Cette mesure est disponible pour toutes les années, y compris les plus récentes.</p></li>
+<li><p><strong>Rupture</strong> : ratio entre l’influence future et la proximité à l’art antérieur (forward_sum / backward_sum). Un brevet est classé comme <strong>de rupture</strong> s’il a un ratio <strong>élevé</strong> (top 1%), ce qui identifie les brevets à la fois très différents de l’existant et très influents sur les innovations futures. <em>Note : cette mesure n’est pas disponible après 2019 car elle nécessite d’observer les brevets déposés dans les 5 années suivantes.</em></p></li>
+</ul>
+<p>Les graphiques par pays présentent le <strong>nombre de brevets de rupture par million d’habitants</strong>.</p>
+<section id="auteurs" class="level3">
+<h3 class="anchored" data-anchor-id="auteurs">Auteurs</h3>
+<p>Ce tracker est développé par :</p>
+<ul>
+<li><strong><a href="../../membres/abergeaud.html">Antonin Bergeaud</a></strong></li>
+<li><strong>Dario Marino</strong></li>
+</ul>
+</section>
+<section id="méthodologie" class="level3">
+<h3 class="anchored" data-anchor-id="méthodologie">Méthodologie</h3>
+<section id="calcul-des-scores-kpst" class="level4">
+<h4 class="anchored" data-anchor-id="calcul-des-scores-kpst">Calcul des scores (KPST)</h4>
+<p>La méthodologie s’inspire de <a href="https://www.aeaweb.org/articles?id=10.1257/aeri.20190499">Kelly, Papanikolaou, Seru et Taddy (2021, AER Insights)</a> :</p>
+<ol type="1">
+<li><strong>Embeddings textuels</strong> : l’<strong>abstract</strong> en anglais de chaque brevet est transformé en vecteur numérique de haute dimension via le modèle <a href="https://huggingface.co/AAUBS/PatentSBERTa_V2">PatentSBERTa_V2</a>, un modèle Sentence-BERT pré-entraîné sur des textes de brevets. Quand le brevet n’a de résumé qu’en allemand ou en français (environ 16 % des brevets), c’est la traduction anglaise automatique de Google Patents qui est utilisée : tous les brevets sont ainsi comparés dans la même langue.</li>
+<li><strong>Score de nouveauté</strong> (<code>backward_sum</code>) : somme des similarités cosinus entre le vecteur de l’abstract du brevet et ceux de tous les brevets déposés dans les 5 années précédentes. Un score faible signifie que le brevet est éloigné de l’état de l’art.</li>
+<li><strong>Proximité future</strong> (<code>forward_sum</code>) : somme des similarités cosinus entre le vecteur de l’abstract et ceux de tous les brevets déposés dans les 5 années suivantes. Utilisé comme numérateur du score de rupture.</li>
+<li><strong>Score de rupture</strong> (<code>importance</code>) : ratio <code>forward_sum / backward_sum</code>. Un ratio élevé identifie les brevets qui sont simultanément éloignés de l’existant et proches des innovations futures.</li>
+</ol>
+</section>
+<section id="définition-des-brevets-de-rupture" class="level4">
+<h4 class="anchored" data-anchor-id="définition-des-brevets-de-rupture">Définition des brevets de rupture</h4>
+<p>Un brevet est classé dans le top 1% au sein de chaque année de dépôt :</p>
+<ul>
+<li><strong>Fortement nouveaux</strong> : bottom 1% de la distribution de <code>backward_sum</code> (les plus distants de l’art antérieur)</li>
+<li><strong>De rupture</strong> : top 1% de la distribution de <code>importance</code> (le ratio forward/backward le plus élevé)</li>
+</ul>
+<p>Les seuils sont calculés séparément pour chaque année afin de contrôler la variation temporelle des distributions.</p>
+</section>
+<section id="indice-de-nouveauté-par-domaine-technologique" class="level4">
+<h4 class="anchored" data-anchor-id="indice-de-nouveauté-par-domaine-technologique">Indice de nouveauté par domaine technologique</h4>
+<p>L’indice présenté dans le graphique par domaine technologique mesure l’écart relatif du score moyen de nouveauté d’un champ technologique par rapport à la moyenne globale :</p>
+<p><span class="math display">\[\text{Indice} = \frac{\overline{backward\_sum}_{\text{global}} - \overline{backward\_sum}_{\text{champ}}}{\overline{backward\_sum}_{\text{global}}}\]</span></p>
+<p>Un indice positif signifie que les brevets du domaine sont en moyenne plus nouveaux que la moyenne. L’indice est calculé chaque année.</p>
+</section>
+<section id="classification-technologique-cpc" class="level4">
+<h4 class="anchored" data-anchor-id="classification-technologique-cpc">Classification technologique (CPC)</h4>
+<p>Le graphique de nouveauté par domaine technologique utilise 4 domaines de la <strong>Cooperative Patent Classification</strong> (CPC, système harmonisé EPO/USPTO) :</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Code CPC</th>
+<th>Domaine</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>G06N</td>
+<td>IA / Apprentissage automatique</td>
+</tr>
+<tr class="even">
+<td>C12N</td>
+<td>Biotechnologie</td>
+</tr>
+<tr class="odd">
+<td>A61K</td>
+<td>Pharmacie</td>
+</tr>
+<tr class="even">
+<td>H01L et H10</td>
+<td>Semi-conducteurs (H10 reprend H01L depuis les réformes de la CPC ; les codes actuels s’appliquent à toutes les années)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="attribution-géographique" class="level4">
+<h4 class="anchored" data-anchor-id="attribution-géographique">Attribution géographique</h4>
+<p><strong>Par pays :</strong> les brevets sont attribués en fonction de la <strong>localisation des inventeurs</strong> (source : REGPAT, OECD). Lorsqu’un brevet a plusieurs inventeurs de pays différents, il est comptabilisé de manière fractionnaire (1/N par inventeur).</p>
+<p><strong>Par région (NUTS2) :</strong> les brevets sont attribués aux régions NUTS2 selon le code régional de résidence de l’inventeur. Les données régionales couvrent environ 380 régions NUTS2 européennes.</p>
+</section>
+<section id="sources-de-données" class="level4">
+<h4 class="anchored" data-anchor-id="sources-de-données">Sources de données</h4>
+<ul>
+<li><strong>Brevets</strong> : résumés et codes CPC des publications EPO, Google Patents Public Data (BigQuery) — 4 649 815 brevets EPO déposés de 1983 à 2024</li>
+<li><strong>Localisation</strong> : REGPAT (OCDE, édition d’août 2026) — pays et région (NUTS2) d’origine des inventeurs</li>
+<li><strong>Classification</strong> : codes CPC (Cooperative Patent Classification) — 4 domaines ciblés</li>
+<li><strong>Population</strong> : Banque Mondiale (indicateur SP.POP.TOTL) — pour la normalisation par million d’habitants</li>
+</ul>
+</section>
+</section>
+<section id="mise-à-jour" class="level3">
+<h3 class="anchored" data-anchor-id="mise-à-jour">Mise à jour</h3>
+<p>Données au 6 octobre 2026 : publications EPO jusqu’au 16 septembre 2026 (Google Patents) et REGPAT (OCDE) d’août 2026. Le tracker est mis à jour après chaque nouvelle édition de REGPAT. 2024 est incomplète : les demandes de brevet sont publiées environ 18 mois après le dépôt, et l’année ne compte encore qu’environ 83 % des brevets d’une année complète. Les parts sont peu affectées ; les nombres par million d’habitants de 2024 seront revus à la hausse.</p>
+
+
+</section>
+</section>
