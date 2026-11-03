@@ -211,13 +211,18 @@
       "nom": "Philippe Aghion",
       "section": "Conseil scientifique",
       "role": "Conseil scientifique",
-      "bio": "Philippe Aghion est économiste, professeur au Collège de France, à l'INSEAD et à la London School of Economics. Ses travaux portent principalement sur la croissance économique, l'innovation et les politiques publiques."
+      "bio": "Philippe Aghion est professeur au Collège de France, où il est titulaire de la chaire Économie des institutions, de l’innovation et de la croissance, professeur à l’INSEAD et professeur invité à la London School of Economics. Ses recherches portent sur la croissance économique : avec Peter Howitt, il a développé le paradigme schumpétérien de la croissance, fondé sur l’innovation et la destruction créatrice. Il a reçu en 2025 le prix Nobel d’économie, avec Joel Mokyr et Peter Howitt, pour ses travaux sur l’impact des nouvelles technologies sur la croissance.",
+      "bio_courte": "Professeur au Collège de France, à l’INSEAD et à la London School of Economics, prix Nobel d’économie 2025 pour ses travaux sur l’innovation et la croissance.",
+      "email": "philippe.aghion@insead.edu"
     },
     {
       "id": "cperignon",
       "nom": "Christophe Pérignon",
       "section": "Conseil scientifique",
-      "role": "Conseil scientifique"
+      "role": "Conseil scientifique",
+      "bio": "Christophe Pérignon est professeur de finance à HEC Paris, doyen associé à la recherche et directeur du laboratoire GREGHEC (CNRS-HEC). Il est codirecteur scientifique de Hi! PARIS et titulaire de la chaire Deloitte « AI for Business Innovation ». Ses recherches portent sur les applications et les implications de l’intelligence artificielle en finance. Il a cofondé cascad, agence qui certifie la reproductibilité des résultats scientifiques. Docteur du Swiss Finance Institute, il a enseigné à l’université Simon Fraser avant de rejoindre HEC Paris en 2007.",
+      "bio_courte": "Professeur de finance et doyen associé à la recherche à HEC Paris. Ses recherches portent sur l’intelligence artificielle en finance.",
+      "page_perso": "https://www.hec.edu/fr/faculty-research/faculty-directory/faculty-member/perignon-christophe"
     }
   ]
 }
