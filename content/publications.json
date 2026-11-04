@@ -51,6 +51,7 @@
       "resume_en": "Firms’ AI spending is rising even as the unit cost of a token falls sharply: the increase comes from volumes far more than from prices. On OpenRouter, the share of open-weight models rises from 40% to 73% of tokens between January and August 2026, and from 11% to 34% of spending. Users attributed to France devote 31.0% of their spending to open models, compared with 19.3% worldwide. Calls to open models are four times longer than in January, but their average cost is only 3.8 times higher: the cost advantage persists. Reallocation toward open models accounts for 43% of the simulated decline in the cost of a constant French basket; it opens room for wider deployment rather than an automatic saving, which invites organizations to reason in terms of cost per completed task.",
       "thumb": "images/pubs/factures-ia-open-weight.png",
       "pdf": "files/papers/LIFT_PolicyPaper_2026-03.pdf",
+      "pdf_en": "files/papers/LIFT_PolicyPaper_2026-03_en.pdf",
       "auteurs_liens": [
         {
           "membre": "abergeaud",
