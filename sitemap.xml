@@ -540,4 +540,16 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/pubs/politique-travail/index.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/pubs/politique-travail/index.html"/>
   </url>
+  <url>
+    <loc>https://heclift.github.io/website/pubs/science-europeenne-ia/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/pubs/science-europeenne-ia/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/pubs/science-europeenne-ia/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/pubs/science-europeenne-ia/index.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/pubs/science-europeenne-ia/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/pubs/science-europeenne-ia/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/pubs/science-europeenne-ia/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/pubs/science-europeenne-ia/index.html"/>
+  </url>
 </urlset>

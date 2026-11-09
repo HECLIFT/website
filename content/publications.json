@@ -1,6 +1,41 @@
 {
   "publications": [
     {
+      "id": "science-europeenne-ia",
+      "titre": "Ce que l’IA américaine doit à la science européenne",
+      "titre_en": "What American AI owes to European science",
+      "type": "pb",
+      "type_label": "Note de politique",
+      "date": "Novembre 2026",
+      "auteurs": [
+        "Antonin Bergeaud",
+        "Gabriela Terra"
+      ],
+      "venue": "LIFT Policy Paper 2026-05 — Novembre 2026",
+      "tags": [
+        "AI",
+        "Innovation",
+        "Science"
+      ],
+      "resume": "L’Europe fournit environ un quart des articles scientifiques cités par les brevets américains d’intelligence artificielle, dont plusieurs briques de base de l’apprentissage profond. À production égale dans chaque domaine, les articles européens sont près de deux fois plus cités par ces brevets que les articles chinois ou japonais. La valeur économique de cette science se réalise aux États-Unis : près de neuf brevets sur dix qui la citent sont déposés par des entreprises américaines. Cette position s’érode : la part de l’Europe recule pour les articles récents, avec son poids dans la recherche mondiale, et la recherche en IA se déplace vers les entreprises, où l’Europe est peu présente. Les articles français sont moins cités qu’un article moyen de leur domaine, et la France produit deux fois moins de science citée par chercheur que le Royaume-Uni.",
+      "resume_en": "Europe supplies about a quarter of the scientific articles cited by US artificial intelligence patents, including several building blocks of deep learning. For equal output in each field, European articles are cited by these patents nearly twice as often as Chinese or Japanese articles. The economic value of this science is realized in the United States: nearly nine out of ten patents that cite it are filed by US companies. This position is eroding: Europe’s share is falling for recent articles, along with its weight in global research, and AI research is shifting toward companies, where Europe has little presence. French articles are cited less than an average article in their field, and France produces half as much cited science per researcher as the United Kingdom.",
+      "thumb": "images/pubs/science-europeenne-ia.png",
+      "pdf": "files/papers/LIFT_PolicyPaper_2026-05.pdf",
+      "pdf_en": "files/papers/LIFT_PolicyPaper_2026-05_en.pdf",
+      "auteurs_liens": [
+        {
+          "membre": "abergeaud",
+          "nom": "Antonin Bergeaud"
+        },
+        {
+          "membre": "golterra",
+          "nom": "Gabriela Terra"
+        }
+      ],
+      "mots_cles_affiches": "IA, science, brevets, citations, Europe, États-Unis, recherche",
+      "mots_cles_affiches_en": "AI, science, patents, citations, Europe, United States, research"
+    },
+    {
       "id": "innovation-rattrapage-modeles-ia",
       "titre": "Innovation et rattrapage sur le marché des modèles d’IA",
       "titre_en": "Innovation and catch-up in the AI model market",
