@@ -128,6 +128,7 @@
       "resume_en": "Since November 2022, hires of 21-29-year-olds on open-ended contracts have fallen by 28.3% in the occupations most exposed to generative AI, compared with 7.5% in the least exposed. Separations are also falling, but less than hires: worker turnover is slowing and the market is freezing for young people in exposed occupations. The gap narrows with age, from more than 20 percentage points among 21-29-year-olds to less than 4 points after age 50, and it persists when fixed-term contracts are added to open-ended ones. It is not driven by developers alone, whose hires of young people on open-ended contracts fall by 42%: without them, the gap remains 17 points. Firms that report intensive use of AI hire relatively fewer young people, while their total headcount does not clearly diverge from that of other firms. The analysis covers labor turnover data from January 2019 to March 2026, matched with the Banque de France business survey, with which this work was carried out. The method and the full set of results are detailed in LIFT Working Paper 2026-02.",
       "thumb": "images/pubs/emploi-jeunes.png",
       "pdf": "files/papers/LIFT_PolicyPaper_2026-02.pdf",
+      "pdf_en": "files/papers/LIFT_PolicyPaper_2026-02_en.pdf",
       "auteurs_liens": [
         {
           "membre": "abergeaud",
