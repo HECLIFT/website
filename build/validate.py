@@ -75,6 +75,64 @@ for f, cols in ESPERADO.items():
             erro(f"[tracker] {f}: anos fora do intervalo plausível ({min(anos)}–{max(anos)})")
         if anos and max(anos) < 2015: aviso(f"[tracker] {f}: dados param em {max(anos)}")
 
+# --------------------------------------------- tracker des métiers exposés (format des fichiers livrés)
+# Contrat décrit dans 04_Website/TRACKERS.md du dossier LIFT (section « Métiers exposés : fichiers livrés par la chaîne »).
+ME = Path("data/ai-trackers/metiers-exposes")
+ME_COLS = {
+ "embauches_tendances.csv": ["definition", "mois", "groupe", "age", "sexe", "embauches_cdi", "embauches_cdd", "fins_cdi", "fins_cdd"],
+ "embauches_effectifs.csv": ["definition", "mois", "groupe", "age", "sexe", "embauches_cdi", "embauches_cdd", "fins_cdi", "fins_cdd"],
+ "professions.csv": ["pcs", "pcs03", "libelle", "fap", "libelle_fap", "famille", "indice", "centile", "groupe", "atlas", "origine", "agregat",
+                     "postes", "heures", "masse_nette", "part_femmes", "age_moyen", "part_moins_30", "salaire_horaire_net", "part_cdi",
+                     "part_temps_partiel", "part_apprentis"],
+ "quintiles_profil.csv": ["indicateur", "unite", "q1", "q2", "q3", "q4", "q5", "ensemble"],
+ "fap.csv": ["fap", "libelle", "indice", "atlas", "emploi", "pcs"],
+ "zones.csv": ["zone", "libelle", "libelle_insee", "indice_moyen", "centile_moyen", "postes", "part_g1", "part_g2", "part_g3", "part_g4", "part_g5"],
+ "rome_metiers.csv": ["rome", "intitule", "domaine", "n_savoir_faire", "s", "rang_pct", "voie", "fiche_parente"],
+ "rome_appellations.csv": ["appellation", "rome"],
+ "rome_professions.csv": ["rome", "pcs03", "part_postes", "pcs_ese", "pcs03_lib"],
+ "intitules_insee.csv": ["libelle", "libelle_f", "statut", "niveaux", "defaut", "pcs2020", "pcs", "parts"],
+}
+if ME.exists():
+    lus = {}
+    for f, cols in ME_COLS.items():
+        p = ME / f
+        if not p.exists(): erro(f"[métiers exposés] fichier absent : {f}"); continue
+        with p.open(encoding="utf-8") as fh:
+            r = csv.DictReader(fh)
+            if (r.fieldnames or []) != cols: erro(f"[métiers exposés] {f} : colonnes attendues {', '.join(cols)}")
+            lus[f] = list(r)
+        if not lus[f]: erro(f"[métiers exposés] {f} : fichier vide")
+    try:
+        meta = json.loads((ME / "tracker.json").read_text(encoding="utf-8"))
+    except Exception as e:
+        meta = None; erro(f"[métiers exposés] tracker.json illisible : {e}")
+    T_ = lus.get("embauches_tendances.csv") or []
+    if T_ and meta:
+        mois = sorted({x["mois"] for x in T_})
+        a, m = map(int, mois[0].split("-")); attendu = []
+        while f"{a:04d}-{m:02d}" <= mois[-1]:
+            attendu.append(f"{a:04d}-{m:02d}"); m += 1
+            if m == 13: a, m = a + 1, 1
+        if mois != attendu: erro("[métiers exposés] embauches_tendances.csv : mois manquants")
+        if mois[-1] != meta.get("donnees_au"): erro(f"[métiers exposés] dernier mois {mois[-1]} différent de donnees_au {meta.get('donnees_au')} (tracker.json)")
+        cles = [(x["definition"], x["mois"], x["groupe"], x["age"], x["sexe"]) for x in T_]
+        if len(cles) != len(set(cles)): erro("[métiers exposés] embauches_tendances.csv : lignes en double")
+        for x in T_:
+            if x["mois"] == "2022-11" and x["embauches_cdi"] not in ("", "0", "0.0", "0.0000") and abs(float(x["embauches_cdi"])) > 1e-6:
+                erro("[métiers exposés] embauches_tendances.csv : la tendance doit valoir 0 en novembre 2022"); break
+        for x in T_:
+            if x["definition"] not in ("postes", "metiers") or x["groupe"] not in "12345" or x["sexe"] not in ("F", "H", "tous"):
+                erro(f"[métiers exposés] embauches_tendances.csv : valeur inattendue {x['definition']}, {x['groupe']}, {x['sexe']}"); break
+    for x in lus.get("professions.csv") or []:
+        for k in ("part_femmes", "part_moins_30", "part_cdi", "part_temps_partiel", "part_apprentis"):
+            if x[k] and not 0 <= float(x[k]) <= 1: erro(f"[métiers exposés] professions.csv : {k} hors de [0, 1] pour {x['pcs']}"); break
+        if x["groupe"] and x["groupe"] not in "12345": erro(f"[métiers exposés] professions.csv : groupe inattendu pour {x['pcs']}")
+    if meta:
+        for f, dd in (meta.get("fichiers") or {}).items():
+            p = ME / f
+            if p.exists() and dd.get("octets") != p.stat().st_size:
+                aviso(f"[métiers exposés] tracker.json : taille de {f} à mettre à jour")
+
 # --------------------------------------------- mesure d'audience (GoatCounter)
 # Toute page servie porte le script juste avant </head> ; les iframes de assets/ n'en ont pas.
 for f in sorted(Path(".").rglob("*.html")):
