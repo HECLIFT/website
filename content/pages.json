@@ -104,6 +104,17 @@
       }
     },
     {
+      "chemin": "ai-trackers/metiers-exposes/index.html",
+      "langues": [
+        "fr"
+      ],
+      "classe_body": "nav-fixed quarto-light",
+      "titre": {
+        "fr": "Métiers exposés à l’IA générative",
+        "en": "Occupations exposed to generative AI"
+      }
+    },
+    {
       "chemin": "innovation-data.html",
       "langues": [
         "fr",

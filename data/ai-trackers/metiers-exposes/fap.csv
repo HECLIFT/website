@@ -1,0 +1,209 @@
+fap,libelle,indice,atlas,emploi,pcs
+A0Z40,Agriculteurs salariés,0.3334,18.24,58668,691E
+A0Z41,Éleveurs salariés,0.2653,5.06,12984,691B
+A0Z42,"Bûcherons, sylviculteurs salariés et agents forestiers",0.2516,7.2,4872,533B|691F
+A0Z43,Conducteurs d'engins agricoles ou forestiers,0.0829,18.24,5844,691A
+A1Z40,"Maraîchers, horticulteurs salariés",0.1864,10.18,18552,691C
+A1Z41,Jardiniers salariés,0.1949,10.36,90192,631A
+A1Z42,"Viticulteurs, arboriculteurs salariés",0.1802,16.37,16896,691D
+A2Z70,Techniciens et agents d'encadrement d'exploitations agricoles,0.5216,17.7,24276,471A|471B|480A
+A2Z90,"Ingénieurs, cadres techniques de l'agriculture",0.4884,19.01,16116,381A
+A3Z40,"Pêcheurs, aquaculteurs salariés",0.277,3.96,16296,692A
+A3Z41,Marins salariés,0.0621,6.09,9180,656A
+A3Z90,Cadres et maîtres d'équipage de la marine,0.3528,12.7,6924,389C|480B
+B0Z20,"Ouvriers non qualifiés des travaux publics, du béton et de l'extraction",0.1284,7.12,64608,671A|671B
+B0Z21,Ouvriers non qualifiés du gros œuvre du bâtiment,0.1738,19.41,189000,681A
+B1Z40,"Ouvriers qualifiés des travaux publics, du béton et de l'extraction",0.1659,8.27,886800,211H|621A|621B|621D|621E|621F|621G
+B2Z40,Maçons,0.1538,15.92,198192,211A|632A
+B2Z41,Professionnels du travail de la pierre et des matériaux associés,0.1998,16.35,8064,214D|632B
+B2Z42,Charpentiers (métal),0.1682,9.71,25416,624D
+B2Z43,Charpentiers (bois),0.2032,18.84,26796,632C
+B2Z44,Couvreurs,0.2001,18.84,35424,211C|632E
+B3Z20,Ouvriers non qualifiés du second œuvre du bâtiment,0.2476,23.61,164196,681B
+B4Z41,"Plombiers, chauffagistes",0.3679,22.6,95772,211D|632F
+B4Z42,Menuisiers et ouvriers de l'agencement et de l'isolation,0.2683,20.26,123576,211B|632D|632J
+B4Z43,Électriciens du bâtiment,0.2583,49.47,84624,211E|633A
+B4Z44,Ouvriers qualifiés de la peinture et de la finition du bâtiment,0.1797,14.98,111084,211F|632G|632H
+B5Z40,Conducteurs d'engins du bâtiment et des travaux publics,0.3173,5.58,85884,621C|651A
+B6Z70,Géomètres,0.7556,32.67,13812,472B
+B6Z71,Techniciens et chargés d'études du bâtiment et des travaux publics,0.5694,29.84,133896,211J|472C|472D
+B6Z72,Dessinateurs en bâtiment et en travaux publics,0.6435,32.67,40308,472A
+B6Z73,"Chefs de chantier, conducteurs de travaux (non cadres)",0.4402,16.25,116568,481A|481B
+B7Z90,Architectes,0.3137,25.99,18132,312F|382B
+B7Z91,"Ingénieurs du bâtiment et des travaux publics, chefs de chantier et conducteurs de travaux (cadres)",0.4781,23.17,144648,382A|382C
+C0Z20,Ouvriers non qualifiés de l'électricité et de l'électronique,0.2969,23.56,24012,672A
+C1Z40,Ouvriers qualifiés de l'électricité et de l'électronique,0.3668,17.6,82308,622A|622B|622G
+C2Z70,Techniciens en électricité et en électronique,1.0913,28.04,58872,473B|473C
+C2Z71,Dessinateurs en électricité et en électronique,0.6983,42.63,7740,473A
+C2Z80,"Agents de maîtrise et assimilés en fabrication de matériel électrique, électronique",0.3965,53.13,3588,482A
+D0Z20,Ouvriers non qualifiés travaillant par enlèvement ou formage de métal,0.3033,5.31,22284,673A|673B
+D1Z40,Régleurs,0.312,13.34,31896,628C|628D
+D1Z41,Ouvriers qualifiés travaillant par enlèvement de métal,0.3083,11.96,69576,623F|623G
+D2Z40,"Chaudronniers, tôliers, traceurs, serruriers, métalliers, forgerons",0.219,6.52,73836,211G|212B|623A|634B
+D2Z41,Tuyauteurs,0.2333,4.57,10164,623B
+D2Z42,Soudeurs,0.3138,4.57,48096,623C
+D3Z20,"Ouvriers non qualifiés métallerie, serrurerie, montage",0.2712,22.36,126708,673C|682A
+D4Z40,"Monteurs, ajusteurs et autres ouvriers qualifiés de la mécanique",0.3452,12.4,86220,624A|624E|624G
+D4Z41,Agents qualifiés de traitement thermique et de surface,0.2832,3.32,21264,624F
+D6Z70,Techniciens en mécanique et travail des métaux,0.335,29.52,76356,474B|474C
+D6Z71,Dessinateurs en mécanique et travail des métaux,0.6078,42.63,19800,474A
+D6Z80,Agents de maîtrise et assimilés en fabrication mécanique,0.6569,53.13,12504,212C|212D|483A
+E0Z20,Ouvriers non qualifiés des industries chimiques et plastiques,0.4551,7.13,45000,674A
+E0Z21,Ouvriers non qualifiés des industries agro-alimentaires,0.3201,4.02,125316,674B|674C
+E0Z22,"Ouvriers non qualifiés en métallurgie, verre, céramique et matériaux de construction",0.3373,1.34,45756,674D
+E0Z23,Ouvriers non qualifiés du papier-carton et du bois,0.3543,9.88,5160,674E
+E0Z24,Autres ouvriers non qualifiés de type industriel,0.2856,7.34,224172,676E
+E1Z40,Pilotes d'installation lourde des industries de transformation,0.4245,5.42,44532,625A|626A
+E1Z41,Autres ouvriers qualifiés des industries chimiques et plastiques,0.5445,8.72,63960,625C
+E1Z42,Autres ouvriers qualifiés des industries agro-alimentaires (hors transformation des viandes),0.3508,8.58,83676,625E
+E1Z43,"Autres ouvriers qualifiés en verre, céramique, métallurgie, matériaux de construction et énergie",0.3554,6.74,96228,625H|626B|637A
+E1Z44,Ouvriers qualifiés des industries lourdes du bois et de la fabrication de papier-carton,0.3543,13.44,12300,626C
+E1Z46,Agents qualifiés de laboratoire,0.5345,37.67,101424,479A|625B|628F
+E1Z47,Autres ouvriers qualifiés de type industriel,0.3757,14.91,102312,628G
+E2Z70,Techniciens des industries de process,0.6363,37.01,146868,475A|475B|485A
+E2Z80,Agents de maîtrise et assimilés des industries de process,0.6529,53.13,60708,484A|484B
+F0Z20,Ouvriers non qualifiés du textile et du cuir,0.2529,7.31,27924,675A
+F1Z40,Ouvriers qualifiés du travail industriel du textile et du cuir,0.2786,9.66,37476,627A|627B|627C
+F1Z41,Ouvriers qualifiés du travail artisanal du textile et du cuir,0.2257,5.14,16068,213A|635A
+F2Z20,Ouvriers non qualifiés du travail du bois et de l'ameublement,0.271,9.88,26556,675B
+F3Z40,Artisans du travail du bois et de l'ameublement,0.1723,14.07,0,214A|214B
+F3Z41,Ouvriers qualifiés du travail du bois et de l'ameublement,0.3451,17.75,34428,627D
+F4Z20,"Ouvriers non qualifiés de l'imprimerie, de la presse et de l'édition",0.59,9.88,14052,675C
+F4Z41,Ouvriers qualifiés de l'impression et du façonnage des industries graphiques,0.59,27.22,35460,214C|627E|627F
+F5Z70,"Techniciens et agents de maîtrise des matériaux souples, du bois et des industries graphiques",0.6921,40.21,26196,476A|476B|485B
+G0A40,Ouvriers qualifiés de la maintenance en mécanique,0.388,34.28,99828,628A|634D
+G0A41,Ouvriers qualifiés de la maintenance en électricité et en électronique,0.6298,31.26,54600,628B|633D
+G0A42,Mainteniciens en biens électrodomestiques,0.7083,22.6,6960,216C|633B
+G0A43,Ouvriers qualifiés polyvalents d'entretien du bâtiment,0.204,16.54,150840,632K
+G0B40,Carrossiers automobiles,0.3186,0.36,40272,216B|634A
+G0B41,Mécaniciens et électroniciens de véhicules,0.2831,41.67,156468,212A|216A|633C|634C
+G1Z70,Techniciens et agents de maîtrise de la maintenance et de l'environnement,0.4748,34.74,282396,477B|477C|477D|486A|486D
+G1Z71,Techniciens experts,0.5589,34.46,89796,479B
+G1Z80,Agents de maîtrise en entretien,0.204,43.49,19488,486E
+H0Z90,Ingénieurs et cadres de fabrication et de la production,0.5096,33.04,137172,380A|383B|384B|385B|386D|386E
+H0Z91,Cadres techniques de la maintenance et de l'environnement,0.3921,34.84,67044,387E|387F
+H0Z92,"Ingénieurs des méthodes de production, du contrôle qualité",0.5645,34.24,107040,387C|387D
+J0Z20,Ouvriers non qualifiés de l'emballage et manutentionnaires,0.2872,11.0,486720,676A|676B|676C|676D
+J1Z40,Ouvriers qualifiés du magasinage et de la manutention,0.3192,12.92,420408,652A|652B|653A
+J1Z80,Responsables magasinage,0.4938,28.79,64356,487A|487B
+J3Z40,Conducteurs de véhicules légers,0.4233,25.66,105516,217A|526E|642A|642B
+J3Z41,Conducteurs de transport en commun sur route,0.264,9.61,141156,641B
+J3Z42,Conducteurs et livreurs sur courte distance,0.5794,21.63,335016,643A|644A
+J3Z43,Conducteurs routiers,0.5014,24.51,398976,217B|218A|641A
+J3Z44,Conducteurs sur rails et d'engins de traction,0.3606,5.55,37992,651B|654A
+J4Z40,Agents d'exploitation des transports,0.2532,12.91,36300,655A
+J4Z60,Contrôleurs des transports,0.35,1.61,10572,546A
+J4Z80,Responsables logistiques (non cadres),0.6644,22.95,128172,466C|477A
+J5Z60,Agents et hôtesses d'accompagnement,0.3177,1.61,33624,546D|546E
+J5Z61,Agents administratifs des transports,0.8986,35.09,56964,546C
+J5Z62,Employés des transports et du tourisme,0.6031,34.79,42816,546B
+J5Z80,Techniciens des transports et du tourisme,0.7126,32.48,32580,226B|466A|466B
+J6Z90,Cadres des transports,0.5088,44.36,45252,389A|451D
+J6Z91,Personnels navigants de l'aviation,0.3589,12.48,10884,389B
+J6Z92,"Ingénieurs et cadres de la logistique, du planning et de l'ordonnancement",0.5758,35.7,54468,387B
+K0Z20,Ouvriers non qualifiés divers de type artisanal,0.2986,9.45,64044,685A
+K0Z40,Artisans et ouvriers qualifiés divers de type artisanal,0.2986,10.02,27060,214E|214F|217D|637B|637D
+L0Z60,Secrétaires bureautiques et assimilés,1.2997,51.39,461880,542A|542B
+L1Z60,Employés de la comptabilité,1.6497,69.72,318420,543A
+L2Z60,Agents d'accueil et d'information,1.0842,22.83,187836,313A|541A|541D
+L2Z61,Agents administratifs divers,1.4902,54.05,930600,543D
+L3Z80,Secrétaires de direction,1.3423,52.06,150096,461A
+L4Z80,Techniciens des services administratifs,0.9937,47.08,253368,461E|461F
+L4Z81,Techniciens des services comptables et financiers,1.6497,72.31,146508,461D
+L5Z90,"Cadres administratifs, comptables et financiers (hors juristes)",0.6977,54.71,770760,312C|312D|372A|372B|373A|373B|373C|373D
+L5Z91,Juristes,0.3915,14.22,60384,372E
+L5Z92,Cadres des ressources humaines et du recrutement,0.467,51.41,147108,372C|372D
+L6Z00,Dirigeants de petites et moyennes entreprises,0.3993,47.82,189396,232A|233A|233B|233C|233D
+L6Z90,Cadres dirigeants des grandes entreprises,0.2307,54.47,48900,231A|371A
+M0Z60,Employés et opérateurs en informatique,0.987,51.01,59928,544A
+M1Z80,Techniciens d'étude et de développement en informatique,0.9494,49.71,81780,478A
+M1Z81,"Techniciens de production, d'exploitation, d'installation, et de maintenance, support et services aux utilisateurs en informatique",0.7632,36.43,143592,478B|478C|478D
+M2Z90,"Ingénieurs et cadres d'étude, recherche et développement en informatique, chefs de projets informatiques",0.7049,55.78,588600,388A|388C
+M2Z91,"Ingénieurs et cadres d'administration, maintenance en informatique",0.6554,56.44,72324,388B
+M2Z92,Ingénieurs et cadres des télécommunications,0.6978,52.13,27456,388E
+N0Z90,"Ingénieurs et cadres d'étude, recherche et développement (industrie)",0.718,32.03,241692,312E|383A|384A|385A|386A
+N0Z91,Chercheurs (sauf industrie et enseignement supérieur),0.4262,30.88,110952,342E
+P0Z60,Agents des impôts et des douanes,0.7937,55.16,4392,522A
+P1Z80,Contrôleurs des impôts et des douanes,0.6557,52.96,28860,451C
+P1Z81,Autres cadres B de la fonction publique,0.38,52.45,278208,451E|451F
+P2Z90,Cadres A de la fonction publique (hors spécialités juridiques) et assimilés,0.3349,39.82,344964,331A|332A|332B|333B|333E|333F|351A
+P3Z90,Professionnels du droit,0.7103,40.0,5052,312A|312B|312G
+P3Z91,Magistrats,0.0656,12.92,31164,333A
+P4Z60,Agents de sécurité et de l'ordre public,0.1915,11.61,129528,531A|531C|532A|532B|532C|533A
+P4Z61,Agents de polices municipales,0.4496,6.07,23892,531B
+P4Z80,Cadres intermédiaires de la police et de l'armée,0.2559,16.68,6540,452A|452B
+Q0Z60,Employés de la banque et des assurances,0.8453,38.35,210252,545A|545B|545C|545D
+Q1Z80,Techniciens de la banque,0.6823,42.87,152316,467A|467B
+Q1Z81,Techniciens des assurances,0.7343,38.56,78696,467C|467D
+Q2Z90,Cadres de la banque,0.6509,49.46,138432,376A|376B|376C|376D
+Q2Z91,Cadres des assurances,0.5364,40.29,79836,226A|376E|376F
+R0Z60,Employés de libre service,0.3246,15.7,565500,551A
+R0Z61,Caissiers,0.6691,24.65,217860,552A|554J
+R1Z60,Vendeurs en produits alimentaires,0.4822,66.63,274752,219A|554A
+R1Z61,"Vendeurs en ameublement, équipement du foyer, bricolage",0.6988,71.55,163284,554B|554C
+R1Z62,"Vendeurs en habillement et accessoires, articles de luxe, de sport, de loisirs et culturels",0.5479,71.07,352704,554D|554E|554F|554G
+R1Z63,Vendeurs en gros de matériel et équipements,1.0263,62.23,70188,556A
+R1Z67,Télévendeurs,0.812,45.98,49356,555A
+R2Z80,Attachés commerciaux,0.5888,45.21,129936,225A|463A|463B|463C|463D
+R2Z83,Représentants auprès des particuliers,0.6739,49.78,88428,463E
+R3Z80,Maîtrise des magasins,0.645,40.41,156516,222A|222B|223A|223B|223C|223D|223E|223F|223G|223H|462A|462B|462D
+R3Z82,Professions intermédiaires commerciales,0.729,50.96,192540,462C|462E
+R4Z90,"Cadres commerciaux, acheteurs et cadres de la mercatique",0.6883,48.62,369732,374B|374C|374D
+R4Z91,Ingénieurs et cadres technico-commerciaux,0.4891,39.97,159396,382D|383C|384C|385C|387A|388D
+R4Z92,Cadres des magasins,0.5446,49.4,97200,374A
+R4Z93,"Agents immobiliers, syndics",0.6127,52.24,46248,226C|376G
+S0Z20,Apprentis et ouvriers non qualifiés de l'alimentation (hors industries agro-alimentaires),0.3085,30.21,58008,215D|683A
+S0Z40,Bouchers,0.3156,5.14,90552,215B|625D|636A
+S0Z41,"Charcutiers, traiteurs",0.3986,0.44,6960,215C|636B
+S0Z42,"Boulangers, pâtissiers",0.2162,38.89,88944,215A|636C
+S1Z20,"Aides de cuisine, apprentis de cuisine et employés polyvalents de la restauration",0.2579,4.35,479808,561D
+S1Z40,Cuisiniers,0.2075,13.99,242724,636D
+S1Z80,Chefs cuisiniers,0.4201,26.77,43740,488A
+S2Z60,Employés de l'hôtellerie,0.4001,16.63,172752,561E|561F
+S2Z61,Serveurs de cafés restaurants,0.4277,10.19,504372,561A
+S2Z80,Maîtres d'hôtel,0.4385,23.14,41244,468A
+S2Z81,Maîtrise de l'hôtellerie,0.5924,23.14,11988,468B
+S3Z90,Cadres de l'hôtellerie et de la restauration,0.5689,39.18,66252,377A|488B
+T0Z60,"Coiffeurs, esthéticiens",0.2882,23.39,166404,217C|562A|562B
+T1Z60,Employés de maison et personnels de ménage,0.1424,9.79,143520,563C
+T2A60,Aides à domicile et aides ménagères,0.1654,10.53,403164,563B
+T2B60,Assistantes maternelles,0.1162,4.69,347856,563A
+T3Z60,Concierges,0.3402,9.76,56892,564A
+T3Z61,Agents de sécurité et de surveillance,0.4159,17.44,196428,534A|534B
+T4Z60,Agents d'entretien de locaux,0.4315,11.63,718320,217E|525A|525B|525C|684A
+T4Z61,Agents de services hospitaliers,0.2456,9.93,336732,525D
+T4Z62,Ouvriers de l'assainissement et du traitement des déchets,0.2342,12.96,54576,628E|684B
+T6Z61,Employés des services divers,0.3508,4.53,137040,227C|227D|564B
+U0Z80,Assistants de communication,0.7828,63.87,64140,464A
+U0Z81,Interprètes,0.9793,63.87,4332,464B
+U0Z90,Cadres de la communication,0.6476,67.93,89880,375A|375B
+U0Z91,Cadres et techniciens de la documentation,1.021,27.07,21948,372F|425A
+U0Z92,Journalistes et cadres de l'édition,0.9666,46.59,39468,352A|353A
+U1Z80,Professionnels des spectacles,0.4137,34.82,114696,353B|353C|465B|637C
+U1Z81,Photographes,0.6423,38.07,3048,465C
+U1Z82,"Graphistes, dessinateurs, stylistes, décorateurs et créateurs de supports de communication visuelle",0.5031,32.49,34248,465A
+U1Z91,"Artistes (musique, danse, spectacles)",0.27,22.81,71712,354B|354C|354D|354G
+U1Z92,Écrivains,1.0228,43.83,336,352B
+U1Z93,Artistes plasticiens,0.3363,42.75,1560,354A
+V0Z60,Aides-soignants,0.2546,9.74,717108,526A|526B|526C|526D
+V1Z80,Infirmiers,0.2013,16.3,539568,431A|431B|431C|431D|431F|431G
+V1Z81,Sages-femmes,0.1971,19.05,18828,431E
+V2Z90,Médecins,0.3097,15.32,228384,311A|311B|344A|344B|344C
+V2Z91,Dentistes,0.2383,24.56,9432,311C
+V2Z92,Vétérinaires,0.2222,47.62,9120,311E
+V2Z93,Pharmaciens,0.2656,35.0,45912,311F|344D
+V3Z70,Techniciens médicaux et préparateurs,0.4492,14.7,178164,433A|433D
+V3Z71,Spécialistes de l'appareillage médical,0.3782,11.27,35340,433B|433C
+V3Z80,Autres professionnels para-médicaux,0.211,14.73,68484,432A|432B|432C|432D
+V3Z90,"Psychologues, psychothérapeutes",0.2734,30.8,40176,311D
+V4Z80,Professionnels de l'orientation,0.4134,40.82,12060,343A
+V4Z83,Educateurs spécialisés,0.1699,18.86,291060,434A|434D|434E|434F|434G
+V4Z85,Professionnels de l'action sociale,0.288,15.59,74364,434B|434C
+V5Z81,Professionnels de l'animation socioculturelle,0.2839,9.83,176040,435A|435B
+V5Z82,Sportifs et animateurs sportifs,0.1779,22.87,108192,424A
+V5Z84,Surveillants d'établissements scolaires,0.161,15.72,236376,422D|422E
+W0Z80,Professeurs des écoles,0.3668,26.72,386784,421A|421B
+W0Z90,Professeurs du secondaire,0.2867,12.34,566652,341A|422A|422B|422C
+W0Z91,Directeurs d'établissement scolaire et inspecteurs,0.2062,50.5,22296,227B|341B
+W0Z92,Professeurs du supérieur,0.2746,12.24,87096,342A
+W1Z80,Formateurs,0.4866,20.25,127692,423A|423B

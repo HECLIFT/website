@@ -49,6 +49,9 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/ai-trackers/diffusion-science/index.html"/>
   </url>
   <url>
+    <loc>https://heclift.github.io/website/ai-trackers/metiers-exposes/index.html</loc>
+  </url>
+  <url>
     <loc>https://heclift.github.io/website/index.html</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/index.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/index.html"/>
