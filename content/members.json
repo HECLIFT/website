@@ -49,6 +49,20 @@
       "page_perso": "https://cms27.github.io/"
     },
     {
+      "id": "abertheau",
+      "nom": "Antoine Bertheau",
+      "section": "Fellows",
+      "role": "Fellow",
+      "photo": "images/membres/abertheau.jpg",
+      "bio": "Antoine Bertheau est économiste-chercheur senior à la Banque de France et professeur associé à l’École d’affaires publiques de Sciences Po. Il est chercheur affilié à l’IZA et à la Rockwool Foundation Berlin (RF Berlin), et membre du réseau LinkEED de l’OCDE, au sein duquel il est co-auteur principal de plusieurs études comparatives entre pays. Ses travaux portent sur la macroéconomie du travail et sur les interactions entre employeurs et salariés : licenciements, embauches et inégalités salariales. Il s’appuie sur des données administratives et des enquêtes. Il étudie également les effets de l’intelligence artificielle sur le marché du travail.",
+      "bio_en": "Antoine Bertheau is a senior research economist at the Banque de France and an associate professor at the Sciences Po School of Public Affairs. He is a research affiliate of IZA and of the Rockwool Foundation Berlin (RF Berlin), and a member of the OECD’s LinkEED network, where he is a lead co-author of several cross-country studies. His work focuses on labor macroeconomics and on the interactions between employers and workers: layoffs, hiring and wage inequality. He draws on administrative data and surveys. He also studies the effects of artificial intelligence on the labor market.",
+      "bio_courte": "Économiste-chercheur senior à la Banque de France et professeur associé à Sciences Po. Ses travaux portent sur la macroéconomie du travail, les relations entre employeurs et salariés et les effets de l’IA sur le marché du travail.",
+      "bio_courte_en": "Senior research economist at the Banque de France and associate professor at Sciences Po. His work focuses on labor macroeconomics, employer-employee interactions and the effects of AI on the labor market.",
+      "page_perso": "https://www.antoinebertheau.com/",
+      "email": "antoine.bertheau@banque-france.fr",
+      "linkedin": "https://www.linkedin.com/in/antoine-bertheau-27344693/"
+    },
+    {
       "id": "sbunel",
       "nom": "Simon Bunel",
       "section": "Fellows",

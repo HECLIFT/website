@@ -136,6 +136,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/abergeaud.html"/>
   </url>
   <url>
+    <loc>https://heclift.github.io/website/membres/abertheau.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/abertheau.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/abertheau.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/abertheau.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/membres/abertheau.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/abertheau.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/abertheau.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/membres/abertheau.html"/>
+  </url>
+  <url>
     <loc>https://heclift.github.io/website/membres/adyevre.html</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/membres/adyevre.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/membres/adyevre.html"/>
