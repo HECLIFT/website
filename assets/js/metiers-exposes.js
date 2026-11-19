@@ -22,9 +22,9 @@
   };
   // Q1 (le moins exposé) clair → Q5 (le plus exposé) foncé
   const Q_COLORS = ['#C3D0EE', '#93A9E6', '#5F84E8', '#2F509F', '#0E2A47'];
-  // groupes d'exposition : cinquièmes des postes de la base Tous salariés 2022 (même définition partout)
-  const Q_LABELS = ['Q1 · postes les moins exposés', 'Q2', 'Q3', 'Q4', 'Q5 · postes les plus exposés'];
-  const P_LABELS = ['1er cinquième\n(postes les moins exposés)', '2e cinquième', '3e cinquième', '4e cinquième', '5e cinquième\n(postes les plus exposés)'];
+  // groupes d'exposition : cinquièmes des salariés de la base Tous salariés 2022 présents au 31/12 (même définition partout)
+  const Q_LABELS = ['Q1 · salariés les moins exposés', 'Q2', 'Q3', 'Q4', 'Q5 · salariés les plus exposés'];
+  const P_LABELS = ['1er cinquième\n(salariés les moins exposés)', '2e cinquième', '3e cinquième', '4e cinquième', '5e cinquième\n(salariés les plus exposés)'];
   const SEXE = { F: 'Femmes', H: 'Hommes' };
   const AGE_LAB = (a) => (a === 'tous' ? 'Tous âges' : a.endsWith('+') ? a.slice(0, -1) + ' ans et plus' : a + ' ans');
   const BASE_MOIS = '2022-11';          // mise en ligne de ChatGPT
@@ -169,15 +169,15 @@
 
   // Courbes d'embauche : log, désaisonnalisation par indicatrices de mois, filtre HP (λ = 1 000),
   // écart relatif à novembre 2022. Affichées telles quelles. Deux définitions des groupes :
-  // cinquièmes des postes (défaut, comme le profil et la carte) ou cinquièmes des métiers (PP 2026-02).
+  // cinquièmes des salariés (défaut, comme le profil et la carte) ou cinquièmes des métiers (PP 2026-02).
   const FLUX = [['embauches_cdi', 'Embauches en CDI'], ['embauches_cdd', 'Embauches en CDD'], ['fins_cdi', 'Fins de CDI'], ['fins_cdd', 'Fins de CDD']];
   const MODES = {
-    p: { lab: 'Cinquièmes des postes', unite: 'postes', def: 'postes' },
+    p: { lab: 'Cinquièmes des salariés', unite: 'salariés', def: 'salaries' },
     nw: { lab: 'Cinquièmes des métiers', unite: 'métiers', def: 'metiers' },
   };
   const MODE_NOTE = {
     nw: 'Chaque groupe réunit un cinquième des métiers, du moins au plus exposé (Palladino et al., 2026).',
-    p: 'Chaque groupe réunit un cinquième des postes salariés, du moins au plus exposé.',
+    p: 'Chaque groupe réunit un cinquième des salariés, du moins au plus exposé.',
   };
   // variante en cinquièmes des métiers : dans les fichiers, sans sélecteur sur la page tant que l'écart
   // avec les chiffres publiés du PP 2026-02 n'est pas expliqué (décision du 15/11/2026)
@@ -238,17 +238,17 @@
   // ================================================= 2. Composition (BTS)
   function drawComposition() {
     const el = $('me-chart-composition');
-    const P = (D.prof || []).map(profFromRow).filter((p) => !p.agregat && p.quintile != null && p.postes != null);
-    if (!P.length || P.every((p) => p.femmes == null)) return pending(el, 'postes par groupe, sexe et âge (base Tous salariés)');
+    const P = (D.prof || []).map(profFromRow).filter((p) => !p.agregat && p.quintile != null && p.sal != null);
+    if (!P.length || P.every((p) => p.femmes == null)) return pending(el, 'salariés par groupe, sexe et âge (base Tous salariés)');
     const c = chart(el);
-    // part de chaque groupe dans les postes d'une population ; poids = postes × part
+    // part de chaque groupe dans les salariés d'une population ; poids = salariés × part
     const pops = [
-      ['Ensemble des postes', () => 1], ['Femmes', (p) => p.femmes], ['Hommes', (p) => 1 - p.femmes],
+      ['Ensemble des salariés', () => 1], ['Femmes', (p) => p.femmes], ['Hommes', (p) => 1 - p.femmes],
       ['Moins de 30 ans', (p) => p.jeunes], ['30 ans et plus', (p) => 1 - p.jeunes],
     ];
     const data = pops.map(([, f]) => {
       const w = [0, 0, 0, 0, 0];
-      P.forEach((p) => { const x = f(p); if (x != null && !Number.isNaN(x)) w[p.quintile - 1] += p.postes * x; });
+      P.forEach((p) => { const x = f(p); if (x != null && !Number.isNaN(x)) w[p.quintile - 1] += p.sal * x; });
       const t = w.reduce((a, b) => a + b, 0);
       return w.map((v) => (t ? (100 * v) / t : null));
     });
@@ -299,7 +299,7 @@
           markLine: { symbol: 'none', silent: true, lineStyle: { color: C.coral, type: 'dashed', width: 1 }, label: { show: false }, data: [{ yAxis: ens }] } });
       });
       c.setOption({ textStyle: { fontFamily: FONT }, title, grid, xAxis, yAxis, series,
-        tooltip: { ...tooltipCommon, trigger: 'item', formatter: (p) => { const r = R[p.seriesIndex]; return `<b>${esc(r.indicateur)}</b><br>${p.name} : ${lab(r, p.value)}<br>Ensemble des postes : ${lab(r, num(r.ensemble))}`; } } }, true);
+        tooltip: { ...tooltipCommon, trigger: 'item', formatter: (p) => { const r = R[p.seriesIndex]; return `<b>${esc(r.indicateur)}</b><br>${p.name} : ${lab(r, p.value)}<br>Ensemble des salariés : ${lab(r, num(r.ensemble))}`; } } }, true);
     };
     draw();
     let tm; window.addEventListener('resize', () => { clearTimeout(tm); tm = setTimeout(draw, 150); });
@@ -322,18 +322,17 @@
       pcs: r.pcs, pcs03: r.pcs03 || r.pcs, libelle: r.libelle, fap: r.fap, libelle_fap: r.libelle_fap,
       famille: r.famille || 'Autres', origine: r.origine || 'direct',
       indice: num(r.indice), brute: num(r.exposition_brute), centile: num(r.centile),
-      quintile: num(r.groupe ?? r.quintile), atlas: num(r.atlas), postes: num(r.postes), agregat: r.agregat || '',
+      quintile: num(r.groupe ?? r.quintile), atlas: num(r.atlas), sal: num(r.salaries ?? r.postes), agregat: r.agregat || '',
       femmes: num(r.part_femmes), age: num(r.age_moyen), jeunes: num(r.part_moins_30),
-      salaire: num(r.salaire_horaire_net), cdi: num(r.part_cdi),
+      salaire: num(r.salaire_horaire_net), cdi: num(r.part_cdi), fonct: num(r.part_fonctionnaires),
       tp: num(r.part_temps_partiel), apprentis: num(r.part_apprentis),
-      heures: num(r.heures), masse: num(r.masse_nette),
     };
   }
 
   function weightedMean(rows, k) {
     rows = rows.filter((r) => !r.agregat);   // les regroupements doublonneraient leurs codes détaillés
     let s = 0, w = 0;
-    rows.forEach((r) => { if (r[k] != null && r.postes) { s += r[k] * r.postes; w += r.postes; } });
+    rows.forEach((r) => { if (r[k] != null && r.sal) { s += r[k] * r.sal; w += r.sal; } });
     return w ? s / w : null;
   }
 
@@ -345,7 +344,7 @@
       return;
     }
     pcsRows = D.prof.map(profFromRow);
-    D.hasBTS = pcsRows.some((p) => p.postes != null);
+    D.hasBTS = pcsRows.some((p) => p.sal != null);
     D.centilePostes = pcsRows.some((p) => p.centile != null);
     if (!D.centilePostes) {
       const ref = [...new Map(pcsRows.filter((p) => p.indice != null).map((p) => [p.pcs03, p.indice])).values()];
@@ -356,7 +355,7 @@
       });
     }
     D.moy = {};
-    ['femmes', 'age', 'jeunes', 'salaire', 'cdi', 'tp', 'apprentis', 'indice'].forEach((k) => (D.moy[k] = weightedMean(pcsRows, k)));
+    ['femmes', 'age', 'jeunes', 'salaire', 'cdi', 'fonct', 'tp', 'apprentis', 'indice'].forEach((k) => (D.moy[k] = weightedMean(pcsRows, k)));
 
 
     // recherche
@@ -388,10 +387,10 @@
     const byPcs = new Map(pcsRows.map((p) => [p.pcs, p]));
     let fiches = null, loading = null;
     const loadRome = () => loading || (loading = Promise.all([loadCSV('rome_metiers.csv'), loadCSV('rome_appellations.csv'), loadCSV('rome_professions.csv'), loadCSV('intitules_insee.csv')]).then(([m, a, l, ins]) => {
-      R.met = new Map((m || []).map((r) => [r.rome, { ...r, s: num(r.s), rang: num(r.rang_pct), n: num(r.n_savoir_faire), app: [], nI: norm(r.intitule), wI: toks(r.intitule) }]));
-      (a || []).forEach((r) => { const f = R.met.get(r.rome); if (f) f.app.push({ t: r.appellation, n: norm(r.appellation), w: toks(r.appellation) }); });
+      R.met = new Map((m || []).map((r) => [r.rome, { ...r, s: num(r.s), rang: num(r.rang_pct), n: num(r.n_savoir_faire), app: [], nI: norm(r.intitule), mI: norm(masculin(r.intitule)), wI: toks(r.intitule) }]));
+      (a || []).forEach((r) => { const f = R.met.get(r.rome); if (f) f.app.push({ t: r.appellation, n: norm(r.appellation), m: norm(masculin(r.appellation)), w: toks(r.appellation) }); });
       R.liens = new Map();
-      (l || []).forEach((r) => { if (!R.liens.has(r.rome)) R.liens.set(r.rome, []); R.liens.get(r.rome).push({ pcs03: r.pcs03, part: num(r.part_postes), ese: (r.pcs_ese || '').split(' ').filter(Boolean), lib: r.pcs03_lib }); });
+      (l || []).forEach((r) => { if (!R.liens.has(r.rome)) R.liens.set(r.rome, []); R.liens.get(r.rome).push({ pcs03: r.pcs03, part: num(r.part_salaries ?? r.part_postes), ese: (r.pcs_ese || '').split(' ').filter(Boolean), lib: r.pcs03_lib }); });
       fiches = [...R.met.values()];
       // intitulés de l'Insee (matrice de codification PCS 2020) : un intitulé, ses codes selon le statut et le niveau
       // appellations au masculin (« Abatteur / Abatteuse d'arbres » -> « abatteur d'arbres ») pour reconnaître les doublons
@@ -404,11 +403,13 @@
       });
       // un intitulé déjà présent parmi les appellations du ROME n'est proposé qu'une fois, côté ROME
       R.ins = [...parLib.values()].filter((x) => !vusRome.has(x.n));
+      // tous les intitulés de l'Insee, pour classer une appellation du ROME qui en reprend un
+      R.insN = new Map([...parLib.values()].map((x) => [x.n, x]));
       show();
       return R;
     }));
     R.load = loadRome;
-    const miniBar = (r) => (r == null ? '' : `<span class="me-mini" title="Plus exposé que ${fmt(r, 0)} % des emplois salariés"><span style="width:${Math.max(2, r)}%"></span></span>`);
+    const miniBar = (r) => (r == null ? '' : `<span class="me-mini" title="Plus exposé que la profession de ${fmt(r, 0)} % des salariés"><span style="width:${Math.max(2, r)}%"></span></span>`);
     let actif = -1;
     const show = () => {
       const raw = input.value.trim(), q = norm(raw);
@@ -417,8 +418,8 @@
       if (!fiches) loadRome();
       let h = '';
       if (/^[0-9]{2}/.test(q)) {           // code PCS-ESE
-        const hitsP = pcsRows.filter((p) => !p.agregat && (p.pcs.toLowerCase().startsWith(q) || p.pcs03.toLowerCase().startsWith(q))).sort((a, b) => (b.postes || 0) - (a.postes || 0)).slice(0, 8);
-        h = hitsP.map((p) => `<li data-pcs="${esc(p.pcs)}"><span class="me-hit-main">${esc(p.libelle)}<span class="me-hit-sub">Profession de la statistique publique · PCS-ESE ${esc(p.pcs)}</span></span></li>`).join('');
+        const hitsP = pcsRows.filter((p) => !p.agregat && (p.pcs.toLowerCase().startsWith(q) || p.pcs03.toLowerCase().startsWith(q))).sort((a, b) => (b.sal || 0) - (a.sal || 0)).slice(0, 8);
+        h = hitsP.map((p) => `<li data-pcs="${esc(p.pcs)}"><span class="me-hit-main">${esc(p.libelle)}<span class="me-hit-sub">Profession de l'Insee · PCS-ESE ${esc(p.pcs)}</span></span></li>`).join('');
       } else if (fiches) {
         let hits;
         if (/^[a-n][0-9]/.test(q)) hits = fiches.filter((f) => f.rome.toLowerCase().startsWith(q)).slice(0, 8).map((f) => ({ f, best: null }));
@@ -427,32 +428,34 @@
           if (!qt.length) { list.hidden = true; return; }
           hits = fiches.map((f) => {
             let best = null, bs = score(qt, f.wI, last), bl = f.intitule.length;
-            if (bs != null) bs -= 0.25 + (f.nI.startsWith(q) ? 1 : 0);
+            if (bs != null) bs -= 0.25 + (f.nI.startsWith(q) || f.mI.startsWith(q) ? 1 : 0) + (f.mI === q ? 1 : 0);
             for (const x of f.app) {
               const v = score(qt, x.w, last);
               if (v == null) continue;
-              const vv = v - (x.n.startsWith(q) ? 1 : 0);
+              const vv = v - (x.n.startsWith(q) || x.m.startsWith(q) ? 1 : 0) - (x.m === q ? 1 : 0);
               if (bs == null || vv < bs || (vv === bs && x.t.length < bl)) { bs = vv; best = x; bl = x.t.length; }
             }
             return bs == null ? null : { f, best, sc: bs, len: bl };
           }).filter(Boolean).sort((x, y) => x.sc - y.sc || x.len - y.len);
           const hitsI = (R.ins || []).map((x, i) => {
             const v = score(qt, x.w, last);
-            return v == null ? null : { ins: i, x, sc: v - (x.n.startsWith(q) ? 1 : 0) + 0.1, len: x.t.length };
+            return v == null ? null : { ins: i, x, sc: v - (x.n.startsWith(q) ? 1 : 0) - (x.n === q ? 1 : 0) + 0.1, len: x.t.length };
           }).filter(Boolean);
           hits = hits.concat(hitsI).sort((x, y) => x.sc - y.sc || x.len - y.len);
           // les rapprochements par faute de frappe ne servent que s'il y a peu de résultats exacts
           const exacts = hits.filter((x) => x.sc < 50);
           hits = (exacts.length >= 3 ? exacts : hits).slice(0, 8);
         }
-        const SRC_ROME = '<span class="me-src">France Travail</span>', SRC_INS = '<span class="me-src me-src-ins">Insee</span>';
-        h = hits.map((hh) => (hh.x
-          ? `<li data-ins="${hh.ins}"><span class="me-hit-main">${esc(hh.x.t)}<span class="me-hit-sub">${SRC_INS}intitulé de profession · ${hh.x.opts.length > 1 ? 'selon le statut et le niveau du poste' : 'profession de la statistique publique'}</span></span>${miniBar((byPcs.get((hh.x.opts.find((y) => y.defaut) || hh.x.opts[0]).pcs[0]) || {}).centile)}</li>`
-          : `<li data-rome="${esc(hh.f.rome)}"><span class="me-hit-main">${esc(hh.best ? hh.best.t : hh.f.intitule)}<span class="me-hit-sub">${SRC_ROME}${hh.best ? `métier « ${esc(hh.f.intitule)} »` : 'métier du répertoire'}</span></span>${miniBar(centileEmploi(hh.f.s))}</li>`)).join('');
+        const sub = (c) => (c[0] ? `<span class="me-hit-sub">Profession : ${esc(c[0].libelle)}</span>` : '');
+        h = hits.map((hh) => {
+          if (hh.x) { const c = candidats(hh.x.t, null, hh.x); return `<li data-ins="${hh.ins}"><span class="me-hit-main">${esc(hh.x.t)}${sub(c)}</span>${miniBar(c[0] ? c[0].centile : null)}</li>`; }
+          const t = hh.best ? hh.best.t : hh.f.intitule, c = candidats(t, hh.f);
+          return `<li data-rome="${esc(hh.f.rome)}" data-app="${esc(t)}"><span class="me-hit-main">${esc(t)}${sub(c)}</span>${miniBar(centileEmploi(hh.f.s))}</li>`;
+        }).join('');
       }
       if (!fiches && !h) h = '<li class="me-empty">Chargement des métiers…</li>';
       list.innerHTML = (h || '<li class="me-empty">Aucun métier trouvé</li>') +
-        '<li class="me-hit-foot">Une profession de la statistique publique ? Tapez son code PCS-ESE ou <a href="#sec-tableau">parcourez le tableau</a>.</li>';
+        '<li class="me-hit-foot">Votre métier n\'apparaît pas ? <a href="#sec-tableau">Parcourez le tableau des professions</a>.</li>';
       list.hidden = false;
     };
     input.addEventListener('input', show);
@@ -474,7 +477,7 @@
       if (!li) return;
       input.value = '';
       list.hidden = true;
-      if (li.dataset.rome) showRome(li.dataset.rome); else if (li.dataset.ins) showInsee(+li.dataset.ins); else showFiche(li.dataset.pcs);
+      if (li.dataset.rome) showMetier(li.dataset.app, li.dataset.rome); else if (li.dataset.ins) showMetier(R.ins[+li.dataset.ins].t); else showFiche(li.dataset.pcs);
     });
     document.addEventListener('click', (e) => { if (!e.target.closest('.me-search-wrap')) list.hidden = true; });
 
@@ -486,11 +489,12 @@
         const b = document.createElement('button');
         b.className = 'me-chip';
         b.textContent = t;
-        b.onclick = () => showRome(c);
+        b.onclick = () => showMetier(null, c);
         chips.appendChild(b);
       });
       const hr = decodeURIComponent(location.hash.replace('#rome-', ''));
-      if (location.hash.startsWith('#rome-') && R.met.has(hr)) showRome(hr, false);
+      if (location.hash.startsWith('#rome-') && R.met.has(hr)) showMetier(null, hr, 0, false);
+      if (location.hash.startsWith('#metier-')) { const [c, t] = decodeURIComponent(location.hash.slice(8)).split('|'); if (c && R.met.has(c)) showMetier(t || null, c, 0, false); else if (t) showMetier(t, null, 0, false); }
     });
 
     buildTable();
@@ -500,88 +504,150 @@
 
   const R = {};
   // profession de la BTS correspondant à une PCS 2003 : le code lui-même, son regroupement,
-  // ou l'agrégation à la volée de ses codes PCS-ESE (parts pondérées par les postes, salaire = masse / heures)
+  // ou l'agrégation à la volée de ses codes PCS-ESE (moyennes pondérées par les salariés)
   function profDe(l) {
     const direct = pcsRows.find((p) => p.pcs === l.pcs03 && (p.agregat || l.ese.length <= 1));
     if (direct) return direct;
     const k = pcsRows.filter((p) => l.ese.includes(p.pcs) && !p.agregat);
     if (!k.length) return null;
     if (k.length === 1) return k[0];
-    const w = (key) => { let a = 0, b = 0; k.forEach((p) => { if (p[key] != null && p.postes) { a += p[key] * p.postes; b += p.postes; } }); return b ? a / b : null; };
+    const w = (key) => { let a = 0, b = 0; k.forEach((p) => { if (p[key] != null && p.sal) { a += p[key] * p.sal; b += p.sal; } }); return b ? a / b : null; };
     const sum = (key) => k.reduce((a, p) => a + (p[key] || 0), 0);
-    const base = k.slice().sort((a, b) => (b.postes || 0) - (a.postes || 0))[0];
+    const base = k.slice().sort((a, b) => (b.sal || 0) - (a.sal || 0))[0];
     return { ...base, pcs: l.pcs03, libelle: l.lib, agregat: k.map((p) => p.pcs).join('|'), virtuel: true,
-      postes: sum('postes') || null, femmes: w('femmes'), age: w('age'), jeunes: w('jeunes'), cdi: w('cdi'), tp: w('tp'), apprentis: w('apprentis'),
-      salaire: sum('heures') ? sum('masse') / sum('heures') : w('salaire') };
+      sal: sum('sal') || null, femmes: w('femmes'), age: w('age'), jeunes: w('jeunes'), cdi: w('cdi'), fonct: w('fonct'), tp: w('tp'), apprentis: w('apprentis'),
+      salaire: w('salaire') };
   }
-  const postesDe = (l) => { const p = profDe(l); return p ? p.postes : null; };
 
   function profilHTML(p) {
     const M = D.moy;
-    if (p.postes == null) return `<div class="me-pending">${D.hasBTS ? 'Moins de 5 postes : données couvertes par le secret statistique.' : 'Profil des salariés en préparation (base Tous salariés 2022).'}</div>`;
-    return `<p class="me-legend-ref"><span class="me-bar-ref me-bar-ref-inline"></span> moyenne de l'ensemble des postes</p>
+    if (p.sal == null) return `<div class="me-pending">${D.hasBTS ? 'Moins de 5 salariés : données couvertes par le secret statistique.' : 'Profil des salariés en préparation (base Tous salariés 2022).'}</div>`;
+    return `<p class="me-legend-ref"><span class="me-bar-ref me-bar-ref-inline"></span> moyenne de l'ensemble des salariés</p>
           ${bar('Femmes', p.femmes, M.femmes, 1, (v) => pct(v, 0))}
           ${bar('Moins de 30 ans', p.jeunes, M.jeunes, 1, (v) => pct(v, 0))}
           ${bar('CDI', p.cdi, M.cdi, 1, (v) => pct(v, 0))}
+          ${bar('Fonctionnaires', p.fonct, M.fonct, 1, (v) => pct(v, 0))}
           ${bar('Temps partiel', p.tp, M.tp, 1, (v) => pct(v, 0))}
           ${bar('Apprentis', p.apprentis, M.apprentis, 0.3, (v) => pct(v, 1))}
           ${bar('Salaire horaire net', p.salaire, M.salaire, 50, (v) => (v == null ? '—' : fmt(v, 1) + ' €'))}
           ${bar('Âge moyen', p.age, M.age, 65, (v) => (v == null ? '—' : fmt(v, 1) + ' ans'))}
-          <p class="me-note">Base Tous salariés 2022, tous les postes non annexes de la profession, public compris ; les indépendants ne sont pas couverts.${p.agregat ? ' Parts et âge moyen pondérés par les postes des codes regroupés.' : ''}</p>`;
+          <p class="me-note">Base Tous salariés 2022 de l'Insee : salariés de la profession présents au 31 décembre, sur leur poste principal, public compris ; les indépendants ne sont pas couverts.${p.agregat ? ' Moyennes pondérées par les salariés des codes regroupés.' : ''}</p>`;
   }
 
-  async function showRome(code, scroll = true) {
+  // ---------------------------------------------------------------- fiche d'un métier
+  // Un métier n'a pas de statistiques propres : ses salariés sont comptés dans une profession, catégorie plus large.
+  // La page ne montre pas d'où vient chaque intitulé ; la règle est décrite dans « À propos » :
+  // 1. intitulé de la liste de l'Insee : la profession de son codage par défaut, puis celles de ses autres codages ;
+  // 2. sinon, les professions reliées à la fiche ROME, la première étant celle dont le libellé partage le plus de mots
+  //    avec l'intitulé (bonus de niveau : directeur, responsable… vers les cadres), à égalité la plus nombreuse.
+  const normT = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  const mascT = (s) => normT(s.replace(/(\S+) \/ \S+/g, '$1'));
+  const MOTS_VIDES = new Set('de la le les des du d l et en a au aux ou un une sur pour par avec non sans dans hors autres autre divers diverses'.split(' '));
+  const seqR = (t) => mascT(t).split(/[^a-z0-9]+/).filter((w) => w.length > 2 && !MOTS_VIDES.has(w)).map((w) => w.replace(/[sx]$/, '').slice(0, 6));
+  const paires = (a) => a.slice(1).map((w, i) => a[i] + ' ' + w);
+  const NIV_MOTS = [[/\b(directeur|directrice|dirigeant|dirigeante|responsable|ingenieur|ingenieure|manager|cadre)\b/, '23'],
+    [/\bchef\b(?! d.equipe)/, '23'], [/\b(technicien|technicienne|assistant|assistante)\b/, '4'], [/\b(agent|agente|employe|employee)\b/, '5'], [/\b(ouvrier|ouvriere|operateur|operatrice)\b/, '6']];
+  // score : mots communs, plus un point par paire de mots consécutifs commune (« chef de chantier »), plus le bonus de niveau
+  function preselection(t, opts) {
+    const a = seqR(t), m = new Set(a), pa = new Set(paires(a)), n = mascT(t);
+    const niv = (NIV_MOTS.find(([rx]) => rx.test(n)) || [null, ''])[1];
+    const sc = (o) => { const b = seqR(o.lib); return [...new Set(b)].filter((w) => m.has(w)).length + paires(b).filter((x) => pa.has(x)).length + (niv.includes(o.pcs03[0]) ? 0.5 : 0); };
+    return opts.slice().sort((a, b) => sc(b) - sc(a) || b.part - a.part)[0];
+  }
+  const profCode = (c) => pcsRows.find((z) => z.pcs === c) || null;
+  // professions possibles d'un intitulé, la plus plausible en premier
+  function candidats(t, f, x = null) {
+    const out = [], vus = new Set();
+    const add = (q) => { if (q && !vus.has(q.pcs)) { vus.add(q.pcs); out.push(q); } };
+    x = x || (R.insN && R.insN.get(mascT(t)));
+    if (x) {
+      const st0 = x.opts[0].statut;
+      [...x.opts.filter((y) => y.statut === st0 && y.defaut), ...x.opts.filter((y) => y.statut === st0 && !y.defaut), ...x.opts.filter((y) => y.statut !== st0)]
+        .forEach((y) => add(profCode(y.pcs[0])));
+    }
+    if (!out.length && f) {
+      const opts = (R.liens.get(f.rome) || []).filter((l) => l.part != null && profDe(l)).sort((a, b) => b.part - a.part);
+      if (opts.length) { const sel = preselection(t, opts); [sel, ...opts.filter((l) => l !== sel)].forEach((l) => add(profDe(l))); }
+    }
+    return out;
+  }
+  // exemples de métiers d'une profession : intitulés des fiches ROME qui y sont rangées, celles qui existaient déjà
+  // dans le ROME V3 et celles qui ont le plus d'appellations d'abord, puis intitulés de l'Insee, les plus courts d'abord
+  const masculin = (s) => { const i = s.indexOf(' / '); if (i < 0) return s; const g = s.slice(0, i), d = s.slice(i + 3).split(' '); return [g, ...d.slice(g.split(' ').length)].join(' ').trim(); };
+  const minus1 = (s) => (/^[A-ZÀ-Ý][a-zà-ÿ]/.test(s) ? s[0].toLowerCase() + s.slice(1) : s);
+  let EX = null;
+  function exemples(pcs, exclRome = null, exclT = '') {
+    if (!R.met) return [];
+    if (!EX) {
+      EX = new Map(); const push = (k, v) => { if (!EX.has(k)) EX.set(k, []); EX.get(k).push(v); };
+      R.met.forEach((f) => { const c = candidats(f.intitule, f); if (c[0]) push(c[0].pcs, { t: masculin(f.intitule), rome: f.rome, r: 0, v: f.voie === 'code_v3' ? 0 : 1, n: -f.app.length }); });
+      (R.ins || []).forEach((x) => { const c = candidats(x.t, null, x); if (c[0]) push(c[0].pcs, { t: x.t, rome: null, r: 1, v: 0, n: x.t.length }); });
+      EX.forEach((a) => a.sort((u, w) => u.r - w.r || u.v - w.v || u.n - w.n));
+    }
+    // intitulés courts seulement, sans parenthèse, sans doublon ni le métier cherché
+    const nt = normT(masculin(exclT || '')).replace(/\s*\(.*?\)\s*/g, ' ').trim(), vus = new Set([nt]), out = [];
+    for (const e of EX.get(pcs) || []) {
+      if (exclRome && e.rome === exclRome) continue;
+      const x = e.t.replace(/\s*\(.*?\)\s*/g, ' ').trim(), k = normT(x);
+      if (x.length > 40 || vus.has(k)) continue;
+      vus.add(k); out.push(minus1(x));
+      if (out.length === 3) break;
+    }
+    return out;
+  }
+  const deX = (x) => (/^[aeiouyhàâéèêëîïôûü]/i.test(x) ? 'd’' : 'de ') + x;
+  const metiersDe = (ex) => (ex.length < 2 ? ex.map(deX).join('') : ex.slice(0, -1).map(deX).join(', ') + ' et ' + deX(ex[ex.length - 1]));
+  const codeFiche = (q) => (q.virtuel ? q.agregat.split('|')[0] : q.pcs);
+
+  async function showMetier(t, code = null, k = 0, scroll = true) {
     await R.load();
-    const f = R.met.get(code);
+    const f = code ? R.met.get(code) : null;
+    if (!f && !t) return;
+    t = t || f.intitule;
     const el = $('me-fiche');
-    if (!f) return;
-    history.replaceState(null, '', '#rome-' + encodeURIComponent(code));
-    const liens = (R.liens.get(code) || []).filter((l) => l.part != null).sort((a, b) => b.part - a.part);
-    const sal = liens.filter((l) => postesDe(l));
-    const main = sal[0], pm = main && profDe(main);
-    const autres = sal.slice(1).filter((l) => l.part >= 0.05);
-    const parent = f.voie === 'fiche_parente' ? R.met.get(f.fiche_parente) : null;
-    const codes = (l) => l.ese.length > 1 ? ' · codes PCS-ESE ' + l.ese.map((c) => `<a href="#pcs-${esc(c)}" data-goto="${esc(c)}">${esc(c)}</a>`).join(', ') : '';
-    const profLi = (l) => { const p = profDe(l); return `<li data-pcs="${esc(p.virtuel ? p.agregat.split('|')[0] : p.pcs)}"><span class="me-code">${esc(l.pcs03)}</span>${esc(l.lib)}<span class="me-fam-n">${fmt(100 * l.part, 0)} %</span></li>`; };
-    const cle = new Set(f.wI.filter((w) => w.length >= 4));
-    const apps = f.app.filter((x) => x.t !== f.intitule && x.w.some((w) => cle.has(w))).map((x) => x.t).sort((a, b) => a.length - b.length);
+    history.replaceState(null, '', '#metier-' + encodeURIComponent((code || '') + '|' + t));
+    const c = candidats(t, f);
+    const pm = c[k] || c[0] || null;
+    const autres = c.filter((q) => q !== pm).slice(0, 3);
+    const ex = pm ? exemples(pm.pcs, f && f.rome, t) : [];
+    const cle = f ? new Set(f.wI.filter((w) => w.length >= 4)) : null;
+    const apps = f ? f.app.filter((x) => x.t !== t && x.t !== f.intitule && x.w.some((w) => cle.has(w))).map((x) => x.t).sort((a, b) => a.length - b.length) : [];
     el.innerHTML = `
       <div class="me-fiche-head">
         <div>
-          <p class="me-fiche-kind">Métier · répertoire ROME de France Travail (${esc(f.rome)}) · ${esc(f.domaine)}</p>
-          <h4>${esc(f.intitule)}</h4>
-          ${apps.length ? `<p class="me-fiche-fap">Aussi : ${esc(apps.slice(0, 6).join(' · '))}${apps.length > 6 ? ` et ${apps.length - 6} autres intitulés` : ''}</p>` : ''}
-          ${f.voie === 'fiche_parente' ? `<p class="me-warn">Métier apparu avec le ROME 4.0, sans équivalent dans le ROME V3, rattaché aux professions via la fiche parente ${esc(f.fiche_parente || '')}${parent ? ' (' + esc(parent.intitule) + ')' : ''}. Il ne compte pas dans l'indice des professions.</p>` : ''}
+          <p class="me-fiche-kind">Métier</p>
+          <h4>${esc(t)}</h4>
+          ${apps.length ? `<p class="me-fiche-fap">Intitulés proches : ${esc(apps.slice(0, 5).join(' · '))}${apps.length > 5 ? ` et ${apps.length - 5} autres` : ''}</p>` : ''}
         </div>
         <button class="me-close" aria-label="Fermer" onclick="this.closest('#me-fiche').hidden=true;history.replaceState(null,'',location.pathname)">×</button>
       </div>
-      ${rangsHTML(centileEmploi(f.s), pm ? pm.centile : null, { prof: true })}
-      <div class="me-fiche-grid">
+      ${rangsHTML(f ? centileEmploi(f.s) : null, pm ? pm.centile : null, { prof: true })}
+      ${pm ? `<div class="me-fiche-grid">
         <div>
-          <h5>Les salariés de ce métier</h5>
-          ${pm ? `<p class="me-rome-prof">Ce métier est compté dans la profession <a href="#pcs-${esc(pm.virtuel ? pm.agregat.split('|')[0] : pm.pcs)}" data-goto="${esc(pm.virtuel ? pm.agregat.split('|')[0] : pm.pcs)}"><b>${esc(main.lib)}</b></a> (${esc(main.pcs03)}${codes(main)}), qui regroupe ${fmt(pm.postes)} postes salariés en 2022.</p>
-          <p class="me-note" style="margin-top:0">Les données sur les salariés viennent de la base Tous salariés de l'Insee, qui recense les professions : elles décrivent l'ensemble de la profession.</p>
-          ${profilHTML(pm)}` : '<div class="me-pending">Aucune profession salariée de la base Tous salariés n\'est rattachée à ce métier.</div>'}
+          <h5>Sa profession</h5>
+          <p class="me-metier-prof">Dans la classification que nous utilisons, ce métier fait partie d’une catégorie plus large, la profession <a href="#pcs-${esc(codeFiche(pm))}" class="me-prof-lien"><b>${esc(pm.libelle)}</b></a>${ex.length ? `, qui comprend aussi, par exemple, les métiers ${esc(metiersDe(ex))}` : ''}.</p>
+          <p class="me-metier-prof">${pm.sal != null ? `Elle réunit ${fmt(pm.sal)} salariés. ` : ''}Le nombre et le profil des salariés ne sont connus qu’à ce niveau : les chiffres ci-contre décrivent l’ensemble de la profession.</p>
+          ${autres.length ? `<p class="me-metier-alt">Selon le poste ou l’employeur, ce métier peut aussi être rangé dans ${autres.length > 1 ? 'les professions' : 'la profession'} ${listeFR(autres.map((q) => `<a href="#" data-k="${c.indexOf(q)}">${esc(q.libelle)}</a>`))}.</p>` : ''}
         </div>
         <div>
-          ${autres.length ? `<h5>Les autres professions où il est compté</h5>
-          <p class="me-note" style="margin-top:0">Part du métier comptée dans chaque profession, au prorata de ses postes.</p>
-          <ul class="me-fam">${autres.map(profLi).join('')}</ul>` : ''}
+          <h5>Qui sont les salariés de cette profession</h5>
+          ${profilHTML(pm)}
         </div>
-      </div>`;
+      </div>` : '<div class="me-pending">Aucune profession salariée n’est rattachée à ce métier.</div>'}`;
     el.hidden = false;
-    el.querySelectorAll('[data-goto]').forEach((a) => (a.onclick = (e) => { e.preventDefault(); showFiche(a.dataset.goto, true, f); }));
-    el.querySelectorAll('[data-pcs]').forEach((a) => (a.onclick = () => showFiche(a.dataset.pcs, true, f)));
+    const depuis = { t, code };
+    el.querySelectorAll('.me-prof-lien').forEach((a) => (a.onclick = (e) => { e.preventDefault(); showFiche(codeFiche(pm), true, depuis); }));
+    el.querySelectorAll('[data-k]').forEach((a) => (a.onclick = (e) => { e.preventDefault(); showMetier(t, code, +a.dataset.k, false); }));
     if (scroll) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
-  // position d'un indice sur l'échelle des emplois salariés (centile pondéré par les postes des professions)
+  // position d'un indice sur l'échelle des salariés (centile pondéré par les salariés des professions)
   let ECH = null;
   function centileEmploi(sv) {
     if (sv == null) return null;
     if (!ECH) {
       const m = new Map();
-      pcsRows.forEach((p) => { if (!p.agregat && p.indice != null && p.postes) m.set(p.indice, (m.get(p.indice) || 0) + p.postes); });
+      pcsRows.forEach((p) => { if (!p.agregat && p.indice != null && p.sal) m.set(p.indice, (m.get(p.indice) || 0) + p.sal); });
       const a = [...m.entries()].sort((x, y) => x[0] - y[0]); const W = a.reduce((t, x) => t + x[1], 0); let c = 0;
       ECH = a.map(([v, w]) => { const r = [v, 100 * (c + w / 2) / W]; c += w; return r; });
     }
@@ -590,14 +656,26 @@
     return Math.min(99.9, ECH[ECH.length - 1][1] + (100 - ECH[ECH.length - 1][1]) * 0.5);
   }
 
-  function rangsHTML(rMetier, cProf, { nMet, prof } = {}) {
-    const ligne = (titre, v, txt) => `<div class="me-rang"><div class="me-rang-t">${titre}</div>
-      <div class="me-rang-bar"><span style="left:${Math.min(99.5, Math.max(0.5, v))}%"></span></div><div class="me-rang-x">${txt}</div></div>`;
+  function rangsHTML(rMetier, cProf, { prof } = {}) {
+    if (rMetier == null && cProf == null) return '';
+    const pos = (v) => Math.min(99.5, Math.max(0.5, v));
+    const n = (v) => (v > 99 ? 'plus de 99' : fmt(Math.round(v), 0));
+    const v = rMetier != null ? rMetier : cProf;
+    const quoi = rMetier != null ? 'que ce métier' : prof ? 'que la sienne' : 'que celle-ci';
+    let txt = `Sur 100 salariés en France, <b>${n(v)}</b> ont une profession moins exposée ${quoi}.`;
+    if (rMetier != null && cProf != null) {
+      const d = cProf - rMetier;
+      txt += Math.abs(d) < 5 ? ' Sa profession, dans son ensemble, se situe au même niveau.'
+        : d > 0 ? ` Sa profession, dans son ensemble, se situe plus haut (${n(cProf)}) : elle réunit aussi des métiers plus exposés que celui-ci.`
+        : ` Sa profession, dans son ensemble, se situe plus bas (${n(cProf)}) : elle réunit aussi des métiers moins exposés que celui-ci.`;
+    }
+    const deux = rMetier != null && cProf != null;
     return `<div class="me-rangs">
-      ${rMetier != null ? ligne('Ce métier', rMetier, `<b>${rMetier > 99 ? 'Plus de 99' : fmt(rMetier, 0)} %</b> des emplois salariés relèvent d'une profession moins exposée que ce métier`) : ''}
-      ${cProf != null ? ligne(prof ? 'Sa profession' : 'Cette profession', cProf, `<b>${fmt(cProf, 0)} %</b> des emplois salariés relèvent d'une profession moins exposée que ${prof ? 'la sienne' : 'celle-ci'}`) : ''}
-      <div class="me-rang-ech"><span>moins exposé</span><span>plus exposé</span></div>
-      ${cProf != null ? '<p class="me-rang-note">Emplois salariés de la base Tous salariés 2022 (Insee), public compris. Les indépendants ne sont pas couverts.</p>' : ''}
+      <div class="me-rang"><div class="me-rang-t">Exposition à l’IA générative</div>
+        <div class="me-rang-bar">${deux ? `<span class="me-rang-p" style="left:${pos(cProf)}%" title="Sa profession"></span>` : ''}<span style="left:${pos(v)}%"></span></div>
+        <div class="me-rang-x">${txt}</div></div>
+      <div class="me-rang-ech"><span>moins exposé</span>${deux ? '<span class="me-rang-leg"><i class="me-leg-m"></i>ce métier <i class="me-leg-p"></i>sa profession</span>' : ''}<span>plus exposé</span></div>
+      <p class="me-rang-note">Salariés présents au 31 décembre 2022, public compris ; les indépendants ne sont pas couverts.</p>
     </div>`;
   }
 
@@ -611,15 +689,15 @@
   }
 
   function famHTML(p) {
-    const li = (x) => `<li data-pcs="${esc(x.pcs)}"><span class="me-code">${esc(x.pcs)}</span>${esc(x.libelle)}<span class="me-fam-n">${x.postes != null ? fmt(x.postes) + ' postes' : 'secret'}</span></li>`;
+    const li = (x) => `<li data-pcs="${esc(x.pcs)}"><span class="me-code">${esc(x.pcs)}</span>${esc(x.libelle)}<span class="me-fam-n">${x.sal != null ? fmt(x.sal) + ' salariés' : 'secret'}</span></li>`;
     if (p.agregat) {
-      const k = pcsRows.filter((x) => p.agregat.split('|').includes(x.pcs)).sort((a, b) => (b.postes || 0) - (a.postes || 0));
+      const k = pcsRows.filter((x) => p.agregat.split('|').includes(x.pcs)).sort((a, b) => (b.sal || 0) - (a.sal || 0));
       return `<h5>Les codes détaillés regroupés</h5>
         <p class="me-note" style="margin-top:0">Les déclarations des employeurs utilisent ces codes PCS-ESE ; ils ont la même exposition que ${esc(p.pcs)}.</p>
         <ul class="me-fam">${k.map(li).join('')}</ul>`;
     }
     const fam = pcsRows.filter((x) => x.fap === p.fap && !x.agregat && x.pcs !== p.pcs)
-      .sort((a, b) => (b.postes || 0) - (a.postes || 0)).slice(0, 8);
+      .sort((a, b) => (b.sal || 0) - (a.sal || 0)).slice(0, 8);
     if (!fam.length) return `<h5>Famille professionnelle ${esc(p.fap)}</h5><p class="me-note" style="margin-top:0">Seule profession de sa famille professionnelle : son exposition lui est propre.</p>`;
     return `<h5>Les professions de la même famille</h5>
       <p class="me-note" style="margin-top:0">L'exposition est calculée par famille professionnelle (${esc(p.fap)}) : ces professions partagent la même valeur, avec des salariés différents.</p>
@@ -646,8 +724,8 @@
     return `<div class="me-insee">
       <p class="me-insee-t"><span class="me-src me-src-ins">Insee</span>« ${esc(x.t)}${x.tf ? ' / ' + esc(x.tf) : ''} »</p>
       ${statuts.length > 1 ? `<div class="ai-tri-toggle me-insee-ctrl">${statuts.map((s) => btn('data-ins-st', s, stLab[s], s === st)).join('')}</div>` : ''}
-      ${opts.length > 1 ? `<p class="me-insee-q">Le classement dépend du niveau du poste :</p><div class="ai-tri-toggle me-insee-ctrl">${opts.map((y) => btn('data-ins-code', y.pcs2020, nivLab(y), y === o)).join('')}</div>` : ''}
-      <p class="me-note">Codé ${esc(o.pcs2020)} dans la PCS 2020 de l'Insee, puis rattaché à la profession ci-dessous${o.pcs.length > 1 ? ` pour ${fmt(o.parts[0], 0)} % des postes ; ${autres.length > 1 ? 'autres rattachements' : 'autre rattachement'} : ${autres.join(', ')}` : ''}. ${opts.length > 1 || statuts.length > 1 ? 'Valeurs présélectionnées : celles que retient l\'Insee quand le statut ou le niveau ne sont pas connus.' : ''}</p>
+      ${opts.length > 1 ? `<p class="me-insee-q">Le classement dépend du niveau du poste :</p><div class="me-class-opts">${opts.map((y) => `<button class="me-class-opt${y === o ? ' active' : ''}" data-ins-code="${esc(y.pcs2020)}"><span class="me-class-niv">${esc(nivLab(y))}</span>${esc((pcsRows.find((z) => z.pcs === y.pcs[0]) || {}).libelle || y.pcs[0])}</button>`).join('')}</div>` : ''}
+      <p class="me-note">Codé ${esc(o.pcs2020)} dans la PCS 2020 de l'Insee, ce qui correspond à la profession ci-dessous${o.pcs.length > 1 ? ` dans ${fmt(o.parts[0], 0)} % des cas ; ${autres.length > 1 ? 'autres possibilités' : 'autre possibilité'} : ${autres.join(', ')}` : ''}. ${opts.length > 1 || statuts.length > 1 ? 'Valeurs présélectionnées : celles que retient l\'Insee quand le statut ou le niveau ne sont pas connus.' : ''}</p>
     </div>`;
   }
   function showFiche(code, scroll = true, depuis = null, insee = null) {
@@ -663,10 +741,11 @@
     el.innerHTML = (insee ? inseeHTML(insee) : '') + `
       <div class="me-fiche-head">
         <div>
-          ${depuis ? `<p class="me-back"><a href="#rome-${esc(depuis.rome)}" data-back="${esc(depuis.rome)}">← ${esc(depuis.intitule)}</a></p>` : ''}
-          <p class="me-fiche-kind">Profession · statistique publique (Insee)</p>
+          ${depuis ? `<p class="me-back"><a href="#" data-back="1">← ${esc(depuis.t)}</a></p>` : ''}
+          <p class="me-fiche-kind">Profession</p>
           <p class="me-fiche-code">${p.agregat ? 'PCS ' + esc(p.pcs) + ' · regroupe les codes PCS-ESE ' + p.agregat.split('|').map((c) => `<a href="#pcs-${esc(c)}" data-goto="${esc(c)}">${esc(c)}</a>`).join(', ') : 'PCS-ESE ' + esc(p.pcs) + (p.pcs03 !== p.pcs ? ' · rattachée à ' + esc(p.pcs03) : '')} · ${esc(p.famille)}</p>
           <h4>${esc(p.libelle)}</h4>
+          ${(() => { const ex = exemples(p.pcs); return ex.length ? `<p class="me-fiche-ex">Par exemple : ${esc(ex.join(', '))}…</p>` : ''; })()}
           <p class="me-fiche-fap">Exposition calculée sur la famille professionnelle ${esc(p.fap)}${p.libelle_fap ? ' · ' + esc(p.libelle_fap) : ''}${p.atlas != null ? ` · usage observé (Atlas) : ${fmt(p.atlas, 0)} % des tâches de la famille` : ''}${sameFap.length ? ` · valeur partagée avec ${sameFap.length} autre${sameFap.length > 1 ? 's' : ''} PCS` : ''}</p>
           ${warn ? `<p class="me-warn">${warn} : à lire avec prudence.</p>` : ''}
         </div>
@@ -675,8 +754,8 @@
       ${rangsHTML(null, p.centile)}
       <div class="me-fiche-grid">
         <div>
-          <h5>Qui occupe ces postes</h5>
-          ${p.postes != null ? `<p class="me-note" style="margin-top:0">${fmt(p.postes)} postes salariés en 2022.</p>` : ''}
+          <h5>Les salariés de cette profession</h5>
+          ${p.sal != null ? `<p class="me-note" style="margin-top:0">${fmt(p.sal)} salariés au 31 décembre 2022.</p>` : ''}
           ${profilHTML(p)}
         </div>
         <div>
@@ -688,7 +767,7 @@
 
     el.querySelectorAll('[data-goto]').forEach((a) => (a.onclick = (e) => { e.preventDefault(); showFiche(a.dataset.goto, true, depuis); }));
     el.querySelectorAll('[data-pcs]').forEach((a) => (a.onclick = () => showFiche(a.dataset.pcs, true, depuis)));
-    el.querySelectorAll('[data-back]').forEach((a) => (a.onclick = (e) => { e.preventDefault(); showRome(a.dataset.back); }));
+    el.querySelectorAll('[data-back]').forEach((a) => (a.onclick = (e) => { e.preventDefault(); showMetier(depuis.t, depuis.code); }));
     if (insee) {
       el.querySelectorAll('[data-ins-st]').forEach((b) => (b.onclick = () => showInsee(insee.i, b.dataset.insSt, null, false)));
       el.querySelectorAll('[data-ins-code]').forEach((b) => (b.onclick = () => showInsee(insee.i, insee.st, b.dataset.insCode, false)));
@@ -706,8 +785,8 @@
     const cols = [
       ['pcs', 'PCS', (p) => `<span class="me-code">${esc(p.pcs)}</span>`],
       ['libelle', 'Profession', (p) => esc(p.libelle) + (ORIGINE[p.origine] ? ' <span class="me-tag" title="' + ORIGINE[p.origine] + '">*</span>' : '')],
-      ['centile', 'Centile des emplois salariés', (p) => fmt(p.centile)],
-      ['postes', 'Postes', (p) => fmt(p.postes)],
+      ['centile', 'Centile parmi les salariés', (p) => fmt(p.centile)],
+      ['sal', 'Salariés', (p) => fmt(p.sal)],
       ['femmes', 'Femmes', (p) => pct(p.femmes, 0)],
       ['jeunes', '< 30 ans', (p) => pct(p.jeunes, 0)],
       ['salaire', 'Salaire h. net', (p) => (p.salaire == null ? '—' : fmt(p.salaire, 1) + ' €')],
@@ -739,11 +818,11 @@
     const colsVis = cols;
     fam.onchange = render; grp.onchange = render;
     render();
-    CSVF['me-table'] = () => [['pcs', 'libelle', 'fap', 'indice', 'centile', 'groupe', 'postes', 'part_femmes', 'part_moins_30', 'salaire_horaire_net'],
-      ...pcsRows.filter((p) => !p.agregat).map((p) => [p.pcs, p.libelle, p.fap, p.indice, p.centile, p.quintile, p.postes, p.femmes, p.jeunes, p.salaire])];
+    CSVF['me-table'] = () => [['pcs', 'libelle', 'fap', 'indice', 'centile', 'groupe', 'salaries', 'part_femmes', 'part_moins_30', 'salaire_horaire_net'],
+      ...pcsRows.filter((p) => !p.agregat).map((p) => [p.pcs, p.libelle, p.fap, p.indice, p.centile, p.quintile, p.sal, p.femmes, p.jeunes, p.salaire])];
     D.tableCSV = () => Papa.unparse(pcsRows.map((p) => ({
       pcs: p.pcs, libelle: p.libelle, fap: p.fap, indice: p.indice, centile: p.centile, quintile: p.quintile,
-      postes: p.postes, part_femmes: p.femmes, part_moins_30: p.jeunes, salaire_horaire_net: p.salaire,
+      salaries: p.sal, part_femmes: p.femmes, part_moins_30: p.jeunes, salaire_horaire_net: p.salaire,
     })));
   }
 
@@ -757,14 +836,14 @@
   function drawAtlas() {
     const el = $('me-chart-atlas');
     if (!D.fap) return pending(el, 'indice et usage Atlas par famille professionnelle');
-    const pts = D.fap.map((r) => ({ fap: r.fap, libelle: r.libelle, indice: num(r.indice), atlas: num(r.atlas), emploi: num(r.emploi), pcs: (r.pcs || '').split('|') }))
+    const pts = D.fap.map((r) => ({ fap: r.fap, libelle: r.libelle, indice: num(r.indice), atlas: num(r.atlas), emploi: num(r.salaries ?? r.emploi), pcs: (r.pcs || '').split('|') }))
       .filter((p) => p.indice != null && p.atlas != null && p.emploi > 0);
     if (!pts.length) return pending(el, 'usage Atlas');
     const r0 = wcorr(pts.map((p) => p.indice), pts.map((p) => p.atlas), pts.map(() => 1));
     const r1 = wcorr(pts.map((p) => p.indice), pts.map((p) => p.atlas), pts.map((p) => p.emploi));
-    $('me-atlas-corr').textContent = `Corrélation de ${fmt(r0, 2)} entre les ${fmt(pts.length)} familles professionnelles, de ${fmt(r1, 2)} en pondérant chacune par son emploi salarié.`;
+    $('me-atlas-corr').textContent = `Corrélation de ${fmt(r0, 2)} entre les ${fmt(pts.length)} familles professionnelles, de ${fmt(r1, 2)} en pondérant chacune par ses salariés.`;
     $('me-kpi-atlas').textContent = fmt(r1, 2);
-    CSVF['me-chart-atlas'] = () => [['fap', 'libelle', 'indice', 'usage_atlas_pct_taches', 'emploi_salarie_2022', 'pcs'],
+    CSVF['me-chart-atlas'] = () => [['fap', 'libelle', 'indice', 'usage_atlas_pct_taches', 'salaries_2022', 'pcs'],
       ...pts.map((p) => [p.fap, p.libelle, p.indice, p.atlas, p.emploi, p.pcs.join('|')])];
     const maxE = Math.max(...pts.map((p) => p.emploi));
     const byPcs = new Map(pcsRows.map((p) => [p.pcs, p]));
@@ -787,7 +866,7 @@
     });
     // clic : la plus grande profession salariée de la famille
     c.on('click', (q) => {
-      const m = q.data.p.pcs.map((c) => byPcs.get(c)).filter((p) => p && !p.agregat).sort((a, b) => (b.postes || 0) - (a.postes || 0))[0];
+      const m = q.data.p.pcs.map((c) => byPcs.get(c)).filter((p) => p && !p.agregat).sort((a, b) => (b.sal || 0) - (a.sal || 0))[0];
       if (m) showFiche(m.pcs);
     });
   }
@@ -796,43 +875,43 @@
   async function drawZones() {
     const elMap = $('me-map');
     const elBins = $('me-chart-taille');
-    if (!D.zones || !('centile_moyen' in D.zones[0])) { pending(elMap, 'centile moyen des postes par zone d\'emploi'); pending(elBins); return; }
-    // centile_moyen : moyenne, sur les postes de la zone, du centile (pondéré par les postes) de leur profession.
+    if (!D.zones || !('centile_moyen' in D.zones[0])) { pending(elMap, 'centile moyen des salariés par zone d\'emploi'); pending(elBins); return; }
+    // centile_moyen : moyenne, sur les salariés de la zone, du centile (pondéré par les salariés) de leur profession.
     // Sur la France entière il vaut 50 ; on affiche l'écart à la moyenne des zones, en points.
-    const zones0 = D.zones.map((r) => ({ code: r.ze2020 ?? r.zone, zone: r.libelle ?? r.zone, nom: r.libelle_insee || r.libelle || r.zone, postes: num(r.postes), c: num(r.centile_moyen) }))
-      .filter((z) => z.c != null && z.postes);
-    const ref = zones0.reduce((a, z) => a + z.c * z.postes, 0) / zones0.reduce((a, z) => a + z.postes, 0);
+    const zones0 = D.zones.map((r) => ({ code: r.ze2020 ?? r.zone, zone: r.libelle ?? r.zone, nom: r.libelle_insee || r.libelle || r.zone, sal: num(r.salaries ?? r.postes), c: num(r.centile_moyen) }))
+      .filter((z) => z.c != null && z.sal);
+    const ref = zones0.reduce((a, z) => a + z.c * z.sal, 0) / zones0.reduce((a, z) => a + z.sal, 0);
     const zones = zones0.map((z) => ({ ...z, indice: z.c - ref }));
     const pts = (v, d = 1) => (v > 0 ? '+' : '') + fmt(v, d) + ' pt' + (Math.abs(v) >= 2 ? 's' : '');
     const byName = new Map(zones.map((z) => [z.zone, z]));
 
-    // groupes de zones par taille, chacun ≈ un cinquième des postes
-    const sorted = zones.slice().sort((a, b) => a.postes - b.postes);
-    const totP = sorted.reduce((s, z) => s + z.postes, 0);
+    // groupes de zones par taille, chacun ≈ un cinquième des salariés
+    const sorted = zones.slice().sort((a, b) => a.sal - b.sal);
+    const totP = sorted.reduce((s, z) => s + z.sal, 0);
     const bins = [[], [], [], [], []];
     let cum = 0;
-    sorted.forEach((z) => { const k = Math.min(4, Math.floor((5 * (cum + z.postes / 2)) / totP)); bins[k].push(z); cum += z.postes; });
-    CSVF['me-chart-taille'] = () => [['groupe_de_taille', 'nombre_de_zones', 'postes', 'taille_mediane_postes', 'ecart_centile_moyen_pts'],
-      ...bins.map((b, k) => { let s = 0, w = 0; b.forEach((z) => { s += z.indice * z.postes; w += z.postes; }); return [k + 1, b.length, w, med(b), +(s / w).toFixed(2)]; })];
+    sorted.forEach((z) => { const k = Math.min(4, Math.floor((5 * (cum + z.sal / 2)) / totP)); bins[k].push(z); cum += z.sal; });
+    CSVF['me-chart-taille'] = () => [['groupe_de_taille', 'nombre_de_zones', 'salaries', 'taille_mediane_salaries', 'ecart_centile_moyen_pts'],
+      ...bins.map((b, k) => { let s = 0, w = 0; b.forEach((z) => { s += z.indice * z.sal; w += z.sal; }); return [k + 1, b.length, w, med(b), +(s / w).toFixed(2)]; })];
     const cb = chart(elBins);
-    const med = (a) => { const s = a.map((z) => z.postes).sort((x, y) => x - y); return s[Math.floor(s.length / 2)]; };
+    const med = (a) => { const s = a.map((z) => z.sal).sort((x, y) => x - y); return s[Math.floor(s.length / 2)]; };
     cb.setOption({
       textStyle: { fontFamily: FONT },
       grid: { left: 50, right: 16, top: 40, bottom: 56 },
       tooltip: { ...tooltipCommon, trigger: 'axis', axisPointer: { type: 'shadow' }, valueFormatter: (v) => pts(v) },
-      xAxis: { type: 'category', data: bins.map((b) => (b.length <= 2 ? b.map((z) => z.zone).join(', ') : fmt(med(b)) + ' postes')), ...axisCommon, axisLabel: { ...axisCommon.axisLabel, interval: 0, fontSize: 11 }, name: 'Taille médiane de la zone', nameLocation: 'middle', nameGap: 36 },
+      xAxis: { type: 'category', data: bins.map((b) => (b.length <= 2 ? b.map((z) => z.zone).join(', ') : fmt(med(b)) + ' salariés')), ...axisCommon, axisLabel: { ...axisCommon.axisLabel, interval: 0, fontSize: 11 }, name: 'Taille médiane de la zone', nameLocation: 'middle', nameGap: 36 },
       yAxis: { type: 'value', ...axisCommon, min: (v) => Math.floor(v.min - 2), max: (v) => Math.ceil(v.max + 1), name: 'Écart à la moyenne (points de centile)', nameTextStyle: { color: C.muted, fontFamily: FONT, align: 'left' } },
       series: [{
         type: 'bar', barWidth: '50%', itemStyle: { color: C.cornflower },
         label: { show: true, position: 'top', color: C.navy, formatter: (p) => pts(p.value) },
-        data: bins.map((b) => { let s = 0, w = 0; b.forEach((z) => { s += z.indice * z.postes; w += z.postes; }); const v = w ? s / w : null; return { value: v, label: { position: v < 0 ? 'bottom' : 'top' } }; }),
+        data: bins.map((b) => { let s = 0, w = 0; b.forEach((z) => { s += z.indice * z.sal; w += z.sal; }); const v = w ? s / w : null; return { value: v, label: { position: v < 0 ? 'bottom' : 'top' } }; }),
       }],
     });
 
     { // lecture du graphique par taille
-      const b0 = bins[0]; let s0 = 0, w0 = 0; b0.forEach((z) => { s0 += z.indice * z.postes; w0 += z.postes; });
+      const b0 = bins[0]; let s0 = 0, w0 = 0; b0.forEach((z) => { s0 += z.indice * z.sal; w0 += z.sal; });
       const e0 = s0 / w0, lec = $('me-lecture-taille');
-      if (lec) lec.innerHTML = `<b>Lecture :</b> dans les plus petites zones d'emploi, qui comptent ${fmt(Math.round(med(b0) / 1000))} 000 postes en médiane et réunissent ensemble un cinquième des postes, les salariés occupent des professions situées en moyenne ${fmt(Math.abs(e0), 1)} places ${e0 < 0 ? 'plus bas' : 'plus haut'} que la moyenne nationale, si l'on classe tous les emplois salariés de France de 0 (le moins exposé à l'IA générative) à 100 (le plus exposé).`;
+      if (lec) lec.innerHTML = `<b>Lecture :</b> dans les plus petites zones d'emploi, qui comptent ${fmt(Math.round(med(b0) / 1000))} 000 salariés en médiane et réunissent ensemble un cinquième des salariés, les salariés occupent des professions situées en moyenne ${fmt(Math.abs(e0), 1)} places ${e0 < 0 ? 'plus bas' : 'plus haut'} que la moyenne nationale, si l'on classe tous les salariés de France de 0 (le moins exposé à l'IA générative) à 100 (le plus exposé).`;
     }
     // carte
     try {
@@ -846,7 +925,7 @@
       const path = d3.geoPath(proj);
       const medC = d3.median(zones, (z) => z.c);
       zones.forEach((z) => { z.em = z.c - medC; });
-      CSVF['me-map'] = () => [['zone', 'libelle', 'postes', 'centile_moyen', 'ecart_zone_mediane_pts'], ...zones.map((z) => [z.code, z.nom, z.postes, z.c, +z.em.toFixed(2)])];
+      CSVF['me-map'] = () => [['zone', 'libelle', 'salaries', 'centile_moyen', 'ecart_zone_mediane_pts'], ...zones.map((z) => [z.code, z.nom, z.sal, z.c, +z.em.toFixed(2)])];
       const vals = zones.map((z) => z.em).sort((a, b) => a - b);
       const lo = d3.quantile(vals, 0.02), hi = d3.quantile(vals, 0.98);
       const m = Math.max(Math.abs(lo), Math.abs(hi));
@@ -872,8 +951,8 @@
             <p class="me-big">${pts(z.em)}</p>
             <p class="me-phrase">${Math.abs(z.em) < 0.5
               ? 'Les salariés de cette zone occupent des professions aussi exposées à l\'IA générative que ceux de la zone d\'emploi médiane.'
-              : `Si l'on classe tous les emplois salariés de France de 0 (le moins exposé à l'IA générative) à 100 (le plus exposé), ceux de cette zone se situent en moyenne ${fmt(Math.abs(z.em), 0)} place${Math.abs(z.em) >= 1.5 ? 's' : ''} ${z.em > 0 ? 'plus haut' : 'plus bas'} que ceux de la zone d'emploi médiane.`}</p>
-            <p>${fmt(z.postes)} postes salariés · ${rg} sur ${fmt(vals.length)}</p>`;
+              : `Si l'on classe tous les salariés de France de 0 (le moins exposé à l'IA générative) à 100 (le plus exposé), ceux de cette zone se situent en moyenne ${fmt(Math.abs(z.em), 0)} place${Math.abs(z.em) >= 1.5 ? 's' : ''} ${z.em > 0 ? 'plus haut' : 'plus bas'} que ceux de la zone d'emploi médiane.`}</p>
+            <p>${fmt(z.sal)} salariés · ${rg} sur ${fmt(vals.length)}</p>`;
         });
       // légende
       const lg = $('me-map-legend');
@@ -927,7 +1006,7 @@
   function kpiProfil() {
     const row = (lab) => (D.profil || []).find((r) => r.indicateur === lab);
     const f = row('Femmes'), a = row('Apprentis');
-    if (f && $('me-kpi-femmes')) { $('me-kpi-femmes').textContent = fmt(num(f.q5), 0) + ' %'; $('me-kpi-femmes-note').textContent = `contre ${fmt(num(f.ensemble), 0)} % de l'ensemble des postes`; }
+    if (f && $('me-kpi-femmes')) { $('me-kpi-femmes').textContent = fmt(num(f.q5), 0) + ' %'; $('me-kpi-femmes-note').textContent = `contre ${fmt(num(f.ensemble), 0)} % de l'ensemble des salariés`; }
     if (a && $('me-kpi-apprentis')) { $('me-kpi-apprentis').textContent = fmt(num(a.q5), 1) + ' %'; $('me-kpi-apprentis-note').textContent = `contre ${fmt(num(a.q1), 1)} % dans le cinquième le moins exposé`; }
   }
 

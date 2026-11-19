@@ -1,11 +1,11 @@
 {
   "tracker": "metiers-exposes",
-  "livraison": "2026-11-15",
+  "livraison": "2026-11-19",
   "donnees_au": "2026-03",
   "premier_mois": "2019-01",
   "sources": {
-    "embauches": "Dares, mouvements de main-d'œuvre (MMO), exploités au CASD (projet STRUPRO), export du 10/11/2026",
-    "postes": "Insee, base Tous salariés 2022, exploitée au CASD",
+    "embauches": "Dares, mouvements de main-d'œuvre (MMO), exploités au CASD (projet STRUPRO), exports du 18/11/2026 (cinquièmes des salariés) et du 10/11/2026 (cinquièmes des métiers)",
+    "salaries": "Insee, base Tous salariés 2022, salariés présents au 31 décembre sur leur poste principal, exploitée au CASD, export du 18/11/2026",
     "indice": "LIFT, indice par profession pcs_exposure_v22 (notation des savoir-faire du ROME 4.0, avril 2026)",
     "usage": "Google, AI & Economy Atlas v1.0, converti vers les familles professionnelles par le LIFT",
     "rome": "France Travail, ROME 4.0, tables du 9/11/2026 (version 26M06)",
@@ -14,27 +14,27 @@
   "fichiers": {
     "embauches_tendances.csv": {
       "lignes": 10440,
-      "octets": 453142
+      "octets": 463489
     },
     "embauches_effectifs.csv": {
       "lignes": 15660,
-      "octets": 547209
+      "octets": 562884
     },
     "professions.csv": {
-      "lignes": 443,
-      "octets": 105367
+      "lignes": 442,
+      "octets": 98815
     },
     "quintiles_profil.csv": {
-      "lignes": 13,
-      "octets": 675
+      "lignes": 14,
+      "octets": 722
     },
     "fap.csv": {
       "lignes": 208,
-      "octets": 16421
+      "octets": 16410
     },
     "zones.csv": {
       "lignes": 306,
-      "octets": 25104
+      "octets": 25074
     },
     "rome_metiers.csv": {
       "lignes": 1584,
@@ -45,12 +45,12 @@
       "octets": 676831
     },
     "rome_professions.csv": {
-      "lignes": 5348,
-      "octets": 508644
+      "lignes": 5354,
+      "octets": 508486
     },
     "intitules_insee.csv": {
-      "lignes": 13436,
-      "octets": 1155914
+      "lignes": 13430,
+      "octets": 1150034
     }
   }
 }

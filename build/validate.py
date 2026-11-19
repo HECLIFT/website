@@ -82,14 +82,14 @@ ME_COLS = {
  "embauches_tendances.csv": ["definition", "mois", "groupe", "age", "sexe", "embauches_cdi", "embauches_cdd", "fins_cdi", "fins_cdd"],
  "embauches_effectifs.csv": ["definition", "mois", "groupe", "age", "sexe", "embauches_cdi", "embauches_cdd", "fins_cdi", "fins_cdd"],
  "professions.csv": ["pcs", "pcs03", "libelle", "fap", "libelle_fap", "famille", "indice", "centile", "groupe", "atlas", "origine", "agregat",
-                     "postes", "heures", "masse_nette", "part_femmes", "age_moyen", "part_moins_30", "salaire_horaire_net", "part_cdi",
-                     "part_temps_partiel", "part_apprentis"],
+                     "salaries", "part_femmes", "age_moyen", "part_moins_30", "salaire_horaire_net", "part_cdi",
+                     "part_fonctionnaires", "part_temps_partiel", "part_apprentis"],
  "quintiles_profil.csv": ["indicateur", "unite", "q1", "q2", "q3", "q4", "q5", "ensemble"],
- "fap.csv": ["fap", "libelle", "indice", "atlas", "emploi", "pcs"],
- "zones.csv": ["zone", "libelle", "libelle_insee", "indice_moyen", "centile_moyen", "postes", "part_g1", "part_g2", "part_g3", "part_g4", "part_g5"],
+ "fap.csv": ["fap", "libelle", "indice", "atlas", "salaries", "pcs"],
+ "zones.csv": ["zone", "libelle", "libelle_insee", "indice_moyen", "centile_moyen", "salaries", "part_g1", "part_g2", "part_g3", "part_g4", "part_g5"],
  "rome_metiers.csv": ["rome", "intitule", "domaine", "n_savoir_faire", "s", "rang_pct", "voie", "fiche_parente"],
  "rome_appellations.csv": ["appellation", "rome"],
- "rome_professions.csv": ["rome", "pcs03", "part_postes", "pcs_ese", "pcs03_lib"],
+ "rome_professions.csv": ["rome", "pcs03", "part_salaries", "pcs_ese", "pcs03_lib"],
  "intitules_insee.csv": ["libelle", "libelle_f", "statut", "niveaux", "defaut", "pcs2020", "pcs", "parts"],
 }
 if ME.exists():
@@ -121,10 +121,10 @@ if ME.exists():
             if x["mois"] == "2022-11" and x["embauches_cdi"] not in ("", "0", "0.0", "0.0000") and abs(float(x["embauches_cdi"])) > 1e-6:
                 erro("[métiers exposés] embauches_tendances.csv : la tendance doit valoir 0 en novembre 2022"); break
         for x in T_:
-            if x["definition"] not in ("postes", "metiers") or x["groupe"] not in "12345" or x["sexe"] not in ("F", "H", "tous"):
+            if x["definition"] not in ("salaries", "metiers") or x["groupe"] not in "12345" or x["sexe"] not in ("F", "H", "tous"):
                 erro(f"[métiers exposés] embauches_tendances.csv : valeur inattendue {x['definition']}, {x['groupe']}, {x['sexe']}"); break
     for x in lus.get("professions.csv") or []:
-        for k in ("part_femmes", "part_moins_30", "part_cdi", "part_temps_partiel", "part_apprentis"):
+        for k in ("part_femmes", "part_moins_30", "part_cdi", "part_fonctionnaires", "part_temps_partiel", "part_apprentis"):
             if x[k] and not 0 <= float(x[k]) <= 1: erro(f"[métiers exposés] professions.csv : {k} hors de [0, 1] pour {x['pcs']}"); break
         if x["groupe"] and x["groupe"] not in "12345": erro(f"[métiers exposés] professions.csv : groupe inattendu pour {x['pcs']}")
     if meta:

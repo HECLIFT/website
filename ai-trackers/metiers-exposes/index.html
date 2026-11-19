@@ -352,7 +352,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <div class="ai-nav">
     <button class="ai-nav-btn active" data-target="sec-professions">Rechercher un métier</button>
     <button class="ai-nav-btn" data-target="sec-embauches">Embauches</button>
-    <button class="ai-nav-btn" data-target="sec-profil">Qui occupe ces postes</button>
+    <button class="ai-nav-btn" data-target="sec-profil">Qui occupe ces emplois</button>
     <button class="ai-nav-btn" data-target="sec-territoires">Territoires</button>
     <button class="ai-nav-btn" data-target="sec-atlas">Usage observé</button>
     <button class="ai-nav-btn" data-target="sec-apropos">À propos et données</button>
@@ -360,7 +360,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   <!-- Barre des données (même composant que le tracker science) -->
   <div class="dash-databar">
-    <p><strong>Données d’embauche au <span data-me-meta="donnees_au">—</span>.</strong> Profil des postes : base Tous salariés 2022. Chaque graphique a un bouton « Télécharger » : image PNG, données Excel ou CSV.</p>
+    <p><strong>Données d’embauche au <span data-me-meta="donnees_au">—</span>.</strong> Profil des salariés : base Tous salariés 2022 (salariés présents au 31 décembre). Chaque graphique a un bouton « Télécharger » : image PNG, données Excel ou CSV.</p>
     <div class="dash-databar-act"><button type="button" class="dash-allbtn" id="me-zip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7,10 12,15 17,10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg><span>Toutes les données (ZIP)</span></button><span class="dash-databar-hint">10 fichiers et un dictionnaire des variables</span></div>
     <p class="dash-status" id="me-zip-status"></p>
   </div>
@@ -368,38 +368,38 @@ document.addEventListener('DOMContentLoaded', () => {
   <!-- KPI Cards -->
   <div class="ai-kpis">
     <div class="ai-kpi-card">
-      <h4 id="me-kpi-embauches-t">Embauches des jeunes, postes les plus exposés</h4>
+      <h4 id="me-kpi-embauches-t">Embauches des jeunes, emplois les plus exposés</h4>
       <p class="kpi-value" id="me-kpi-embauches">…</p>
-      <p class="kpi-delta" id="me-kpi-embauches-note">embauches en CDI des 21-29 ans dans le cinquième des postes les plus exposés</p>
+      <p class="kpi-delta" id="me-kpi-embauches-note">embauches en CDI des 21-29 ans dans le cinquième des salariés les plus exposés</p>
     </div>
     <div class="ai-kpi-card">
-      <h4>Femmes dans le cinquième des postes les plus exposés</h4>
+      <h4>Femmes dans le cinquième des salariés les plus exposés</h4>
       <p class="kpi-value" id="me-kpi-femmes">…</p>
       <p class="kpi-delta" id="me-kpi-femmes-note">…</p>
     </div>
     <div class="ai-kpi-card">
-      <h4>Apprentis dans le cinquième des postes les plus exposés</h4>
+      <h4>Apprentis dans le cinquième des salariés les plus exposés</h4>
       <p class="kpi-value" id="me-kpi-apprentis">…</p>
       <p class="kpi-delta" id="me-kpi-apprentis-note">…</p>
     </div>
     <div class="ai-kpi-card">
       <h4>Corrélation avec l'usage observé</h4>
       <p class="kpi-value" id="me-kpi-atlas">…</p>
-      <p class="kpi-delta">entre l'indice et l'usage de Gemini (Atlas de Google), familles professionnelles pondérées par leur emploi</p>
+      <p class="kpi-delta">entre l'indice et l'usage de Gemini (Atlas de Google), familles professionnelles pondérées par leurs salariés</p>
     </div>
   </div>
 
   <!-- ===================================================== PROFESSIONS -->
   <h2 id="sec-professions" class="me-section-title">Rechercher un métier</h2>
-  <p class="me-section-intro">Cherchez votre métier parmi les 12 800 intitulés du répertoire de France Travail (ROME) et les intitulés de profession de l’Insee. L’exposition d’un métier du répertoire est mesurée à partir de ses savoir-faire ; la fiche le situe parmi les métiers et parmi les salariés, à travers la profession où l’Insee le compte, et décrit les salariés de cette profession.</p>
+  <p class="me-section-intro">Cherchez votre métier : la fiche situe son exposition à l’IA générative parmi l’ensemble des salariés, indique la profession dans laquelle il est rangé et décrit les salariés de cette profession.</p>
 
   <div class="ai-chart-section">
     <div id="me-explorer">
       <div class="me-search-wrap">
-        <input id="me-search" type="search" placeholder="Votre métier : comptable, développeuse web, adjoint technique, cariste… ou un code ROME ou PCS-ESE" autocomplete="off" aria-label="Rechercher une profession">
+        <input id="me-search" type="search" placeholder="Votre métier : comptable, développeuse web, adjoint technique, cariste…" autocomplete="off" aria-label="Rechercher une profession">
         <ul id="me-search-list" hidden></ul>
       </div>
-      <p class="me-search-help">Un métier du répertoire de France Travail, ou un intitulé de profession de l'Insee (ceux du recensement, utiles notamment pour la fonction publique). Chaque métier est relié à la profession où l'Insee compte ses salariés.</p>
+      <p class="me-search-help">Tapez votre métier, même de façon approchée : la recherche porte sur plus de 16 000 intitulés, du privé comme de la fonction publique.</p>
       <div id="me-chips" class="me-chips"></div>
     </div>
     <div id="me-fiche" hidden></div>
@@ -458,7 +458,7 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
 
   <div id="sec-emb-sexe" class="ai-chart-section">
-    <h3>Femmes et hommes, dans les postes les plus et les moins exposés</h3>
+    <h3>Femmes et hommes, dans les emplois les plus et les moins exposés</h3>
     <div class="ai-chart-controls">
       <div id="me-ctrl-sexe"></div>
       <div class="me-export" data-chart="me-chart-sexe" data-unite="écart à nov. 2022, %" data-nom="embauches-femmes-hommes" data-x="mois"></div>
@@ -469,8 +469,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   <!-- ===================================================== PROFIL -->
-  <h2 id="sec-profil" class="me-section-title">Qui occupe les postes exposés</h2>
-  <p class="me-section-intro">Le cinquième des postes les plus exposés compte 62 % de femmes et deux fois plus d'apprentis que le moins exposé. Il est mieux payé que celui-ci, et le CDI y est plus répandu.</p>
+  <h2 id="sec-profil" class="me-section-title">Qui occupe les emplois exposés</h2>
+  <p class="me-section-intro">Le cinquième des salariés les plus exposés compte 63 % de femmes et deux fois plus d'apprentis que le moins exposé. Il est mieux payé que celui-ci, et le CDI y est plus répandu.</p>
 
   <div id="sec-profil-q" class="ai-chart-section">
     <h3>Profil des cinq groupes d'exposition</h3>
@@ -478,16 +478,16 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="me-export" data-chart="me-chart-profil" data-nom="profil-des-groupes" data-x="groupe"></div>
     </div>
     <div id="me-chart-profil" class="me-chart me-multiples"></div>
-    <p class="me-note">Q1 : cinquième des postes le moins exposé ; Q5 : le plus exposé. Trait pointillé : ensemble des postes. Tous les postes salariés non annexes, public compris, répartis en cinq groupes de même nombre de postes selon l'indice d'exposition de leur profession. Salaire horaire net : masse salariale nette rapportée au nombre d'heures. Taille : effectif de l'entreprise au 31 décembre. Source : Insee, base Tous salariés 2022 ; calculs LIFT.</p>
+    <p class="me-note">Q1 : cinquième des salariés le moins exposé ; Q5 : le plus exposé. Trait pointillé : ensemble des salariés. Salariés présents au 31 décembre 2022, sur leur poste principal, public compris, répartis en cinq groupes de même nombre de salariés selon l'indice d'exposition de leur profession. Salaire horaire net : salaire net rapporté au nombre d'heures. Taille : effectif de l'entreprise au 31 décembre. Source : Insee, base Tous salariés 2022 ; calculs LIFT.</p>
   </div>
 
   <div id="sec-compo" class="ai-chart-section">
-    <h3>Les femmes, plus présentes dans les postes les plus exposés</h3>
+    <h3>Les femmes, plus présentes dans les emplois les plus exposés</h3>
     <div class="ai-chart-controls">
       <div class="me-export" data-chart="me-chart-composition" data-nom="repartition-par-groupe" data-x="population"></div>
     </div>
     <div id="me-chart-composition" class="me-chart short"></div>
-    <p class="me-note"><b>Lecture :</b> chaque barre répartit les postes d'une population entre les cinq groupes d'exposition. Chaque groupe réunit un cinquième de l'ensemble des postes ; une population surreprésentée dans un groupe y dépasse 20 %. Calculé à partir des parts de femmes et de moins de 30 ans de chaque profession. Tous les postes salariés non annexes, public compris. Source : Insee, base Tous salariés 2022 ; calculs LIFT.</p>
+    <p class="me-note"><b>Lecture :</b> chaque barre répartit les salariés d'une population entre les cinq groupes d'exposition. Chaque groupe réunit un cinquième de l'ensemble des salariés ; une population surreprésentée dans un groupe y dépasse 20 %. Calculé à partir des parts de femmes et de moins de 30 ans de chaque profession. Salariés présents au 31 décembre 2022, sur leur poste principal, public compris. Source : Insee, base Tous salariés 2022 ; calculs LIFT.</p>
   </div>
 
   <!-- ===================================================== TERRITOIRES -->
@@ -495,7 +495,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <p class="me-section-intro">Les métiers exposés se concentrent dans les grands bassins d'emploi, qui réunissent les fonctions administratives, financières et informatiques des entreprises. Les écarts entre territoires restent faibles au regard de ceux qui séparent les métiers.</p>
 
   <div class="ai-chart-section">
-    <h3>Exposition des postes par zone d'emploi, en écart à la zone médiane</h3>
+    <h3>Exposition des salariés par zone d'emploi, en écart à la zone médiane</h3>
     <div class="ai-chart-controls">
       <div class="me-export" data-chart="me-map" data-nom="carte-zones-emploi"></div>
     </div>
@@ -506,14 +506,14 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
       <div id="me-map-info"><p>Cliquez sur une zone d'emploi pour afficher son écart à la zone médiane.</p></div>
     </div>
-    <p class="me-note">Zones d'emploi 2020 de l'Insee, selon la localisation de l'établissement. Chaque poste salarié, public compris, reçoit le centile d'exposition de sa profession parmi l'ensemble des postes ; la carte montre l'écart, en points, entre la moyenne de ces centiles dans la zone et celle de la zone d'emploi médiane. Bleu : moins exposé que la zone médiane ; rouge : plus exposé. La moyenne nationale, tirée vers le haut par Paris, se situe au-dessus de la zone médiane. Source : Insee, base Tous salariés 2022 ; calculs LIFT.</p>
+    <p class="me-note">Zones d'emploi 2020 de l'Insee, selon la localisation de l'établissement. Chaque salarié, public compris, reçoit le centile d'exposition de sa profession parmi l'ensemble des salariés ; la carte montre l'écart, en points, entre la moyenne de ces centiles dans la zone et celle de la zone d'emploi médiane. Bleu : moins exposé que la zone médiane ; rouge : plus exposé. La moyenne nationale, tirée vers le haut par Paris, se situe au-dessus de la zone médiane. Source : Insee, base Tous salariés 2022 ; calculs LIFT.</p>
   </div>
 
   <div class="ai-chart-section">
     <h3>L'exposition augmente avec la taille du bassin d'emploi</h3>
     <div class="ai-chart-controls"><div class="me-export" data-chart="me-chart-taille" data-nom="taille-des-zones"></div></div>
     <div id="me-chart-taille" class="me-chart short"></div>
-    <p class="me-note">Zones d'emploi classées selon leur nombre de postes et réparties en cinq groupes qui réunissent chacun environ un cinquième des postes. Écart à la moyenne nationale du centile moyen des postes de chaque groupe, en points. <span id="me-lecture-taille"></span> Source : Insee, base Tous salariés 2022 ; calculs LIFT.</p>
+    <p class="me-note">Zones d'emploi classées selon leur nombre de salariés et réparties en cinq groupes qui réunissent chacun environ un cinquième des salariés. Écart à la moyenne nationale du centile moyen des salariés de chaque groupe, en points. <span id="me-lecture-taille"></span> Source : Insee, base Tous salariés 2022 ; calculs LIFT.</p>
   </div>
 
   <!-- ===================================================== ATLAS -->
@@ -524,7 +524,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <h3>Indice d'exposition et usage observé de l'IA générative</h3>
     <div class="ai-chart-controls"><div class="me-export" data-chart="me-chart-atlas" data-nom="indice-et-usage-atlas"></div></div>
     <div id="me-chart-atlas" class="me-chart tall"></div>
-    <p class="me-note"><b id="me-atlas-corr"></b> Chaque cercle est une famille professionnelle (FAP), de surface proportionnelle à son emploi salarié ; un clic ouvre la fiche de sa plus grande profession. Usage observé : saturation de l'Atlas de Google (avril 2026), part des tâches d'un métier pour lesquelles au moins 25 utilisateurs distincts ont eu recours à Gemini, convertie de la nomenclature américaine SOC vers les familles professionnelles. Sources : France Travail, ROME 4.0 ; Google, AI &amp; Economy Atlas ; Insee, base Tous salariés 2022 ; calculs LIFT.</p>
+    <p class="me-note"><b id="me-atlas-corr"></b> Chaque cercle est une famille professionnelle (FAP), de surface proportionnelle à son nombre de salariés ; un clic ouvre la fiche de sa plus grande profession. Usage observé : saturation de l'Atlas de Google (avril 2026), part des tâches d'un métier pour lesquelles au moins 25 utilisateurs distincts ont eu recours à Gemini, convertie de la nomenclature américaine SOC vers les familles professionnelles. Sources : France Travail, ROME 4.0 ; Google, AI &amp; Economy Atlas ; Insee, base Tous salariés 2022 ; calculs LIFT.</p>
   </div>
 
 </div>
@@ -543,7 +543,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <tbody>
 <tr class="odd"><td>Rechercher un métier</td><td>Recherche parmi les métiers du répertoire de France Travail et les intitulés de l’Insee ; fiche du métier et de sa profession ; tableau des 424 professions</td></tr>
 <tr class="even"><td>Embauches</td><td>Embauches et fins de contrat par groupe d’exposition, âge et sexe, en écart à novembre 2022</td></tr>
-<tr class="odd"><td>Qui occupe ces postes</td><td>Profil des postes des cinq groupes d’exposition (sexe, âge, salaire, contrat, secteur, taille d’entreprise)</td></tr>
+<tr class="odd"><td>Qui occupe ces emplois</td><td>Profil des salariés des cinq groupes d’exposition (sexe, âge, salaire, contrat, secteur, taille d’entreprise)</td></tr>
 <tr class="even"><td>Territoires</td><td>Exposition des postes par zone d’emploi et selon la taille du bassin d’emploi</td></tr>
 <tr class="odd"><td>Usage observé</td><td>Indice d’exposition et usage de Gemini mesuré par l’Atlas de Google, par famille professionnelle</td></tr>
 </tbody>
@@ -558,12 +558,12 @@ document.addEventListener('DOMContentLoaded', () => {
 </section>
 <section id="les-groupes-dexposition" class="level3">
 <h3 class="anchored" data-anchor-id="les-groupes-dexposition">Les groupes d’exposition</h3>
-<p>L'année 2022 décrit les emplois tels qu'ils étaient avant la diffusion de l'IA générative, ChatGPT ayant été mis en ligne à la toute fin de cette année. Tous les postes salariés non annexes de la base Tous salariés 2022 de l'Insee, public compris (les indépendants, absents de cette base, ne sont pas couverts), sont classés selon l'indice de leur profession et répartis en cinq groupes qui réunissent chacun environ un cinquième des postes (20,2 %, 19,1 %, 20,4 %, 21,4 % et 19,0 %). Le centile d'une profession est calculé au point milieu, en pondérant par les postes : c'est la part des postes moins exposés qu'elle, plus la moitié de ses propres postes. Les professions de même indice ne sont jamais séparées. La même définition sert au profil des salariés, aux fiches et aux séries d'embauche.</p>
+<p>L'année 2022 décrit les emplois tels qu'ils étaient avant la diffusion de l'IA générative, ChatGPT ayant été mis en ligne à la toute fin de cette année. Les salariés présents au 31 décembre 2022 dans la base Tous salariés de l'Insee, public compris (les indépendants, absents de cette base, ne sont pas couverts), sont classés selon l'indice de la profession de leur poste principal et répartis en cinq groupes qui réunissent chacun environ un cinquième des salariés (19,3 %, 21,3 %, 19,2 %, 20,1 % et 20,0 %). Le centile d'une profession est calculé au point milieu, en pondérant par les salariés : c'est la part des salariés dont la profession est moins exposée, plus la moitié de ses propres salariés. Les professions de même indice ne sont jamais séparées. La même définition sert au profil des salariés, aux fiches et aux séries d'embauche.</p>
 </section>
 <section id="la-recherche-par-metier" class="level3">
 <h3 class="anchored" data-anchor-id="la-recherche-par-metier">La recherche par métier</h3>
-<p>La recherche porte sur les appellations du ROME 4.0 (table de France Travail, version 26M06). Le centile d'un métier situe l'indice de sa fiche ROME sur l'échelle des emplois salariés : c'est la part des emplois salariés qui relèvent d'une profession moins exposée que lui. Pour relier un métier aux statistiques de salariés, on suit la chaîne de l'indice (ROME 4.0, ROME V3, famille professionnelle FAP-2009, PCS 2003), mais on répartit le métier entre les professions au prorata de leurs postes dans la base Tous salariés 2022. La profession principale est celle qui reçoit la plus grande part ; les autres sont listées dès 5 %. Cette répartition sert seulement à l'affichage : elle ne modifie ni l'indice des professions ni les groupes. Les 163 métiers apparus avec le ROME 4.0, sans équivalent dans le ROME V3, sont rattachés par leur fiche parente et n'entrent pas dans l'indice des professions.</p>
-<p>La recherche porte aussi sur les intitulés de profession de la liste du recensement (Insee, matrice de codification de la PCS 2020, collecte 2026), qui couvrent mieux la fonction publique et les intitulés courants. Un intitulé de l’Insee mène à une profession selon le statut (salarié du privé ou du public) et, souvent, le niveau du poste (cadre, technicien, employé, catégorie A, B ou C…) : la fiche les demande quand le code en dépend, avec par défaut le choix que retient l’Insee. Le passage de la PCS 2020 à la PCS 2003 de l’indice s’appuie sur la table de passage de l’Insee entre les deux nomenclatures, pondérée par les postes de 2022 ; quand un intitulé se partage entre plusieurs professions, la fiche donne la part de chacune.</p>
+<p>La recherche porte sur les appellations du ROME 4.0 (table de France Travail, version 26M06) et sur les intitulés de profession de la liste du recensement (Insee, matrice de codification de la PCS 2020, collecte 2026), qui couvrent mieux la fonction publique et les intitulés courants. Le centile d'un métier du ROME situe l'indice de sa fiche sur l'échelle des salariés : c'est la part des salariés dont la profession est moins exposée que lui. Les intitulés de l'Insee n'ont pas d'indice propre : leur fiche donne celui de leur profession.</p>
+<p>Les employeurs déclarent la profession de leurs salariés, pas leur métier : la fiche d'un métier décrit donc les salariés de la profession dans laquelle il est rangé. Quand l'intitulé figure dans la liste de l'Insee, cette profession est celle que donne le codage de l'Insee quand le statut et le niveau du poste ne sont pas connus ; les professions de ses autres codages sont citées comme autres possibilités. Sinon, on part des professions que la chaîne de l'indice relie à la fiche ROME (ROME 4.0, ROME V3, famille professionnelle FAP-2009, PCS 2003) et l'on retient celle dont le libellé est le plus proche de l'intitulé, en tenant compte de son niveau (directeur, responsable, technicien, agent…), puis la plus nombreuse ; les autres sont citées. Le passage de la PCS 2020 à la PCS 2003 s'appuie sur la table de passage de l'Insee, pondérée par les salariés de 2022. Les exemples de métiers d'une profession sont les fiches du ROME rangées dans cette profession par la même règle, les plus courtes d'abord. Ce rattachement sert seulement à l'affichage : il ne modifie ni l'indice des professions ni les groupes. Les 163 métiers apparus avec le ROME 4.0, sans équivalent dans le ROME V3, sont rattachés par leur fiche parente et n'entrent pas dans l'indice des professions.</p>
 </section>
 <section id="les-embauches" class="level3">
 <h3 class="anchored" data-anchor-id="les-embauches">Les embauches</h3>
@@ -577,7 +577,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </thead>
 <tbody>
 <tr class="odd"><td>France Travail, ROME 4.0 (avril 2026)</td><td>Savoir-faire des métiers, notés pour l’indice ; appellations de la recherche</td></tr>
-<tr class="even"><td>Insee, base Tous salariés 2022 (CASD)</td><td>Postes, heures, salaires et profil des salariés par profession et par zone d’emploi</td></tr>
+<tr class="even"><td>Insee, base Tous salariés 2022 (CASD)</td><td>Salariés présents au 31 décembre, heures, salaires et profil par profession et par zone d’emploi</td></tr>
 <tr class="odd"><td>Dares, mouvements de main-d’œuvre (CASD)</td><td>Embauches et fins de contrat mensuelles depuis janvier 2019</td></tr>
 <tr class="even"><td>Insee, matrice de codification de la PCS 2020 et tables de passage</td><td>Intitulés de profession de la recherche ; passage entre nomenclatures</td></tr>
 <tr class="odd"><td>Google, AI &amp; Economy Atlas v1.0</td><td>Usage observé de Gemini par métier, converti vers les familles professionnelles</td></tr>
@@ -593,14 +593,14 @@ document.addEventListener('DOMContentLoaded', () => {
       <tbody>
         <tr data-me-fichier="embauches_tendances.csv"><td><a data-me-dl="embauches_tendances.csv">embauches_tendances.csv</a></td><td>Tendances des embauches et des fins de contrat, en écart à novembre 2022</td><td>définition des groupes, mois, groupe, âge, sexe</td><td>trimestrielle</td><td class="num me-f-lignes">—</td><td class="num me-f-taille">—</td></tr>
         <tr data-me-fichier="embauches_effectifs.csv"><td><a data-me-dl="embauches_effectifs.csv">embauches_effectifs.csv</a></td><td>Nombre mensuel d'embauches et de fins de contrat, non lissé</td><td>définition des groupes, mois, groupe, âge, sexe</td><td>trimestrielle</td><td class="num me-f-lignes">—</td><td class="num me-f-taille">—</td></tr>
-        <tr data-me-fichier="professions.csv"><td><a data-me-dl="professions.csv">professions.csv</a></td><td>Indice, centile, groupe et profil des postes de chaque profession</td><td>profession (PCS-ESE)</td><td>à chaque version de l'indice ou de la base Tous salariés</td><td class="num me-f-lignes">—</td><td class="num me-f-taille">—</td></tr>
-        <tr data-me-fichier="quintiles_profil.csv"><td><a data-me-dl="quintiles_profil.csv">quintiles_profil.csv</a></td><td>Profil des postes des cinq groupes d'exposition</td><td>indicateur</td><td>idem</td><td class="num me-f-lignes">—</td><td class="num me-f-taille">—</td></tr>
+        <tr data-me-fichier="professions.csv"><td><a data-me-dl="professions.csv">professions.csv</a></td><td>Indice, centile, groupe et profil des salariés de chaque profession</td><td>profession (PCS-ESE)</td><td>à chaque version de l'indice ou de la base Tous salariés</td><td class="num me-f-lignes">—</td><td class="num me-f-taille">—</td></tr>
+        <tr data-me-fichier="quintiles_profil.csv"><td><a data-me-dl="quintiles_profil.csv">quintiles_profil.csv</a></td><td>Profil des salariés des cinq groupes d'exposition</td><td>indicateur</td><td>idem</td><td class="num me-f-lignes">—</td><td class="num me-f-taille">—</td></tr>
         <tr data-me-fichier="fap.csv"><td><a data-me-dl="fap.csv">fap.csv</a></td><td>Indice et usage observé (Atlas de Google) par famille professionnelle</td><td>famille professionnelle (FAP 2009)</td><td>idem</td><td class="num me-f-lignes">—</td><td class="num me-f-taille">—</td></tr>
-        <tr data-me-fichier="zones.csv"><td><a data-me-dl="zones.csv">zones.csv</a></td><td>Exposition moyenne des postes et part des cinq groupes par zone d'emploi</td><td>zone d'emploi 2020</td><td>idem</td><td class="num me-f-lignes">—</td><td class="num me-f-taille">—</td></tr>
+        <tr data-me-fichier="zones.csv"><td><a data-me-dl="zones.csv">zones.csv</a></td><td>Exposition moyenne des salariés et part des cinq groupes par zone d'emploi</td><td>zone d'emploi 2020</td><td>idem</td><td class="num me-f-lignes">—</td><td class="num me-f-taille">—</td></tr>
         <tr data-me-fichier="rome_metiers.csv"><td><a data-me-dl="rome_metiers.csv">rome_metiers.csv</a></td><td>Notes et indice de chaque métier du répertoire de France Travail</td><td>fiche ROME 4.0</td><td>à chaque version du ROME</td><td class="num me-f-lignes">—</td><td class="num me-f-taille">—</td></tr>
         <tr data-me-fichier="rome_appellations.csv"><td><a data-me-dl="rome_appellations.csv">rome_appellations.csv</a></td><td>Intitulés de métier et fiche ROME correspondante</td><td>appellation</td><td>idem</td><td class="num me-f-lignes">—</td><td class="num me-f-taille">—</td></tr>
         <tr data-me-fichier="intitules_insee.csv"><td><a data-me-dl="intitules_insee.csv">intitules_insee.csv</a></td><td>Intitulés de profession de l'Insee et profession du tableau de bord à laquelle chacun mène</td><td>intitulé, statut et code PCS 2020</td><td>à chaque version de la matrice de codification de l'Insee</td><td class="num me-f-lignes">—</td><td class="num me-f-taille">—</td></tr>
-        <tr data-me-fichier="rome_professions.csv"><td><a data-me-dl="rome_professions.csv">rome_professions.csv</a></td><td>Répartition de chaque métier entre les professions de l'Insee</td><td>fiche ROME et profession</td><td>idem</td><td class="num me-f-lignes">—</td><td class="num me-f-taille">—</td></tr>
+        <tr data-me-fichier="rome_professions.csv"><td><a data-me-dl="rome_professions.csv">rome_professions.csv</a></td><td>Professions de l'Insee reliées à chaque métier</td><td>fiche ROME et profession</td><td>idem</td><td class="num me-f-lignes">—</td><td class="num me-f-taille">—</td></tr>
       </tbody>
     </table>
     </div>
@@ -608,7 +608,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <summary>Dictionnaire des variables</summary>
       <h5>embauches_tendances.csv et embauches_effectifs.csv</h5>
       <table class="me-dico-t"><tbody>
-        <tr><td>definition</td><td>définition des groupes : <code>postes</code> (cinquièmes des postes salariés, définition retenue dans tout le tableau de bord) ou <code>metiers</code> (cinquièmes des professions, chacune comptant pour une)</td></tr>
+        <tr><td>definition</td><td>définition des groupes : <code>salaries</code> (cinquièmes des salariés, définition retenue dans tout le tableau de bord) ou <code>metiers</code> (cinquièmes des professions, chacune comptant pour une)</td></tr>
         <tr><td>mois</td><td>mois, au format AAAA-MM, depuis janvier 2019</td></tr>
         <tr><td>groupe</td><td>groupe d'exposition, de 1 (le moins exposé) à 5 (le plus exposé) ; <code>tous</code> dans les effectifs seulement</td></tr>
         <tr><td>age</td><td>âge à la date du mouvement : <code>21-29</code>, <code>30-39</code>, <code>40-49</code>, <code>50+</code> ou <code>tous</code> (21 à 70 ans)</td></tr>
@@ -620,27 +620,27 @@ document.addEventListener('DOMContentLoaded', () => {
         <tr><td>pcs, pcs03, libelle</td><td>code de la profession dans la base Tous salariés (PCS-ESE), code PCS 2003 de rattachement de l'indice, libellé de l'Insee</td></tr>
         <tr><td>fap, libelle_fap, famille</td><td>famille professionnelle (FAP 2009) et grande famille de métiers</td></tr>
         <tr><td>indice</td><td>indice d'exposition de la profession (valeur de sa famille professionnelle)</td></tr>
-        <tr><td>centile, groupe</td><td>rang de la profession parmi les postes salariés, de 1 à 100, et groupe d'exposition (1 à 5)</td></tr>
+        <tr><td>centile, groupe</td><td>rang de la profession parmi les salariés, de 1 à 100, et groupe d'exposition (1 à 5)</td></tr>
         <tr><td>atlas</td><td>usage observé de la famille professionnelle dans l'Atlas de Google (% des tâches)</td></tr>
         <tr><td>origine, agregat</td><td>provenance de l'indice (<code>direct</code>, <code>parent</code>, <code>famille_fap</code>) ; codes détaillés réunis dans une ligne de regroupement</td></tr>
-        <tr><td>postes, heures, masse_nette</td><td>postes salariés non annexes, heures et masse salariale nette (base Tous salariés 2022, public compris)</td></tr>
-        <tr><td>part_femmes, age_moyen, part_moins_30, salaire_horaire_net, part_cdi, part_temps_partiel, part_apprentis</td><td>profil des postes de la profession</td></tr>
+        <tr><td>salaries</td><td>salariés de la profession présents au 31 décembre 2022, sur leur poste principal (base Tous salariés, public compris)</td></tr>
+        <tr><td>part_femmes, age_moyen, part_moins_30, salaire_horaire_net, part_cdi, part_fonctionnaires, part_temps_partiel, part_apprentis</td><td>profil des salariés de la profession</td></tr>
       </tbody></table>
       <h5>quintiles_profil.csv</h5>
       <table class="me-dico-t"><tbody>
         <tr><td>indicateur, unite</td><td>indicateur et unité (%, ans, €, h)</td></tr>
-        <tr><td>q1 à q5, ensemble</td><td>valeur dans chacun des cinq groupes et dans l'ensemble des postes</td></tr>
+        <tr><td>q1 à q5, ensemble</td><td>valeur dans chacun des cinq groupes et dans l'ensemble des salariés</td></tr>
       </tbody></table>
       <h5>fap.csv</h5>
       <table class="me-dico-t"><tbody>
         <tr><td>fap, libelle, indice, atlas</td><td>famille professionnelle, libellé, indice d'exposition, usage observé (% des tâches)</td></tr>
-        <tr><td>emploi, pcs</td><td>postes salariés de 2022 ; professions de la famille, séparées par <code>|</code></td></tr>
+        <tr><td>salaries, pcs</td><td>salariés de 2022 ; professions de la famille, séparées par <code>|</code></td></tr>
       </tbody></table>
       <h5>zones.csv</h5>
       <table class="me-dico-t"><tbody>
         <tr><td>zone, libelle, libelle_insee</td><td>code de la zone d'emploi 2020, nom du fond de carte, nom officiel</td></tr>
-        <tr><td>postes, indice_moyen, centile_moyen</td><td>postes salariés de la zone ; indice et centile moyens de leurs professions (50 en moyenne nationale)</td></tr>
-        <tr><td>part_g1 à part_g5</td><td>part des postes de la zone dans chaque groupe d'exposition</td></tr>
+        <tr><td>salaries, indice_moyen, centile_moyen</td><td>salariés de la zone ; indice et centile moyens de leurs professions (50 en moyenne nationale)</td></tr>
+        <tr><td>part_g1 à part_g5</td><td>part des salariés de la zone dans chaque groupe d'exposition</td></tr>
       </tbody></table>
       <h5>rome_metiers.csv, rome_appellations.csv, rome_professions.csv</h5>
       <table class="me-dico-t"><tbody>
@@ -648,13 +648,13 @@ document.addEventListener('DOMContentLoaded', () => {
         <tr><td>s</td><td>indice de la fiche : moyenne, sur ses savoir-faire, du score D1 × (1 − D4/5) × (1 − D5/5)</td></tr>
         <tr><td>rang_pct, voie, fiche_parente</td><td>centile de la fiche parmi les fiches ; voie de rattachement à la nomenclature précédente ; fiche de rattachement des métiers nouveaux</td></tr>
         <tr><td>appellation</td><td>intitulé de métier du répertoire</td></tr>
-        <tr><td>pcs03, pcs_ese, part_postes, pcs03_lib</td><td>profession de rattachement et part de la fiche qui lui revient, au prorata des postes</td></tr>
+        <tr><td>pcs03, pcs_ese, part_salaries, pcs03_lib</td><td>profession reliée à la fiche et part de la fiche qui lui revient au prorata des salariés des professions reliées (sert à l'ordre d'affichage)</td></tr>
       </tbody></table>
       <h5>intitules_insee.csv</h5>
       <table class="me-dico-t"><tbody>
         <tr><td>libelle, libelle_f</td><td>intitulé de profession de la liste de collecte du recensement (Insee, matrice de codification de la PCS 2020), au masculin et, s'il diffère, au féminin</td></tr>
         <tr><td>statut, niveaux, defaut</td><td>salarié du privé (<code>prive</code>), du public (<code>public</code>) ou quel que soit le statut (<code>tous</code>) ; niveaux du poste qui mènent au code (c cadre, t technicien, m agent de maîtrise, e employé, q ouvrier qualifié, p ouvrier peu qualifié, A, B, C catégories de la fonction publique) ; <code>1</code> pour le code que l'Insee retient quand le niveau n'est pas connu</td></tr>
-        <tr><td>pcs2020, pcs, parts</td><td>code PCS 2020 ; professions du tableau de bord auxquelles il mène, séparées par <code>|</code>, et part des postes de chacune (%)</td></tr>
+        <tr><td>pcs2020, pcs, parts</td><td>code PCS 2020 ; professions du tableau de bord auxquelles il mène, séparées par <code>|</code>, et part de chacune (%), d'après la table de passage de l'Insee pondérée par les salariés</td></tr>
       </tbody></table>
     </details>
 <p>Licence : les données peuvent être réutilisées librement, à condition de citer la source (CC BY 4.0).</p>
@@ -686,9 +686,10 @@ document.addEventListener('DOMContentLoaded', () => {
 </section>
 <section id="mise-a-jour" class="level3">
 <h3 class="anchored" data-anchor-id="mise-a-jour">Mise à jour</h3>
-<p>Les séries d'embauche sont actualisées à chaque nouvelle livraison des MMO. L'indice et le profil des postes sont mis à jour avec chaque nouvelle version du ROME et de la base Tous salariés.</p>
+<p>Les séries d'embauche sont actualisées à chaque nouvelle livraison des MMO. L'indice et le profil des salariés sont mis à jour avec chaque nouvelle version du ROME et de la base Tous salariés.</p>
 <table class="me-dico-t me-histo"><thead><tr><th>Mise en ligne</th><th>Embauches au</th><th>Changement</th></tr></thead><tbody>
       <tr><td>15 novembre 2026</td><td>mars 2026</td><td>Première version : indice d'avril 2026, base Tous salariés 2022, MMO de janvier 2019 à mars 2026.</td></tr>
+      <tr><td>19 novembre 2026</td><td>mars 2026</td><td>Groupes, centiles et profils calculés sur les salariés présents au 31 décembre 2022, sur leur poste principal, au lieu de l'ensemble des postes de l'année ; fiche métier : profession la plus plausible pour l'intitulé cherché, avec des exemples d'autres métiers de cette profession et les autres professions possibles.</td></tr>
     </tbody></table>
 </section>
 </section>
