@@ -55,6 +55,7 @@
       "resume_en": "In AI, the best model sold for 0.1 dollar per million tokens or less, at least fifty times cheaper than a frontier model, catches up with its quality in less than a year. This catch-up could discourage growing investment, on the order of 715 billion dollars in 2026 for the main AI developers, by reducing the rent that a technological lead provides. On OpenRouter, frontier labs handle only 28% of tokens in August 2026, compared with three quarters in spring 2025, but still collect 71% of revenue thanks to higher prices. Relative to its competitors, a provider that releases a frontier model sees its imputed revenue roughly double in the following months, and the users of a model facing new competition mostly switch to other high-end models. This equilibrium rests on exceptional growth in consumption and remains fragile: frontier labs’ share of revenue fell from 82% to 71% between mid-July and mid-August 2026.",
       "thumb": "images/pubs/innovation-rattrapage-modeles-ia.png",
       "pdf": "files/papers/LIFT_PolicyPaper_2026-04.pdf",
+      "pdf_en": "files/papers/LIFT_PolicyPaper_2026-04_en.pdf",
       "auteurs_liens": [
         {
           "membre": "pdelbouve",
