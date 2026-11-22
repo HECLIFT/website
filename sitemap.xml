@@ -544,6 +544,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/pubs/innovation-rattrapage-modeles-ia/index.html"/>
   </url>
   <url>
+    <loc>https://heclift.github.io/website/pubs/metiers-exposes/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/pubs/metiers-exposes/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/pubs/metiers-exposes/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/pubs/metiers-exposes/index.html"/>
+  </url>
+  <url>
+    <loc>https://heclift.github.io/website/en/pubs/metiers-exposes/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/pubs/metiers-exposes/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/pubs/metiers-exposes/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://heclift.github.io/website/pubs/metiers-exposes/index.html"/>
+  </url>
+  <url>
     <loc>https://heclift.github.io/website/pubs/politique-travail/index.html</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://heclift.github.io/website/pubs/politique-travail/index.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://heclift.github.io/website/en/pubs/politique-travail/index.html"/>
