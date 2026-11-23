@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exposition des salariés à l’IA générative par zone d’emploi · LIFT, HEC Paris</title>
+<meta name="description" content="Carte du LIFT (HEC Paris) : exposition à l’IA générative des salariés de chaque zone d’emploi, en écart à la zone d’emploi médiane. Version à intégrer.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://heclift.github.io/website/ai-trackers/metiers-exposes/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<!-- Carte à intégrer (iframe) du tracker « Métiers exposés à l’IA générative ».
+     Code d’intégration : voir la section « Territoires » du tracker. Données : data/ai-trackers/metiers-exposes/zones.csv -->
+<style>
+  html, body { margin: 0; height: 100%; }
+  body { font: 15px/1.45 'IBM Plex Sans', system-ui, sans-serif; color: #0E2A47; background: #fff; }
+  .lift-carte { box-sizing: border-box; height: 100%; display: flex; flex-direction: column; padding: 14px 16px 10px; }
+  .lift-carte h1 { font: 700 1.2rem/1.25 'Space Grotesk', sans-serif; margin: 0; }
+  .lift-sous { margin: .25rem 0 .5rem; font-size: .85rem; color: #4B5A70; }
+  .lift-corps { flex: 1; min-height: 260px; display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 14px; align-items: stretch; }
+  #me-map { min-height: 260px; height: 100%; }
+  #me-map svg { display: block; }
+  #me-map path { cursor: pointer; }
+  #me-map path:hover { stroke: #0E2A47; stroke-width: 1.4; }
+  #me-map-info { align-self: center; border: 1px solid #D5DDE8; border-radius: 8px; padding: .8rem .9rem; font-size: .84rem; }
+  #me-map-info h4 { margin: 0 0 .3rem; font: 600 1rem/1.25 'Space Grotesk', sans-serif; }
+  #me-map-info p { margin: .2rem 0; }
+  .me-big { font: 700 1.6rem/1.1 'Space Grotesk', sans-serif; }
+  .me-phrase { line-height: 1.4; border-left: 3px solid #E46A4E; padding-left: .55rem; }
+  #me-map-legend { display: flex; align-items: center; gap: .5rem; font-size: .78rem; color: #4B5A70; margin: .35rem 0 .2rem; max-width: 520px; }
+  .me-grad { flex: 1; height: 10px; border-radius: 3px; }
+  .lift-pied { font-size: .74rem; color: #4B5A70; border-top: 1px solid #E6EBF2; padding-top: .4rem; margin-top: .3rem; }
+  .lift-pied a { color: #0E2A47; }
+  .ai-map-tip { position: fixed; background: #FAFBFD; border: 1px solid #D5DDE8; border-radius: 8px; padding: .5rem .7rem; font-size: .8rem; pointer-events: none; z-index: 100; opacity: 0; transition: opacity .15s; box-shadow: 0 8px 24px rgba(14, 42, 71, .1); }
+  .me-pending { color: #4B5A70; font-size: .85rem; padding: 2rem 0; text-align: center; }
+  @media (max-width: 620px) {
+    .lift-carte { height: auto; padding: 10px 10px 8px; }
+    .lift-carte h1 { font-size: 1.05rem; }
+    .lift-corps { display: block; }
+    #me-map { height: auto; min-height: 0; aspect-ratio: 1000 / 880; }
+    #me-map-info { margin-top: .4rem; padding: .5rem .7rem; }
+    #me-map-info .me-phrase { display: none; }
+    .me-big { font-size: 1.3rem; }
+  }
+</style>
+<script>window.ME_EMBED = 'carte';</script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+<!-- Mesure d'audience sans cookies (GoatCounter) : ne pas retirer, voir AGENTS.md -->
+<script data-goatcounter="https://heclift.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+<div class="lift-carte">
+  <h1>Où les salariés sont-ils les plus exposés à l’IA générative ?</h1>
+  <p class="lift-sous">Exposition moyenne des salariés de chaque zone d’emploi, en écart à la zone d’emploi médiane (points de centile, 2022). Rouge : plus exposé ; bleu : moins exposé.</p>
+  <div class="lift-corps">
+    <div id="me-map" role="img" aria-label="Carte des zones d’emploi de France métropolitaine colorées selon l’exposition de leurs salariés à l’IA générative"></div>
+    <div id="me-map-info"><p>Cliquez ou touchez une zone d’emploi pour afficher son détail.</p></div>
+  </div>
+  <div id="me-map-legend"></div>
+  <p class="lift-pied">Chaque salarié reçoit le rang de sa profession (de 0, la moins exposée, à 100, la plus exposée) ; la carte compare la moyenne de ces rangs dans la zone à celle de la zone d’emploi médiane. Sources : Insee, base Tous salariés 2022 ; indice d’exposition du LIFT. <a href="https://heclift.github.io/website/ai-trackers/metiers-exposes/" target="_blank" rel="noopener">LIFT, HEC Paris · tracker « Métiers exposés à l’IA générative »</a></p>
+</div>
+<script src="../../../assets/js/metiers-exposes.js"></script>
+</body>
+</html>

@@ -325,3 +325,7 @@ a.ai-download-btn { text-decoration: none; }
 .ai-tracker .me-rang-leg i { display: inline-block; }
 .ai-tracker .me-leg-m { width: 4px; height: 12px; background: #E46A4E; border-radius: 2px; }
 .ai-tracker .me-leg-p { width: 10px; height: 10px; border-radius: 50%; border: 2px solid #0E2A47; box-sizing: border-box; margin-left: .6rem; }
+/* code d'intégration de la carte (23/11/2026) */
+.ai-tracker .me-integrer { margin-top: .6rem; font-size: .85rem; color: #33445C; }
+.ai-tracker .me-integrer summary { cursor: pointer; font-weight: 600; color: #0E2A47; }
+.ai-tracker .me-integrer pre { white-space: pre-wrap; word-break: break-all; font-size: .76rem; }

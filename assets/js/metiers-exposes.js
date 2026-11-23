@@ -894,9 +894,9 @@
     sorted.forEach((z) => { const k = Math.min(4, Math.floor((5 * (cum + z.sal / 2)) / totP)); bins[k].push(z); cum += z.sal; });
     CSVF['me-chart-taille'] = () => [['groupe_de_taille', 'nombre_de_zones', 'salaries', 'taille_mediane_salaries', 'ecart_centile_moyen_pts'],
       ...bins.map((b, k) => { let s = 0, w = 0; b.forEach((z) => { s += z.indice * z.sal; w += z.sal; }); return [k + 1, b.length, w, med(b), +(s / w).toFixed(2)]; })];
-    const cb = chart(elBins);
+    const cb = elBins ? chart(elBins) : null;   // absent de la carte à intégrer
     const med = (a) => { const s = a.map((z) => z.sal).sort((x, y) => x - y); return s[Math.floor(s.length / 2)]; };
-    cb.setOption({
+    if (cb) cb.setOption({
       textStyle: { fontFamily: FONT },
       grid: { left: 50, right: 16, top: 40, bottom: 56 },
       tooltip: { ...tooltipCommon, trigger: 'axis', axisPointer: { type: 'shadow' }, valueFormatter: (v) => pts(v) },
@@ -1186,6 +1186,12 @@
 
   // ================================================================== init
   async function init() {
+    // carte seule, pour intégration dans une autre page (iframe de ai-trackers/metiers-exposes/carte/)
+    if (window.ME_EMBED === 'carte') {
+      [D.zones, D.meta] = await Promise.all([loadCSV('zones.csv'), loadJSON('tracker.json')]);
+      try { await drawZones(); } catch (e) { console.error('[metiers-exposes]', e); }
+      return;
+    }
     wireDownloads();
     let tend;
     [D.profil, D.prof, D.zones, D.fap, tend, D.meta] = await Promise.all([
