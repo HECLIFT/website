@@ -178,7 +178,7 @@
     p: { lab: 'Cinquièmes des salariés', unite: 'salariés', e: 's', def: 'salaries' },
   };
   const MODE_NOTE = {
-    nw: 'Chaque groupe réunit un cinquième des professions, chacune comptant pour une quelle que soit sa taille, comme dans le Policy Paper 2026-02.',
+    nw: 'Chaque groupe réunit un cinquième des professions, chacune comptant pour une quelle que soit sa taille, comme dans le Policy Paper 2026-02. Les chiffres diffèrent légèrement de ceux du Policy Paper : les professions sont désormais repérées dans la nomenclature PCS-ESE et non plus dans la PCS 2003.',
     p: 'Chaque groupe réunit un cinquième des salariés, comme le profil des groupes, la carte et les fiches de cette page.',
   };
   // sélecteur réaffiché le 23/11/2026 (demande des coauteurs) : l'écart avec le PP 2026-02 vient du passage de la PCS à la PCS-ESE
@@ -1165,7 +1165,7 @@
         zip.file('tracker.json', JSON.stringify(D.meta, null, 2));
         const dico = [...document.querySelectorAll('.me-dico h5, .me-dico tr')].map((x) => (x.tagName === 'H5' ? '\n' + x.textContent.trim() : '  ' + [...x.cells].map((c) => c.innerText.trim()).join(' : '))).join('\n');
         zip.file('LISEZMOI.txt', ["Métiers exposés à l'IA générative, tracker du LIFT (HEC Paris)", 'Données d’embauche au ' + (D.meta ? moisFR(D.meta.donnees_au) : '') + '. Page : ' + location.href.split('#')[0],
-          'Auteurs : Antonin Bergeaud et Oscar Degos. Licence : CC BY 4.0.', '', 'Format : CSV en UTF-8, virgule, point décimal ; case vide = secret statistique ou valeur absente ; parts entre 0 et 1.', '', 'Dictionnaire des variables', dico].join('\n'));
+          'Auteurs : Antonin Bergeaud, Antoine Bertheau, Simon Bunel, Oscar Degos et Marco Guido Palladino. Licence : CC BY 4.0.', '', 'Format : CSV en UTF-8, virgule, point décimal ; case vide = secret statistique ou valeur absente ; parts entre 0 et 1.', '', 'Dictionnaire des variables', dico].join('\n'));
         save(await zip.generateAsync({ type: 'blob' }), 'lift_metiers-exposes_donnees' + (asof() ? '_' + asof() : '') + '.zip', 'zip', [...noms, 'tracker.json', 'LISEZMOI.txt']);
         if (st) st.textContent = '';
       } catch (e) { console.error('[metiers-exposes] ZIP', e); if (st) st.textContent = 'Archive indisponible pour le moment.'; }
