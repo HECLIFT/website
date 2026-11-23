@@ -426,7 +426,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   <!-- ===================================================== EMBAUCHES -->
   <h2 id="sec-embauches" class="me-section-title">Les embauches depuis l'arrivée de l'IA</h2>
-  <p class="me-section-intro">Les salariés sont classés selon l'indice d'exposition de leur profession et répartis en cinq groupes, du moins exposé (Q1) au plus exposé (Q5). Chaque courbe montre la tendance des flux du groupe, corrigée des variations saisonnières, en écart à son niveau de novembre 2022, mois de la mise en ligne de ChatGPT.</p>
+  <p class="me-section-intro">Les professions sont classées selon leur indice d'exposition et réparties en cinq groupes, du moins exposé (Q1) au plus exposé (Q5) : par défaut, chaque groupe réunit un cinquième des professions ; le bouton ci-dessous forme à la place des groupes d'un cinquième des salariés. Chaque courbe montre la tendance des flux du groupe, corrigée des variations saisonnières, en écart à son niveau de novembre 2022, mois de la mise en ligne de ChatGPT.</p>
 
   <div class="me-groupes">
     <span class="me-groupes-t">Groupes d'exposition</span>
@@ -443,7 +443,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="me-export" data-chart="me-chart-quintiles" data-unite="écart à nov. 2022, %" data-nom="embauches-par-groupe" data-x="mois"></div>
     </div>
     <div id="me-chart-quintiles" class="me-chart"></div>
-    <p class="me-note" id="me-lecture-q"><b>Lecture :</b> en mars 2026, la tendance des embauches en CDI des 21-29 ans est inférieure de 29 % à son niveau de novembre 2022 dans le cinquième des métiers les plus exposés, et de 10 % dans le moins exposé. Source : Dares, mouvements de main-d'œuvre (MMO) ; calculs LIFT.</p>
+    <p class="me-note" id="me-lecture-q"><b>Lecture :</b> en mars 2026, la tendance des embauches en CDI des 21-29 ans est inférieure de 29 % à son niveau de novembre 2022 dans le cinquième des professions les plus exposées, et de 10 % dans le moins exposé. Source : Dares, mouvements de main-d'œuvre (MMO) ; calculs LIFT.</p>
   </div>
 
   <div id="sec-emb-age" class="ai-chart-section">
@@ -558,7 +558,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </section>
 <section id="les-groupes-dexposition" class="level3">
 <h3 class="anchored" data-anchor-id="les-groupes-dexposition">Les groupes d’exposition</h3>
-<p>L'année 2022 décrit les emplois tels qu'ils étaient avant la diffusion de l'IA générative, ChatGPT ayant été mis en ligne à la toute fin de cette année. Les salariés présents au 31 décembre 2022 dans la base Tous salariés de l'Insee, public compris (les indépendants, absents de cette base, ne sont pas couverts), sont classés selon l'indice de la profession de leur poste principal et répartis en cinq groupes qui réunissent chacun environ un cinquième des salariés (19,3 %, 21,3 %, 19,2 %, 20,1 % et 20,0 %). Le centile d'une profession est calculé au point milieu, en pondérant par les salariés : c'est la part des salariés dont la profession est moins exposée, plus la moitié de ses propres salariés. Les professions de même indice ne sont jamais séparées. La même définition sert au profil des salariés, aux fiches et aux séries d'embauche.</p>
+<p>L'année 2022 décrit les emplois tels qu'ils étaient avant la diffusion de l'IA générative, ChatGPT ayant été mis en ligne à la toute fin de cette année. Les salariés présents au 31 décembre 2022 dans la base Tous salariés de l'Insee, public compris (les indépendants, absents de cette base, ne sont pas couverts), sont classés selon l'indice de la profession de leur poste principal et répartis en cinq groupes qui réunissent chacun environ un cinquième des salariés (19,3 %, 21,3 %, 19,2 %, 20,1 % et 20,0 %). Le centile d'une profession est calculé au point milieu, en pondérant par les salariés : c'est la part des salariés dont la profession est moins exposée, plus la moitié de ses propres salariés. Les professions de même indice ne sont jamais séparées. Cette définition sert au profil des salariés, à la carte, au tableau et aux fiches. Pour les embauches, la page propose par défaut des groupes d'un cinquième des professions, chacune comptant pour une quelle que soit sa taille, comme dans le Policy Paper 2026-02 ; le bouton « Groupes d'exposition » permet de passer aux groupes d'un cinquième des salariés.</p>
 </section>
 <section id="la-recherche-par-metier" class="level3">
 <h3 class="anchored" data-anchor-id="la-recherche-par-metier">La recherche par métier</h3>
@@ -608,7 +608,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <summary>Dictionnaire des variables</summary>
       <h5>embauches_tendances.csv et embauches_effectifs.csv</h5>
       <table class="me-dico-t"><tbody>
-        <tr><td>definition</td><td>définition des groupes : <code>salaries</code> (cinquièmes des salariés, définition retenue dans tout le tableau de bord) ou <code>metiers</code> (cinquièmes des professions, chacune comptant pour une)</td></tr>
+        <tr><td>definition</td><td>définition des groupes : <code>metiers</code> (cinquièmes des professions, chacune comptant pour une ; définition affichée par défaut pour les embauches) ou <code>salaries</code> (cinquièmes des salariés ; définition du profil, de la carte, du tableau et des fiches)</td></tr>
         <tr><td>mois</td><td>mois, au format AAAA-MM, depuis janvier 2019</td></tr>
         <tr><td>groupe</td><td>groupe d'exposition, de 1 (le moins exposé) à 5 (le plus exposé) ; <code>tous</code> dans les effectifs seulement</td></tr>
         <tr><td>age</td><td>âge à la date du mouvement : <code>21-29</code>, <code>30-39</code>, <code>40-49</code>, <code>50+</code> ou <code>tous</code> (21 à 70 ans)</td></tr>
@@ -691,6 +691,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <table class="me-dico-t me-histo"><thead><tr><th>Mise en ligne</th><th>Embauches au</th><th>Changement</th></tr></thead><tbody>
       <tr><td>15 novembre 2026</td><td>mars 2026</td><td>Première version : indice d'avril 2026, base Tous salariés 2022, MMO de janvier 2019 à mars 2026.</td></tr>
       <tr><td>19 novembre 2026</td><td>mars 2026</td><td>Groupes, centiles et profils calculés sur les salariés présents au 31 décembre 2022, sur leur poste principal, au lieu de l'ensemble des postes de l'année ; fiche métier : profession la plus plausible pour l'intitulé cherché, avec des exemples d'autres métiers de cette profession et les autres professions possibles.</td></tr>
+      <tr><td>23 novembre 2026</td><td>mars 2026</td><td>Embauches : choix entre des groupes d'un cinquième des professions (par défaut, comme le Policy Paper 2026-02) et d'un cinquième des salariés.</td></tr>
     </tbody></table>
 </section>
 </section>

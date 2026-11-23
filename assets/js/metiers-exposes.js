@@ -171,19 +171,20 @@
   // écart relatif à novembre 2022. Affichées telles quelles. Deux définitions des groupes :
   // cinquièmes des salariés (défaut, comme le profil et la carte) ou cinquièmes des métiers (PP 2026-02).
   const FLUX = [['embauches_cdi', 'Embauches en CDI'], ['embauches_cdd', 'Embauches en CDD'], ['fins_cdi', 'Fins de CDI'], ['fins_cdd', 'Fins de CDD']];
+  // cinquièmes des professions (défaut, chaque profession compte pour une, comme le PP 2026-02 et Palladino et al., 2026)
+  // ou cinquièmes des salariés (définition du profil, de la carte, du tableau et des fiches) ; e : accord de « exposé »
   const MODES = {
-    p: { lab: 'Cinquièmes des salariés', unite: 'salariés', def: 'salaries' },
-    nw: { lab: 'Cinquièmes des métiers', unite: 'métiers', def: 'metiers' },
+    nw: { lab: 'Cinquièmes des professions', unite: 'professions', e: 'es', def: 'metiers' },
+    p: { lab: 'Cinquièmes des salariés', unite: 'salariés', e: 's', def: 'salaries' },
   };
   const MODE_NOTE = {
-    nw: 'Chaque groupe réunit un cinquième des métiers, du moins au plus exposé (Palladino et al., 2026).',
-    p: 'Chaque groupe réunit un cinquième des salariés, du moins au plus exposé.',
+    nw: 'Chaque groupe réunit un cinquième des professions, chacune comptant pour une quelle que soit sa taille, comme dans le Policy Paper 2026-02.',
+    p: 'Chaque groupe réunit un cinquième des salariés, comme le profil des groupes, la carte et les fiches de cette page.',
   };
-  // variante en cinquièmes des métiers : dans les fichiers, sans sélecteur sur la page tant que l'écart
-  // avec les chiffres publiés du PP 2026-02 n'est pas expliqué (décision du 15/11/2026)
-  const AVEC_VARIANTE = false;
-  const ES = { mode: 'p', flux: 'embauches_cdi', age: '21-29', groupe: '5', flux2: 'embauches_cdi', ageS: '21-29', ageM: '21-29' };
-  const qLab = (i) => (i === 0 ? `Q1 · ${MODES[ES.mode].unite} les moins exposés` : i === 4 ? `Q5 · ${MODES[ES.mode].unite} les plus exposés` : 'Q' + (i + 1));
+  // sélecteur réaffiché le 23/11/2026 (demande des coauteurs) : l'écart avec le PP 2026-02 vient du passage de la PCS à la PCS-ESE
+  const AVEC_VARIANTE = true;
+  const ES = { mode: 'nw', flux: 'embauches_cdi', age: '21-29', groupe: '5', flux2: 'embauches_cdi', ageS: '21-29', ageM: '21-29' };
+  const qLab = (i) => (i === 0 ? `Q1 · ${MODES[ES.mode].unite} les moins exposé${MODES[ES.mode].e}` : i === 4 ? `Q5 · ${MODES[ES.mode].unite} les plus exposé${MODES[ES.mode].e}` : 'Q' + (i + 1));
   const tri = (a) => a.sort((x, y) => (x[0] < y[0] ? -1 : 1));
 
   function drawEmbauches() {
@@ -212,11 +213,11 @@
       const last = C2.map((r) => r.mois).sort().pop();
       const v = (q) => num(C2.find((r) => r.mois === last && r.groupe === q && r.age === ages[0]).embauches_cdi);
       $('me-kpi-embauches').textContent = fmt(100 * v('5'), 1) + ' %';
-      if ($('me-kpi-embauches-t')) $('me-kpi-embauches-t').textContent = `Embauches des jeunes, ${M.unite} les plus exposés`;
-      $('me-kpi-embauches-note').textContent = `embauches en CDI des ${ages[0]} ans dans le cinquième des ${M.unite} les plus exposés, nov. 2022 → ${moisFR(last)}, contre ${fmt(100 * v('1'), 1)} % dans le moins exposé`;
+      if ($('me-kpi-embauches-t')) $('me-kpi-embauches-t').textContent = `Embauches des jeunes, ${M.unite} les plus exposé${M.e}`;
+      $('me-kpi-embauches-note').textContent = `embauches en CDI des ${ages[0]} ans dans le cinquième des ${M.unite} les plus exposé${M.e}, nov. 2022 → ${moisFR(last)}, contre ${fmt(100 * v('1'), 1)} % dans le moins exposé`;
       if (!D.meta && $('me-maj')) $('me-maj').textContent = moisFR(last);
       const lec = $('me-lecture-q');
-      if (lec) lec.innerHTML = `<b>Lecture :</b> en ${moisFR(last)}, la tendance des embauches en CDI des ${ages[0]} ans est inférieure de ${fmt(-100 * v('5'), 0)} % à son niveau de novembre 2022 dans le cinquième des ${M.unite} les plus exposés, et de ${fmt(-100 * v('1'), 0)} % dans le moins exposé. Source : Dares, mouvements de main-d'œuvre (MMO) ; calculs LIFT.`;
+      if (lec) lec.innerHTML = `<b>Lecture :</b> en ${moisFR(last)}, la tendance des embauches en CDI des ${ages[0]} ans est inférieure de ${fmt(-100 * v('5'), 0)} % à son niveau de novembre 2022 dans le cinquième des ${M.unite} les plus exposé${M.e}, et de ${fmt(-100 * v('1'), 0)} % dans le moins exposé. Source : Dares, mouvements de main-d'œuvre (MMO) ; calculs LIFT.`;
     }
     // femmes et hommes
     if (!CS) pending(elS, 'courbes lissées par sexe (MMO)');
