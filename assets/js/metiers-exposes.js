@@ -634,8 +634,9 @@
           <h5>Qui sont les salariés de cette profession</h5>
           ${profilHTML(pm)}
         </div>
-      </div>` : '<div class="me-pending">Aucune profession salariée n’est rattachée à ce métier.</div>'}`;
+      </div>${embProfHTML()}` : '<div class="me-pending">Aucune profession salariée n’est rattachée à ce métier.</div>'}`;
     el.hidden = false;
+    if (pm) drawEmbProf(el, pm.pcs);
     const depuis = { t, code };
     el.querySelectorAll('.me-prof-lien').forEach((a) => (a.onclick = (e) => { e.preventDefault(); showFiche(codeFiche(pm), true, depuis); }));
     el.querySelectorAll('[data-k]').forEach((a) => (a.onclick = (e) => { e.preventDefault(); showMetier(t, code, +a.dataset.k, false); }));
@@ -763,8 +764,10 @@
           ${famHTML(p)}
         </div>
       </div>
+      ${embProfHTML()}
 `;
     el.hidden = false;
+    drawEmbProf(el, p.pcs);
 
     el.querySelectorAll('[data-goto]').forEach((a) => (a.onclick = (e) => { e.preventDefault(); showFiche(a.dataset.goto, true, depuis); }));
     el.querySelectorAll('[data-pcs]').forEach((a) => (a.onclick = () => showFiche(a.dataset.pcs, true, depuis)));
@@ -774,6 +777,63 @@
       el.querySelectorAll('[data-ins-code]').forEach((b) => (b.onclick = () => showInsee(insee.i, insee.st, b.dataset.insCode, false)));
     }
     if (scroll) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // ------------------------------------------------ embauches par profession (24/11/2026)
+  // embauches_professions.csv : tendances par profession × mois × âge, calculées comme les courbes des groupes ;
+  // seules les séries assez fournies sont diffusées (au moins 30 mouvements par mois en 2022, aucun mois masqué).
+  const EP_FLUX = [['embauches', 'Embauches'], ['fins', 'Fins de contrat']];
+  const EP_CTT = [['cdi', 'en CDI'], ['cdd', 'en CDD']];
+  const EP_AGE = [['21-29', 'des 21-29 ans'], ['30-49', 'des 30-49 ans'], ['50+', 'des 50 ans et plus']];
+  const EP = { flux: 'embauches', ctt: 'cdi', age: '21-29' };
+  let EPdata = null, EPload = null;
+  const loadEP = () => EPload || (EPload = loadCSV('embauches_professions.csv').then((rows) => {
+    const m = new Map();
+    (rows || []).forEach((r) => {
+      if (!m.has(r.pcs)) m.set(r.pcs, new Map());
+      const a = m.get(r.pcs); if (!a.has(r.age)) a.set(r.age, []);
+      a.get(r.age).push(r);
+    });
+    m.forEach((a) => a.forEach((l) => l.sort((x, y) => (x.mois < y.mois ? -1 : 1))));
+    EPdata = m; return m;
+  }));
+  const epSerie = (code, col, age) => {
+    const l = EPdata && EPdata.get(code) && EPdata.get(code).get(age);
+    if (!l || l.some((r) => r[col] === '' || r[col] == null)) return null;
+    return l.map((r) => [r.mois, 100 * num(r[col])]);
+  };
+  function embProfHTML() {
+    const sel = (id, opts, v) => `<select data-ep="${id}" aria-label="${id}">${opts.map(([k, l]) => `<option value="${esc(k)}"${k === v ? ' selected' : ''}>${esc(l)}</option>`).join('')}</select>`;
+    return `<div class="me-ep">
+        <h5>Les embauches dans cette profession</h5>
+        <div class="me-ep-ctrl">${sel('flux', EP_FLUX, EP.flux)} ${sel('ctt', EP_CTT, EP.ctt)} ${sel('age', EP_AGE, EP.age)}</div>
+        <p class="me-ep-txt"></p>
+        <div class="me-chart me-ep-chart"></div>
+        <p class="me-note">Tendance corrigée des variations saisonnières, en écart à novembre 2022, mois de la mise en ligne de ChatGPT ; secteur privé. Source : Dares, mouvements de main-d’œuvre (MMO) ; calculs LIFT.</p>
+      </div>`;
+  }
+  async function drawEmbProf(root, code) {
+    const box = root.querySelector('.me-ep'); if (!box) return;
+    box.querySelectorAll('[data-ep]').forEach((x) => (x.onchange = () => { EP[x.dataset.ep] = x.value; drawEmbProf(root, code); }));
+    const txt = box.querySelector('.me-ep-txt'), el = box.querySelector('.me-ep-chart');
+    if (!EPdata) { txt.textContent = 'Chargement…'; await loadEP(); }
+    const col = (EP.flux === 'embauches' ? 'embauches_' : 'fins_') + EP.ctt;
+    const sv = epSerie(code, col, EP.age), se = epSerie('ensemble', col, EP.age);
+    const quoi = `${EP.flux === 'embauches' ? 'les embauches' : 'les fins de contrat'} ${EP_CTT.find((x) => x[0] === EP.ctt)[1]} ${EP_AGE.find((x) => x[0] === EP.age)[1]}`;
+    if (!sv) {
+      const ec = echarts.getInstanceByDom(el); if (ec) ec.dispose();
+      el.hidden = true;
+      txt.textContent = `Trop peu de mouvements dans cette profession pour suivre ${quoi} de façon fiable (moins de 30 par mois en 2022, ou des mois couverts par le secret statistique).`;
+      return;
+    }
+    el.hidden = false;
+    const v = sv[sv.length - 1][1], ve = se ? se[se.length - 1][1] : null, mo = moisFR(sv[sv.length - 1][0]);
+    const sens = (x) => (Math.abs(x) < 0.5 ? 'sont restées stables' : `ont ${x < 0 ? 'reculé' : 'augmenté'} de ${fmt(Math.abs(x), 0)} %`);
+    txt.innerHTML = `Entre novembre 2022 et ${mo}, ${quoi} <b>${sens(v)}</b> dans cette profession${ve != null ? `, contre ${Math.abs(ve) < 0.5 ? 'une stabilité' : `${fmt(Math.abs(ve), 0)} % de ${ve < 0 ? 'baisse' : 'hausse'}`} pour l’ensemble des professions` : ''}.`;
+    chart(el).setOption(lineOption([
+      { name: 'Cette profession', color: C.coral, data: sv },
+      ...(se ? [{ name: 'Ensemble des professions', color: C.muted, dashed: true, width: 1.6, data: se }] : []),
+    ], { pct: true }), true);
   }
 
   function buildTable() {
@@ -788,6 +848,7 @@
       ['libelle', 'Profession', (p) => esc(p.libelle) + (ORIGINE[p.origine] ? ' <span class="me-tag" title="' + ORIGINE[p.origine] + '">*</span>' : '')],
       ['centile', 'Centile parmi les salariés', (p) => fmt(p.centile)],
       ['sal', 'Salariés', (p) => fmt(p.sal)],
+      ['emb', 'Embauches de jeunes en CDI depuis nov. 2022', (p) => (p.emb == null ? '—' : (p.emb > 0 ? '+' : p.emb < 0 ? '−' : '') + fmt(Math.abs(p.emb), 0) + ' %')],
       ['femmes', 'Femmes', (p) => pct(p.femmes, 0)],
       ['jeunes', '< 30 ans', (p) => pct(p.jeunes, 0)],
       ['salaire', 'Salaire h. net', (p) => (p.salaire == null ? '—' : fmt(p.salaire, 1) + ' €')],
@@ -819,8 +880,13 @@
     const colsVis = cols;
     fam.onchange = render; grp.onchange = render;
     render();
-    CSVF['me-table'] = () => [['pcs', 'libelle', 'fap', 'indice', 'centile', 'groupe', 'salaries', 'part_femmes', 'part_moins_30', 'salaire_horaire_net'],
-      ...pcsRows.filter((p) => !p.agregat).map((p) => [p.pcs, p.libelle, p.fap, p.indice, p.centile, p.quintile, p.sal, p.femmes, p.jeunes, p.salaire])];
+    // tendance des embauches en CDI des 21-29 ans, chargée après le reste de la page
+    setTimeout(() => loadEP().then(() => {
+      pcsRows.forEach((p) => { const x = epSerie(p.pcs, 'embauches_cdi', '21-29'); p.emb = x ? x[x.length - 1][1] : null; });
+      render();
+    }), 1200);
+    CSVF['me-table'] = () => [['pcs', 'libelle', 'fap', 'indice', 'centile', 'groupe', 'salaries', 'part_femmes', 'part_moins_30', 'salaire_horaire_net', 'embauches_cdi_21_29_ecart_nov2022'],
+      ...pcsRows.filter((p) => !p.agregat).map((p) => [p.pcs, p.libelle, p.fap, p.indice, p.centile, p.quintile, p.sal, p.femmes, p.jeunes, p.salaire, p.emb == null ? '' : +(p.emb / 100).toFixed(4)])];
     D.tableCSV = () => Papa.unparse(pcsRows.map((p) => ({
       pcs: p.pcs, libelle: p.libelle, fap: p.fap, indice: p.indice, centile: p.centile, quintile: p.quintile,
       salaries: p.sal, part_femmes: p.femmes, part_moins_30: p.jeunes, salaire_horaire_net: p.salaire,

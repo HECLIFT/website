@@ -81,6 +81,7 @@ ME = Path("data/ai-trackers/metiers-exposes")
 ME_COLS = {
  "embauches_tendances.csv": ["definition", "mois", "groupe", "age", "sexe", "embauches_cdi", "embauches_cdd", "fins_cdi", "fins_cdd"],
  "embauches_effectifs.csv": ["definition", "mois", "groupe", "age", "sexe", "embauches_cdi", "embauches_cdd", "fins_cdi", "fins_cdd"],
+ "embauches_professions.csv": ["pcs", "mois", "age", "embauches_cdi", "embauches_cdd", "fins_cdi", "fins_cdd"],
  "professions.csv": ["pcs", "pcs03", "libelle", "fap", "libelle_fap", "famille", "indice", "centile", "groupe", "atlas", "origine", "agregat",
                      "salaries", "part_femmes", "age_moyen", "part_moins_30", "salaire_horaire_net", "part_cdi",
                      "part_fonctionnaires", "part_temps_partiel", "part_apprentis"],
@@ -123,6 +124,20 @@ if ME.exists():
         for x in T_:
             if x["definition"] not in ("salaries", "metiers") or x["groupe"] not in "12345" or x["sexe"] not in ("F", "H", "tous"):
                 erro(f"[métiers exposés] embauches_tendances.csv : valeur inattendue {x['definition']}, {x['groupe']}, {x['sexe']}"); break
+    EP_ = lus.get("embauches_professions.csv") or []
+    if EP_ and T_:
+        if sorted({x["mois"] for x in EP_}) != sorted({x["mois"] for x in T_}): erro("[métiers exposés] embauches_professions.csv : mois différents de embauches_tendances.csv")
+        if not any(x["pcs"] == "ensemble" for x in EP_): erro("[métiers exposés] embauches_professions.csv : ligne « ensemble » absente")
+        codes_p = {x["pcs"] for x in lus.get("professions.csv") or []} | {"ensemble"}
+        inconnus = {x["pcs"] for x in EP_} - codes_p
+        if inconnus: erro(f"[métiers exposés] embauches_professions.csv : professions inconnues {sorted(inconnus)[:5]}")
+        cles = [(x["pcs"], x["mois"], x["age"]) for x in EP_]
+        if len(cles) != len(set(cles)): erro("[métiers exposés] embauches_professions.csv : lignes en double")
+        for x in EP_:
+            if x["age"] not in ("21-29", "30-49", "50+"): erro(f"[métiers exposés] embauches_professions.csv : âge inattendu {x['age']}"); break
+            v = [x[k] for k in ("embauches_cdi", "embauches_cdd", "fins_cdi", "fins_cdd") if x[k] != ""]
+            if any(float(t) <= -1 for t in v) or (x["mois"] == "2022-11" and any(abs(float(t)) > 1e-6 for t in v)):
+                erro(f"[métiers exposés] embauches_professions.csv : valeur impossible ({x['pcs']}, {x['mois']}, {x['age']})"); break
     for x in lus.get("professions.csv") or []:
         for k in ("part_femmes", "part_moins_30", "part_cdi", "part_fonctionnaires", "part_temps_partiel", "part_apprentis"):
             if x[k] and not 0 <= float(x[k]) <= 1: erro(f"[métiers exposés] professions.csv : {k} hors de [0, 1] pour {x['pcs']}"); break

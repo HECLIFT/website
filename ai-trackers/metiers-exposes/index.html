@@ -361,7 +361,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <!-- Barre des données (même composant que le tracker science) -->
   <div class="dash-databar">
     <p><strong>Données d’embauche au <span data-me-meta="donnees_au">—</span>.</strong> Profil des salariés : base Tous salariés 2022 (salariés présents au 31 décembre). Chaque graphique a un bouton « Télécharger » : image PNG, données Excel ou CSV.</p>
-    <div class="dash-databar-act"><button type="button" class="dash-allbtn" id="me-zip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7,10 12,15 17,10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg><span>Toutes les données (ZIP)</span></button><span class="dash-databar-hint">10 fichiers et un dictionnaire des variables</span></div>
+    <div class="dash-databar-act"><button type="button" class="dash-allbtn" id="me-zip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7,10 12,15 17,10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg><span>Toutes les données (ZIP)</span></button><span class="dash-databar-hint">11 fichiers et un dictionnaire des variables</span></div>
     <p class="dash-status" id="me-zip-status"></p>
   </div>
 
@@ -548,7 +548,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </thead>
 <tbody>
 <tr class="odd"><td>Rechercher un métier</td><td>Recherche parmi les métiers du répertoire de France Travail et les intitulés de l’Insee ; fiche du métier et de sa profession ; tableau des 424 professions</td></tr>
-<tr class="even"><td>Embauches</td><td>Embauches et fins de contrat par groupe d’exposition, âge et sexe, en écart à novembre 2022</td></tr>
+<tr class="even"><td>Embauches</td><td>Embauches et fins de contrat par groupe d’exposition, âge et sexe, et par profession, en écart à novembre 2022</td></tr>
 <tr class="odd"><td>Qui occupe ces emplois</td><td>Profil des salariés des cinq groupes d’exposition (sexe, âge, salaire, contrat, secteur, taille d’entreprise)</td></tr>
 <tr class="even"><td>Territoires</td><td>Exposition des postes par zone d’emploi et selon la taille du bassin d’emploi</td></tr>
 <tr class="odd"><td>Usage observé</td><td>Indice d’exposition et usage de Gemini mesuré par l’Atlas de Google, par famille professionnelle</td></tr>
@@ -573,7 +573,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </section>
 <section id="les-embauches" class="level3">
 <h3 class="anchored" data-anchor-id="les-embauches">Les embauches</h3>
-<p>Les séries d'embauches proviennent des mouvements de main-d'œuvre (MMO) de la Dares, construits à partir des déclarations sociales nominatives et exploités au Centre d'accès sécurisé aux données (CASD). Elles couvrent le secteur privé, de janvier 2019 à <span data-me-meta="donnees_au">mars 2026</span> ; le dernier point de chaque tendance est révisé à chaque livraison. Une embauche en CDI est une entrée en CDI sans sortie le même mois, d'un salarié de 21 à 70 ans à la date d'embauche ; « tous âges » désigne cette tranche. Chaque embauche est rattachée au groupe d'exposition de sa profession. Pour chaque groupe, tranche d'âge et type de flux, la série mensuelle est passée en logarithme, corrigée de la saisonnalité par une régression sur des indicatrices de mois, puis lissée par un filtre de Hodrick-Prescott (λ = 1 000). Les courbes représentent exp(tendance − tendance de novembre 2022) − 1, soit l'écart relatif au niveau de novembre 2022. Les courbes par sexe suivent la même méthode, appliquée aux embauches en CDI de chaque sexe. Les embauches ne sont pas diffusées profession par profession : trop de séries mensuelles tomberaient sous le seuil du secret statistique.</p>
+<p>Les séries d'embauches proviennent des mouvements de main-d'œuvre (MMO) de la Dares, construits à partir des déclarations sociales nominatives et exploités au Centre d'accès sécurisé aux données (CASD). Elles couvrent le secteur privé, de janvier 2019 à <span data-me-meta="donnees_au">mars 2026</span> ; le dernier point de chaque tendance est révisé à chaque livraison. Une embauche en CDI est une entrée en CDI sans sortie le même mois, d'un salarié de 21 à 70 ans à la date d'embauche ; « tous âges » désigne cette tranche. Chaque embauche est rattachée au groupe d'exposition de sa profession. Pour chaque groupe, tranche d'âge et type de flux, la série mensuelle est passée en logarithme, corrigée de la saisonnalité par une régression sur des indicatrices de mois, puis lissée par un filtre de Hodrick-Prescott (λ = 1 000). Les courbes représentent exp(tendance − tendance de novembre 2022) − 1, soit l'écart relatif au niveau de novembre 2022. Les courbes par sexe suivent la même méthode, appliquée aux embauches en CDI de chaque sexe. La fiche de chaque profession montre les mêmes tendances pour cette seule profession, par âge (21-29, 30-49, 50 ans et plus), type de contrat et type de flux, comparées à l'ensemble des professions. Une série n'est diffusée que si elle compte au moins 30 mouvements par mois en moyenne en 2022 et aucun mois couvert par le secret statistique (moins de 5 mouvements) ; seules les tendances sont diffusées, pas les effectifs mensuels par profession. Une profession regroupée somme ses codes détaillés. Sur une seule profession, la tendance est plus sensible aux aléas et ses derniers points sont révisés à chaque livraison.</p>
 </section>
 <section id="sources" class="level3">
 <h3 class="anchored" data-anchor-id="sources">Sources</h3>
@@ -599,6 +599,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <tbody>
         <tr data-me-fichier="embauches_tendances.csv"><td><a data-me-dl="embauches_tendances.csv">embauches_tendances.csv</a></td><td>Tendances des embauches et des fins de contrat, en écart à novembre 2022</td><td>définition des groupes, mois, groupe, âge, sexe</td><td>trimestrielle</td><td class="num me-f-lignes">—</td><td class="num me-f-taille">—</td></tr>
         <tr data-me-fichier="embauches_effectifs.csv"><td><a data-me-dl="embauches_effectifs.csv">embauches_effectifs.csv</a></td><td>Nombre mensuel d'embauches et de fins de contrat, non lissé</td><td>définition des groupes, mois, groupe, âge, sexe</td><td>trimestrielle</td><td class="num me-f-lignes">—</td><td class="num me-f-taille">—</td></tr>
+        <tr data-me-fichier="embauches_professions.csv"><td><a data-me-dl="embauches_professions.csv">embauches_professions.csv</a></td><td>Tendances des embauches et des fins de contrat par profession, en écart à novembre 2022</td><td>profession, mois, âge</td><td>trimestrielle</td><td class="num me-f-lignes">—</td><td class="num me-f-taille">—</td></tr>
         <tr data-me-fichier="professions.csv"><td><a data-me-dl="professions.csv">professions.csv</a></td><td>Indice, centile, groupe et profil des salariés de chaque profession</td><td>profession (PCS-ESE)</td><td>à chaque version de l'indice ou de la base Tous salariés</td><td class="num me-f-lignes">—</td><td class="num me-f-taille">—</td></tr>
         <tr data-me-fichier="quintiles_profil.csv"><td><a data-me-dl="quintiles_profil.csv">quintiles_profil.csv</a></td><td>Profil des salariés des cinq groupes d'exposition</td><td>indicateur</td><td>idem</td><td class="num me-f-lignes">—</td><td class="num me-f-taille">—</td></tr>
         <tr data-me-fichier="fap.csv"><td><a data-me-dl="fap.csv">fap.csv</a></td><td>Indice et usage observé (Atlas de Google) par famille professionnelle</td><td>famille professionnelle (FAP 2009)</td><td>idem</td><td class="num me-f-lignes">—</td><td class="num me-f-taille">—</td></tr>
@@ -620,6 +621,12 @@ document.addEventListener('DOMContentLoaded', () => {
         <tr><td>age</td><td>âge à la date du mouvement : <code>21-29</code>, <code>30-39</code>, <code>40-49</code>, <code>50+</code> ou <code>tous</code> (21 à 70 ans)</td></tr>
         <tr><td>sexe</td><td><code>F</code>, <code>H</code> ou <code>tous</code></td></tr>
         <tr><td>embauches_cdi, embauches_cdd, fins_cdi, fins_cdd</td><td>tendances : écart relatif de la tendance du flux à son niveau de novembre 2022 (−0,29 signifie 29 % de moins) ; effectifs : nombre de mouvements du mois</td></tr>
+      </tbody></table>
+      <h5>embauches_professions.csv</h5>
+      <table class="me-dico-t"><tbody>
+        <tr><td>pcs</td><td>code de la profession (PCS-ESE, ou ligne de regroupement de <code>professions.csv</code>) ; <code>ensemble</code> pour l'ensemble des professions</td></tr>
+        <tr><td>mois, age</td><td>mois (AAAA-MM) ; âge à la date du mouvement : <code>21-29</code>, <code>30-49</code> ou <code>50+</code></td></tr>
+        <tr><td>embauches_cdi, embauches_cdd, fins_cdi, fins_cdd</td><td>écart relatif de la tendance du flux à son niveau de novembre 2022 ; case vide quand la série n'est pas diffusée (moins de 30 mouvements par mois en 2022 ou mois couverts par le secret statistique)</td></tr>
       </tbody></table>
       <h5>professions.csv</h5>
       <table class="me-dico-t"><tbody>
@@ -698,6 +705,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <tr><td>15 novembre 2026</td><td>mars 2026</td><td>Première version : indice d'avril 2026, base Tous salariés 2022, MMO de janvier 2019 à mars 2026.</td></tr>
       <tr><td>19 novembre 2026</td><td>mars 2026</td><td>Groupes, centiles et profils calculés sur les salariés présents au 31 décembre 2022, sur leur poste principal, au lieu de l'ensemble des postes de l'année ; fiche métier : profession la plus plausible pour l'intitulé cherché, avec des exemples d'autres métiers de cette profession et les autres professions possibles.</td></tr>
       <tr><td>23 novembre 2026</td><td>mars 2026</td><td>Embauches : choix entre des groupes d'un cinquième des professions (par défaut, comme le Policy Paper 2026-02) et d'un cinquième des salariés.</td></tr>
+      <tr><td>24 novembre 2026</td><td>mars 2026</td><td>Embauches et fins de contrat par profession : tendance dans la fiche de chaque profession et de chaque métier, et colonne dans le tableau des professions.</td></tr>
     </tbody></table>
 </section>
 </section>

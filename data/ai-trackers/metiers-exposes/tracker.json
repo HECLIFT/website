@@ -1,6 +1,6 @@
 {
   "tracker": "metiers-exposes",
-  "livraison": "2026-11-19",
+  "livraison": "2026-11-24",
   "donnees_au": "2026-03",
   "premier_mois": "2019-01",
   "sources": {
@@ -9,7 +9,8 @@
     "indice": "LIFT, indice par profession pcs_exposure_v22 (notation des savoir-faire du ROME 4.0, avril 2026)",
     "usage": "Google, AI & Economy Atlas v1.0, converti vers les familles professionnelles par le LIFT",
     "rome": "France Travail, ROME 4.0, tables du 9/11/2026 (version 26M06)",
-    "intitules": "Insee, matrice de codification de la PCS 2020, collecte 2026"
+    "intitules": "Insee, matrice de codification de la PCS 2020, collecte 2026",
+    "embauches_professions": "Dares, mouvements de main-d'œuvre (MMO), flux mensuels par profession exploités au CASD (projet STRUPRO), export transmis le 24/11/2026 ; tendances calculées par le LIFT"
   },
   "fichiers": {
     "embauches_tendances.csv": {
@@ -19,6 +20,10 @@
     "embauches_effectifs.csv": {
       "lignes": 15660,
       "octets": 562884
+    },
+    "embauches_professions.csv": {
+      "lignes": 87174,
+      "octets": 3766766
     },
     "professions.csv": {
       "lignes": 442,
